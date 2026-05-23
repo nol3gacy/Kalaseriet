@@ -27,8 +27,10 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Kalas</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="/kalas" className="hover:text-white transition-colors">Alla kalas</a></li>
-            <li><a href="/#populara" className="hover:text-white transition-colors">Populära kalas</a></li>
-            <li><a href="/spellistor" className="hover:text-white transition-colors">Spellistor</a></li>
+            <li><a href="/kalas/4-aringar" className="hover:text-white transition-colors">4-åringar</a></li>
+            <li><a href="/kalas/5-aringar" className="hover:text-white transition-colors">5-åringar</a></li>
+            <li><a href="/kalas/6-aringar" className="hover:text-white transition-colors">6-åringar</a></li>
+            <li><a href="/kalas/7-8-aringar" className="hover:text-white transition-colors">7-8-åringar</a></li>
             <li><a href="/kalasbloggen" className="hover:text-white transition-colors">Kalasbloggen</a></li>
           </ul>
         </div>
@@ -37,6 +39,7 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Info</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="/sa-funkar-det" className="hover:text-white transition-colors">Så funkar det</a></li>
+            <li><a href="/faq" className="hover:text-white transition-colors">FAQ</a></li>
             <li><a href="/om-kalaseriet" className="hover:text-white transition-colors">Om Kalaseriet</a></li>
             <li><a href="/kontakt" className="hover:text-white transition-colors">Kontakta oss</a></li>
             <li><a href="/feedback" className="hover:text-white transition-colors">Lämna feedback</a></li>
@@ -47,8 +50,8 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Juridiskt</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="/villkor" className="hover:text-white transition-colors">Köpvillkor</a></li>
-            <li><a href="/villkor#integritet" className="hover:text-white transition-colors">Integritetspolicy</a></li>
-            <li><a href="/villkor#cookies" className="hover:text-white transition-colors">Cookiepolicy</a></li>
+            <li><a href="/integritetspolicy" className="hover:text-white transition-colors">Integritetspolicy</a></li>
+            <li><a href="/cookiepolicy" className="hover:text-white transition-colors">Cookiepolicy</a></li>
           </ul>
           <div className="mt-6">
             <p className="text-xs text-gray-500 mb-2">Tips & erbjudanden</p>

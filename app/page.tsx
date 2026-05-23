@@ -3,6 +3,9 @@ import { allProductsQuery } from '../sanity/lib/queries'
 import Navbar from './components/Navbar'
 import ProductGrid from './components/ProductGrid'
 import Footer from './components/Footer'
+import Testimonials from './components/Testimonials'
+import FAQ from './components/FAQ'
+import SocialProof from './components/SocialProof'
 
 export const themeColors: Record<string, { from: string; to: string; emoji: string }> = {
   pirat:        { from: '#dde3ea', to: '#b8c4d0', emoji: '☠️' },
@@ -160,6 +163,13 @@ export default async function Home() {
         </div>
       </div>
 
+      {/* ── Social Proof ────────────────────────────────────── */}
+      <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SocialProof />
+        </div>
+      </section>
+
       {/* ── Populära kalas ──────────────────────────────────── */}
       {popular.length > 0 && (
         <section id="populara" className="py-16 sm:py-20 bg-white">
@@ -262,15 +272,23 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Testimonials ───────────────────────────────────── */}
+      <Testimonials />
+
+      {/* ── FAQ ─────────────────────────────────────────────── */}
+      <section className="border-t border-gray-100">
+        <FAQ />
+      </section>
+
       {/* ── Kalasbloggen teaser ─────────────────────────────── */}
-      <section id="kalasbloggen" className="py-16 sm:py-20 bg-violet-50 border-t border-violet-100">
+      <section className="py-16 sm:py-20 bg-violet-50 border-t border-violet-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-xs font-semibold text-[#5910b6] uppercase tracking-widest mb-3 block">Kalasbloggen</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">Tips & inspiration</h2>
           <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
             Recept, aktiviteter och idéer för att göra barnets kalas ännu mer minnesvärt.
           </p>
-          <a href="#kalasbloggen" className="btn-primary">
+          <a href="/kalasbloggen" className="btn-primary">
             Läs bloggen ›
           </a>
         </div>

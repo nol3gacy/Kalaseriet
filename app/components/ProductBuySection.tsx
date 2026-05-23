@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
+import MobileStickyCTA from './MobileStickyCTA'
 import type { Product } from '../page'
 
 export default function ProductBuySection({ product }: { product: Product }) {
@@ -29,6 +30,13 @@ export default function ProductBuySection({ product }: { product: Product }) {
       <button onClick={handleAddToCart} className="btn-secondary w-full mb-6">
         {added ? '✓ Lagd i varukorg' : 'Lägg i varukorg'}
       </button>
+      <MobileStickyCTA
+        productName={product.name}
+        price={product.price}
+        onBuyNow={handleBuyNow}
+        onAddToCart={handleAddToCart}
+        isAdded={added}
+      />
     </div>
   )
 }

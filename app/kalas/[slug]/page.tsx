@@ -4,6 +4,7 @@ import { fallbackProducts, themeColors, type Product } from '../../page'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ProductBuySection from '../../components/ProductBuySection'
+import Breadcrumbs from '../../components/Breadcrumbs'
 import { notFound } from 'next/navigation'
 
 const INCLUDED_ITEMS = [
@@ -72,8 +73,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     <>
       <Navbar />
       <main className="min-h-screen bg-white">
+        {/* Breadcrumbs */}
+        <div className="max-w-7xl mx-auto px-4 pt-6">
+          <Breadcrumbs items={[
+            { label: 'Kalas', href: '/kalas' },
+            { label: `För ${ageLabel}-åringar`, href: `/kalas/${ageLabel.replace(' & ', '-').toLowerCase()}` },
+            { label: product.name, href: '' }
+          ]} />
+        </div>
+
         {/* Hero */}
-        <div className="max-w-7xl mx-auto px-4 pt-10 pb-8">
+        <div className="max-w-7xl mx-auto px-4 pb-8">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* Image */}
             <div className="rounded-2xl overflow-hidden aspect-[4/3] relative">
