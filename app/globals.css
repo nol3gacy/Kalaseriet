@@ -31,3 +31,53 @@ h1, h2, h3, h4, h5, h6 {
 .animate-marquee {
   animation: marquee 35s linear infinite;
 }
+
+/* ── Brand buttons matching kalaseriet.se ────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  background-color: #5910b6;
+  color: #faf1ef;
+  font-family: caraque-solid, system-ui, sans-serif;
+  font-size: 1.6rem;
+  padding: 1.5rem 3rem;
+  border-radius: 3rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background-color: #4a0d99;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  background-color: transparent;
+  color: #5910b6;
+  font-family: caraque-solid, system-ui, sans-serif;
+  font-size: 1.6rem;
+  padding: 1.5rem 3rem;
+  border-radius: 3rem;
+  border: 3px solid #5910b6;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background-color: #f3eeff;
+}

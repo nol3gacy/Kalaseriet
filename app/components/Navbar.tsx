@@ -15,22 +15,22 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <span className="text-xl">🎉</span>
             <span className="font-extrabold text-lg tracking-tight">
-              <span className="text-[#7C3AED]">Kalas</span><span className="text-[#F472B6]">eriet</span>
+              <span className="text-[#5910b6]">Kalas</span><span className="text-[#F472B6]">eriet</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
-            <a href="#populara" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#7C3AED] rounded-lg hover:bg-violet-50 transition-colors">Populära kalas</a>
-            <a href="#alla-kalas" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#7C3AED] rounded-lg hover:bg-violet-50 transition-colors">Alla kalas</a>
-            <a href="#sa-funkar-det" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#7C3AED] rounded-lg hover:bg-violet-50 transition-colors">Så funkar det</a>
-            <a href="#kalasbloggen" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#7C3AED] rounded-lg hover:bg-violet-50 transition-colors">Kalasbloggen</a>
+            <a href="#populara" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#5910b6] rounded-lg hover:bg-violet-50 transition-colors">Populära kalas</a>
+            <a href="#alla-kalas" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#5910b6] rounded-lg hover:bg-violet-50 transition-colors">Alla kalas</a>
+            <a href="#sa-funkar-det" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#5910b6] rounded-lg hover:bg-violet-50 transition-colors">Så funkar det</a>
+            <a href="#kalasbloggen" className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[#5910b6] rounded-lg hover:bg-violet-50 transition-colors">Kalasbloggen</a>
           </nav>
 
           {/* Cart + mobile toggle */}
           <div className="flex items-center gap-2">
             <button
-              className="relative flex items-center gap-1.5 bg-[#7C3AED] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#6D28D9] transition-colors"
+              className="btn-primary !py-2 !px-4 !text-[0.95rem] !rounded-[2rem] relative flex items-center gap-1.5"
               aria-label="Varukorg"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -63,7 +63,7 @@ export default function Navbar() {
             { label: 'Kalasbloggen', href: '#kalasbloggen' },
           ].map(link => (
             <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-[#7C3AED] hover:bg-violet-50 rounded-lg transition-colors">
+              className="block px-3 py-2.5 text-sm font-medium text-gray-700 hover:text-[#5910b6] hover:bg-violet-50 rounded-lg transition-colors">
               {link.label}
             </a>
           ))}

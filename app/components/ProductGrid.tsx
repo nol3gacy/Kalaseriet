@@ -51,8 +51,8 @@ export default function ProductGrid({
               onClick={() => setActiveFilter(f.value)}
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                 activeFilter === f.value
-                  ? 'bg-[#7C3AED] text-white'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-[#7C3AED] hover:text-[#7C3AED]'
+                  ? 'bg-[#5910b6] text-white'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-[#5910b6] hover:text-[#5910b6]'
               }`}
             >
               {f.label}
@@ -116,7 +116,7 @@ function ProductCard({ product }: { product: Product }) {
         {/* Badges */}
         <div className="absolute top-2.5 left-2.5 flex gap-1.5">
           {product.isNew && (
-            <span className="bg-[#7C3AED] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wide">
+            <span className="bg-[#5910b6] text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wide">
               Nyhet
             </span>
           )}
@@ -140,7 +140,7 @@ function ProductCard({ product }: { product: Product }) {
         <p className="text-xs text-gray-400 mb-0.5">
           för {product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup}-åringar
         </p>
-        <h3 className="font-bold text-gray-900 text-sm leading-tight mb-1 group-hover:text-[#7C3AED] transition-colors">
+        <h3 className="font-bold text-gray-900 text-sm leading-tight mb-1 group-hover:text-[#5910b6] transition-colors">
           {product.name}
         </h3>
         <p className="text-gray-500 text-xs leading-relaxed flex-1 mb-3">
@@ -149,13 +149,13 @@ function ProductCard({ product }: { product: Product }) {
 
         <div className="flex items-center justify-between pt-3 border-t border-gray-100">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-xl font-extrabold text-[#7C3AED]">{product.price} kr</span>
+            <span className="text-xl font-extrabold text-gray-900">{product.price} kr</span>
             {product.originalPrice && product.originalPrice > product.price && (
-              <span className="text-xs text-gray-400 line-through">{product.originalPrice} kr</span>
+              <span className="text-xs text-[#F472B6] line-through font-bold">{product.originalPrice} kr</span>
             )}
           </div>
-          <span className="text-xs font-semibold text-[#7C3AED] bg-violet-50 px-3 py-1.5 rounded-full group-hover:bg-[#7C3AED] group-hover:text-white transition-colors">
-            Kolla in
+          <span className="btn-primary !py-2 !px-4 !text-[1rem] !rounded-[2rem]">
+            Kolla in ›
           </span>
         </div>
       </div>

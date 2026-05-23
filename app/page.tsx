@@ -112,13 +112,13 @@ export default async function Home() {
       <section className="bg-white py-16 sm:py-24 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7C3AED] bg-violet-50 border border-violet-200 rounded-full px-3 py-1 mb-6">
-              <span className="w-1.5 h-1.5 bg-[#7C3AED] rounded-full animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5910b6] bg-violet-50 border border-violet-200 rounded-full px-3 py-1 mb-6">
+              <span className="w-1.5 h-1.5 bg-[#5910b6] rounded-full animate-pulse" />
               Sveriges roligaste kalaspaket – direkt nedladdning
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
               Vi har tydligen{' '}
-              <span className="text-[#7C3AED]">Sveriges bästa</span>{' '}
+              <span className="text-[#5910b6]">Sveriges bästa</span>{' '}
               kalaslekar&nbsp;🎊
             </h1>
             <p className="text-lg text-gray-500 mb-8 max-w-xl leading-relaxed">
@@ -126,12 +126,10 @@ export default async function Home() {
               bordsdekorationer och mer. Ladda ner, skriv ut hemma och fira!
             </p>
             <div className="flex flex-wrap gap-3 mb-10">
-              <a href="#alla-kalas"
-                className="bg-[#7C3AED] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#6D28D9] transition-colors shadow-sm">
-                Se alla {products.length} kalas →
+              <a href="#alla-kalas" className="btn-primary">
+                Se alla {products.length} kalas ›
               </a>
-              <a href="#sa-funkar-det"
-                className="border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-bold text-sm hover:border-[#7C3AED] hover:text-[#7C3AED] transition-colors">
+              <a href="#sa-funkar-det" className="btn-secondary">
                 Hur funkar det?
               </a>
             </div>
@@ -152,7 +150,7 @@ export default async function Home() {
       </section>
 
       {/* ── Marquee ─────────────────────────────────────────── */}
-      <div className="bg-[#7C3AED] py-3 overflow-hidden">
+      <div className="bg-[#5910b6] py-3 overflow-hidden">
         <div className="animate-marquee flex whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-4 text-white font-semibold text-xs mx-3">
@@ -171,7 +169,7 @@ export default async function Home() {
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Populära kalas</h2>
                 <p className="text-gray-500 mt-1 text-sm">Barnens favoriter just nu</p>
               </div>
-              <a href="#alla-kalas" className="text-sm font-semibold text-[#7C3AED] hover:underline shrink-0">Se alla →</a>
+              <a href="#alla-kalas" className="text-sm font-semibold text-[#5910b6] hover:underline shrink-0">Se alla →</a>
             </div>
             <ProductGrid products={popular} />
           </div>
@@ -267,14 +265,13 @@ export default async function Home() {
       {/* ── Kalasbloggen teaser ─────────────────────────────── */}
       <section id="kalasbloggen" className="py-16 sm:py-20 bg-violet-50 border-t border-violet-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-semibold text-[#7C3AED] uppercase tracking-widest mb-3 block">Kalasbloggen</span>
+          <span className="text-xs font-semibold text-[#5910b6] uppercase tracking-widest mb-3 block">Kalasbloggen</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">Tips & inspiration</h2>
           <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
             Recept, aktiviteter och idéer för att göra barnets kalas ännu mer minnesvärt.
           </p>
-          <a href="#kalasbloggen"
-            className="inline-flex items-center gap-2 bg-[#7C3AED] text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-[#6D28D9] transition-colors">
-            Läs bloggen →
+          <a href="#kalasbloggen" className="btn-primary">
+            Läs bloggen ›
           </a>
         </div>
       </section>

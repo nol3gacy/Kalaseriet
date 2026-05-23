@@ -126,17 +126,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
               {/* Price */}
               <div className="flex items-baseline gap-3 mb-6">
-                <span className="text-4xl font-extrabold text-[#7C3AED]">{product.price} kr</span>
+                <span className="text-5xl font-extrabold text-gray-900">{product.price} kr</span>
                 {product.originalPrice && product.originalPrice > product.price && (
-                  <span className="text-xl text-gray-400 line-through">{product.originalPrice} kr</span>
+                  <span className="text-xl text-[#F472B6] line-through font-bold">{product.originalPrice} kr</span>
                 )}
               </div>
 
               {/* Buy button */}
-              <button className="w-full bg-[#7C3AED] hover:bg-violet-700 text-white font-bold py-4 rounded-2xl text-lg transition-colors shadow-lg shadow-violet-200 mb-4">
-                Köp nu – {product.price} kr
+              <button className="btn-primary w-full mb-4">
+                Köp nu ›
               </button>
-              <button className="w-full border-2 border-[#7C3AED] text-[#7C3AED] font-semibold py-3.5 rounded-2xl hover:bg-violet-50 transition-colors mb-6">
+              <button className="btn-secondary w-full mb-6">
                 Lägg i varukorg
               </button>
 
