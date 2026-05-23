@@ -32,8 +32,10 @@ export const productType = defineType({
       type: 'string',
       options: {
         list: [
-          { title: '4–6 år', value: '4-6' },
-          { title: '7–8 år', value: '7-8' },
+          { title: '4-åringar', value: '4' },
+          { title: '5-åringar', value: '5' },
+          { title: '6-åringar', value: '6' },
+          { title: '7 & 8-åringar', value: '7-8' },
         ],
         layout: 'radio',
       },

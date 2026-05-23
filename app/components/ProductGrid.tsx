@@ -13,6 +13,7 @@ type Product = {
   price: number
   originalPrice?: number
   image: Record<string, unknown> | null
+  externalImageUrl?: string
   isNew: boolean
   isPopular: boolean
   slug: { current: string }
@@ -20,8 +21,10 @@ type Product = {
 
 const AGE_FILTERS = [
   { label: 'Alla', value: 'all' },
-  { label: '4–6 år', value: '4-6' },
-  { label: '7–8 år', value: '7-8' },
+  { label: '4-åringar', value: '4' },
+  { label: '5-åringar', value: '5' },
+  { label: '6-åringar', value: '6' },
+  { label: '7 & 8-åringar', value: '7-8' },
 ]
 
 export default function ProductGrid({
@@ -92,6 +95,13 @@ function ProductCard({ product }: { product: Product }) {
             alt={product.name}
             className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
           />
+        ) : product.externalImageUrl ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={product.externalImageUrl}
+            alt={product.name}
+            className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         ) : (
           <div
             className="w-full h-44 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform duration-300"
@@ -128,7 +138,7 @@ function ProductCard({ product }: { product: Product }) {
       {/* Card body */}
       <div className="p-4 flex flex-col flex-1">
         <p className="text-xs text-gray-400 mb-0.5">
-          för {product.ageGroup === '4-6' ? '4–6-åringar' : '7–8-åringar'}
+          för {product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup}-åringar
         </p>
         <h3 className="font-bold text-gray-900 text-sm leading-tight mb-1 group-hover:text-[#7C3AED] transition-colors">
           {product.name}
