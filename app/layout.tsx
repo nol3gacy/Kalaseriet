@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Manrope, Fredoka } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 
 // Body font — exact match with kalaseriet.se
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// Display/heading font — placeholder for Caraque (Adobe Fonts).
-// To use the real Caraque: add a Typekit <script> in globals.css or a
-// custom <head> component and set --font-display to "caraque-solid".
-const fredoka = Fredoka({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -31,10 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="sv"
-      className={`${manrope.variable} ${fredoka.variable} h-full antialiased`}
-    >
+    <html lang="sv" className={`${manrope.variable} h-full antialiased`}>
+      <head>
+        {/* Caraque (caraque-solid, caraque-melted) via Adobe Fonts */}
+        <link rel="stylesheet" href="https://use.typekit.net/lee7ejt.css" />
+      </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
