@@ -3,6 +3,7 @@ import { urlFor } from '../../../sanity/lib/image'
 import { fallbackProducts, themeColors, type Product } from '../../page'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import ProductBuySection from '../../components/ProductBuySection'
 import { notFound } from 'next/navigation'
 
 const INCLUDED_ITEMS = [
@@ -132,13 +133,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 )}
               </div>
 
-              {/* Buy button */}
-              <button className="btn-primary w-full mb-4">
-                Köp nu ›
-              </button>
-              <button className="btn-secondary w-full mb-6">
-                Lägg i varukorg
-              </button>
+              {/* Buy section */}
+              <ProductBuySection product={product} />
 
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 text-center">

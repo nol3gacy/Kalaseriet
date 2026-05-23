@@ -2,9 +2,12 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useCart } from '../lib/cart-context'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { items } = useCart()
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
@@ -29,7 +32,8 @@ export default function Navbar() {
 
           {/* Cart + mobile toggle */}
           <div className="flex items-center gap-2">
-            <button
+            <Link
+              href="/varukorg"
               className="btn-primary !py-2 !px-4 !text-[0.95rem] !rounded-[2rem] relative flex items-center gap-1.5"
               aria-label="Varukorg"
             >
@@ -37,8 +41,12 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
               <span className="hidden sm:inline">Varukorg</span>
-              <span className="bg-[#FCD34D] text-gray-900 text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">0</span>
-            </button>
+              {cartCount > 0 && (
+                <span className="bg-[#FCD34D] text-gray-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center leading-none text-[0.7rem]">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
             <button
               className="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
