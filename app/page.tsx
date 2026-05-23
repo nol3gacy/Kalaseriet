@@ -2,6 +2,7 @@ import { client } from '../sanity/lib/client'
 import { allProductsQuery } from '../sanity/lib/queries'
 import Navbar from './components/Navbar'
 import ProductGrid from './components/ProductGrid'
+import Footer from './components/Footer'
 
 export const themeColors: Record<string, { from: string; to: string; emoji: string }> = {
   pirat:        { from: '#dde3ea', to: '#b8c4d0', emoji: '☠️' },
@@ -43,7 +44,7 @@ export type Product = {
   order?: number
 }
 
-const fallbackProducts: Product[] = [
+export const fallbackProducts: Product[] = [
   // 4-åringar
   { _id: 'p01', name: 'Piratkalaset',            theme: 'pirat',           ageGroup: '4', price: 99, originalPrice: 269, isNew: false, isPopular: true,  slug: { current: 'piratkalaset-for-4-aringar'            }, image: null, externalImageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/662373210fabe6fc857df4ba_Piratkalaset-4-aringar-cover.avif',                          description: 'Fira med ett spännande Piratkalas! Perfekt för 4-åringar som älskar äventyr och skatter.' },
   { _id: 'p02', name: 'Safarikalaset',           theme: 'safari',          ageGroup: '4', price: 99, originalPrice: 269, isNew: false, isPopular: true,  slug: { current: 'safarikalaset-for-4-aringar'           }, image: null, externalImageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/6623e1e4739522fe6ee458c1_Safarikalaset%20for%204-aringar.avif',                        description: 'Upptäck den vilda safarins värld på ditt barns kalas! Perfekt för nyfikna 4-åringar.' },
@@ -279,61 +280,7 @@ export default async function Home() {
       </section>
 
       {/* ── Footer ──────────────────────────────────────────── */}
-      <footer className="bg-gray-900 text-gray-400 pt-12 pb-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-3">
-                <span>🎉</span>
-                <span className="font-extrabold text-white">
-                  <span className="text-[#7C3AED]">Kalas</span><span className="text-[#F472B6]">eriet</span>
-                </span>
-              </div>
-              <p className="text-xs leading-relaxed text-gray-500 max-w-xs">
-                Digitala kalaspaket som gör varje kalas oförglömligt. Ladda ner, skriv ut och fira!
-              </p>
-              <div className="flex gap-2 mt-4">
-                {['Instagram', 'Facebook', 'TikTok'].map(s => (
-                  <a key={s} href="#" className="text-xs text-gray-500 hover:text-white border border-gray-700 hover:border-gray-500 rounded-full px-3 py-1 transition-colors">{s}</a>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-4">Kalasteman</h4>
-              <ul className="space-y-2 text-xs">
-                {['Pirat', 'Safari', 'Superhjälte', 'Rymd', 'Dinosaurie', 'Ninja'].map(t => (
-                  <li key={t}><a href="#alla-kalas" className="hover:text-white transition-colors">{t}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-4">Sidor</h4>
-              <ul className="space-y-2 text-xs">
-                {[
-                  { l: 'Populära kalas', h: '#populara' },
-                  { l: 'Alla kalas', h: '#alla-kalas' },
-                  { l: 'Så funkar det', h: '#sa-funkar-det' },
-                  { l: 'Kalasbloggen', h: '#kalasbloggen' },
-                ].map(x => (
-                  <li key={x.l}><a href={x.h} className="hover:text-white transition-colors">{x.l}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-4">Det finstilta</h4>
-              <ul className="space-y-2 text-xs">
-                {['Integritetspolicy', 'Köpvillkor', 'Cookies', 'Kontakt'].map(t => (
-                  <li key={t}><a href="#" className="hover:text-white transition-colors">{t}</a></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <p>© {new Date().getFullYear()} Kalaseriet. Alla rättigheter förbehållna.</p>
-            <p className="text-gray-600">Digitala kalaspaket för barn 4–8 år</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

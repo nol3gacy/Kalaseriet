@@ -90,6 +90,12 @@ export const productType = defineType({
       type: 'number',
       description: 'Lägre siffra = visas först',
     }),
+    defineField({
+      name: 'downloadZipId',
+      title: 'Nedladdnings-ZIP ID',
+      type: 'string',
+      description: 'ID-delen av ZIP-filnamnet, t.ex. "1BnYdjz7XErbcfPi9gfKnEFhpHzk4RoDrnyMobFfr"',
+    }),
   ],
   preview: {
     select: {
