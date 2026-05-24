@@ -1,18 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Footer() {
-  const [lottieLoaded, setLottieLoaded] = useState(false)
-
-  useEffect(() => {
-    if (!customElements.get('lottie-player')) {
-      import('@lottiefiles/lottie-player').then(() => setLottieLoaded(true))
-    } else {
-      setLottieLoaded(true)
-    }
-  }, [])
-
   const year = new Date().getFullYear()
 
   const footerLinkStyle: React.CSSProperties = {
@@ -168,28 +158,17 @@ export default function Footer() {
           paddingTop: '2rem',
           borderTop: '1.5px solid rgba(89,16,182,0.12)',
         }}>
-          <a href="/" style={{ display: 'inline-block', width: 'clamp(240px, 40%, 460px)', textDecoration: 'none' }}>
-            {lottieLoaded ? (
-              /* @ts-ignore */
-              <lottie-player
-                src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65ee06c1474caed9e5eba695_logo-anim.json"
-                background="transparent"
-                speed="1"
-                style={{ width: '100%', height: '110px' }}
-                loop
-                autoplay
-              />
-            ) : (
-              <span style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: '5rem',
-                fontWeight: 800,
-                color: '#5910b6',
-                lineHeight: 1,
-              }}>
-                Kalaseriet
-              </span>
-            )}
+          <a href="/" style={{ display: 'inline-block', textDecoration: 'none' }}>
+            <span style={{
+              fontFamily: 'caraque-solid, sans-serif',  // brand wordmark: chubby + solid
+              fontSize: 'clamp(3.5rem, 9vw, 6.5rem)',
+              fontWeight: 800,
+              color: '#5910b6',  // solid indigo brand color
+              lineHeight: 1,
+              letterSpacing: '-0.01em',
+            }}>
+              Kalaseriet
+            </span>
           </a>
         </div>
       </div>

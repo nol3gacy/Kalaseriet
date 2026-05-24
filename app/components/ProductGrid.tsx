@@ -62,9 +62,9 @@ export default function ProductGrid({
         </div>
       )}
 
-      <div style={{
+      <div className="product-grid" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: '1.5rem',
         maxWidth: '1280px',
         margin: '0 auto',
@@ -73,6 +73,18 @@ export default function ProductGrid({
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 1100px) {
+          .product-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        }
+        @media (max-width: 820px) {
+          .product-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 400px) {
+          .product-grid { gap: 0.5rem !important; }
+        }
+      `}</style>
     </div>
   )
 }

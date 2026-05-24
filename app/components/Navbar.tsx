@@ -4,236 +4,220 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useCart } from '../lib/cart-context'
 
-// Matches kalaseriet.se navbar exactly:
-// - Fixed position, inset: 0% 0% auto (top)
-// - width: calc(100% - 14.5rem), margin: 3rem on all sides
-// - border-radius: 3rem
-// - background: #fffc (translucent), backdrop-filter: blur(8px)
-// - height: 6rem
-// - Logo: Lottie animation
-// - Nav links: caraque-melted, 1.3rem, color: #6e42ff, hover bg: #6e42ff color: #faf1ef, border-radius: 30px
-// - Cart: separate fixed pill top-right (cart-wrapper in original)
+// Matches kalaseriet.se navbar:
+// - Desktop: Logo pill (left) + Nav links pill (center) + Cart pill (right) — three separate floating pills
+// - Mobile: Logo (free-floating purple text, NO pill) + Cart+Menu pill (single combined right)
+// - Mobile menu: full-screen white, BIG purple caraque-melted links
+
+const NAV_LINKS = [
+  { label: 'Populära kalas', href: '/#populara' },
+  { label: 'Alla kalas', href: '/kalas' },
+  { label: 'Så funkar det', href: '/sa-funkar-det' },
+  { label: 'Kalasbloggen', href: '/kalasbloggen' },
+]
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [lottieLoaded, setLottieLoaded] = useState(false)
   const { items } = useCart()
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0)
 
+  // Lock body scroll when menu open
   useEffect(() => {
-    if (!customElements.get('lottie-player')) {
-      import('@lottiefiles/lottie-player').then(() => setLottieLoaded(true))
-    } else {
-      setLottieLoaded(true)
-    }
-  }, [])
+    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  const Logo = (
+    <Link
+      href="/"
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        textDecoration: 'none',
+        lineHeight: 0,
+      }}
+      onClick={() => setMenuOpen(false)}
+    >
+      <span style={{
+        fontFamily: 'caraque-solid, sans-serif',  // chubby brand wordmark
+        fontSize: 'clamp(1.6rem, 2.5vw, 2rem)',
+        fontWeight: 800,
+        color: '#5910b6',  // brand indigo, solid
+        letterSpacing: '-0.01em',
+        lineHeight: 1,
+      }}>
+        Kalaseriet
+      </span>
+    </Link>
+  )
+
+  const CartButton = (
+    <Link
+      href="/varukorg"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.4rem',
+        padding: '0.5rem 0.85rem',
+        borderRadius: '500px',
+        textDecoration: 'none',
+        fontFamily: 'caraque-melted, sans-serif',
+        fontSize: '1.3rem',
+        fontWeight: 500,
+        color: '#5910b6',
+        position: 'relative',
+      }}
+      aria-label="Varukorg"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+      </svg>
+      <span style={{ minWidth: '1ch' }}>{cartCount}</span>
+    </Link>
+  )
 
   return (
     <>
-      {/* Main navbar */}
-      <header style={{
-        zIndex: 664,
-        position: 'fixed',
-        inset: '0% 0% auto',
-        width: 'calc(100% - 14.5rem)',
-        height: '6rem',
-        marginTop: '3rem',
-        marginRight: '7.25rem',
-        marginLeft: '7.25rem',
-        borderRadius: '3rem',
-        backgroundColor: '#fffc',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-      }}>
-        {/* Nav container */}
-        <div style={{
+      {/* Desktop & mobile shared header — single fixed top row */}
+      <header
+        style={{
+          zIndex: 664,
+          position: 'fixed',
+          top: '1.5rem',
+          left: '1.5rem',
+          right: '1.5rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          width: '100%',
-          padding: '0 1.5rem',
+          gap: '1rem',
+          pointerEvents: 'none', // children re-enable
+        }}
+      >
+        {/* LEFT: Logo — on desktop in a translucent pill, on mobile standalone */}
+        <div className="navbar-logo-wrap" style={{
+          pointerEvents: 'auto',
+          backgroundColor: '#fffc',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          borderRadius: '500px',
+          padding: '1rem 1.5rem',
         }}>
-          {/* Brand / Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            {lottieLoaded ? (
-              /* @ts-ignore */
-              <lottie-player
-                src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65ee06c1474caed9e5eba695_logo-anim.json"
-                background="transparent"
-                speed="1"
-                style={{ width: '160px', height: '64px' }}
-                loop
-                autoplay
-              />
-            ) : (
-              <span style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: '2rem',
-                fontWeight: 800,
-                color: '#6e42ff',
-              }}>
-                Kalaseriet
-              </span>
-            )}
-          </Link>
+          {Logo}
+        </div>
 
-          {/* Desktop nav links */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '0' }} className="hidden-mobile">
-            {[
-              { label: 'Populära kalas', href: '/#populara' },
-              { label: 'Alla kalas', href: '/kalas' },
-              { label: 'Så funkar det', href: '/sa-funkar-det' },
-              { label: 'Kalasbloggen', href: '/kalasbloggen' },
-            ].map(link => (
-              <NavLink key={link.label} label={link.label} href={link.href} />
-            ))}
-          </nav>
+        {/* CENTER: Desktop nav links pill (hidden on mobile) */}
+        <nav className="navbar-links" style={{
+          pointerEvents: 'auto',
+          backgroundColor: '#fffc',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          borderRadius: '500px',
+          padding: '0.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.15rem',
+        }}>
+          {NAV_LINKS.map(link => (
+            <NavLink key={link.label} label={link.label} href={link.href} />
+          ))}
+        </nav>
 
-          {/* Mobile hamburger */}
+        {/* RIGHT: Cart pill (desktop) OR combined Cart+Menu pill (mobile) */}
+        <div className="navbar-actions" style={{
+          pointerEvents: 'auto',
+          backgroundColor: '#fffc',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
+          borderRadius: '500px',
+          padding: '0.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.25rem',
+        }}>
+          {CartButton}
+
+          {/* Hamburger — only visible on mobile */}
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Meny"
+            type="button"
+            className="navbar-menu-btn"
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label={menuOpen ? 'Stäng meny' : 'Öppna meny'}
             style={{
               display: 'none',
-              background: 'none',
+              background: 'transparent',
               border: 'none',
               cursor: 'pointer',
-              color: '#6e42ff',
-              padding: '0.5rem',
+              color: '#5910b6',
+              padding: '0.5rem 0.7rem',
+              borderRadius: '500px',
             }}
-            className="mobile-menu-btn"
           >
             {menuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="7" x2="21" y2="7" />
+                <line x1="3" y1="17" x2="21" y2="17" />
               </svg>
             )}
           </button>
         </div>
-
-        {/* Mobile menu dropdown */}
-        {menuOpen && (
-          <div style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            right: 0,
-            marginTop: '0.5rem',
-            backgroundColor: '#fffc',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            borderRadius: '2rem',
-            padding: '1rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.25rem',
-          }}>
-            {[
-              { label: 'Populära kalas', href: '/#populara' },
-              { label: 'Alla kalas', href: '/kalas' },
-              { label: 'Så funkar det', href: '/sa-funkar-det' },
-              { label: 'Kalasbloggen', href: '/kalasbloggen' },
-            ].map(link => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                style={{
-                  padding: '0.75rem 1rem',
-                  borderRadius: '30px',
-                  fontFamily: 'caraque-melted, sans-serif',
-                  fontSize: '1.3rem',
-                  color: '#6e42ff',
-                  textDecoration: 'none',
-                  lineHeight: '100%',
-                  letterSpacing: '0.02em',
-                  display: 'block',
-                }}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        )}
       </header>
 
-      {/* Cart wrapper — fixed top-right, separate from navbar (matches .cart-wrapper) */}
-      <div style={{
-        zIndex: 666,
-        marginTop: '3rem',
-        marginRight: '3rem',
-        borderRadius: '3rem',
-        backgroundColor: '#fffc',
-        backdropFilter: 'blur(8px)',
-        WebkitBackdropFilter: 'blur(8px)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'fixed',
-        inset: '0% 0% auto auto',
-      }}>
-        <Link
-          href="/varukorg"
+      {/* Mobile full-screen menu */}
+      {menuOpen && (
+        <div
           style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: '#ffffff',
+            zIndex: 663,
+            padding: 'calc(1.5rem + 64px + 1.5rem) 1.5rem 2rem',
             display: 'flex',
-            alignItems: 'center',
+            flexDirection: 'column',
             gap: '0.5rem',
-            padding: '1.2rem 1.5rem',
-            borderRadius: '3rem',
-            textDecoration: 'none',
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '1.3rem',
-            color: '#5910b6',
-            position: 'relative',
+            overflowY: 'auto',
           }}
         >
-          <img
-            src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/664a08f31d8b938e3847d092_cart-icon.svg"
-            alt="Varukorg"
-            width={24}
-            height={24}
-          />
-          {cartCount > 0 && (
-            <span style={{
-              position: 'absolute',
-              top: '-2px',
-              right: '-2px',
-              backgroundColor: '#FCD34D',
-              color: '#272729',
-              fontSize: '0.75rem',
-              fontWeight: 700,
-              width: '1.25rem',
-              height: '1.25rem',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              lineHeight: 1,
-            }}>
-              {cartCount}
-            </span>
-          )}
-        </Link>
-      </div>
+          {NAV_LINKS.map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: 'caraque-solid, sans-serif',  // BIG chubby links per screenshot
+                fontSize: 'clamp(3rem, 9vw, 4rem)',
+                fontWeight: 800,
+                color: '#6e42ff',
+                textDecoration: 'none',
+                lineHeight: '95%',
+                letterSpacing: '-0.01em',
+                padding: '0.5rem 0',
+              }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
 
-      {/* Spacer so content doesn't go behind navbar */}
-      <div style={{ height: 'calc(6rem + 3rem)' }} />
+      {/* Spacer so content doesn't go under navbar */}
+      <div style={{ height: 'calc(1.5rem + 64px + 1.5rem)' }} />
 
       <style>{`
-        @media (max-width: 768px) {
-          .hidden-mobile { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
-          header[style] {
-            width: calc(100% - 6rem) !important;
-            margin-left: 3rem !important;
-            margin-right: 3rem !important;
+        @media (max-width: 880px) {
+          .navbar-links { display: none !important; }
+          .navbar-menu-btn { display: inline-flex !important; align-items: center; }
+          .navbar-logo-wrap {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            padding: 0.5rem 0.25rem !important;
           }
         }
       `}</style>
@@ -246,13 +230,13 @@ function NavLink({ label, href }: { label: string; href: string }) {
     <a
       href={href}
       style={{
-        padding: '0.75rem 1rem',
+        padding: '0.7rem 1.1rem',
         color: '#6e42ff',
-        letterSpacing: '0.02em',
-        borderRadius: '30px',
+        letterSpacing: '0.01em',
+        borderRadius: '500px',
         fontFamily: 'caraque-melted, sans-serif',
-        fontSize: '1.3rem',
-        fontWeight: 400,
+        fontSize: '1.25rem',
+        fontWeight: 500,
         lineHeight: '100%',
         textDecoration: 'none',
         display: 'inline-block',
