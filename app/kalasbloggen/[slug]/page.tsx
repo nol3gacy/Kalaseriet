@@ -68,7 +68,7 @@ Barnen bryr sig mycket mindre om priset än om det är en personlig och rolig pr
 ---
 
 *Har du fler tips? Dela dina favoritidéer på Instagram @kalaseriet!*
-    `
+    `,
   },
   {
     slug: 'checklista-barnkalas',
@@ -144,7 +144,7 @@ säkerställer att ingenting faller mellan stolarna.
 ---
 
 Med denna checklista är du väl förberedd för ett fantastiskt kalas!
-    `
+    `,
   }
 ]
 

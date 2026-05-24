@@ -6,6 +6,8 @@ import Footer from './components/Footer'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import SocialProof from './components/SocialProof'
+import BentoBox from './components/BentoBox'
+import DiscountMarquee from './components/DiscountMarquee'
 
 export const themeColors: Record<string, { from: string; to: string; emoji: string }> = {
   pirat:        { from: '#dde3ea', to: '#b8c4d0', emoji: '☠️' },
@@ -96,11 +98,97 @@ async function getProducts(): Promise<Product[]> {
   }
 }
 
-const marqueeItems = [
-  '☠️ Pirat', '🦁 Safari', '👑 Prins & Prinsessa', '🌴 Djungel',
-  '⚡ Superhjälte', '🚀 Rymd', '🦕 Dinosaurie', '🤖 Robot',
-  '👨‍🚀 Astronaut', '🎪 Cirkus', '🥷 Ninja', '👻 Spök',
-  '⚡ Ladda ner direkt', '💰 Spara pengar', '⭐ 100% Garanti',
+
+const bentoItems = [
+  // Row 1: half + normal
+  {
+    id: 'lekar',
+    label: 'I varje nedladdning ingår',
+    title: '20 st Kalaslekar & aktiviteter',
+    subtitle: 'Passar garanterat alla, ofta används 4-7 st under ett kalas',
+    color: '#faf1ef',
+    textColor: '#272729',
+    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dce110e076dc1e3d6d49fd_banner-01.json',
+    span: 'half' as const,
+  },
+  {
+    id: 'skattjakt',
+    label: 'I varje nedladdning ingår',
+    title: 'Galna skattjakter',
+    subtitle: 'Lugnare mysterier och allt däremellan',
+    color: '#ffa6a6',
+    textColor: '#272729',
+    span: 'normal' as const,
+  },
+  // Row 2: normal + normal + normal
+  {
+    id: 'skriv',
+    title: 'Busenkelt att skriva ut hemma',
+    subtitle: 'Skriv bara ut det du behöver · Bättre för naturen!',
+    color: '#faf1ef',
+    textColor: '#272729',
+    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dd099c190adae07510ff3c_printer-02.json',
+    span: 'normal' as const,
+  },
+  {
+    id: 'inkluderande',
+    title: 'Inkluderande lekar',
+    subtitle: 'Alla vinner & ingen blir utanför!',
+    color: '#faf1ef',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/6570f5d00cd12f751f15bb78_inkluderande-kalaslekar.jpg',
+    span: 'normal' as const,
+  },
+  {
+    id: 'recept',
+    title: '20 st smarriga recept',
+    subtitle: 'Vi har samlat barnen och testat de bästa recepten, garanterat gott!',
+    color: '#faf1ef',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
+    span: 'normal' as const,
+  },
+  // Row 3: normal + normal + normal
+  {
+    id: 'spellistor',
+    title: 'Festliga spellistor',
+    subtitle: 'Länk till skräddarsydda spellistor ingår',
+    color: '#ffa6a6',
+    textColor: '#272729',
+    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dfa01d6a6f5cbd97ed0129_soundwave-01.json',
+    span: 'normal' as const,
+  },
+  {
+    id: 'dekorera',
+    title: 'Dekorera mera!',
+    subtitle: 'Tips på 5 st dekorationer som passar varje tema',
+    color: '#faf1ef',
+    textColor: '#272729',
+    span: 'normal' as const,
+  },
+  {
+    id: 'inbjudan',
+    title: 'Supersnygg inbjudan ingår',
+    subtitle: 'Skriv ut och fyll i detaljer. Superenkelt & snyggt!',
+    color: '#3e755a',
+    textColor: '#faf1ef',
+    span: 'normal' as const,
+  },
+  // Row 4: normal + half
+  {
+    id: 'garanti',
+    title: '100% nöjdhets-garanti',
+    subtitle: 'Inte nöjd? Pengarna tillbaka.',
+    color: '#6e42ff',
+    textColor: '#faf1ef',
+    span: 'normal' as const,
+  },
+  {
+    id: 'checklista',
+    title: 'Checklistor & körschema',
+    subtitle: 'Checka av inför, under & efter kalaset. Så att inget missas!',
+    color: '#5910b6',
+    textColor: '#faf1ef',
+    span: 'half' as const,
+  },
 ]
 
 export default async function Home() {
@@ -152,16 +240,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ── Marquee ─────────────────────────────────────────── */}
-      <div className="bg-[#5910b6] py-3 overflow-hidden">
-        <div className="animate-marquee flex whitespace-nowrap">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
-            <span key={i} className="inline-flex items-center gap-4 text-white font-semibold text-xs mx-3">
-              {item}<span className="text-[#FCD34D]">•</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      {/* ── Marquee with Discount Code ────────────────────── */}
+      <DiscountMarquee />
 
       {/* ── Social Proof ────────────────────────────────────── */}
       <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-100">
@@ -185,6 +265,11 @@ export default async function Home() {
           </div>
         </section>
       )}
+
+      {/* ── Vad ingår i paketet ─────────────────────────────── */}
+      <section className="border-t border-gray-100">
+        <BentoBox items={bentoItems} />
+      </section>
 
       {/* ── Alla kalas ──────────────────────────────────────── */}
       <section id="alla-kalas" className="py-16 sm:py-20 bg-gray-50 border-t border-gray-100">

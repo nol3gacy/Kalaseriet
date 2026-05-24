@@ -1,75 +1,168 @@
+'use client'
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div className="col-span-2 md:col-span-1">
-          <span className="text-white text-xl font-bold font-[caraque-solid]">Kalaseriet</span>
-          <p className="mt-3 text-sm leading-relaxed text-gray-400">
-            Sveriges roligaste digitala kalaspaket för barn 4–8 år. Ladda ner, skriv ut och fira!
-          </p>
-          <div className="flex gap-3 mt-4">
-            <a href="https://www.instagram.com/kalaseriet" target="_blank" rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-gray-700 hover:bg-[#7C3AED] flex items-center justify-center transition-colors text-sm">
-              📸
-            </a>
-            <a href="https://www.facebook.com/kalaseriet" target="_blank" rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-gray-700 hover:bg-[#7C3AED] flex items-center justify-center transition-colors text-sm">
-              👍
-            </a>
-            <a href="https://www.tiktok.com/@kalaseriet" target="_blank" rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-gray-700 hover:bg-[#7C3AED] flex items-center justify-center transition-colors text-sm">
-              🎵
-            </a>
+    <footer style={{ backgroundColor: '#5910b6' }}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <span
+              className="block text-3xl mb-4"
+              style={{ fontFamily: 'caraque-solid, sans-serif', color: '#faf1ef' }}
+            >
+              Kalaseriet
+            </span>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: '#e0d4f5' }}>
+              Sveriges roligaste digitala kalaspaket för barn 4–8 år.
+              Ladda ner, skriv ut och fira!
+            </p>
+            <div className="flex gap-3">
+              {[
+                { href: 'https://www.instagram.com/kalaseriet', label: 'Instagram', icon: '📸' },
+                { href: 'https://www.facebook.com/kalaseriet', label: 'Facebook', icon: '👍' },
+                { href: 'https://www.tiktok.com/@kalaseriet', label: 'TikTok', icon: '🎵' },
+              ].map(s => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-base transition-all hover:scale-110"
+                  style={{ backgroundColor: 'rgba(250,241,239,0.15)' }}
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Kalas</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="/kalas" className="hover:text-white transition-colors">Alla kalas</a></li>
-            <li><a href="/kalas/4-aringar" className="hover:text-white transition-colors">4-åringar</a></li>
-            <li><a href="/kalas/5-aringar" className="hover:text-white transition-colors">5-åringar</a></li>
-            <li><a href="/kalas/6-aringar" className="hover:text-white transition-colors">6-åringar</a></li>
-            <li><a href="/kalas/7-8-aringar" className="hover:text-white transition-colors">7-8-åringar</a></li>
-            <li><a href="/kalasbloggen" className="hover:text-white transition-colors">Kalasbloggen</a></li>
-          </ul>
-        </div>
+          {/* Kalasteman */}
+          <div>
+            <h4
+              className="text-sm uppercase tracking-widest mb-4"
+              style={{ fontFamily: 'caraque-solid, sans-serif', color: '#faf1ef', letterSpacing: '0.1em' }}
+            >
+              Kalasteman
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },
+                { label: 'Kalas för 5-åringar', href: '/kalas/5-aringar' },
+                { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
+                { label: 'Kalas för 7 & 8-åringar', href: '/kalas/7-8-aringar' },
+                { label: 'Alla kalas', href: '/kalas' },
+              ].map(link => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    style={{
+                      fontFamily: 'caraque-melted, sans-serif',
+                      fontSize: '1.4rem',
+                      color: '#faf1ef',
+                      textDecoration: 'none',
+                      lineHeight: 1.1,
+                    }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#ffa6a6'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#faf1ef'}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div>
-          <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Info</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="/sa-funkar-det" className="hover:text-white transition-colors">Så funkar det</a></li>
-            <li><a href="/faq" className="hover:text-white transition-colors">FAQ</a></li>
-            <li><a href="/om-kalaseriet" className="hover:text-white transition-colors">Om Kalaseriet</a></li>
-            <li><a href="/kontakt" className="hover:text-white transition-colors">Kontakta oss</a></li>
-            <li><a href="/feedback" className="hover:text-white transition-colors">Lämna feedback</a></li>
-          </ul>
-        </div>
+          {/* Info */}
+          <div>
+            <h4
+              className="text-sm uppercase tracking-widest mb-4"
+              style={{ fontFamily: 'caraque-solid, sans-serif', color: '#faf1ef', letterSpacing: '0.1em' }}
+            >
+              Om Kalaseriet
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { label: 'Så funkar det', href: '/#sa-funkar-det' },
+                { label: 'FAQ', href: '/faq' },
+                { label: 'Kalasbloggen', href: '/kalasbloggen' },
+                { label: 'Kontakta oss', href: '/kontakt' },
+              ].map(link => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    style={{
+                      fontFamily: 'caraque-melted, sans-serif',
+                      fontSize: '1.4rem',
+                      color: '#faf1ef',
+                      textDecoration: 'none',
+                      lineHeight: 1.1,
+                    }}
+                    onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#ffa6a6'}
+                    onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#faf1ef'}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div>
-          <h4 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Juridiskt</h4>
-          <ul className="space-y-2 text-sm">
-            <li><a href="/villkor" className="hover:text-white transition-colors">Köpvillkor</a></li>
-            <li><a href="/integritetspolicy" className="hover:text-white transition-colors">Integritetspolicy</a></li>
-            <li><a href="/cookiepolicy" className="hover:text-white transition-colors">Cookiepolicy</a></li>
-          </ul>
-          <div className="mt-6">
-            <p className="text-xs text-gray-500 mb-2">Tips & erbjudanden</p>
-            <form className="flex gap-2">
+          {/* Newsletter + Legal */}
+          <div>
+            <h4
+              className="text-sm uppercase tracking-widest mb-4"
+              style={{ fontFamily: 'caraque-solid, sans-serif', color: '#faf1ef', letterSpacing: '0.1em' }}
+            >
+              Tips & erbjudanden
+            </h4>
+            <form className="flex gap-2 mb-6">
               <input
                 type="email"
                 placeholder="din@email.se"
-                className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-[#7C3AED]"
+                className="flex-1 min-w-0 px-4 py-3 text-sm rounded-[1.5rem] outline-none"
+                style={{
+                  backgroundColor: 'rgba(250,241,239,0.15)',
+                  border: '1.5px solid rgba(250,241,239,0.3)',
+                  color: '#faf1ef',
+                }}
               />
-              <button type="submit" className="bg-[#7C3AED] hover:bg-violet-700 text-white px-3 py-2 rounded-lg text-sm transition-colors">
+              <button
+                type="submit"
+                className="px-5 py-3 rounded-[1.5rem] font-bold text-sm transition-colors"
+                style={{ backgroundColor: '#ffa6a6', color: '#5910b6' }}
+              >
                 →
               </button>
             </form>
+
+            <ul className="space-y-2">
+              {[
+                { label: 'Köpvillkor', href: '/villkor' },
+                { label: 'Integritetspolicy', href: '/integritetspolicy' },
+                { label: 'Cookiepolicy', href: '/cookiepolicy' },
+              ].map(link => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-xs"
+                    style={{ color: 'rgba(250,241,239,0.6)', textDecoration: 'none' }}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-gray-800 py-5 text-center text-xs text-gray-500">
+      <div
+        className="border-t py-5 text-center text-xs"
+        style={{ borderColor: 'rgba(250,241,239,0.2)', color: 'rgba(250,241,239,0.5)' }}
+      >
         © {new Date().getFullYear()} Kalaseriet · Allt innehåll är skyddat av upphovsrätt
       </div>
     </footer>

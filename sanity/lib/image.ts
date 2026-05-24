@@ -1,10 +1,10 @@
-import createImageUrlBuilder from '@sanity/image-url'
-import { client } from './client'
+import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const builder = createImageUrlBuilder(client as any)
+import { dataset, projectId } from '../env'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function urlFor(source: any) {
+// https://www.sanity.io/docs/image-url
+const builder = createImageUrlBuilder({ projectId, dataset })
+
+export const urlFor = (source: SanityImageSource) => {
   return builder.image(source)
 }

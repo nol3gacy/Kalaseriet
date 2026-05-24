@@ -95,22 +95,6 @@ export default function VarukorgPage() {
                     för {item.product.ageGroup === '7-8' ? '7 & 8' : item.product.ageGroup}-åringar
                   </p>
 
-                  {/* Quantity */}
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => updateQuantity(item.product._id, item.quantity - 1)}
-                      className="w-8 h-8 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-50"
-                    >
-                      −
-                    </button>
-                    <span className="w-8 text-center font-semibold">{item.quantity}</span>
-                    <button
-                      onClick={() => updateQuantity(item.product._id, item.quantity + 1)}
-                      className="w-8 h-8 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-50"
-                    >
-                      +
-                    </button>
-                  </div>
                 </div>
 
                 {/* Price & remove */}
