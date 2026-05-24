@@ -83,8 +83,8 @@ export default function Navbar() {
           {/* Desktop nav links */}
           <nav style={{ display: 'flex', alignItems: 'center', gap: '0' }} className="hidden-mobile">
             {[
-              { label: 'Populära kalas', href: '/populara-teman' },
-              { label: 'Alla kalas', href: '/kalasen' },
+              { label: 'Populära kalas', href: '/#populara' },
+              { label: 'Alla kalas', href: '/kalas' },
               { label: 'Så funkar det', href: '/sa-funkar-det' },
               { label: 'Kalasbloggen', href: '/kalasbloggen' },
             ].map(link => (
@@ -136,8 +136,8 @@ export default function Navbar() {
             gap: '0.25rem',
           }}>
             {[
-              { label: 'Populära kalas', href: '/populara-teman' },
-              { label: 'Alla kalas', href: '/kalasen' },
+              { label: 'Populära kalas', href: '/#populara' },
+              { label: 'Alla kalas', href: '/kalas' },
               { label: 'Så funkar det', href: '/sa-funkar-det' },
               { label: 'Kalasbloggen', href: '/kalasbloggen' },
             ].map(link => (

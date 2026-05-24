@@ -238,10 +238,10 @@ export default async function Home() {
             objectFit: 'cover',
             zIndex: -1,
           }}
-          poster={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-poster-00001.jpg`}
+          poster="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-poster-00001.jpg"
         >
-          <source src={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-transcode.mp4`} type="video/mp4" />
-          <source src={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-transcode.webm`} type="video/webm" />
+          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-transcode.mp4" type="video/mp4" />
+          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-transcode.webm" type="video/webm" />
         </video>
 
         {/* Hero top: preamble + heading */}

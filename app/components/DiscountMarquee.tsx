@@ -8,8 +8,8 @@ import { useState } from 'react'
 // - Purple pill button "Kopiera rabatt-koden: KALAS20"
 
 const rabattText = '20% rabatt på första köpet'
-// Repeat enough times for seamless scroll
-const items = Array(8).fill(rabattText)
+// Repeat enough times for seamless scroll — doubled in render for infinite loop
+const items = Array(10).fill(rabattText)
 
 export default function DiscountMarquee() {
   const [copied, setCopied] = useState(false)
@@ -42,9 +42,10 @@ export default function DiscountMarquee() {
       overflow: 'hidden',
       backgroundColor: 'white',
     }}>
-      {/* Scrolling marquee */}
+      {/* Scrolling marquee — animate-marquee class sets display:flex + width:max-content */}
       <div style={{ flex: 1, overflow: 'hidden', minWidth: 0 }}>
-        <div className="animate-marquee" style={{ display: 'flex', alignItems: 'center', gap: '1em', whiteSpace: 'nowrap' }}>
+        <div className="animate-marquee" style={{ gap: '2em' }}>
+          {/* Original set + duplicate for seamless loop */}
           {[...items, ...items].map((item, i) => (
             <span
               key={i}
@@ -55,7 +56,7 @@ export default function DiscountMarquee() {
                 fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.5rem',
                 color: '#6e42ff',
-                whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               {item}

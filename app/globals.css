@@ -50,12 +50,31 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Marquee animation ── */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
-  animation: marquee 35s linear infinite;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 30s linear infinite;
+}
+
+/* ── Blinking cursor ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.blink-cursor {
+  display: inline-block;
+  color: #5910b6;
+  animation: blink 1s step-end infinite;
+  font-weight: 300;
+  line-height: 1;
 }
 
 /* ── Brand buttons matching kalaseriet.se exactly ── */
