@@ -2,15 +2,20 @@
 
 import { useEffect, useState } from 'react'
 
+// Matches kalaseriet.se bento grid exactly:
+// .heading.is--bento: caraque-solid, 3.4rem, color: #6e42ff
+// .heading.is--bento.is--larger: 5rem
+// .text.is--bold: caraque-melted, bold
+
 interface BentoItem {
   id: string
-  label?: string        // "I varje nedladdning ingår"
+  label?: string
   title: string
   subtitle?: string
-  color: string         // background-color
-  textColor?: string    // defaults to #faf1ef
-  imageUrl?: string     // background image
-  animationUrl?: string // Lottie JSON url
+  color: string
+  textColor?: string
+  imageUrl?: string
+  animationUrl?: string
   span?: 'full' | 'half' | 'normal'
 }
 
@@ -31,75 +36,98 @@ function BentoCard({ item }: { item: BentoItem }) {
     }
   }, [item.animationUrl])
 
-  const spanClass = {
-    full: 'md:col-span-3',
-    half: 'md:col-span-2',
-    normal: 'md:col-span-1',
-  }[item.span || 'normal']
+  const isHalf = item.span === 'half'
+  const isLarger = isHalf // half-span items use is--larger heading style
 
+  // Determine text color based on background
   const textColor = item.textColor ?? '#272729'
+
+  // Heading color: match original - purple for most, inherit for image cards
+  const headingColor = item.imageUrl
+    ? '#faf1ef'
+    : item.color === '#ffa6a6'
+      ? '#faf1ef'
+      : item.color === '#3e755a'
+        ? '#faf1ef'
+        : item.color === '#6e42ff'
+          ? '#faf1ef'
+          : item.color === '#5910b6'
+            ? '#ffa6a6'  // melon on indigo
+            : '#6e42ff'  // purple by default
+
+  const labelColor = item.imageUrl
+    ? '#faf1ef'
+    : item.color === '#ffa6a6' ? '#faf1ef'
+    : item.color === '#3e755a' ? '#faf1ef'
+    : item.color === '#6e42ff' ? '#faf1ef'
+    : item.color === '#5910b6' ? '#faf1ef'
+    : '#272729'
+
+  const subtitleColor = labelColor
 
   return (
     <div
-      className={`rounded-[1.875rem] overflow-hidden relative flex flex-col justify-between ${spanClass}`}
       style={{
         backgroundColor: item.color,
         backgroundImage: item.imageUrl ? `url(${item.imageUrl})` : undefined,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        minHeight: '14rem',
+        borderRadius: '3rem',
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: isHalf ? '20rem' : '16rem',
         padding: '1.5rem',
+        gridColumn: isHalf ? 'span 2' : 'span 1',
       }}
     >
       {/* Dark overlay for image cards */}
       {item.imageUrl && (
-        <div
-          className="absolute inset-0 rounded-[1.875rem]"
-          style={{ backgroundColor: 'rgba(0,0,0,0.25)' }}
-        />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(0,0,0,0.3)',
+          borderRadius: '3rem',
+        }} />
       )}
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-between h-full gap-3">
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem', height: '100%', justifyContent: 'space-between' }}>
         <div>
           {item.label && (
-            <p
-              className="mb-1 font-semibold"
-              style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: '1rem',
-                color: item.imageUrl ? '#faf1ef' : textColor,
-                opacity: 0.75,
-                lineHeight: 1.2,
-              }}
-            >
+            <p style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              color: labelColor,
+              lineHeight: 1.2,
+              marginBottom: '0.25rem',
+            }}>
               {item.label}
             </p>
           )}
-          <h3
-            style={{
-              fontFamily: 'caraque-solid, sans-serif',
-              fontSize: item.span === 'full' ? '2.5rem' : item.span === 'half' ? '2.8rem' : '1.9rem',
-              color: item.imageUrl ? '#faf1ef' : textColor,
-              lineHeight: 1.05,
-              letterSpacing: '-0.01em',
-            }}
-          >
+          <h2 style={{
+            fontFamily: 'caraque-solid, sans-serif',
+            fontSize: isLarger ? '5rem' : '3.4rem',
+            fontWeight: 700,
+            color: headingColor,
+            lineHeight: '90%',
+            margin: 0,
+          }}>
             {item.title}
-          </h3>
+          </h2>
         </div>
 
         {item.subtitle && (
-          <p
-            className="font-semibold"
-            style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1rem',
-              color: item.imageUrl ? '#faf1ef' : textColor,
-              opacity: 0.8,
-              lineHeight: 1.3,
-            }}
-          >
+          <p style={{
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: '1.1rem',
+            fontWeight: 700,
+            color: subtitleColor,
+            lineHeight: 1.3,
+          }}>
             {item.subtitle}
           </p>
         )}
@@ -107,7 +135,15 @@ function BentoCard({ item }: { item: BentoItem }) {
 
       {/* Lottie animation */}
       {item.animationUrl && lottieReady && (
-        <div className="absolute bottom-0 right-0 z-0 opacity-90" style={{ width: '55%', pointerEvents: 'none' }}>
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          right: 0,
+          zIndex: 0,
+          width: '55%',
+          pointerEvents: 'none',
+          opacity: 0.9,
+        }}>
           {/* @ts-ignore */}
           <lottie-player
             src={item.animationUrl}
@@ -125,13 +161,20 @@ function BentoCard({ item }: { item: BentoItem }) {
 
 export default function BentoBox({ items }: BentoBoxProps) {
   return (
-    <section className="py-8 sm:py-12" style={{ backgroundColor: '#faf1ef' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-auto">
-          {items.map(item => (
-            <BentoCard key={item.id} item={item} />
-          ))}
-        </div>
+    <section style={{
+      backgroundColor: 'white',
+      padding: '1.5rem',
+    }}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '1.5rem',
+        maxWidth: '1280px',
+        margin: '0 auto',
+      }}>
+        {items.map(item => (
+          <BentoCard key={item.id} item={item} />
+        ))}
       </div>
     </section>
   )

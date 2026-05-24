@@ -200,43 +200,158 @@ export default async function Home() {
       <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────── */}
-      <section className="bg-white py-16 sm:py-24 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5910b6] bg-violet-50 border border-violet-200 rounded-full px-3 py-1 mb-6">
-              <span className="w-1.5 h-1.5 bg-[#5910b6] rounded-full animate-pulse" />
-              Sveriges roligaste kalaspaket – direkt nedladdning
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-5">
-              Vi har tydligen{' '}
-              <span className="text-[#5910b6]">Sveriges bästa</span>{' '}
-              kalaslekar&nbsp;🎊
-            </h1>
-            <p className="text-lg text-gray-500 mb-8 max-w-xl leading-relaxed">
-              Kompletta digitala kalaspaket med lekar, inbjudningar,
-              bordsdekorationer och mer. Ladda ner, skriv ut hemma och fira!
-            </p>
-            <div className="flex flex-wrap gap-3 mb-10">
-              <a href="#alla-kalas" className="btn-primary">
-                Se alla {products.length} kalas ›
-              </a>
-              <a href="#sa-funkar-det" className="btn-secondary">
-                Hur funkar det?
-              </a>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              {[
-                { icon: '⚡', text: 'Ladda ner direkt' },
-                { icon: '🛡️', text: '100% nöjdhetsgaranti' },
-                { icon: '🌍', text: 'Miljövänligt' },
-                { icon: '💰', text: 'Spara jämfört med tryckt' },
-              ].map(b => (
-                <div key={b.text} className="flex items-center gap-1.5 text-sm text-gray-500">
-                  <span>{b.icon}</span><span>{b.text}</span>
-                </div>
-              ))}
-            </div>
+      {/* Matches kalaseriet.se hero exactly:
+          - Fullscreen video background
+          - caraque-solid preamble + xxl heading + asterisk
+          - caraque-melted subtext
+          - Two buttons: indigo pill + secondary outline
+      */}
+      <section style={{
+        margin: '1.5rem',
+        marginBottom: '0.75rem',
+        paddingRight: '1.5rem',
+        paddingBottom: '1.5rem',
+        paddingLeft: '1.5rem',
+        borderRadius: '3rem',
+        color: '#faf1ef',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        height: 'calc(100svh - 3rem)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: 'absolute',
+            inset: '0%',
+            width: '101%',
+            height: '101%',
+            marginTop: '-0.5%',
+            marginLeft: '-0.5%',
+            objectFit: 'cover',
+            zIndex: -1,
+          }}
+          poster={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-poster-00001.jpg`}
+        >
+          <source src={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-transcode.mp4`} type="video/mp4" />
+          <source src={`https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423 (2160p)-transcode.webm`} type="video/webm" />
+        </video>
+
+        {/* Hero top: preamble + heading */}
+        <div style={{
+          marginBottom: '3rem',
+          textAlign: 'center',
+          textShadow: '0 1px 20px #0003',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}>
+          <div style={{
+            fontFamily: 'caraque-solid, sans-serif',
+            fontSize: '3rem',
+            fontWeight: 700,
+            lineHeight: '100%',
+          }}>
+            Vi har tydligen
           </div>
+          <h1 style={{
+            maxWidth: '16ch',
+            marginBottom: '1rem',
+            color: '#faf1ef',
+            letterSpacing: '0.01rem',
+            fontSize: '7rem',
+            fontWeight: 800,
+            lineHeight: '87%',
+            fontFamily: 'caraque-melted, sans-serif',
+          }}>
+            Sveriges bästa kalaslekar<span style={{
+              marginLeft: '4px',
+              fontSize: '4.7rem',
+              lineHeight: '50%',
+              position: 'relative',
+              top: '-23px',
+            }}>*</span>
+          </h1>
+
+          {/* Subtext */}
+          <div style={{
+            maxWidth: '42ch',
+            color: '#faf1ef',
+            textAlign: 'center',
+            letterSpacing: '0.01em',
+            textShadow: '0 1px 4px #0006',
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: '2.2rem',
+            fontWeight: 500,
+            lineHeight: '110%',
+          }}>
+            Gör barnkalaset oförglömligt med hjälp av våra{' '}
+            <a href="/kalasen" style={{ color: '#faf1ef' }}>kalasteman</a>!{' '}
+            Massor av idéer för kalaslekar, mall för inbjudning, recept, checklistor, musik med mera!
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '27px', display: 'flex', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.75em', alignItems: 'center' }}>
+            <a href="/kalasen" style={{
+              borderRadius: '3rem',
+              backgroundColor: '#5910b6',
+              color: '#6e42ff',
+              cursor: 'pointer',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '1.5rem 3rem',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.6rem',
+              fontWeight: 400,
+              lineHeight: '100%',
+            }}>
+              <span style={{ color: '#faf1ef' }}>Kolla in kalasen ›</span>
+            </a>
+            <a href="/sa-funkar-det" style={{
+              border: '3px solid #faf1ef',
+              borderRadius: '3rem',
+              backgroundColor: 'transparent',
+              color: '#faf1ef',
+              cursor: 'pointer',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '1.5rem 3rem',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.6rem',
+              fontWeight: 400,
+              lineHeight: '100%',
+            }}>
+              Så funkar det
+            </a>
+          </div>
+        </div>
+
+        {/* Smallprint asterisk */}
+        <div style={{
+          textShadow: '0 0 7px #00000080',
+          alignSelf: 'flex-end',
+          position: 'absolute',
+          right: '3%',
+          bottom: '2%',
+          fontFamily: 'caraque-melted, sans-serif',
+          fontSize: '1.2rem',
+          color: '#faf1ef',
+          opacity: 0.7,
+        }}>
+          *Enligt Leo &amp; Wilma
         </div>
       </section>
 

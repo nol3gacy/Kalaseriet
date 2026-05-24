@@ -152,8 +152,9 @@ export async function generateStaticParams() {
   return BLOG_POSTS.map(post => ({ slug: post.slug }))
 }
 
-export function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const post = BLOG_POSTS.find(p => p.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = BLOG_POSTS.find(p => p.slug === slug)
   return {
     title: `${post?.title || 'Blog'} – Kalaseriet`,
     description: post?.excerpt || 'Läs tipsen och inspirationen på Kalasbloggen'

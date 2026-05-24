@@ -2,13 +2,14 @@
 
 import { useState } from 'react'
 
-const items = [
-  '20% rabatt på första köpet',
-  '20% rabatt på första köpet',
-  '20% rabatt på första köpet',
-  '20% rabatt på första köpet',
-  '20% rabatt på första köpet',
-]
+// Matches kalaseriet.se marquee section exactly:
+// - White background, 3rem padding top/bottom
+// - "20% rabatt på första köpet" text (purple, 1.5rem, caraque-melted) scrolling
+// - Purple pill button "Kopiera rabatt-koden: KALAS20"
+
+const rabattText = '20% rabatt på första köpet'
+// Repeat enough times for seamless scroll
+const items = Array(8).fill(rabattText)
 
 export default function DiscountMarquee() {
   const [copied, setCopied] = useState(false)
@@ -16,37 +17,45 @@ export default function DiscountMarquee() {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText('KALAS20')
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
     } catch {
-      // fallback
       const el = document.createElement('textarea')
       el.value = 'KALAS20'
       document.body.appendChild(el)
       el.select()
       document.execCommand('copy')
       document.body.removeChild(el)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
     }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2500)
   }
 
   return (
-    <div
-      className="w-full overflow-hidden flex items-center gap-6 py-5"
-      style={{ backgroundColor: '#faf1ef' }}
-    >
-      {/* Scrolling text */}
-      <div className="flex-1 overflow-hidden min-w-0">
-        <div className="animate-marquee flex whitespace-nowrap">
+    <section style={{
+      width: '100%',
+      marginTop: '0.75rem',
+      marginBottom: '0.75rem',
+      paddingTop: '3rem',
+      paddingBottom: '3rem',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '3rem',
+      overflow: 'hidden',
+      backgroundColor: 'white',
+    }}>
+      {/* Scrolling marquee */}
+      <div style={{ flex: 1, overflow: 'hidden', minWidth: 0 }}>
+        <div className="animate-marquee" style={{ display: 'flex', alignItems: 'center', gap: '1em', whiteSpace: 'nowrap' }}>
           {[...items, ...items].map((item, i) => (
             <span
               key={i}
-              className="inline-flex items-center gap-6 mx-4"
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '1em',
                 fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.5rem',
                 color: '#6e42ff',
+                whiteSpace: 'nowrap',
               }}
             >
               {item}
@@ -56,21 +65,31 @@ export default function DiscountMarquee() {
         </div>
       </div>
 
-      {/* Copy button — always visible */}
+      {/* Copy button */}
       <button
         onClick={handleCopy}
-        className="flex-shrink-0 mr-6 px-6 py-3 rounded-[2rem] font-medium transition-all"
         style={{
-          backgroundColor: '#6e42ff',
-          color: '#faf1ef',
-          fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.3rem',
+          flexShrink: 0,
+          marginRight: '3rem',
+          padding: '0.75rem 2rem',
+          backgroundColor: copied ? '#5910b6' : '#6e42ff',
+          color: '#fff',
+          textAlign: 'center',
           whiteSpace: 'nowrap',
-          transform: copied ? 'scale(0.96)' : 'scale(1)',
+          borderRadius: '500px',
+          border: 'none',
+          cursor: 'pointer',
+          fontFamily: 'caraque-melted, sans-serif',
+          fontSize: '1.5rem',
+          fontWeight: 400,
+          transition: 'background-color 0.15s',
+          textDecoration: 'none',
+          display: 'inline-flex',
+          alignItems: 'center',
         }}
       >
-        {copied ? '✓ Kopierad!' : 'Kopiera rabatt-koden: KALAS20'}
+        {copied ? '✓ Kopierad! Lägg till i kassan sen' : 'Kopiera rabatt-koden: KALAS20'}
       </button>
-    </div>
+    </section>
   )
 }

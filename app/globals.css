@@ -7,9 +7,34 @@
   --font-display: caraque-solid, system-ui, sans-serif;
 }
 
+/* ── Kalaseriet brand CSS variables (exact match from kalaseriet.se) ── */
 :root {
   --background: #ffffff;
   --foreground: #111827;
+
+  /* Colors */
+  --color--indigo: #5910b6;
+  --color--purple: #6e42ff;
+  --color--melon: #ffa6a6;
+  --color--spökmjölk: #faf1ef;
+  --color--amazon: #3e755a;
+  --color--obsidian: #272729;
+  --color--thick-haze: #7c7c7c;
+  --color--darkness: #4e4e4e;
+  --color--medium-haze: #b1b1b1;
+  --color--redish: #ff6767;
+  --color--pinkish-darker: #b96e6e;
+  --color--pine-tree: #24503a;
+  --translucent: #fffc;
+
+  /* Spacing */
+  --0-25rem: 0.25rem;
+  --0-5rem: 0.5rem;
+  --0-75rem: 0.75rem;
+  --1rem: 1rem;
+  --1-5rem: 1.5rem;
+  --2rem: 2rem;
+  --3rem: 3rem;
 }
 
 body {
@@ -23,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: caraque-solid, system-ui, sans-serif;
 }
 
+/* ── Marquee animation ── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -32,52 +58,66 @@ h1, h2, h3, h4, h5, h6 {
   animation: marquee 35s linear infinite;
 }
 
-/* ── Brand buttons matching kalaseriet.se ────────────────── */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4em;
-  background-color: #5910b6;
-  color: #faf1ef;
-  font-family: caraque-solid, system-ui, sans-serif;
-  font-size: 1.6rem;
-  padding: 1.5rem 3rem;
-  border-radius: 3rem;
-  border: none;
+/* ── Brand buttons matching kalaseriet.se exactly ── */
+
+/* .btn base */
+.btn {
+  color: #051328;
   cursor: pointer;
+  background-color: #e7e7e7;
+  border: 1px solid #000;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3rem;
   text-decoration: none;
-  transition: background-color 0.15s, transform 0.1s;
-  white-space: nowrap;
+  display: inline-flex;
+  position: relative;
+}
+
+/* .btn.is--hero */
+.btn-primary {
+  border-radius: var(--3rem);
+  background-color: var(--color--indigo);
+  color: var(--color--purple);
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  text-decoration: none;
+  display: inline-flex;
+  position: relative;
+  font-family: caraque-melted, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 100%;
+  border: none;
+  transition: opacity 0.15s;
 }
 
 .btn-primary:hover {
-  background-color: #4a0d99;
-  transform: translateY(-1px);
+  opacity: 0.88;
 }
 
-.btn-primary:active {
-  transform: translateY(0);
-}
-
+/* .btn.is--secondary */
 .btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4em;
+  border: 3px solid var(--color--indigo);
+  border-radius: var(--3rem);
   background-color: transparent;
-  color: #5910b6;
-  font-family: caraque-solid, system-ui, sans-serif;
-  font-size: 1.6rem;
-  padding: 1.5rem 3rem;
-  border-radius: 3rem;
-  border: 3px solid #5910b6;
+  color: var(--color--indigo);
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3rem;
   text-decoration: none;
-  transition: background-color 0.15s, color 0.15s;
-  white-space: nowrap;
+  display: inline-flex;
+  position: relative;
+  font-family: caraque-melted, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 100%;
+  transition: background-color 0.15s;
 }
 
 .btn-secondary:hover {
-  background-color: #f3eeff;
+  background-color: rgba(89, 16, 182, 0.08);
 }
