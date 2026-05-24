@@ -99,8 +99,8 @@ function BentoCard({ item }: { item: BentoItem }) {
           {item.label && (
             <p style={{
               fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.1rem',
-              fontWeight: 700,
+              fontSize: '1.05rem',
+              fontWeight: 500,
               color: labelColor,
               lineHeight: 1.2,
               marginBottom: '0.25rem',
@@ -108,6 +108,7 @@ function BentoCard({ item }: { item: BentoItem }) {
               {item.label}
             </p>
           )}
+          {/* Bento headings ARE caraque-solid per kalaseriet.se (.heading.is--bento) */}
           <h2 style={{
             fontFamily: 'caraque-solid, sans-serif',
             fontSize: isLarger ? '5rem' : '3.4rem',
@@ -123,26 +124,28 @@ function BentoCard({ item }: { item: BentoItem }) {
         {item.subtitle && (
           <p style={{
             fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '1.1rem',
-            fontWeight: 700,
+            fontSize: '1.05rem',
+            fontWeight: 500,           /* was 700 — body softer now */
             color: subtitleColor,
-            lineHeight: 1.3,
+            lineHeight: 1.35,
+            maxWidth: '28ch',
           }}>
             {item.subtitle}
           </p>
         )}
       </div>
 
-      {/* Lottie animation */}
+      {/* Lottie animation — anchored bottom-right, slightly extending below */}
       {item.animationUrl && lottieReady && (
         <div style={{
           position: 'absolute',
-          bottom: 0,
-          right: 0,
+          bottom: '-10%',
+          right: '-5%',
           zIndex: 0,
-          width: '55%',
+          width: '50%',
+          maxWidth: '260px',
           pointerEvents: 'none',
-          opacity: 0.9,
+          opacity: 0.95,
         }}>
           {/* @ts-ignore */}
           <lottie-player

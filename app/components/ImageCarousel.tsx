@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
+import Sticker from './Sticker'
 
 // Kalaseriet.se product carousel:
 // - 4 images per product on a salmon/pink rounded backdrop
@@ -46,42 +47,34 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
       padding: '2.5rem 1rem 1.5rem',
       overflow: 'hidden',
     }}>
-      {/* POPPIS sticker — already overlaid by ProductCard usage above */}
+      {/* POPPIS sticker — purple blob SVG */}
       {badges?.popular && (
         <div style={{
           position: 'absolute',
-          top: '1rem',
-          left: '1rem',
-          backgroundColor: '#6e42ff',
-          color: '#faf1ef',
-          padding: '0.6rem 1.2rem',
-          borderRadius: '40% 60% 65% 35% / 55% 45% 55% 45%',
-          fontFamily: 'caraque-solid, sans-serif',
-          fontSize: '1.1rem',
-          fontWeight: 800,
-          letterSpacing: '0.06em',
-          transform: 'rotate(-12deg)',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          top: '-12px',
+          left: '-8px',
           zIndex: 5,
-          lineHeight: 1,
-          textAlign: 'center',
-        }}>POPPIS!</div>
+          transform: 'rotate(-10deg)',
+          filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.18))',
+        }}>
+          <Sticker kind="poppis" width={108} />
+        </div>
       )}
+      {/* Discount pill (only the % since NYHET sticker is reserved for new products) */}
       {badges?.discountPercent && (
         <div style={{
           position: 'absolute',
           top: '1rem',
           right: '1rem',
-          backgroundColor: '#ffa6a6',
-          color: '#272729',
-          padding: '0.4rem 0.9rem',
+          backgroundColor: 'white',
+          color: '#5910b6',
+          padding: '0.5rem 1.1rem',
           borderRadius: '500px',
-          fontFamily: 'caraque-solid, sans-serif',
-          fontSize: '0.95rem',
-          fontWeight: 800,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+          fontFamily: 'caraque-melted, sans-serif',
+          fontSize: '1.1rem',
+          fontWeight: 700,
+          boxShadow: '0 4px 14px rgba(0,0,0,0.14)',
           zIndex: 5,
-          border: '2px solid white',
         }}>-{badges.discountPercent}%</div>
       )}
 

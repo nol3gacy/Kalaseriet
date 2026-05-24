@@ -128,7 +128,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </span>
 
             <h1 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.8rem, 5.5vw, 4.6rem)',
               fontWeight: 800,
               color: '#5910b6',
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(2rem, 4vw, 3.4rem)',
                 fontWeight: 800,
                 color: '#5910b6',
@@ -219,7 +219,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(2rem, 4vw, 3.4rem)',
                 fontWeight: 800,
                 color: '#5910b6',
@@ -260,14 +260,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       color: '#faf1ef',
                       padding: '0.2rem 0.75rem',
                       borderRadius: '500px',
-                      fontFamily: 'caraque-solid, sans-serif',
+                      fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       letterSpacing: '0.08em',
                       textTransform: 'uppercase',
                     }}>{post.category}</span>
                     <h3 style={{
-                      fontFamily: 'caraque-solid, sans-serif',
+                      fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '1.6rem',
                       fontWeight: 800,
                       color: '#272729',
@@ -299,7 +299,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
             <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 800,
                 color: '#5910b6',
@@ -333,7 +333,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       </div>
                       <div style={{ textAlign: 'center' }}>
                         <h3 style={{
-                          fontFamily: 'caraque-solid, sans-serif',
+                          fontFamily: 'caraque-melted, sans-serif',
                           fontSize: '1.8rem',
                           fontWeight: 800,
                           color: '#5910b6',

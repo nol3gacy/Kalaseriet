@@ -18,7 +18,7 @@ export default function Testimonials({
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem', maxWidth: '700px', marginInline: 'auto' }}>
           <h2 style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',
@@ -71,7 +71,7 @@ export default function Testimonials({
 
               {/* Author */}
               <p style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.1rem',
                 color: '#5910b6',
                 fontWeight: 700,

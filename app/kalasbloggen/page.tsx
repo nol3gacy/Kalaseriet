@@ -63,7 +63,7 @@ export default function KalasbloggenPage() {
         }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
             <p style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: '0.9rem',
               fontWeight: 700,
               letterSpacing: '0.15em',
@@ -72,7 +72,7 @@ export default function KalasbloggenPage() {
               marginBottom: '1rem',
             }}>Kalasbloggen</p>
             <h1 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(3rem, 7vw, 6rem)',
               fontWeight: 800,
               color: '#272729',
@@ -130,7 +130,7 @@ export default function KalasbloggenPage() {
                 <span style={{
                   backgroundColor: '#6e42ff',
                   color: '#faf1ef',
-                  fontFamily: 'caraque-solid, sans-serif',
+                  fontFamily: 'caraque-melted, sans-serif',
                   fontSize: '0.8rem',
                   fontWeight: 700,
                   letterSpacing: '0.08em',
@@ -143,7 +143,7 @@ export default function KalasbloggenPage() {
                 </span>
               </div>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(1.8rem, 3vw, 2.8rem)',
                 fontWeight: 800,
                 color: '#272729',
@@ -216,7 +216,7 @@ export default function KalasbloggenPage() {
                     <span style={{
                       backgroundColor: '#6e42ff',
                       color: '#faf1ef',
-                      fontFamily: 'caraque-solid, sans-serif',
+                      fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       letterSpacing: '0.08em',
@@ -229,7 +229,7 @@ export default function KalasbloggenPage() {
                     </span>
                   </div>
                   <h2 style={{
-                    fontFamily: 'caraque-solid, sans-serif',
+                    fontFamily: 'caraque-melted, sans-serif',
                     fontSize: '1.8rem',
                     fontWeight: 800,
                     color: '#272729',

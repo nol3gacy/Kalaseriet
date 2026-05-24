@@ -65,7 +65,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
     }}>
       {/* Big number */}
       <div style={{
-        fontFamily: 'caraque-solid, sans-serif',
+        fontFamily: 'caraque-melted, sans-serif',
         fontSize: 'clamp(4rem, 8vw, 7rem)',
         fontWeight: 800,
         color: '#5910b6',
@@ -75,7 +75,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
 
       <div>
         <h3 style={{
-          fontFamily: 'caraque-solid, sans-serif',
+          fontFamily: 'caraque-melted, sans-serif',
           fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
           fontWeight: 800,
           color: '#272729',
@@ -114,7 +114,7 @@ export default function SaFunkarDet() {
         }}>
           <div style={{ maxWidth: '760px', margin: '0 auto' }}>
             <h1 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(3rem, 7vw, 6rem)',
               fontWeight: 800,
               color: '#5910b6',
@@ -135,7 +135,7 @@ export default function SaFunkarDet() {
         <section style={{ padding: '5rem 1.5rem' }}>
           <div style={{ maxWidth: '880px', margin: '0 auto' }}>
             <h2 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
               color: '#272729',
@@ -153,7 +153,7 @@ export default function SaFunkarDet() {
         <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
           <div style={{ maxWidth: '880px', margin: '0 auto' }}>
             <h2 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
               color: '#272729',
@@ -170,7 +170,7 @@ export default function SaFunkarDet() {
         {/* Vad fyller barnet */}
         <section style={{ padding: '5rem 1.5rem', textAlign: 'center' }}>
           <h2 style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
             fontWeight: 800,
             color: '#5910b6',

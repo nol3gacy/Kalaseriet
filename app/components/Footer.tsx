@@ -27,7 +27,7 @@ export default function Footer() {
   }
 
   const labelStyle: React.CSSProperties = {
-    fontFamily: 'caraque-solid, sans-serif',
+    fontFamily: 'caraque-melted, sans-serif',
     fontSize: '0.85rem',
     fontWeight: 700,
     color: '#272729',
@@ -137,10 +137,10 @@ export default function Footer() {
         {/* Newsletter — spans 2 columns so the input is genuinely wide */}
         <div style={{ ...cellStyle, gridColumn: 'span 2', minWidth: '320px' }}>
           <img
-            src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/66a743fbd7d2db21c44c5e95_tips.svg"
+            src="/stickers/tips.svg"
             loading="lazy"
             alt=""
-            style={{ width: '72px', height: 'auto', marginBottom: '0.5rem' }}
+            style={{ width: '92px', height: 'auto', marginBottom: '0.5rem' }}
           />
 
           <NewsletterForm />
@@ -181,7 +181,7 @@ export default function Footer() {
               />
             ) : (
               <span style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '5rem',
                 fontWeight: 800,
                 color: '#5910b6',

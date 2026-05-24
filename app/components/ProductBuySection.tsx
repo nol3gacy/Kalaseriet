@@ -51,7 +51,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
             }}>{product.originalPrice} kr</span>
           )}
           <span style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: '3.4rem',
             fontWeight: 800,
             color: '#5910b6',

@@ -266,7 +266,7 @@ export default async function Home() {
           zIndex: 2,
         }}>
           <div style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: '3rem',
             fontWeight: 700,
             lineHeight: '100%',
@@ -383,7 +383,7 @@ export default async function Home() {
           <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(2.4rem, 5vw, 4rem)',
                 fontWeight: 800,
                 color: '#5910b6',
@@ -411,7 +411,7 @@ export default async function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <h2 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.4rem, 5vw, 4rem)',
               fontWeight: 800,
               color: '#5910b6',

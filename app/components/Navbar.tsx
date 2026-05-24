@@ -70,7 +70,7 @@ export default function Navbar() {
               />
             ) : (
               <span style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '2rem',
                 fontWeight: 800,
                 color: '#6e42ff',

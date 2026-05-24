@@ -14,7 +14,7 @@ export default function FAQ({
       <div style={{ maxWidth: '780px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <h2 style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',

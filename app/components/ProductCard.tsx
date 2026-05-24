@@ -1,64 +1,35 @@
 'use client'
 
 import type { Product } from '../page'
+import Sticker from './Sticker'
 
-// Matches kalaseriet.se product card exactly:
-// - Cream background with rounded 2.5rem image
-// - POPPIS! sticker (purple, rotated, caraque-solid) top-left
-// - NYHET sticker (salmon pink, slightly rotated) top-right
-// - Big title in caraque-solid purple
-// - Age-pill in pale cream/pink with caraque-melted
-// - Description in caraque-melted bold dark gray
-
-type Sticker = {
-  text: string
-  bg: string
-  color: string
-  rotate: string
-  position: 'left' | 'right'
-}
-
-function getStickers(product: Product): Sticker[] {
-  const stickers: Sticker[] = []
-  if (product.isPopular) {
-    stickers.push({
-      text: 'POPPIS!',
-      bg: '#6e42ff',
-      color: '#faf1ef',
-      rotate: '-8deg',
-      position: 'left',
-    })
-  }
-  if (product.isNew) {
-    stickers.push({
-      text: 'NYHET',
-      bg: '#ffa6a6',
-      color: '#272729',
-      rotate: '7deg',
-      position: 'right',
-    })
-  }
-  return stickers
-}
+// Matches kalaseriet.se product card:
+// - Cream rounded image
+// - POPPIS sticker (purple blob SVG) top-left, rotated
+// - NYHET sticker (salmon blob SVG) top-right
+// - Title in caraque-melted bold (NOT caraque-solid — that's reserved for bento)
+// - Age-pill outline style "Kalas för X-åringar"
+// - Body text in regular weight (lighter than before)
 
 export default function ProductCard({ product }: { product: Product }) {
-  const stickers = getStickers(product)
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const imageUrl = product.externalImageUrl
 
   return (
     <a
       href={`/kalas/${product.slug.current}`}
+      className="product-card-link"
       style={{
         display: 'flex',
         flexDirection: 'column',
         gap: '1.25rem',
         textDecoration: 'none',
         padding: '0.5rem',
+        transition: 'transform 0.25s ease, box-shadow 0.25s ease',
       }}
     >
       {/* Image with rounded corners + stickers */}
-      <div style={{
+      <div className="product-card-image-wrap" style={{
         position: 'relative',
         borderRadius: '2rem',
         overflow: 'visible',
@@ -70,7 +41,8 @@ export default function ProductCard({ product }: { product: Product }) {
           borderRadius: '2rem',
           overflow: 'hidden',
           backgroundColor: '#faf1ef',
-        }}>
+          transition: 'transform 0.25s ease',
+        }} className="product-card-image">
           {imageUrl ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img
@@ -91,75 +63,87 @@ export default function ProductCard({ product }: { product: Product }) {
           )}
         </div>
 
-        {/* Stickers — absolute, slightly outside image */}
-        {stickers.map(s => (
-          <div
-            key={s.text}
-            style={{
-              position: 'absolute',
-              top: '-12px',
-              [s.position]: '-8px',
-              backgroundColor: s.bg,
-              color: s.color,
-              padding: '0.5rem 1.1rem',
-              borderRadius: '500px',
-              fontFamily: 'caraque-solid, sans-serif',
-              fontSize: '1.05rem',
-              fontWeight: 800,
-              letterSpacing: '0.05em',
-              transform: `rotate(${s.rotate})`,
-              boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
-              zIndex: 2,
-              lineHeight: 1,
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {s.text}
+        {/* POPPIS sticker (top-left, slight rotation) */}
+        {product.isPopular && (
+          <div style={{
+            position: 'absolute',
+            top: '-18px',
+            left: '-14px',
+            zIndex: 2,
+            transform: 'rotate(-8deg)',
+            filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.12))',
+          }}>
+            <Sticker kind="poppis" width={88} />
           </div>
-        ))}
+        )}
+        {/* NYHET sticker (top-right, opposite rotation) */}
+        {product.isNew && (
+          <div style={{
+            position: 'absolute',
+            top: '-14px',
+            right: '-10px',
+            zIndex: 2,
+            transform: 'rotate(8deg)',
+            filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.12))',
+          }}>
+            <Sticker kind="nyhet" width={92} />
+          </div>
+        )}
       </div>
 
       {/* Title + age + description */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.5rem', padding: '0 0.5rem' }}>
-        <h3 style={{
-          fontFamily: 'caraque-solid, sans-serif',
-          fontSize: '2.4rem',
-          fontWeight: 800,
+        {/* Title: caraque-melted BOLD (not caraque-solid) — matches .heading on kalaseriet */}
+        <h3 className="card-title" style={{
+          fontFamily: 'caraque-melted, sans-serif',
+          fontSize: '2rem',
+          fontWeight: 700,
           color: '#5910b6',
-          lineHeight: '92%',
+          lineHeight: '95%',
           margin: 0,
           textAlign: 'center',
+          transition: 'color 0.15s ease',
         }}>
           {product.name}
         </h3>
 
-        {/* Age pill — cream/pink rounded */}
+        {/* Age pill — outline cream/pink */}
         <span style={{
           display: 'inline-block',
           backgroundColor: '#fce8e0',
           color: '#5910b6',
           fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.2rem',
-          fontWeight: 700,
-          padding: '0.35rem 1.1rem',
+          fontSize: '1.1rem',
+          fontWeight: 500,
+          padding: '0.3rem 1rem',
           borderRadius: '500px',
           lineHeight: 1.1,
         }}>
           för {ageLabel}
         </span>
 
+        {/* Body text — regular weight, lighter color */}
         <p style={{
           fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.15rem',
-          fontWeight: 700,
-          color: '#272729',
-          lineHeight: '130%',
+          fontSize: '1.1rem',
+          fontWeight: 400,
+          color: '#4e4e4e',
+          lineHeight: '140%',
           margin: '0.25rem 0 0',
           maxWidth: '32ch',
         }}>
           {product.description}
         </p>
       </div>
+
+      <style>{`
+        .product-card-link:hover .product-card-image {
+          transform: scale(1.03);
+        }
+        .product-card-link:hover .card-title {
+          color: #3e755a;
+        }
+      `}</style>
     </a>
   )
 }

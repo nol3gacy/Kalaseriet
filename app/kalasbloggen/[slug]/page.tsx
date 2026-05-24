@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 color: '#faf1ef',
                 padding: '0.3rem 0.9rem',
                 borderRadius: '500px',
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '0.85rem',
                 fontWeight: 700,
                 letterSpacing: '0.08em',
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </span>
             </div>
             <h1 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.4rem, 5vw, 4rem)',
               fontWeight: 800,
               color: '#5910b6',
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             textAlign: 'center',
           }}>
             <h3 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: '2.4rem',
               fontWeight: 800,
               color: '#5910b6',
@@ -139,7 +139,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section style={{ padding: '4rem 1.5rem', backgroundColor: '#faf1ef' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
             <h2 style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: '2.4rem',
               fontWeight: 800,
               color: '#5910b6',
@@ -169,7 +169,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <img src={p.imageUrl} alt={p.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
                   <div style={{ padding: '1.5rem' }}>
                     <h3 style={{
-                      fontFamily: 'caraque-solid, sans-serif',
+                      fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '1.6rem',
                       fontWeight: 800,
                       color: '#272729',
@@ -203,7 +203,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           line-height: 160%;
         }
         .blog-body h2 {
-          font-family: 'caraque-solid', sans-serif;
+          font-family: 'caraque-melted', sans-serif;
           font-size: 2rem;
           font-weight: 800;
           color: #5910b6;
@@ -211,7 +211,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           margin: 2.5rem 0 1rem;
         }
         .blog-body h3 {
-          font-family: 'caraque-solid', sans-serif;
+          font-family: 'caraque-melted', sans-serif;
           font-size: 1.6rem;
           font-weight: 800;
           color: #272729;
