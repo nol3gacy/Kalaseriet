@@ -1,58 +1,83 @@
-export default function Testimonials() {
-  const testimonials = [
-    {
-      quote: "Helt fantastisk sparar tid och pengar. Mina barn älskade kalaset!",
-      author: "Maria K.",
-      role: "Mamma till 6-åring",
-      emoji: "⭐⭐⭐⭐⭐"
-    },
-    {
-      quote: "Professionellt genomfört och så enkelt att anpassa med barnets namn.",
-      author: "Sophie L.",
-      role: "Arrangerade piratkalaset",
-      emoji: "⭐⭐⭐⭐⭐"
-    },
-    {
-      quote: "Snabbt att ladda ner, bra kvalitet på allt material. Mycket nöjd!",
-      author: "Anders P.",
-      role: "Pappa till 5-åring",
-      emoji: "⭐⭐⭐⭐⭐"
-    },
-    {
-      quote: "Sparade mig flera timmar med planering. Kalaset blev helt fantastiskt!",
-      author: "Emma T.",
-      role: "Arrangerade discokalaset",
-      emoji: "⭐⭐⭐⭐⭐"
-    },
-  ]
+'use client'
 
+import { testimonials, type Testimonial } from '../../lib/data/testimonials'
+
+interface TestimonialsProps {
+  items?: Testimonial[]      // Optional override for product pages
+  heading?: string
+  subheading?: string
+}
+
+export default function Testimonials({
+  items = testimonials.slice(0, 4),
+  heading = 'Så älskar föräldrar Kalaseriet',
+  subheading = 'Läs vad andra föräldrar tycker om våra kalaspaket.',
+}: TestimonialsProps) {
   return (
-    <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">
-            Så älskar föräldrar Kalaseriet
-          </h2>
-          <p className="text-gray-500 text-sm">
-            Läs vad andra föräldrar tycker om våra kalaspaket.
-          </p>
+    <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3rem', maxWidth: '700px', marginInline: 'auto' }}>
+          <h2 style={{
+            fontFamily: 'caraque-solid, sans-serif',
+            fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+            fontWeight: 800,
+            color: '#5910b6',
+            lineHeight: '95%',
+            marginBottom: '1rem',
+          }}>{heading}</h2>
+          <p style={{
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: '1.3rem',
+            color: '#4e4e4e',
+            lineHeight: '130%',
+          }}>{subheading}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((testimonial, i) => (
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem',
+        }}>
+          {items.map((t, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-violet-300 transition-colors"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '2.5rem',
+                padding: '2rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+              }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex-1">
-                  <p className="font-bold text-gray-900 text-sm">{testimonial.author}</p>
-                  <p className="text-gray-500 text-xs">{testimonial.role}</p>
-                </div>
-                <span className="text-xl">{testimonial.emoji}</span>
+              {/* Stars */}
+              <div style={{ display: 'flex', gap: '0.15rem', fontSize: '1.3rem' }}>
+                {Array.from({ length: 5 }).map((_, idx) => (
+                  <span key={idx} style={{ color: idx < t.stars ? '#FCD34D' : '#e5e5e5' }}>★</span>
+                ))}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed italic">
-                "{testimonial.quote}"
+
+              {/* Quote */}
+              <p style={{
+                fontFamily: 'caraque-melted, sans-serif',
+                fontSize: '1.15rem',
+                color: '#272729',
+                lineHeight: '145%',
+                fontWeight: 500,
+                flex: 1,
+              }}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+
+              {/* Author */}
+              <p style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: '1.1rem',
+                color: '#5910b6',
+                fontWeight: 700,
+                margin: 0,
+              }}>
+                {t.name}
               </p>
             </div>
           ))}

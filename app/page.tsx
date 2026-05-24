@@ -221,28 +221,38 @@ export default async function Home() {
         height: 'calc(100svh - 3rem)',
         position: 'relative',
         overflow: 'hidden',
+        isolation: 'isolate',
+        backgroundColor: '#272729',
       }}>
-        {/* Background video */}
+        {/* Background video — z-index 0 inside isolated stacking context */}
         <video
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           style={{
             position: 'absolute',
-            inset: '0%',
-            width: '101%',
-            height: '101%',
-            marginTop: '-0.5%',
-            marginLeft: '-0.5%',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
-            zIndex: -1,
+            zIndex: 0,
           }}
-          poster="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-poster-00001.jpg"
+          poster="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-poster-00001.jpg"
         >
-          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-transcode.mp4" type="video/mp4" />
-          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20(2160p)-transcode.webm" type="video/webm" />
+          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-transcode.mp4" type="video/mp4" />
+          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-transcode.webm" type="video/webm" />
         </video>
+
+        {/* Dark overlay for text legibility */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundColor: 'rgba(0,0,0,0.25)',
+          zIndex: 1,
+        }} />
 
         {/* Hero top: preamble + heading */}
         <div style={{
@@ -252,6 +262,8 @@ export default async function Home() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          position: 'relative',
+          zIndex: 2,
         }}>
           <div style={{
             fontFamily: 'caraque-solid, sans-serif',
@@ -299,7 +311,7 @@ export default async function Home() {
         </div>
 
         {/* Buttons */}
-        <div style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '27px', display: 'flex', marginBottom: '1.5rem' }}>
+        <div style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '27px', display: 'flex', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'flex', gap: '0.75em', alignItems: 'center' }}>
             <a href="/kalasen" style={{
               borderRadius: '3rem',
@@ -367,14 +379,22 @@ export default async function Home() {
 
       {/* ── Populära kalas ──────────────────────────────────── */}
       {popular.length > 0 && (
-        <section id="populara" className="py-16 sm:py-20 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Populära kalas</h2>
-                <p className="text-gray-500 mt-1 text-sm">Barnens favoriter just nu</p>
-              </div>
-              <a href="#alla-kalas" className="text-sm font-semibold text-[#5910b6] hover:underline shrink-0">Se alla →</a>
+        <section id="populara" style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
+          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <h2 style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: 'clamp(2.4rem, 5vw, 4rem)',
+                fontWeight: 800,
+                color: '#5910b6',
+                lineHeight: '92%',
+                marginBottom: '0.75rem',
+              }}>Populära kalas</h2>
+              <p style={{
+                fontFamily: 'caraque-melted, sans-serif',
+                fontSize: '1.3rem',
+                color: '#4e4e4e',
+              }}>Barnens favoriter just nu</p>
             </div>
             <ProductGrid products={popular} />
           </div>
@@ -387,14 +407,25 @@ export default async function Home() {
       </section>
 
       {/* ── Alla kalas ──────────────────────────────────────── */}
-      <section id="alla-kalas" className="py-16 sm:py-20 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+      <section id="alla-kalas" style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <h2 style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: 'clamp(2.4rem, 5vw, 4rem)',
+              fontWeight: 800,
+              color: '#5910b6',
+              lineHeight: '92%',
+              marginBottom: '0.75rem',
+            }}>
               Alla kalas{' '}
-              <span className="text-base font-normal text-gray-400 ml-1">({products.length} st)</span>
+              <span style={{ color: '#b1b1b1', fontSize: '0.5em', fontWeight: 600 }}>({products.length} st)</span>
             </h2>
-            <p className="text-gray-500 mt-1 text-sm">Välj tema och åldersgrupp</p>
+            <p style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.3rem',
+              color: '#4e4e4e',
+            }}>Välj tema och åldersgrupp</p>
           </div>
           <ProductGrid products={products} showFilter />
         </div>

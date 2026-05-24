@@ -1,21 +1,16 @@
 import { client } from '../../../sanity/lib/client'
-import { urlFor } from '../../../sanity/lib/image'
-import { fallbackProducts, themeColors, type Product } from '../../page'
+import { fallbackProducts, type Product } from '../../page'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import ProductBuySection from '../../components/ProductBuySection'
-import Breadcrumbs from '../../components/Breadcrumbs'
+import ImageCarousel from '../../components/ImageCarousel'
+import Testimonials from '../../components/Testimonials'
+import FAQ from '../../components/FAQ'
+import { getProductExtra } from '../../../lib/data/products-extra'
+import { includedItems } from '../../../lib/data/included-items'
+import { randomTestimonials } from '../../../lib/data/testimonials'
+import { blogPosts } from '../../../lib/data/blog-posts'
 import { notFound } from 'next/navigation'
-
-const INCLUDED_ITEMS = [
-  { icon: '🎮', label: '20 kalaslekar', desc: 'Utvalda lekar för rätt åldersgrupp' },
-  { icon: '🍰', label: '20 festrecept', desc: 'Tårtor, muffins och snacks' },
-  { icon: '✉️', label: 'Inbjudningskort', desc: 'Skriv ut och skicka till gästerna' },
-  { icon: '🎊', label: 'Dekorationer', desc: 'Flaggor, skyltar och bordsdekor' },
-  { icon: '📋', label: 'Körschema', desc: 'Timme-för-timme planering' },
-  { icon: '☑️', label: 'Checklista', desc: 'Missa inget inför kalaset' },
-  { icon: '🏆', label: 'Diplom', desc: 'En minnesvärd avslutning för gästerna' },
-]
 
 async function getProduct(slug: string): Promise<Product | null> {
   try {
@@ -30,14 +25,6 @@ async function getProduct(slug: string): Promise<Product | null> {
 }
 
 async function getRelated(currentId: string, theme: string): Promise<Product[]> {
-  try {
-    const data = await client.fetch(
-      `*[_type == "product" && theme == $theme && _id != $currentId][0...3]`,
-      { theme, currentId },
-      { next: { revalidate: 60 } }
-    )
-    if (data?.length) return data
-  } catch {}
   return fallbackProducts
     .filter(p => p.theme === theme && p._id !== currentId)
     .slice(0, 3)
@@ -62,190 +49,371 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = await getProduct(slug)
   if (!product) notFound()
 
-  const theme = themeColors[product.theme.toLowerCase()] ?? { from: '#f3f4f6', to: '#e5e7eb', emoji: '🎉' }
-  const related = await getRelated(product._id, product.theme)
+  const extra = getProductExtra(slug)
+  const carouselImages = extra?.images ?? (product.externalImageUrl ? [product.externalImageUrl] : [])
+  const longDescription = extra?.longDescription ?? product.description
+
+  const ageLabelShort = product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup
+  const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
+  const categorySlug = product.ageGroup === '7-8' ? '7-8-aringar' : `${product.ageGroup}-aringar`
   const discount = product.originalPrice && product.originalPrice > product.price
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null
-  const ageLabel = product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup
+
+  const tProds = randomTestimonials(slug, 3)
+  const related = await getRelated(product._id, product.theme)
+  // Pick 2 random blog posts
+  const recentPosts = blogPosts.slice(0, 2)
 
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+
         {/* Breadcrumbs */}
-        <div className="max-w-7xl mx-auto px-4 pt-6">
-          <Breadcrumbs items={[
-            { label: 'Kalas', href: '/kalas' },
-            { label: `För ${ageLabel}-åringar`, href: `/kalas/${ageLabel.replace(' & ', '-').toLowerCase()}` },
-            { label: product.name, href: '' }
-          ]} />
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1.5rem 1.5rem 0' }}>
+          <nav style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: '1.2rem',
+            color: '#7c7c7c',
+            flexWrap: 'wrap',
+          }}>
+            <a href="/" style={{ color: '#7c7c7c', textDecoration: 'none' }}>Hem</a>
+            <span>/</span>
+            <a href="/kalas" style={{ color: '#7c7c7c', textDecoration: 'none' }}>Kalas</a>
+            <span>/</span>
+            <a href={`/kalas/${categorySlug}`} style={{ color: '#7c7c7c', textDecoration: 'none' }}>För {ageLabel}</a>
+            <span>/</span>
+            <span style={{ color: '#272729', fontWeight: 700 }}>{product.name}</span>
+          </nav>
         </div>
 
-        {/* Hero */}
-        <div className="max-w-7xl mx-auto px-4 pb-8">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            {/* Image */}
-            <div className="rounded-2xl overflow-hidden aspect-[4/3] relative">
-              {product.image ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={urlFor(product.image).width(800).height(600).url()}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : product.externalImageUrl ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={product.externalImageUrl}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div
-                  className="w-full h-full flex items-center justify-center text-9xl"
-                  style={{ background: `linear-gradient(135deg, ${theme.from}, ${theme.to})` }}
-                >
-                  {theme.emoji}
-                </div>
-              )}
-              {/* Badges */}
-              <div className="absolute top-4 left-4 flex gap-2">
-                {product.isNew && (
-                  <span className="bg-[#7C3AED] text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
-                    Nyhet
-                  </span>
-                )}
-                {product.isPopular && (
-                  <span className="bg-[#FCD34D] text-gray-900 text-xs font-bold px-3 py-1 rounded-full uppercase">
-                    Populär
-                  </span>
-                )}
-              </div>
-              {discount && (
-                <span className="absolute top-4 right-4 bg-[#F472B6] text-white text-xs font-bold px-3 py-1 rounded-full">
-                  -{discount}%
-                </span>
-              )}
-            </div>
+        {/* Hero — Carousel + Buy panel */}
+        <div style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '2rem 1.5rem 4rem',
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)',
+          gap: '3rem',
+          alignItems: 'start',
+        }} className="product-hero-grid">
 
-            {/* Info */}
-            <div className="flex flex-col">
-              <p className="text-sm text-gray-500 mb-2">För {ageLabel}-åringar · {product.theme}</p>
-              <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">{product.name}</h1>
-              <p className="text-gray-600 leading-relaxed mb-6">{product.description}</p>
-
-              {/* Price */}
-              <div className="flex items-baseline gap-3 mb-6">
-                <span className="text-5xl font-extrabold text-gray-900">{product.price} kr</span>
-                {product.originalPrice && product.originalPrice > product.price && (
-                  <span className="text-xl text-[#F472B6] line-through font-bold">{product.originalPrice} kr</span>
-                )}
-              </div>
-
-              {/* Buy section */}
-              <ProductBuySection product={product} />
-
-              {/* Trust badges */}
-              <div className="grid grid-cols-3 gap-3 text-center">
-                {[
-                  { icon: '⚡', label: 'Direkt nedladdning' },
-                  { icon: '💯', label: '100% nöjdhetsgaranti' },
-                  { icon: '🖨️', label: 'Skriv ut hemma' },
-                ].map(b => (
-                  <div key={b.label} className="bg-gray-50 rounded-xl py-3 px-2">
-                    <div className="text-xl mb-1">{b.icon}</div>
-                    <p className="text-xs text-gray-600 font-medium leading-tight">{b.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* Carousel */}
+          <div>
+            <ImageCarousel
+              images={carouselImages.length > 0 ? carouselImages : [product.externalImageUrl ?? '']}
+              alt={product.name}
+              badges={{ popular: product.isPopular, discountPercent: discount }}
+            />
           </div>
-        </div>
 
-        {/* What's included */}
-        <div className="border-t border-gray-100 bg-violet-50">
-          <div className="max-w-7xl mx-auto px-4 py-14">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-2">Vad ingår?</h2>
-            <p className="text-gray-500 text-center mb-10">
-              Allt du behöver för ett perfekt kalas – nedladdningsbart direkt efter köp
-            </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {INCLUDED_ITEMS.map(item => (
-                <div key={item.label} className="bg-white rounded-2xl p-5 flex gap-4 items-start shadow-sm">
-                  <span className="text-3xl flex-shrink-0">{item.icon}</span>
-                  <div>
-                    <p className="font-bold text-gray-900 text-sm">{item.label}</p>
-                    <p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>
-                  </div>
+          {/* Info panel */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <span style={{
+              alignSelf: 'flex-start',
+              backgroundColor: '#fce8e0',
+              color: '#5910b6',
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.1rem',
+              fontWeight: 700,
+              padding: '0.35rem 1rem',
+              borderRadius: '500px',
+            }}>
+              för {ageLabel}
+            </span>
+
+            <h1 style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: 'clamp(2.6rem, 5vw, 4rem)',
+              fontWeight: 800,
+              color: '#5910b6',
+              lineHeight: '90%',
+              margin: 0,
+            }}>{product.name}</h1>
+
+            <p style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.25rem',
+              fontWeight: 500,
+              color: '#272729',
+              lineHeight: '150%',
+              margin: 0,
+            }}>{longDescription}</p>
+
+            {/* Price */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginTop: '0.5rem' }}>
+              <span style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: '3.5rem',
+                fontWeight: 800,
+                color: '#272729',
+                lineHeight: 1,
+              }}>{product.price} kr</span>
+              {product.originalPrice && product.originalPrice > product.price && (
+                <span style={{
+                  fontFamily: 'caraque-melted, sans-serif',
+                  fontSize: '1.5rem',
+                  color: '#b96e6e',
+                  textDecoration: 'line-through',
+                  fontWeight: 700,
+                }}>{product.originalPrice} kr</span>
+              )}
+            </div>
+
+            <ProductBuySection product={product} />
+
+            {/* Trust badges */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: '0.5rem',
+              marginTop: '0.5rem',
+            }}>
+              {[
+                { icon: '⚡', label: 'Direkt nedladdning' },
+                { icon: '💯', label: '100% nöjdhetsgaranti' },
+                { icon: '🖨️', label: 'Skriv ut hemma' },
+              ].map(b => (
+                <div key={b.label} style={{
+                  backgroundColor: '#faf1ef',
+                  borderRadius: '1.5rem',
+                  padding: '1rem 0.75rem',
+                  textAlign: 'center',
+                }}>
+                  <div style={{ fontSize: '1.4rem', marginBottom: '0.25rem' }}>{b.icon}</div>
+                  <p style={{
+                    fontFamily: 'caraque-melted, sans-serif',
+                    fontSize: '0.95rem',
+                    fontWeight: 700,
+                    color: '#272729',
+                    margin: 0,
+                    lineHeight: '120%',
+                  }}>{b.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* How it works */}
-        <div className="max-w-7xl mx-auto px-4 py-14">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Hur fungerar det?</h2>
-          <div className="grid sm:grid-cols-4 gap-6">
-            {[
-              { num: '1', title: 'Välj kalas', desc: 'Välj rätt tema och åldersgrupp för ditt barn.' },
-              { num: '2', title: 'Betala', desc: 'Säker betalning med kort, Swish eller Klarna.' },
-              { num: '3', title: 'Ladda ner', desc: 'Direkt tillgång till alla filer via e-post.' },
-              { num: '4', title: 'Fira!', desc: 'Skriv ut hemma och njut av ett minnesvärts kalas.' },
-            ].map(step => (
-              <div key={step.num} className="text-center">
-                <div className="w-12 h-12 bg-[#7C3AED] text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3">
-                  {step.num}
+        {/* Vad ingår? */}
+        <section style={{ backgroundColor: '#faf1ef', padding: '5rem 1.5rem' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <h2 style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+                fontWeight: 800,
+                color: '#5910b6',
+                lineHeight: '95%',
+                marginBottom: '0.5rem',
+              }}>Vad ingår i kalaset?</h2>
+              <p style={{
+                fontFamily: 'caraque-melted, sans-serif',
+                fontSize: '1.3rem',
+                color: '#4e4e4e',
+              }}>Allt du behöver för ett perfekt {ageLabelShort}-årskalas — laddas ner direkt</p>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1rem',
+            }}>
+              {includedItems.map(item => (
+                <div key={item.slug} style={{
+                  backgroundColor: 'white',
+                  borderRadius: '1.5rem',
+                  padding: '1.25rem 1.5rem',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '0.75rem',
+                }}>
+                  <span style={{ color: '#3e755a', fontSize: '1.3rem', flexShrink: 0, fontWeight: 700 }}>✓</span>
+                  <div>
+                    <p style={{
+                      fontFamily: 'caraque-melted, sans-serif',
+                      fontSize: '1.15rem',
+                      fontWeight: 700,
+                      color: '#272729',
+                      margin: 0,
+                      lineHeight: '120%',
+                    }}>{item.name}</p>
+                    <p style={{
+                      fontFamily: 'caraque-melted, sans-serif',
+                      fontSize: '1rem',
+                      color: '#7c7c7c',
+                      margin: '0.25rem 0 0',
+                      lineHeight: '130%',
+                    }}>{item.tooltip}</p>
+                  </div>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-1">{step.title}</h3>
-                <p className="text-gray-500 text-sm">{step.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* Randomized testimonials */}
+        <Testimonials
+          items={tProds}
+          heading="Vad andra föräldrar säger"
+          subheading="Verkliga omdömen från familjer som använt våra paket."
+        />
+
+        {/* Kalasbloggen teasers */}
+        <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
+          <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <h2 style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: 'clamp(2rem, 4vw, 3.4rem)',
+                fontWeight: 800,
+                color: '#5910b6',
+                lineHeight: '95%',
+                marginBottom: '0.5rem',
+              }}>Tips från Kalasbloggen</h2>
+              <p style={{
+                fontFamily: 'caraque-melted, sans-serif',
+                fontSize: '1.3rem',
+                color: '#4e4e4e',
+              }}>Inspiration för att göra kalaset oförglömligt.</p>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '1.5rem',
+            }}>
+              {recentPosts.map(post => (
+                <a
+                  key={post.slug}
+                  href={`/kalasbloggen/${post.slug}`}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    backgroundColor: '#faf1ef',
+                    borderRadius: '2.5rem',
+                    overflow: 'hidden',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                  <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <span style={{
+                      alignSelf: 'flex-start',
+                      backgroundColor: '#6e42ff',
+                      color: '#faf1ef',
+                      padding: '0.2rem 0.75rem',
+                      borderRadius: '500px',
+                      fontFamily: 'caraque-solid, sans-serif',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                    }}>{post.category}</span>
+                    <h3 style={{
+                      fontFamily: 'caraque-solid, sans-serif',
+                      fontSize: '1.6rem',
+                      fontWeight: 800,
+                      color: '#272729',
+                      lineHeight: '95%',
+                      margin: 0,
+                    }}>{post.title}</h3>
+                    <span style={{
+                      fontFamily: 'caraque-melted, sans-serif',
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      color: '#5910b6',
+                      marginTop: '0.25rem',
+                    }}>Läs mer →</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <FAQ
+          heading="Vanliga frågor om kalasen"
+          subheading="Är något oklart? Här svarar vi på det vi får frågor om mest."
+        />
 
         {/* Related */}
         {related.length > 0 && (
-          <div className="bg-gray-50 border-t border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 py-14">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Fler kalas du kan gilla</h2>
-              <div className="grid sm:grid-cols-3 gap-5">
+          <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
+            <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+              <h2 style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontWeight: 800,
+                color: '#5910b6',
+                marginBottom: '2.5rem',
+                textAlign: 'center',
+                lineHeight: '95%',
+              }}>Fler kalas du kan gilla</h2>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '1.5rem',
+              }}>
                 {related.map(p => {
-                  const t = themeColors[p.theme.toLowerCase()] ?? { from: '#f3f4f6', to: '#e5e7eb', emoji: '🎉' }
+                  const pAge = p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`
                   return (
                     <a
                       key={p._id}
                       href={`/kalas/${p.slug.current}`}
-                      className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-violet-300 hover:shadow-lg transition-all"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.75rem',
+                        textDecoration: 'none',
+                      }}
                     >
-                      <div className="relative h-40 overflow-hidden">
-                        {p.externalImageUrl ? (
+                      <div style={{ borderRadius: '1.75rem', overflow: 'hidden', aspectRatio: '4 / 3', backgroundColor: 'white' }}>
+                        {p.externalImageUrl && (
                           /* eslint-disable-next-line @next/next/no-img-element */
-                          <img src={p.externalImageUrl} alt={p.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                        ) : (
-                          <div
-                            className="w-full h-full flex items-center justify-center text-5xl"
-                            style={{ background: `linear-gradient(135deg, ${t.from}, ${t.to})` }}
-                          >
-                            {t.emoji}
-                          </div>
+                          <img src={p.externalImageUrl} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         )}
                       </div>
-                      <div className="p-4">
-                        <p className="text-xs text-gray-400 mb-0.5">för {p.ageGroup === '7-8' ? '7 & 8' : p.ageGroup}-åringar</p>
-                        <h3 className="font-bold text-gray-900 group-hover:text-[#7C3AED] transition-colors">{p.name}</h3>
-                        <p className="text-[#7C3AED] font-bold mt-1">{p.price} kr</p>
+                      <div style={{ textAlign: 'center' }}>
+                        <h3 style={{
+                          fontFamily: 'caraque-solid, sans-serif',
+                          fontSize: '1.8rem',
+                          fontWeight: 800,
+                          color: '#5910b6',
+                          margin: 0,
+                          lineHeight: '95%',
+                        }}>{p.name}</h3>
+                        <p style={{
+                          fontFamily: 'caraque-melted, sans-serif',
+                          fontSize: '1rem',
+                          color: '#7c7c7c',
+                          marginTop: '0.25rem',
+                        }}>för {pAge}</p>
                       </div>
                     </a>
                   )
                 })}
               </div>
             </div>
-          </div>
+          </section>
         )}
+
       </main>
       <Footer />
+
+      <style>{`
+        @media (max-width: 880px) {
+          .product-hero-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </>
   )
 }
