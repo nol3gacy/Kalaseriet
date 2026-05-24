@@ -42,10 +42,10 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
   return (
     <div className="carousel-stage" style={{
       position: 'relative',
-      backgroundColor: '#ffa6a6',
+      backgroundColor: 'transparent',
       borderRadius: '2.5rem',
-      padding: '2.5rem 1rem 1.5rem',
-      overflow: 'hidden',
+      padding: '1.5rem 0 1.5rem',
+      overflow: 'visible',
     }}>
       {/* POPPIS sticker — purple blob SVG */}
       {badges?.popular && (

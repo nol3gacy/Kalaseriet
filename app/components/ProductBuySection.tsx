@@ -69,14 +69,23 @@ export default function ProductBuySection({ product }: { product: Product }) {
           marginTop: '0.5rem',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem' }}>
+        {/* Price block: 269 kr rotated -8deg and offset up-left, like the design */}
+        <div style={{ position: 'relative', display: 'inline-block', paddingTop: '0.5rem' }}>
           {product.originalPrice && product.originalPrice > product.price && (
             <span style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.4rem',
-              color: '#b96e6e',
+              position: 'absolute',
+              top: '-6px',
+              left: '-12px',
+              fontFamily: 'var(--font-manrope), sans-serif',
+              fontSize: '1.5rem',
+              color: '#ff4d6d',
               textDecoration: 'line-through',
+              textDecorationColor: '#ff4d6d',
+              textDecorationThickness: '2.5px',
               fontWeight: 700,
+              transform: 'rotate(-10deg)',
+              transformOrigin: 'left bottom',
+              whiteSpace: 'nowrap',
             }}>{product.originalPrice} kr</span>
           )}
           <span style={{
@@ -93,26 +102,25 @@ export default function ProductBuySection({ product }: { product: Product }) {
         </button>
       </div>
 
-      {/* Trust signals row */}
+      {/* Trust signals: bold sans (not caraque), proper green checkmark SVG */}
       <div style={{
         display: 'flex',
         gap: '1.25rem',
         flexWrap: 'wrap',
-        marginTop: '0.5rem',
-        fontFamily: 'caraque-melted, sans-serif',
-        fontSize: '1.05rem',
+        marginTop: '0.75rem',
+        fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+        fontSize: '0.95rem',
         color: '#272729',
         fontWeight: 700,
       }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-          <span style={{ color: '#3e755a' }}>✓</span> Leveras direkt till din e-post
-        </span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-          <span style={{ color: '#3e755a' }}>✓</span> 100% Nöjdhetsgaranti
-        </span>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-          <span style={{ color: '#3e755a' }}>✓</span> Säker betalning
-        </span>
+        {['Leveras direkt till din e-post', '100% Nöjdhetsgaranti', 'Säker betalning'].map(label => (
+          <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3e755a" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            {label}
+          </span>
+        ))}
       </div>
 
       {/* Floating sticky Köp nu — bottom right, appears after scroll past inline button */}
@@ -132,19 +140,27 @@ export default function ProductBuySection({ product }: { product: Product }) {
           boxShadow: '0 12px 40px rgba(89,16,182,0.25), 0 2px 8px rgba(0,0,0,0.08)',
           maxWidth: 'calc(100vw - 3rem)',
         }}>
-          {/* Price block — matches the inline price (strikethrough + current) */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+          {/* Price block — strikethrough rotated above current price */}
+          <div style={{ position: 'relative', paddingTop: '0.35rem' }}>
             {product.originalPrice && product.originalPrice > product.price && (
               <span style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: '1.1rem',
-                color: '#b96e6e',
+                position: 'absolute',
+                top: '-4px',
+                left: '-8px',
+                fontFamily: 'var(--font-manrope), sans-serif',
+                fontSize: '0.95rem',
+                color: '#ff4d6d',
                 textDecoration: 'line-through',
+                textDecorationColor: '#ff4d6d',
+                textDecorationThickness: '2px',
                 fontWeight: 700,
+                transform: 'rotate(-10deg)',
+                transformOrigin: 'left bottom',
+                whiteSpace: 'nowrap',
               }}>{product.originalPrice} kr</span>
             )}
             <span style={{
-              fontFamily: 'caraque-solid, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.8rem',
               fontWeight: 800,
               color: '#5910b6',

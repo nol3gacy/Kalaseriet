@@ -4,7 +4,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-manrope), system-ui, sans-serif;
-  --font-display: caraque-solid, system-ui, sans-serif;
+  --font-display: caraque-melted, system-ui, sans-serif;
 }
 
 /* ── Kalaseriet brand CSS variables (exact match from kalaseriet.se) ── */
@@ -45,7 +45,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: caraque-solid, system-ui, sans-serif;
+  font-family: caraque-melted, system-ui, sans-serif;
 }
 
 /* Prevent any horizontal scroll on mobile (defensive) */

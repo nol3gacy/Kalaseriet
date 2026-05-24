@@ -178,7 +178,7 @@ export default function MiniCart() {
                     />
                   )}
                   <h3 style={{
-                    fontFamily: 'caraque-solid, sans-serif',
+                    fontFamily: 'caraque-melted, sans-serif',
                     fontSize: '1.8rem',
                     fontWeight: 800,
                     color: '#5910b6',
@@ -239,7 +239,7 @@ export default function MiniCart() {
                 color: '#4e4e4e',
               }}>Totalt</span>
               <span style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '2rem',
                 fontWeight: 800,
                 color: '#5910b6',

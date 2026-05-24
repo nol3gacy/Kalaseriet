@@ -80,7 +80,7 @@ export default function Navbar() {
         />
       ) : (
         <span style={{
-          fontFamily: 'caraque-solid, sans-serif',
+          fontFamily: 'caraque-melted, sans-serif',
           fontSize: 'clamp(1.6rem, 2.5vw, 2rem)',
           fontWeight: 800,
           color: '#5910b6',
@@ -230,7 +230,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               style={{
-                fontFamily: 'caraque-solid, sans-serif',
+                fontFamily: 'caraque-melted, sans-serif',
                 fontSize: 'clamp(3rem, 9vw, 4rem)',
                 fontWeight: 800,
                 color: '#6e42ff',
@@ -250,13 +250,17 @@ export default function Navbar() {
       <div style={{ height: 'calc(1.5rem + 56px + 1.5rem)' }} />
 
       <style>{`
-        /* Force Lottie logo color to brand indigo — Webflow's Lottie has #6e42ff which looks washed */
-        .logo-anim svg path[fill],
-        .logo-anim svg g[fill],
+        /* Force Lottie logo color to brand indigo + full opacity (was looking weak/washed) */
         .logo-anim svg path,
-        .logo-anim svg g {
+        .logo-anim svg g[fill],
+        .logo-anim svg [fill],
+        .logo-anim svg path[fill] {
           fill: #5910b6 !important;
+          opacity: 1 !important;
+          fill-opacity: 1 !important;
         }
+        .logo-anim svg g { opacity: 1 !important; }
+        .logo-anim { filter: none; }
         @media (max-width: 880px) {
           .navbar-links { display: none !important; }
           .navbar-menu-btn { display: inline-flex !important; align-items: center; }

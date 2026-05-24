@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 // Matches kalaseriet.se bento grid exactly:
-// .heading.is--bento: caraque-solid, 3.4rem, color: #6e42ff
+// .heading.is--bento: caraque-melted, 3.4rem, color: #6e42ff
 // .heading.is--bento.is--larger: 5rem
 // .text.is--bold: caraque-melted, bold
 
@@ -108,9 +108,9 @@ function BentoCard({ item }: { item: BentoItem }) {
               {item.label}
             </p>
           )}
-          {/* Bento headings ARE caraque-solid per kalaseriet.se (.heading.is--bento) */}
+          {/* Bento headings ARE caraque-melted per kalaseriet.se (.heading.is--bento) */}
           <h2 style={{
-            fontFamily: 'caraque-solid, sans-serif',
+            fontFamily: 'caraque-melted, sans-serif',
             fontSize: isLarger ? '5rem' : '3.4rem',
             fontWeight: 700,
             color: headingColor,

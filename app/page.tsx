@@ -201,7 +201,7 @@ export default async function Home() {
       {/* ── Hero ────────────────────────────────────────────── */}
       {/* Matches kalaseriet.se hero exactly:
           - Fullscreen video background
-          - caraque-solid preamble + xxl heading + asterisk
+          - caraque-melted preamble + xxl heading + asterisk
           - caraque-melted subtext
           - Two buttons: indigo pill + secondary outline
       */}

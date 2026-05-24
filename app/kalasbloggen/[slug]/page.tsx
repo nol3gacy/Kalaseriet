@@ -213,7 +213,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       color: '#5910b6',
                       display: 'inline-block',
                       marginTop: '0.75rem',
-                    }}>Läs mer →</span>
+                    }}>Läs mer ›</span>
                   </div>
                 </a>
               ))}

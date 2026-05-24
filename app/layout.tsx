@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="sv" className={`${manrope.variable} h-full antialiased`}>
       <head>
-        {/* Caraque (caraque-solid, caraque-melted) via Adobe Fonts */}
+        {/* Caraque (caraque-melted, caraque-melted) via Adobe Fonts */}
         <link rel="stylesheet" href="https://use.typekit.net/lee7ejt.css" />
       </head>
       <body className="min-h-full flex flex-col">

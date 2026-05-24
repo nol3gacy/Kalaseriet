@@ -26,10 +26,8 @@ async function getProduct(slug: string): Promise<Product | null> {
 }
 
 async function getRelated(currentId: string, ageGroup: string): Promise<Product[]> {
-  // "Alla kalas för X-åringar" — same age group, exclude current
-  return fallbackProducts
-    .filter(p => p.ageGroup === ageGroup && p._id !== currentId)
-    .slice(0, 4)
+  // "Alla kalas för X-åringar" — show ALL in same age group (excluding current)
+  return fallbackProducts.filter(p => p.ageGroup === ageGroup && p._id !== currentId)
 }
 
 export async function generateStaticParams() {
@@ -252,6 +250,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
+        {/* FAQ — directly after innehåll per user request */}
+        <FAQ
+          heading="Vanliga frågor om kalasen"
+          subheading="Är något oklart? Här svarar vi på det vi får frågor om mest."
+        />
+
         {/* Randomized testimonials */}
         <Testimonials
           items={tProds}
@@ -325,19 +329,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       fontWeight: 700,
                       color: '#5910b6',
                       marginTop: '0.25rem',
-                    }}>Läs mer →</span>
+                    }}>Läs mer ›</span>
                   </div>
                 </a>
               ))}
             </div>
           </div>
         </section>
-
-        {/* FAQ */}
-        <FAQ
-          heading="Vanliga frågor om kalasen"
-          subheading="Är något oklart? Här svarar vi på det vi får frågor om mest."
-        />
 
         {/* Marquee with discount code — same as homepage */}
         <DiscountMarquee />
@@ -347,7 +345,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
             <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
               <h2 style={{
-                fontFamily: 'caraque-solid, sans-serif',  // chubby per kalaseriet "Alla kalas för" listing heading
+                fontFamily: 'caraque-melted, sans-serif',  // chubby per kalaseriet "Alla kalas för" listing heading
                 fontSize: 'clamp(2.4rem, 5vw, 4rem)',
                 fontWeight: 800,
                 color: '#5910b6',

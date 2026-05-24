@@ -167,7 +167,7 @@ export default function KalasbloggenPage() {
                 color: '#5910b6',
                 marginTop: '0.5rem',
               }}>
-                Läs mer →
+                Läs mer ›
               </span>
             </div>
           </a>
@@ -253,7 +253,7 @@ export default function KalasbloggenPage() {
                     fontWeight: 700,
                     color: '#5910b6',
                   }}>
-                    Läs mer →
+                    Läs mer ›
                   </span>
                 </div>
               </a>

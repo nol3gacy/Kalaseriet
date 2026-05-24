@@ -7,7 +7,7 @@ import Sticker from './Sticker'
 // - Cream rounded image
 // - POPPIS sticker (purple blob SVG) top-left, rotated
 // - NYHET sticker (salmon blob SVG) top-right
-// - Title in caraque-melted bold (NOT caraque-solid — that's reserved for bento)
+// - Title in caraque-melted bold (NOT caraque-melted — that's reserved for bento)
 // - Age-pill outline style "Kalas för X-åringar"
 // - Body text in regular weight (lighter than before)
 
@@ -93,7 +93,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Title + age + description */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.5rem', padding: '0 0.5rem' }}>
-        {/* Title: caraque-melted BOLD (not caraque-solid) — matches .heading on kalaseriet */}
+        {/* Title: caraque-melted BOLD (not caraque-melted) — matches .heading on kalaseriet */}
         <h3 className="card-title" style={{
           fontFamily: 'caraque-melted, sans-serif',
           fontSize: '2rem',

@@ -3,6 +3,13 @@
 import { useState } from 'react'
 import { faqs } from '../../lib/data/faq'
 
+// Matches kalaseriet.se FAQ design per screenshot:
+// - Black/obsidian question text (bold sans)
+// - Plain + icon (no circle background), rotates to × on open
+// - Cream/pink subtle hover/active background
+// - Thin separator lines between items
+// - Open item: shows answer below in dark gray body text
+
 export default function FAQ({
   heading = 'Vanliga frågor',
   subheading,
@@ -10,52 +17,55 @@ export default function FAQ({
   const [expanded, setExpanded] = useState<number | null>(0)
 
   return (
-    <section style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
-      <div style={{ maxWidth: '780px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+    <section style={{ padding: '4rem 1.5rem', backgroundColor: 'white' }}>
+      <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+        <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
           <h2 style={{
             fontFamily: 'caraque-melted, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',
             lineHeight: '95%',
-            marginBottom: '1rem',
+            marginBottom: '0.75rem',
           }}>{heading}</h2>
           {subheading && (
             <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.3rem',
+              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+              fontSize: '1.05rem',
               color: '#4e4e4e',
-              lineHeight: '130%',
+              lineHeight: '140%',
             }}>{subheading}</p>
           )}
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+        <div className="faq-list" style={{ display: 'flex', flexDirection: 'column' }}>
           {faqs.map((faq, i) => {
             const open = expanded === i
             return (
               <div
                 key={i}
+                className="faq-item"
                 style={{
-                  backgroundColor: '#faf1ef',
-                  borderRadius: '2rem',
-                  overflow: 'hidden',
+                  borderTop: i === 0 ? '1px solid rgba(89,16,182,0.12)' : 'none',
+                  borderBottom: '1px solid rgba(89,16,182,0.12)',
+                  backgroundColor: open ? '#faf1ef' : 'transparent',
+                  transition: 'background-color 0.15s',
+                  borderRadius: open ? '1rem' : 0,
                 }}
               >
                 <button
                   onClick={() => setExpanded(open ? null : i)}
                   style={{
                     width: '100%',
-                    padding: '1.5rem 2rem',
+                    padding: '1.25rem 1rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'caraque-melted, sans-serif',
-                    fontSize: '1.4rem',
+                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                    fontSize: '1.2rem',
                     fontWeight: 700,
                     color: '#272729',
                     textAlign: 'left',
@@ -63,30 +73,36 @@ export default function FAQ({
                   }}
                 >
                   <span style={{ flex: 1 }}>{faq.question}</span>
-                  <span style={{
-                    flexShrink: 0,
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    backgroundColor: '#5910b6',
-                    color: '#faf1ef',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    transform: open ? 'rotate(45deg)' : 'rotate(0)',
-                    transition: 'transform 0.2s',
-                    fontSize: '1.4rem',
-                    lineHeight: 1,
-                  }}>+</span>
+                  {/* + icon, rotates to × when open — no circle */}
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#272729"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{
+                      flexShrink: 0,
+                      transition: 'transform 0.2s',
+                      transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+                    }}
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
                 </button>
                 {open && (
                   <div
                     style={{
-                      padding: '0 2rem 1.75rem',
-                      fontFamily: 'caraque-melted, sans-serif',
-                      fontSize: '1.15rem',
-                      color: '#4e4e4e',
-                      lineHeight: '150%',
+                      padding: '0 1rem 1.5rem',
+                      fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                      fontSize: '1.05rem',
+                      color: '#272729',
+                      lineHeight: '160%',
+                      fontWeight: 500,
                     }}
                     dangerouslySetInnerHTML={{ __html: faq.answer }}
                   />
@@ -96,6 +112,12 @@ export default function FAQ({
           })}
         </div>
       </div>
+
+      <style>{`
+        .faq-item:hover:not(:has(button[aria-expanded="true"])) {
+          background-color: rgba(250, 241, 239, 0.5);
+        }
+      `}</style>
     </section>
   )
 }
