@@ -79,6 +79,103 @@ export const blogPosts: BlogPost[] = [
     date: '17 November 2024',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
   },
+  // ─── SEO-optimerade nya inlägg (riktade mot organisk Google-trafik) ───
+  {
+    slug: 'lekar-for-6-aringar',
+    title: 'Lekar för 6-åringar: 12 favoriter som funkar på varje kalas',
+    summary: 'Här är våra 12 mest populära kalaslekar för 6-åringar — bevisade i skarpt läge och alla med tydliga instruktioner.',
+    body: `<h2>Söker du roliga lekar till sex-årskalaset? Här är vår testade samling — alla anpassade efter vad sex-åringar älskar, klarar och blir engagerade av.</h2>
+<h3>1. Klassisk fiskdamm</h3><p>Ett laken eller en filt över en stol, en fiskespö med klädnypa, och små godispåsar att fiska upp. Funkar varje gång.</p>
+<h3>2. Skattjakt med karta</h3><p>Rita en enkel karta över hemmet. 5-6 ledtrådar leder till en gömd skatt. <a href="/kalas/6-aringar">Våra färdiga kalaspaket</a> innehåller skattjakt-mallar.</p>
+<h3>3. Stoppdans</h3><p>Pop på en spellista, dansa loss — när musiken stannar måste alla frysa. Den som rör sig är ute.</p>
+<h3>4. Pinjata</h3><p>Slå sönder en pinjata fylld med godis. Sex-åringar älskar fysiken i det.</p>
+<h3>5. Charader för barn</h3><p>Skriv ut djur, yrken eller saker på lappar. Barnen drar och agerar utan ord.</p>
+<h3>6. Limbo</h3><p>En kvast eller käpp + reggae-musik = vinnande kombination.</p>
+<h3>7. Hetast på stolarna</h3><p>En stol mindre än antal barn. När musiken stannar — kämpa om en stol.</p>
+<h3>8. Pussel-tävling</h3><p>Två lag, två pussel. Vinnaren får pris.</p>
+<h3>9. Ballong-volleyboll</h3><p>Ett rep mellan två stolar, ballong istället för boll. Inomhus-vänligt och säkert.</p>
+<h3>10. Mjölkkartong-bowling</h3><p>Töm 6 mjölkkartonger, ställ upp som kägglor, rulla en boll.</p>
+<h3>11. Memory IRL</h3><p>Vänd lock från små burkar uppochner. Barnen letar par.</p>
+<h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
+<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller färdiga instruktioner, rekvisita-tips och spellistor till alla dessa lekar — plus 8 till.</p>`,
+    category: 'Tips',
+    date: '25 maj 2026',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
+  },
+  {
+    slug: 'budget-barnkalas-tips',
+    title: 'Budget-barnkalas: Så fixar du minnesvärt kalas under 1000 kr',
+    summary: 'Komplett guide till att hålla ett barnkalas under 1000 kronor — utan att tumma på upplevelsen för barnen.',
+    body: `<h2>Ett bra kalas behöver inte kosta tusentals kronor. Vi visar exakt vad du kan göra för att hålla budgeten utan att kalaset känns billigt.</h2>
+<h3>Inbjudningar: 0 kr</h3><p>Skriv ut hemma istället för att beställa. <a href="/kalas">Våra kalaspaket inkluderar tema-matchade inbjudningsmallar</a> — bara att fylla i namn och datum.</p>
+<h3>Dekorationer: max 150 kr</h3><p>Ballonger från IKEA (29 kr för 50 st), wimpel i pappersremsor du klipper själv, blommor från trädgården. Färdiga PDF-dekorationer från oss att skriva ut hemma.</p>
+<h3>Mat: 200-300 kr</h3><p>Tre val: muffins (40 kr för 12 st), popcorn (15 kr), fruktspett (50 kr). Skippa cateringen — barnen vill ha snacks de känner igen.</p>
+<h3>Kalaspåsar: 250 kr för 10 barn</h3><p>Köp i bulk på Clas Ohlson eller Åhléns. Klistermärken, små klossar, lite godis. Sätter sammans till ca 25 kr per påse. Vår <a href="/kalasbloggen/diy-kalaspase">DIY-kalaspåse-guide</a> har fler tips.</p>
+<h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 99 kr och innehåller 20 testade lekar.</p>
+<h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
+<p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
+    category: 'Tips',
+    date: '23 maj 2026',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
+  },
+  {
+    slug: 'tema-piratkalas',
+    title: 'Piratkalas: Komplett guide för dekoration, lekar och meny',
+    summary: 'Allt du behöver för att fixa ett piratkalas barnen kommer prata om i månader — från inbjudan till skattjakten.',
+    body: `<h2>Piratkalas är en av de mest älskade temana för barn 4-8 år. Här är hela vår guide till hur du sätter ihop ett oförglömligt piratkalas.</h2>
+<h3>Stämningen</h3><p>Mörkrött, svart och guld. Pirat-flaggor (kan skrivas ut), guldmynt utspridda, sjökort på väggen. Spotify har bra "Pirate Music"-spellistor.</p>
+<h3>Inbjudningar</h3><p>Skriv på papper du bränt kanterna på (med vuxen-hjälp) eller skriv ut piratteman direkt från <a href="/kalas/piratkalaset-for-4-aringar">vårt piratkalaspaket</a>.</p>
+<h3>Klädsel</h3><p>Be alla barn komma utklädda. Pirathattar i kartong, ögonlapp i svart papper, randiga T-shirts — enkelt och hemmagjort funkar bäst.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Skattjakten</strong> — höjdpunkten. 6-8 ledtrådar runt huset, skatten är en kista med godis och små leksaker.</li>
+<li><strong>Walk the plank</strong> — en planka på golvet, barnen ska balansera utan att "falla i havet"</li>
+<li><strong>Pirat-tatueringar</strong> — tillfälliga tatueringar (köp på Åhléns) som de får sätta på själva</li>
+<li><strong>Mjölkkartong-skepp</strong> — bygg pappskepp och kapprodda i baljor med vatten</li>
+</ul>
+<h3>Maten</h3><p>"Skeppsskorpor" (kex), "havsvatten" (blå festis), fruktspett som "skattens juveler", piratkaka med flaggor.</p>
+<h3>Kalaspåsen</h3><p>Sjörövarpåse med guldmynt (godis), en ögonlapp, en pirat-klistermärke. Räcker långt.</p>
+<p><a href="/kalas/piratkalaset-for-4-aringar">Vårt piratkalaspaket</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
+    category: 'Tema-guide',
+    date: '20 maj 2026',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/662373210fabe6fc857df4ba_Piratkalaset-4-aringar-cover.avif',
+  },
+  {
+    slug: 'barnkalas-mat-recept',
+    title: 'Barnkalas-mat: 15 enkla recept som barnen verkligen äter',
+    summary: 'Inga halvätna tallrikar. Här är de 15 enklaste och mest uppskattade kalasrätterna — testade på riktiga 4-8-åringar.',
+    body: `<h2>Föräldrar lägger ofta för mycket tid och pengar på kalasmat som barn ändå inte rör. Vi har testat oss igenom mängder och listat de 15 som funkar varje gång.</h2>
+<h3>Snacks (under en timme)</h3>
+<ul><li>Fruktspett (jordgubbar, druvor, ananas)</li><li>Popcorn — låt barnen krydda själva med strösocker</li><li>Mini-korv på pinne</li><li>Morots-stickor med ranchdipp</li><li>Cheez-doodles i skålar</li></ul>
+<h3>Huvudrätter</h3>
+<ul><li>Pizzabullar (köp deg, fyll med tomatsås + ost)</li><li>Hotdog-muffins (varmkorv i muffins-batter)</li><li>Mini-hamburgare</li><li>Pannkakor med sylt</li><li>Mac and cheese i muggar</li></ul>
+<h3>Söta saker</h3>
+<ul><li>Muffins — alltid en hit</li><li>Marshmallows på pinne, doppade i smält choklad</li><li>Rocky road (chokladkaka med marshmallows)</li><li>Glasstårta (köp och dekorera)</li><li>Vitchokladtryffel rullade i strössel</li></ul>
+<p>Alla med tydliga recept och allergi-anpassningar finns i <a href="/kalas">våra kalaspaket</a>. Inkluderar både vanliga och vegan/glutenfria varianter.</p>
+<p><strong>Tips:</strong> Gör det mesta dagen innan. Stressa inte med matlagning samma dag — barnen bryr sig mer om aktiviteterna.</p>`,
+    category: 'Tips',
+    date: '18 maj 2026',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
+  },
+  {
+    slug: 'kalas-tema-4-aringar',
+    title: 'Kalas-tema för 4-åringar: 8 mest populära (och hur du fixar dem)',
+    summary: 'De 8 mest älskade kalastemana för 4-åringar — vad de innehåller, hur de funkar och vilket som passar ditt barn.',
+    body: `<h2>4-åringar har just lärt sig vad fantasi är. Rätt tema förvandlar ett kalas från "bara mat och tårta" till ett äventyr de minns för alltid.</h2>
+<h3>1. Piratkalas</h3><p>Klassiker som funkar för både killar och tjejer. Skattjakt + dekoration = kalasets höjdpunkt. <a href="/kalas/piratkalaset-for-4-aringar">Se vårt piratkalaspaket</a>.</p>
+<h3>2. Safari/Djungel</h3><p>Djurmasker, snigelspel, "spåra apor" som lek. Lugn men spännande för försiktiga 4-åringar. <a href="/kalas/safarikalaset-for-4-aringar">Safarikalaset</a>.</p>
+<h3>3. Prins & Prinsessa</h3><p>Kronor, slott, magi. Pyssel-tungt — perfekt för en barngrupp som gillar lugnare aktiviteter. <a href="/kalas/prins-prinsesskalaset-for-4-aringar">Prinsesskalaset</a>.</p>
+<h3>4. Dinosaurier</h3><p>"Gräv ut ben" (godis i sand), dinosaurie-jakt. Fysiskt och fängslande. <a href="/kalas/dinosauriekalaset-for-4-aringar">Dinosauriekalaset</a>.</p>
+<h3>5. Rymd</h3><p>Stjärnor i taket, raket-pyssel, "astronaut-träning". Bra för fantasifulla barn. <a href="/kalas/rymdkalaset-for-4-aringar">Rymdkalaset</a>.</p>
+<h3>6. Robot</h3><p>Bygg robotar av tomma förpackningar, robot-dans. Roligt för kreativa barn. <a href="/kalas/robotkalaset-for-4-aringar">Robotkalaset</a>.</p>
+<h3>7. Superhjälte</h3><p>Hemmagjorda kappor, "rädda staden"-uppdrag. Energi-utlopp för aktiva 4-åringar. <a href="/kalas/superhjaltekalaset-for-4-aringar">Superhjältekalaset</a>.</p>
+<h3>8. Äventyr</h3><p>Hinderbana, "expedition", mysterielösning. Flexibelt tema som funkar i alla väder. <a href="/kalas/aventyrskalaset-for-4-aringar">Äventyrskalaset</a>.</p>
+<p>Alla våra teman kommer med inbjudningar, lekar, recept, dekorationstips, körschema och checklista — färdigt att skriva ut hemma.</p>
+<p><strong>Vilket ska du välja?</strong> Lyssna på barnet. 4-åringar VET vad de gillar. Fråga "vill du ha pirater, djur eller dinosaurier på ditt kalas?" och kör på svaret.</p>`,
+    category: 'Tema-guide',
+    date: '16 maj 2026',
+    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/6623e1e4739522fe6ee458c1_Safarikalaset%20for%204-aringar.avif',
+  },
   {
     slug: '10-tips-for-att-planera-ett-barnkalas',
     title: '10 tips för att planera ett barnkalas som alla kommer minnas',

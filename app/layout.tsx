@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./lib/cart-context";
+import MiniCart from "./components/MiniCart";
 
 // Body font — exact match with kalaseriet.se
 const manrope = Manrope({
@@ -50,7 +51,10 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/lee7ejt.css" />
       </head>
       <body className="min-h-full flex flex-col">
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          {children}
+          <MiniCart />
+        </CartProvider>
       </body>
     </html>
   );

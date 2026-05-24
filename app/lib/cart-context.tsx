@@ -15,6 +15,9 @@ interface CartContextType {
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
   total: number
+  miniCartOpen: boolean
+  openMiniCart: () => void
+  closeMiniCart: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -22,6 +25,9 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const [mounted, setMounted] = useState(false)
+  const [miniCartOpen, setMiniCartOpen] = useState(false)
+  const openMiniCart = () => setMiniCartOpen(true)
+  const closeMiniCart = () => setMiniCartOpen(false)
 
   // Hydrate from localStorage on mount
   useEffect(() => {
@@ -78,7 +84,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, updateQuantity, clearCart, total }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, updateQuantity, clearCart, total, miniCartOpen, openMiniCart, closeMiniCart }}>
       {children}
     </CartContext.Provider>
   )

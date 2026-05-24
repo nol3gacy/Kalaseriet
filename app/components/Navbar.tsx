@@ -56,7 +56,7 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
-  const { items } = useCart()
+  const { items, openMiniCart } = useCart()
   const cartCount = items.reduce((sum, item) => sum + item.quantity, 0)
 
   // Logo: Lottie animation with CSS color override on .logo-anim
@@ -92,8 +92,9 @@ export default function Navbar() {
   )
 
   const CartButton = (
-    <Link
-      href="/varukorg"
+    <button
+      type="button"
+      onClick={() => openMiniCart()}
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -106,13 +107,16 @@ export default function Navbar() {
         fontWeight: 500,
         color: '#5910b6',
         position: 'relative',
+        background: 'transparent',
+        border: 'none',
+        cursor: 'pointer',
       }}
-      aria-label="Varukorg"
+      aria-label="Öppna varukorg"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={CART_ICON_URL} alt="" width={22} height={22} style={{ display: 'block' }} />
       <span style={{ minWidth: '1ch' }}>{cartCount}</span>
-    </Link>
+    </button>
   )
 
   return (

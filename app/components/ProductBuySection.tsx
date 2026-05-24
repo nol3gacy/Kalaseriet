@@ -7,11 +7,40 @@ import type { Product } from '../page'
 
 export default function ProductBuySection({ product }: { product: Product }) {
   const router = useRouter()
-  const { addItem } = useCart()
+  const { addItem, items } = useCart()
   const [showSticky, setShowSticky] = useState(false)
 
   const handleBuyNow = async () => {
+    // Add to cart (persists in localStorage so it's still there if user backs from checkout)
     addItem(product)
+    // Build line items: the just-added product + everything already in cart
+    const allItems = [
+      { productId: product._id, productName: product.name, price: product.price, quantity: 1 },
+      ...items
+        .filter(i => i.product._id !== product._id)
+        .map(({ product: p, quantity }) => ({
+          productId: p._id,
+          productName: p.name,
+          price: p.price,
+          quantity,
+        })),
+    ]
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: allItems }),
+      })
+      const data = await res.json()
+      if (data?.url) {
+        // Redirect to Stripe-hosted checkout
+        window.location.href = data.url
+        return
+      }
+    } catch {
+      // Network/Stripe error — fall through
+    }
+    // Fallback: go to local cart page
     router.push('/varukorg')
   }
 

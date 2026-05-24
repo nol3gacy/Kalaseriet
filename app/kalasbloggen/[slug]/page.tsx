@@ -24,8 +24,38 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const otherPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 2)
 
+  // SEO: Article + BreadcrumbList JSON-LD
+  const BASE_URL = 'https://kalaseriet.vercel.app'
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.summary,
+    image: post.imageUrl,
+    datePublished: '2024-11-17',
+    dateModified: '2024-11-17',
+    author: { '@type': 'Organization', name: 'Kalaseriet' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kalaseriet',
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/stickers/tips.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/kalasbloggen/${slug}` },
+  }
+  const breadcrumbsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Hem',          item: `${BASE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Kalasbloggen', item: `${BASE_URL}/kalasbloggen` },
+      { '@type': 'ListItem', position: 3, name: post.title,     item: `${BASE_URL}/kalasbloggen/${slug}` },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }} />
       <Navbar />
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
 

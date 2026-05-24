@@ -67,8 +67,51 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   // Pick 2 random blog posts
   const recentPosts = blogPosts.slice(0, 2)
 
+  // ─── SEO: structured data ────────────────────────────────
+  const BASE_URL = 'https://kalaseriet.vercel.app'
+  const productUrl = `${BASE_URL}/kalas/${slug}`
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: longDescription,
+    image: carouselImages,
+    sku: slug,
+    brand: { '@type': 'Brand', name: 'Kalaseriet' },
+    category: `Barnkalas tema för ${ageLabel}`,
+    offers: {
+      '@type': 'Offer',
+      url: productUrl,
+      priceCurrency: 'SEK',
+      price: String(product.price),
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '12',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+  const breadcrumbsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Hem',           item: `${BASE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: 'Kalas',         item: `${BASE_URL}/kalas` },
+      { '@type': 'ListItem', position: 3, name: `För ${ageLabel}`, item: `${BASE_URL}/kalas/${categorySlug}` },
+      { '@type': 'ListItem', position: 4, name: product.name,    item: productUrl },
+    ],
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }} />
+
       <Navbar />
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
 

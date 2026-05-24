@@ -5,7 +5,6 @@ import ProductGrid from './components/ProductGrid'
 import Footer from './components/Footer'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
-import SocialProof from './components/SocialProof'
 import BentoBox from './components/BentoBox'
 import DiscountMarquee from './components/DiscountMarquee'
 
@@ -367,15 +366,13 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Bento (Vad ingår i paketet) directly under hero ── */}
+      <section>
+        <BentoBox items={bentoItems} />
+      </section>
+
       {/* ── Marquee with Discount Code ────────────────────── */}
       <DiscountMarquee />
-
-      {/* ── Social Proof ────────────────────────────────────── */}
-      <section className="py-12 sm:py-16 bg-gray-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SocialProof />
-        </div>
-      </section>
 
       {/* ── Populära kalas ──────────────────────────────────── */}
       {popular.length > 0 && (
@@ -400,11 +397,6 @@ export default async function Home() {
           </div>
         </section>
       )}
-
-      {/* ── Vad ingår i paketet ─────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <BentoBox items={bentoItems} />
-      </section>
 
       {/* ── Alla kalas ──────────────────────────────────────── */}
       <section id="alla-kalas" style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
