@@ -93,18 +93,46 @@ export default function ProductBuySection({ product }: { product: Product }) {
           bottom: '1.5rem',
           right: '1.5rem',
           zIndex: 100,
-          animation: 'slideUp 0.25s ease-out',
+          animation: 'slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
+          backgroundColor: 'white',
+          padding: '0.5rem 0.5rem 0.5rem 1.5rem',
+          borderRadius: '500px',
+          boxShadow: '0 12px 40px rgba(89,16,182,0.25), 0 2px 8px rgba(0,0,0,0.08)',
+          maxWidth: 'calc(100vw - 3rem)',
         }}>
+          {/* Price block — matches the inline price (strikethrough + current) */}
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+            {product.originalPrice && product.originalPrice > product.price && (
+              <span style={{
+                fontFamily: 'caraque-melted, sans-serif',
+                fontSize: '1.1rem',
+                color: '#b96e6e',
+                textDecoration: 'line-through',
+                fontWeight: 700,
+              }}>{product.originalPrice} kr</span>
+            )}
+            <span style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: '1.8rem',
+              fontWeight: 800,
+              color: '#5910b6',
+              lineHeight: 1,
+            }}>{product.price} kr</span>
+          </div>
+
           <button onClick={handleBuyNow} className="btn-primary" style={{
-            fontSize: '1.4rem',
-            padding: '1.2rem 2rem',
-            boxShadow: '0 12px 40px rgba(89,16,182,0.5)',
+            fontSize: '1.3rem',
+            padding: '1rem 1.75rem',
           }}>
-            Köp {product.price} kr ›
+            Köp nu ›
           </button>
+
           <style>{`
             @keyframes slideUp {
-              from { opacity: 0; transform: translateY(20px); }
+              from { opacity: 0; transform: translateY(24px); }
               to { opacity: 1; transform: translateY(0); }
             }
           `}</style>

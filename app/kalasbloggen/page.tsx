@@ -84,7 +84,7 @@ export default function KalasbloggenPage() {
             <p style={{
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.5rem',
-              color: '#4e4e4e',
+              color: '#5910b6',
               lineHeight: '130%',
             }}>
               Bli inspirerad av andras kalas, mega-smarriga muffins &amp; massa tips :-)
@@ -155,7 +155,7 @@ export default function KalasbloggenPage() {
               <p style={{
                 fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.2rem',
-                color: '#4e4e4e',
+                color: '#5910b6',
                 lineHeight: '140%',
               }}>
                 {featured.excerpt}
@@ -241,7 +241,7 @@ export default function KalasbloggenPage() {
                   <p style={{
                     fontFamily: 'caraque-melted, sans-serif',
                     fontSize: '1.1rem',
-                    color: '#4e4e4e',
+                    color: '#5910b6',
                     lineHeight: '140%',
                     flex: 1,
                   }}>

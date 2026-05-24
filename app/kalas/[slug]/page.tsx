@@ -6,6 +6,7 @@ import ProductBuySection from '../../components/ProductBuySection'
 import ImageCarousel from '../../components/ImageCarousel'
 import Testimonials from '../../components/Testimonials'
 import FAQ from '../../components/FAQ'
+import DiscountMarquee from '../../components/DiscountMarquee'
 import { getProductExtra } from '../../../lib/data/products-extra'
 import { includedItems } from '../../../lib/data/included-items'
 import { randomTestimonials } from '../../../lib/data/testimonials'
@@ -24,10 +25,11 @@ async function getProduct(slug: string): Promise<Product | null> {
   return fallbackProducts.find(p => p.slug.current === slug) ?? null
 }
 
-async function getRelated(currentId: string, theme: string): Promise<Product[]> {
+async function getRelated(currentId: string, ageGroup: string): Promise<Product[]> {
+  // "Alla kalas för X-åringar" — same age group, exclude current
   return fallbackProducts
-    .filter(p => p.theme === theme && p._id !== currentId)
-    .slice(0, 3)
+    .filter(p => p.ageGroup === ageGroup && p._id !== currentId)
+    .slice(0, 4)
 }
 
 export async function generateStaticParams() {
@@ -61,7 +63,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     : null
 
   const tProds = randomTestimonials(slug, 3)
-  const related = await getRelated(product._id, product.theme)
+  const related = await getRelated(product._id, product.ageGroup)
   // Pick 2 random blog posts
   const recentPosts = blogPosts.slice(0, 2)
 
@@ -107,7 +109,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <ImageCarousel
               images={carouselImages.length > 0 ? carouselImages : [product.externalImageUrl ?? '']}
               alt={product.name}
-              badges={{ popular: product.isPopular, discountPercent: discount }}
+              badges={{ popular: product.isPopular, isNew: product.isNew }}
             />
           </div>
 
@@ -294,24 +296,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           subheading="Är något oklart? Här svarar vi på det vi får frågor om mest."
         />
 
-        {/* Related */}
+        {/* Marquee with discount code — same as homepage */}
+        <DiscountMarquee />
+
+        {/* Related — "Alla kalas för X-åringar" */}
         {related.length > 0 && (
           <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
             <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
               <h2 style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontFamily: 'caraque-solid, sans-serif',  // chubby per kalaseriet "Alla kalas för" listing heading
+                fontSize: 'clamp(2.4rem, 5vw, 4rem)',
                 fontWeight: 800,
                 color: '#5910b6',
                 marginBottom: '2.5rem',
                 textAlign: 'center',
-                lineHeight: '95%',
-              }}>Fler kalas du kan gilla</h2>
+                lineHeight: '92%',
+              }}>Alla kalas för {ageLabel}</h2>
+
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: '1.5rem',
-              }}>
+              }} className="related-grid">
                 {related.map(p => {
                   const pAge = p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`
                   return (
@@ -334,8 +340,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                       <div style={{ textAlign: 'center' }}>
                         <h3 style={{
                           fontFamily: 'caraque-melted, sans-serif',
-                          fontSize: '1.8rem',
-                          fontWeight: 800,
+                          fontSize: '1.6rem',
+                          fontWeight: 700,
                           color: '#5910b6',
                           margin: 0,
                           lineHeight: '95%',
@@ -351,6 +357,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   )
                 })}
               </div>
+
+              {/* Big CTA — "Se kalas för alla åldrar >" */}
+              <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+                <a href="/kalas" className="btn-primary" style={{ fontSize: '1.6rem', padding: '1.4rem 2.8rem' }}>
+                  Se kalas för alla åldrar ›
+                </a>
+              </div>
             </div>
           </section>
         )}
@@ -361,16 +374,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <style>{`
         .product-image-sticky {
           position: sticky;
-          top: calc(6rem + 3rem + 1rem);  /* navbar height + margin + a bit */
+          top: calc(1.5rem + 56px + 1.5rem + 0.5rem);
+        }
+        @media (max-width: 1100px) {
+          .related-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
         @media (max-width: 880px) {
           .product-hero-grid {
             grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
           }
           .product-image-sticky {
             position: relative;
             top: 0;
           }
+          .related-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </>

@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useCart } from '../lib/cart-context'
 
-// Matches kalaseriet.se navbar:
-// - Desktop: Logo pill (left) + Nav links pill (center) + Cart pill (right) — three separate floating pills
-// - Mobile: Logo (free-floating purple text, NO pill) + Cart+Menu pill (single combined right)
-// - Mobile menu: full-screen white, BIG purple caraque-melted links
+// Matches kalaseriet.se navbar exactly:
+// - Desktop: Logo (Lottie) pill (left) + nav links pill (center) + cart pill (right)
+// - Mobile: Logo (Lottie) standalone left + cart+hamburger in one white pill (right)
+// - Logo scroll behavior: hides on scroll-down, slides back in on scroll-up (smooth easing)
 
 const NAV_LINKS = [
   { label: 'Populära kalas', href: '/#populara' },
@@ -16,10 +16,39 @@ const NAV_LINKS = [
   { label: 'Kalasbloggen', href: '/kalasbloggen' },
 ]
 
+// Cart icon — same one kalaseriet.se uses
+const CART_ICON_URL = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/664a08f31d8b938e3847d092_cart-icon.svg'
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const { items } = useCart()
-  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0)
+  const [lottieReady, setLottieReady] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastY = useRef(0)
+
+  // Load Lottie web component
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (!customElements.get('lottie-player')) {
+      import('@lottiefiles/lottie-player').then(() => setLottieReady(true))
+    } else {
+      setLottieReady(true)
+    }
+  }, [])
+
+  // Scroll-hide: hide on scroll-down, show on scroll-up (smooth easing)
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      const goingDown = y > lastY.current
+      // Always show near top
+      if (y < 80) setHidden(false)
+      else if (goingDown && y - lastY.current > 4) setHidden(true)
+      else if (!goingDown && lastY.current - y > 4) setHidden(false)
+      lastY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   // Lock body scroll when menu open
   useEffect(() => {
@@ -27,27 +56,38 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  const { items } = useCart()
+  const cartCount = items.reduce((sum, item) => sum + item.quantity, 0)
+
+  // Logo: Lottie animation with CSS color override on .logo-anim
   const Logo = (
     <Link
       href="/"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        textDecoration: 'none',
-        lineHeight: 0,
-      }}
       onClick={() => setMenuOpen(false)}
+      style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', lineHeight: 0 }}
+      aria-label="Kalaseriet — hem"
     >
-      <span style={{
-        fontFamily: 'caraque-solid, sans-serif',  // chubby brand wordmark
-        fontSize: 'clamp(1.6rem, 2.5vw, 2rem)',
-        fontWeight: 800,
-        color: '#5910b6',  // brand indigo, solid
-        letterSpacing: '-0.01em',
-        lineHeight: 1,
-      }}>
-        Kalaseriet
-      </span>
+      {lottieReady ? (
+        /* @ts-ignore */
+        <lottie-player
+          class="logo-anim"
+          src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65ee06c1474caed9e5eba695_logo-anim.json"
+          background="transparent"
+          speed="1"
+          style={{ width: '160px', height: '56px' }}
+          loop
+          autoplay
+        />
+      ) : (
+        <span style={{
+          fontFamily: 'caraque-solid, sans-serif',
+          fontSize: 'clamp(1.6rem, 2.5vw, 2rem)',
+          fontWeight: 800,
+          color: '#5910b6',
+          letterSpacing: '-0.01em',
+          lineHeight: 1,
+        }}>Kalaseriet</span>
+      )}
     </Link>
   )
 
@@ -57,7 +97,7 @@ export default function Navbar() {
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '0.4rem',
+        gap: '0.45rem',
         padding: '0.5rem 0.85rem',
         borderRadius: '500px',
         textDecoration: 'none',
@@ -69,18 +109,14 @@ export default function Navbar() {
       }}
       aria-label="Varukorg"
     >
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="9" cy="21" r="1" />
-        <circle cx="20" cy="21" r="1" />
-        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={CART_ICON_URL} alt="" width={22} height={22} style={{ display: 'block' }} />
       <span style={{ minWidth: '1ch' }}>{cartCount}</span>
     </Link>
   )
 
   return (
     <>
-      {/* Desktop & mobile shared header — single fixed top row */}
       <header
         style={{
           zIndex: 664,
@@ -92,22 +128,24 @@ export default function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '1rem',
-          pointerEvents: 'none', // children re-enable
+          pointerEvents: 'none',
+          transform: hidden ? 'translateY(calc(-100% - 2rem))' : 'translateY(0)',
+          transition: 'transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
-        {/* LEFT: Logo — on desktop in a translucent pill, on mobile standalone */}
+        {/* LEFT: Logo — pill on desktop, standalone on mobile */}
         <div className="navbar-logo-wrap" style={{
           pointerEvents: 'auto',
           backgroundColor: '#fffc',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(8px)',
           borderRadius: '500px',
-          padding: '1rem 1.5rem',
+          padding: '0.65rem 1.5rem',
         }}>
           {Logo}
         </div>
 
-        {/* CENTER: Desktop nav links pill (hidden on mobile) */}
+        {/* CENTER: Desktop nav links pill */}
         <nav className="navbar-links" style={{
           pointerEvents: 'auto',
           backgroundColor: '#fffc',
@@ -124,7 +162,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* RIGHT: Cart pill (desktop) OR combined Cart+Menu pill (mobile) */}
+        {/* RIGHT: Cart + Hamburger combined in ONE white pill */}
         <div className="navbar-actions" style={{
           pointerEvents: 'auto',
           backgroundColor: '#fffc',
@@ -137,8 +175,6 @@ export default function Navbar() {
           gap: '0.25rem',
         }}>
           {CartButton}
-
-          {/* Hamburger — only visible on mobile */}
           <button
             type="button"
             className="navbar-menu-btn"
@@ -177,7 +213,7 @@ export default function Navbar() {
             inset: 0,
             backgroundColor: '#ffffff',
             zIndex: 663,
-            padding: 'calc(1.5rem + 64px + 1.5rem) 1.5rem 2rem',
+            padding: 'calc(1.5rem + 56px + 1.5rem) 1.5rem 2rem',
             display: 'flex',
             flexDirection: 'column',
             gap: '0.5rem',
@@ -190,7 +226,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               style={{
-                fontFamily: 'caraque-solid, sans-serif',  // BIG chubby links per screenshot
+                fontFamily: 'caraque-solid, sans-serif',
                 fontSize: 'clamp(3rem, 9vw, 4rem)',
                 fontWeight: 800,
                 color: '#6e42ff',
@@ -207,18 +243,21 @@ export default function Navbar() {
       )}
 
       {/* Spacer so content doesn't go under navbar */}
-      <div style={{ height: 'calc(1.5rem + 64px + 1.5rem)' }} />
+      <div style={{ height: 'calc(1.5rem + 56px + 1.5rem)' }} />
 
       <style>{`
+        /* Force Lottie logo color to brand indigo — Webflow's Lottie has #6e42ff which looks washed */
+        .logo-anim svg path[fill],
+        .logo-anim svg g[fill],
+        .logo-anim svg path,
+        .logo-anim svg g {
+          fill: #5910b6 !important;
+        }
         @media (max-width: 880px) {
           .navbar-links { display: none !important; }
           .navbar-menu-btn { display: inline-flex !important; align-items: center; }
-          .navbar-logo-wrap {
-            background: transparent !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            padding: 0.5rem 0.25rem !important;
-          }
+          /* Mobile: logo pill stays white (cart+menu also in white pill) */
+          .navbar-logo-wrap { padding: 0.5rem 1rem !important; }
         }
       `}</style>
     </>

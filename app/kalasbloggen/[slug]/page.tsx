@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.4rem',
               fontWeight: 500,
-              color: '#4e4e4e',
+              color: '#5910b6',
               lineHeight: '140%',
             }}>{post.summary}</p>
           </div>
@@ -118,7 +118,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p style={{
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.3rem',
-              color: '#4e4e4e',
+              color: '#5910b6',
               marginBottom: '2rem',
             }}>Hitta ditt perfekta kalaspaket och börja planera idag.</p>
             <a href="/kalas" style={{

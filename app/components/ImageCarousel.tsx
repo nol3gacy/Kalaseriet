@@ -13,7 +13,7 @@ import Sticker from './Sticker'
 type Props = {
   images: string[]
   alt: string
-  badges?: { popular?: boolean; discountPercent?: number | null }
+  badges?: { popular?: boolean; isNew?: boolean }
 }
 
 export default function ImageCarousel({ images, alt, badges }: Props) {
@@ -40,7 +40,7 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
   }, [next, prev])
 
   return (
-    <div style={{
+    <div className="carousel-stage" style={{
       position: 'relative',
       backgroundColor: '#ffa6a6',
       borderRadius: '2.5rem',
@@ -60,22 +60,18 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
           <Sticker kind="poppis" width={108} />
         </div>
       )}
-      {/* Discount pill (only the % since NYHET sticker is reserved for new products) */}
-      {badges?.discountPercent && (
+      {/* NYHET sticker — pink blob in top-right when product is new */}
+      {badges?.isNew && (
         <div style={{
           position: 'absolute',
-          top: '1rem',
-          right: '1rem',
-          backgroundColor: 'white',
-          color: '#5910b6',
-          padding: '0.5rem 1.1rem',
-          borderRadius: '500px',
-          fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.1rem',
-          fontWeight: 700,
-          boxShadow: '0 4px 14px rgba(0,0,0,0.14)',
+          top: '-8px',
+          right: '-6px',
           zIndex: 5,
-        }}>-{badges.discountPercent}%</div>
+          transform: 'rotate(10deg)',
+          filter: 'drop-shadow(0 6px 14px rgba(0,0,0,0.18))',
+        }}>
+          <Sticker kind="nyhet" width={104} />
+        </div>
       )}
 
       {/* Image stage */}
@@ -235,6 +231,16 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
           ))}
         </div>
       )}
+
+      <style>{`
+        /* Mobile: no pink backdrop, image goes edge-to-edge */
+        @media (max-width: 700px) {
+          .carousel-stage {
+            background-color: transparent !important;
+            padding: 1.25rem 0 1.25rem !important;
+          }
+        }
+      `}</style>
     </div>
   )
 }

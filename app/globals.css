@@ -48,6 +48,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: caraque-solid, system-ui, sans-serif;
 }
 
+/* Prevent any horizontal scroll on mobile (defensive) */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 /* ── Marquee animation ── */
 @keyframes marquee {
   0%   { transform: translateX(0); }

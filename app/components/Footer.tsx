@@ -111,21 +111,8 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Följ oss */}
-        <div style={cellStyle}>
-          <div style={labelStyle}>Följ oss</div>
-          {[
-            { label: 'Instagram', href: 'https://www.instagram.com/kalaseriet.se/' },
-            { label: 'Facebook', href: 'https://www.facebook.com/kalaseriet' },
-          ].map(link => (
-            <FooterLink key={link.label} href={link.href} style={footerLinkStyle} target="_blank">
-              {link.label}
-            </FooterLink>
-          ))}
-        </div>
-
         {/* Newsletter — spans 2 columns so the input is genuinely wide */}
-        <div style={{ ...cellStyle, gridColumn: 'span 2', minWidth: '320px' }}>
+        <div style={{ ...cellStyle, gridColumn: 'span 2', minWidth: '280px' }}>
           <img
             src="/stickers/tips.svg"
             loading="lazy"
@@ -148,27 +135,30 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Large logo — spans full width, bottom */}
+        {/* Large logo — fills 100% of container width (jättestor) */}
         <div style={{
           gridColumn: '1 / -1',
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
           marginTop: '2rem',
           paddingTop: '2rem',
           borderTop: '1.5px solid rgba(89,16,182,0.12)',
+          width: '100%',
         }}>
-          <a href="/" style={{ display: 'inline-block', textDecoration: 'none' }}>
-            <span style={{
-              fontFamily: 'caraque-solid, sans-serif',  // brand wordmark: chubby + solid
-              fontSize: 'clamp(3.5rem, 9vw, 6.5rem)',
-              fontWeight: 800,
-              color: '#5910b6',  // solid indigo brand color
-              lineHeight: 1,
-              letterSpacing: '-0.01em',
-            }}>
-              Kalaseriet
-            </span>
+          <a href="/" style={{ display: 'block', textDecoration: 'none', width: '100%' }} aria-label="Kalaseriet — hem">
+            {/* Word fills container width — uses viewport-relative + container queries */}
+            <div style={{ width: '100%', textAlign: 'center', lineHeight: 0 }}>
+              <span style={{
+                fontFamily: 'caraque-solid, sans-serif',
+                /* 18vw ≈ word fills container at typical aspect ratios; clamped sane */
+                fontSize: 'clamp(4rem, 18vw, 18rem)',
+                fontWeight: 800,
+                color: '#5910b6',
+                lineHeight: 1,
+                letterSpacing: '-0.015em',
+                display: 'inline-block',
+              }}>
+                Kalaseriet
+              </span>
+            </div>
           </a>
         </div>
       </div>
