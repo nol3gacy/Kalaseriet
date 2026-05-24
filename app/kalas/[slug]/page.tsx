@@ -102,8 +102,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           alignItems: 'start',
         }} className="product-hero-grid">
 
-          {/* Carousel */}
-          <div>
+          {/* Carousel — sticky on desktop */}
+          <div className="product-image-sticky" style={{ alignSelf: 'start' }}>
             <ImageCarousel
               images={carouselImages.length > 0 ? carouselImages : [product.externalImageUrl ?? '']}
               alt={product.name}
@@ -112,90 +112,41 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
 
           {/* Info panel */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <span style={{
               alignSelf: 'flex-start',
-              backgroundColor: '#fce8e0',
-              color: '#5910b6',
+              backgroundColor: 'transparent',
+              color: '#272729',
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.1rem',
               fontWeight: 700,
-              padding: '0.35rem 1rem',
+              padding: '0.4rem 1.1rem',
               borderRadius: '500px',
+              border: '1.5px solid rgba(39,39,41,0.18)',
             }}>
-              för {ageLabel}
+              Kalas för {ageLabel}
             </span>
 
             <h1 style={{
               fontFamily: 'caraque-solid, sans-serif',
-              fontSize: 'clamp(2.6rem, 5vw, 4rem)',
+              fontSize: 'clamp(2.8rem, 5.5vw, 4.6rem)',
               fontWeight: 800,
               color: '#5910b6',
-              lineHeight: '90%',
+              lineHeight: '88%',
               margin: 0,
+              letterSpacing: '-0.005em',
             }}>{product.name}</h1>
-
-            <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.25rem',
-              fontWeight: 500,
-              color: '#272729',
-              lineHeight: '150%',
-              margin: 0,
-            }}>{longDescription}</p>
-
-            {/* Price */}
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginTop: '0.5rem' }}>
-              <span style={{
-                fontFamily: 'caraque-solid, sans-serif',
-                fontSize: '3.5rem',
-                fontWeight: 800,
-                color: '#272729',
-                lineHeight: 1,
-              }}>{product.price} kr</span>
-              {product.originalPrice && product.originalPrice > product.price && (
-                <span style={{
-                  fontFamily: 'caraque-melted, sans-serif',
-                  fontSize: '1.5rem',
-                  color: '#b96e6e',
-                  textDecoration: 'line-through',
-                  fontWeight: 700,
-                }}>{product.originalPrice} kr</span>
-              )}
-            </div>
 
             <ProductBuySection product={product} />
 
-            {/* Trust badges */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '0.5rem',
-              marginTop: '0.5rem',
-            }}>
-              {[
-                { icon: '⚡', label: 'Direkt nedladdning' },
-                { icon: '💯', label: '100% nöjdhetsgaranti' },
-                { icon: '🖨️', label: 'Skriv ut hemma' },
-              ].map(b => (
-                <div key={b.label} style={{
-                  backgroundColor: '#faf1ef',
-                  borderRadius: '1.5rem',
-                  padding: '1rem 0.75rem',
-                  textAlign: 'center',
-                }}>
-                  <div style={{ fontSize: '1.4rem', marginBottom: '0.25rem' }}>{b.icon}</div>
-                  <p style={{
-                    fontFamily: 'caraque-melted, sans-serif',
-                    fontSize: '0.95rem',
-                    fontWeight: 700,
-                    color: '#272729',
-                    margin: 0,
-                    lineHeight: '120%',
-                  }}>{b.label}</p>
-                </div>
-              ))}
-            </div>
+            <p style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: '1.2rem',
+              fontWeight: 500,
+              color: '#272729',
+              lineHeight: '155%',
+              margin: '1rem 0 0',
+            }}>{longDescription}</p>
           </div>
         </div>
 
@@ -408,9 +359,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <Footer />
 
       <style>{`
+        .product-image-sticky {
+          position: sticky;
+          top: calc(6rem + 3rem + 1rem);  /* navbar height + margin + a bit */
+        }
         @media (max-width: 880px) {
           .product-hero-grid {
             grid-template-columns: 1fr !important;
+          }
+          .product-image-sticky {
+            position: relative;
+            top: 0;
           }
         }
       `}</style>

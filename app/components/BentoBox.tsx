@@ -165,7 +165,7 @@ export default function BentoBox({ items }: BentoBoxProps) {
       backgroundColor: 'white',
       padding: '1.5rem',
     }}>
-      <div style={{
+      <div className="bento-grid" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '1.5rem',
@@ -176,6 +176,31 @@ export default function BentoBox({ items }: BentoBoxProps) {
           <BentoCard key={item.id} item={item} />
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .bento-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .bento-grid > div[style*="grid-column: span 2"],
+          .bento-grid > div[style*="gridColumn"] {
+            grid-column: span 2 !important;
+          }
+        }
+        @media (max-width: 560px) {
+          .bento-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+          .bento-grid > div {
+            grid-column: span 1 !important;
+            min-height: 14rem !important;
+          }
+          .bento-grid h2 {
+            font-size: 2.6rem !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

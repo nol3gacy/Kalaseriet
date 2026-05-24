@@ -1,12 +1,13 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 
-// Matches kalaseriet.se product carousel:
-// - Rounded image cards in horizontal scroll
-// - Left/right arrows in purple circular buttons
-// - "Teasing" peek of next/previous image so users see scrollability
-// - Badges (POPULÄR, -X%) absolutely positioned
+// Kalaseriet.se product carousel:
+// - 4 images per product on a salmon/pink rounded backdrop
+// - Faded "Inspirationsbild" watermark on cover (first) image
+// - Left/right arrows (white chevrons on transparent)
+// - Bullet nav at bottom
+// - Infinite loop (next from last → first)
 
 type Props = {
   images: string[]
@@ -15,195 +16,232 @@ type Props = {
 }
 
 export default function ImageCarousel({ images, alt, badges }: Props) {
-  const scrollerRef = useRef<HTMLDivElement>(null)
-  const [canPrev, setCanPrev] = useState(false)
-  const [canNext, setCanNext] = useState(false)
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [index, setIndex] = useState(0)
+  const total = images.length
 
-  const updateButtons = () => {
-    const el = scrollerRef.current
-    if (!el) return
-    setCanPrev(el.scrollLeft > 8)
-    setCanNext(el.scrollLeft + el.clientWidth < el.scrollWidth - 8)
-  }
+  const goTo = useCallback((i: number) => {
+    const next = ((i % total) + total) % total
+    setIndex(next)
+  }, [total])
 
+  const next = useCallback(() => goTo(index + 1), [goTo, index])
+  const prev = useCallback(() => goTo(index - 1), [goTo, index])
+
+  // Keyboard support
   useEffect(() => {
-    updateButtons()
-    const el = scrollerRef.current
-    if (!el) return
-    el.addEventListener('scroll', updateButtons, { passive: true })
-    window.addEventListener('resize', updateButtons)
-    return () => {
-      el.removeEventListener('scroll', updateButtons)
-      window.removeEventListener('resize', updateButtons)
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') next()
+      if (e.key === 'ArrowLeft') prev()
     }
-  }, [images.length])
-
-  const scrollBy = (dir: 1 | -1) => {
-    const el = scrollerRef.current
-    if (!el) return
-    // Scroll by image width minus a peek so the next image lands aligned
-    const card = el.querySelector<HTMLElement>('[data-carousel-card]')
-    const w = card?.offsetWidth ?? 320
-    el.scrollBy({ left: dir * (w + 16), behavior: 'smooth' })
-  }
-
-  const onlyOne = images.length <= 1
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [next, prev])
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      {/* Scrollable images */}
-      <div
-        ref={scrollerRef}
-        style={{
-          display: 'flex',
-          gap: '1rem',
-          overflowX: 'auto',
-          overflowY: 'hidden',
-          scrollSnapType: 'x mandatory',
-          scrollBehavior: 'smooth',
-          // Hide scrollbar visually but keep functional
-          scrollbarWidth: 'none' as never,
-          msOverflowStyle: 'none' as never,
-          // Padding-right so the last image still has some peek room
-          paddingRight: onlyOne ? 0 : '15%',
-          WebkitOverflowScrolling: 'touch',
-        }}
-        className="carousel-scroller"
-      >
-        {images.map((src, i) => (
-          <div
-            key={`${src}-${i}`}
-            data-carousel-card
-            style={{
-              flex: onlyOne ? '0 0 100%' : '0 0 85%',
-              scrollSnapAlign: 'start',
-              position: 'relative',
-              borderRadius: '2.5rem',
-              overflow: 'hidden',
-              backgroundColor: '#faf1ef',
-              aspectRatio: '4 / 3.2',
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src}
-              alt={`${alt} – bild ${i + 1}`}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                display: 'block',
-              }}
-            />
+    <div style={{
+      position: 'relative',
+      backgroundColor: '#ffa6a6',
+      borderRadius: '2.5rem',
+      padding: '2.5rem 1rem 1.5rem',
+      overflow: 'hidden',
+    }}>
+      {/* POPPIS sticker — already overlaid by ProductCard usage above */}
+      {badges?.popular && (
+        <div style={{
+          position: 'absolute',
+          top: '1rem',
+          left: '1rem',
+          backgroundColor: '#6e42ff',
+          color: '#faf1ef',
+          padding: '0.6rem 1.2rem',
+          borderRadius: '40% 60% 65% 35% / 55% 45% 55% 45%',
+          fontFamily: 'caraque-solid, sans-serif',
+          fontSize: '1.1rem',
+          fontWeight: 800,
+          letterSpacing: '0.06em',
+          transform: 'rotate(-12deg)',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          zIndex: 5,
+          lineHeight: 1,
+          textAlign: 'center',
+        }}>POPPIS!</div>
+      )}
+      {badges?.discountPercent && (
+        <div style={{
+          position: 'absolute',
+          top: '1rem',
+          right: '1rem',
+          backgroundColor: '#ffa6a6',
+          color: '#272729',
+          padding: '0.4rem 0.9rem',
+          borderRadius: '500px',
+          fontFamily: 'caraque-solid, sans-serif',
+          fontSize: '0.95rem',
+          fontWeight: 800,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+          zIndex: 5,
+          border: '2px solid white',
+        }}>-{badges.discountPercent}%</div>
+      )}
 
-            {/* Badges only on first image */}
-            {i === 0 && badges?.popular && (
-              <span style={{
+      {/* Image stage */}
+      <div
+        ref={trackRef}
+        style={{
+          position: 'relative',
+          aspectRatio: '4 / 3.2',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        {images.map((src, i) => {
+          const active = i === index
+          return (
+            <div
+              key={`${src}-${i}`}
+              style={{
                 position: 'absolute',
-                top: '1.25rem',
-                left: '1.25rem',
-                backgroundColor: '#FCD34D',
-                color: '#272729',
-                padding: '0.4rem 1rem',
-                borderRadius: '500px',
-                fontFamily: 'caraque-solid, sans-serif',
-                fontSize: '0.85rem',
-                fontWeight: 800,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                zIndex: 2,
-              }}>POPULÄR</span>
-            )}
-            {i === 0 && badges?.discountPercent && (
-              <span style={{
-                position: 'absolute',
-                top: '1.25rem',
-                right: '1.25rem',
-                backgroundColor: '#ffa6a6',
-                color: '#272729',
-                padding: '0.4rem 1rem',
-                borderRadius: '500px',
-                fontFamily: 'caraque-solid, sans-serif',
-                fontSize: '0.85rem',
-                fontWeight: 800,
-                zIndex: 2,
-              }}>-{badges.discountPercent}%</span>
-            )}
-          </div>
-        ))}
+                inset: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: active ? 1 : 0,
+                transform: active ? 'rotate(-1.5deg) scale(1)' : 'rotate(-1.5deg) scale(0.96)',
+                transition: 'opacity 0.4s ease, transform 0.4s ease',
+                pointerEvents: active ? 'auto' : 'none',
+              }}
+            >
+              <div style={{
+                position: 'relative',
+                width: '85%',
+                height: '90%',
+                borderRadius: '1rem',
+                overflow: 'hidden',
+                backgroundColor: 'white',
+                boxShadow: '0 12px 32px rgba(0,0,0,0.18)',
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={src}
+                  alt={`${alt} – bild ${i + 1} av ${total}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                />
+                {/* Inspirationsbild watermark on first image only */}
+                {i === 0 && (
+                  <span style={{
+                    position: 'absolute',
+                    bottom: '0.5rem',
+                    right: '0.75rem',
+                    fontFamily: 'caraque-melted, sans-serif',
+                    fontSize: '0.85rem',
+                    color: 'rgba(255,255,255,0.85)',
+                    textShadow: '0 1px 4px rgba(0,0,0,0.5)',
+                    fontWeight: 500,
+                    letterSpacing: '0.02em',
+                    pointerEvents: 'none',
+                  }}>Inspirationsbild</span>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </div>
 
-      {/* Arrows — circular purple buttons (only when more than 1 image) */}
-      {!onlyOne && (
+      {/* Arrows */}
+      {total > 1 && (
         <>
           <button
             type="button"
+            onClick={prev}
             aria-label="Föregående bild"
-            onClick={() => scrollBy(-1)}
-            disabled={!canPrev}
             style={{
               position: 'absolute',
-              left: '-22px',
+              left: '0.75rem',
               top: '50%',
               transform: 'translateY(-50%)',
-              width: '64px',
-              height: '64px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
-              backgroundColor: '#5910b6',
+              background: 'transparent',
+              border: 'none',
               color: '#faf1ef',
-              border: '4px solid #faf1ef',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-              cursor: canPrev ? 'pointer' : 'not-allowed',
-              opacity: canPrev ? 1 : 0.35,
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1.6rem',
-              zIndex: 3,
-              transition: 'opacity 0.15s, transform 0.15s',
+              zIndex: 4,
+              transition: 'transform 0.15s',
             }}
+            onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-50%) scale(1.15)')}
+            onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(-50%) scale(1)')}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
           <button
             type="button"
+            onClick={next}
             aria-label="Nästa bild"
-            onClick={() => scrollBy(1)}
-            disabled={!canNext}
             style={{
               position: 'absolute',
-              right: '-22px',
+              right: '0.75rem',
               top: '50%',
               transform: 'translateY(-50%)',
-              width: '64px',
-              height: '64px',
+              width: '48px',
+              height: '48px',
               borderRadius: '50%',
-              backgroundColor: '#5910b6',
+              background: 'transparent',
+              border: 'none',
               color: '#faf1ef',
-              border: '4px solid #faf1ef',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-              cursor: canNext ? 'pointer' : 'not-allowed',
-              opacity: canNext ? 1 : 0.35,
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1.6rem',
-              zIndex: 3,
-              transition: 'opacity 0.15s, transform 0.15s',
+              zIndex: 4,
+              transition: 'transform 0.15s',
             }}
+            onMouseEnter={e => (e.currentTarget.style.transform = 'translateY(-50%) scale(1.15)')}
+            onMouseLeave={e => (e.currentTarget.style.transform = 'translateY(-50%) scale(1)')}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
         </>
       )}
 
-      <style>{`
-        .carousel-scroller::-webkit-scrollbar { display: none; }
-      `}</style>
+      {/* Bullet nav */}
+      {total > 1 && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '0.5rem',
+          marginTop: '1rem',
+        }}>
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Visa bild ${i + 1}`}
+              style={{
+                width: i === index ? '10px' : '8px',
+                height: i === index ? '10px' : '8px',
+                borderRadius: '50%',
+                backgroundColor: i === index ? '#5910b6' : 'rgba(89,16,182,0.35)',
+                border: 'none',
+                cursor: 'pointer',
+                padding: 0,
+                transition: 'all 0.2s',
+              }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

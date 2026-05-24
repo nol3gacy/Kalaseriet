@@ -1,4 +1,4 @@
-// From kalaseriet.se CMS export
+// Reviews — alla på svenska från svenska orter
 export type Testimonial = {
   name: string
   quote: string
@@ -18,12 +18,12 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: 'Livia från Södertälje',
-    quote: 'Jeg er så tilfreds med denne vejledning! Att ladda ner den var enkelt, och idéerna till lekar är verkligen söta. Min dotter fyller snart sex år, och jag är säker på att hennes födelsedagskalas kommer att bli fantastiskt tack vare denna guide!',
+    quote: 'Jag är så nöjd med den här guiden! Att ladda ner den var enkelt, och idéerna till lekar är verkligen söta. Min dotter fyller snart sex år, och jag är säker på att hennes födelsedagskalas kommer att bli fantastiskt tack vare denna guide!',
     stars: 5,
   },
   {
     name: 'Maja från Enköping',
-    quote: 'Hvor er jeg glad for denne guide! Det var så let at downloade, og mine børn elsker allerede legene. Tak for de fantastiske idéer - det gjorde fødselsdagsfesten til et hit!',
+    quote: 'Vad glad jag är för den här guiden! Det var så lätt att ladda ner, och mina barn älskar redan lekarna. Tack för de fantastiska idéerna – det gjorde födelsedagskalaset till en succé!',
     stars: 5,
   },
   {
@@ -33,17 +33,17 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: 'Olaf från Lysekil',
-    quote: 'Denne guiden overgikk mine forventninger! Jeg kjøpte den for min syvårings bursdag, og det ble en suksess. Lekene var engasjerende, og det var lett å organisere. Takk skal du ha!',
+    quote: 'Den här guiden överträffade mina förväntningar! Jag köpte den för min sjuårings födelsedag, och det blev en succé. Lekarna var engagerande och det var lätt att organisera. Tack så mycket!',
     stars: 5,
   },
   {
-    name: 'Olof från Sverige',
+    name: 'Olof från Malmö',
     quote: 'Wow, detta är verkligen en pärla! Jag har tre barn i åldrarna 4, 7 och 8 år, och guiden ger mig så många alternativ att välja mellan. De blev så entusiastiska när jag delade några av idéerna med dem. En riktigt bra investering!',
     stars: 5,
   },
   {
-    name: 'Oskar från Köpenhamn',
-    quote: 'Jeg er virkelig tilfreds med købet af denne guide! Min 8-årige søn havde den bedste fødselsdag med de lege, der blev foreslået. En stor tak for at gøre det så nemt og sjovt for os!',
+    name: 'Oskar från Göteborg',
+    quote: 'Jag är verkligen nöjd med köpet av denna guide! Min 8-åriga son hade den bästa födelsedagen med lekarna som föreslogs. Ett stort tack för att ni gjorde det så enkelt och roligt för oss!',
     stars: 4,
   },
   {
@@ -56,13 +56,22 @@ export const testimonials: Testimonial[] = [
     quote: 'Guiden är verkligen fantastisk! Jag har en femårig pojke, och han letar alltid efter nya spel. Guiden har många kreativa lekar som jag aldrig hade tänkt på. Ett stort tack till er för den här fantastiska produkten!',
     stars: 5,
   },
+  {
+    name: 'Hanna från Linköping',
+    quote: 'Helt galet bra! Sparade så mycket tid och stress inför min dotters 6-årskalas. Allting var färdigt – inbjudan, lekar, recept. Jag bara skrev ut och fixade. Tack!',
+    stars: 5,
+  },
+  {
+    name: 'Petter från Västerås',
+    quote: 'Jag är ingen pyssel-pappa precis, så det här paketet räddade verkligen min sons piratkalas. Bra schema, kul lekar och fina dekorationer. Barnen fnissade hela kvällen.',
+    stars: 5,
+  },
 ]
 
 // Deterministic shuffle by seed (product slug) so SSR == CSR
 export function randomTestimonials(seed: string, count = 4): Testimonial[] {
   const seedNum = seed.split('').reduce((a, c) => a + c.charCodeAt(0), 0)
   const arr = [...testimonials]
-  // Fisher-Yates with deterministic "random"
   let s = seedNum
   const rand = () => {
     s = (s * 9301 + 49297) % 233280

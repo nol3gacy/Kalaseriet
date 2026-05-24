@@ -134,29 +134,14 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Newsletter */}
-        <div style={{ ...cellStyle, minWidth: '240px', gridColumn: 'span 1' }}>
+        {/* Newsletter — spans 2 columns so the input is genuinely wide */}
+        <div style={{ ...cellStyle, gridColumn: 'span 2', minWidth: '320px' }}>
           <img
             src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/66a743fbd7d2db21c44c5e95_tips.svg"
             loading="lazy"
             alt=""
             style={{ width: '72px', height: 'auto', marginBottom: '0.5rem' }}
           />
-
-          {/* Blinking cursor label */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'baseline',
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '1.6rem',
-            fontWeight: 700,
-            color: '#272729',
-            lineHeight: 1.2,
-            marginBottom: '0.5rem',
-          }}>
-            <span className="blink-cursor" style={{ marginRight: '0.2em', fontSize: '1.4rem' }}>|</span>
-            Tips &amp; trix till kalaset?
-          </div>
 
           <NewsletterForm />
 
@@ -253,39 +238,75 @@ function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '0.4rem', alignItems: 'stretch' }}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        borderRadius: '500px',
+        padding: '0.4rem 0.4rem 0.4rem 1.4rem',
+        width: '100%',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+      }}
+    >
+      {/* Blinking cursor — sits inside the input field BEFORE the placeholder text */}
+      {email === '' && (
+        <span
+          aria-hidden="true"
+          className="blink-cursor"
+          style={{
+            position: 'absolute',
+            left: '1.5rem',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '1.6rem',
+            color: '#5910b6',
+            fontWeight: 300,
+            pointerEvents: 'none',
+            lineHeight: 1,
+          }}
+        >|</span>
+      )}
+
       <input
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
-        placeholder="Din e-mail"
+        placeholder="    Tips & trix till kalaset?"
         required
         style={{
           flex: 1,
           minWidth: 0,
-          padding: '0.85rem 1.25rem',
+          padding: '1rem 0.5rem 1rem 0.5rem',
           borderRadius: '500px',
-          border: '1.5px solid rgba(89,16,182,0.3)',
-          backgroundColor: 'white',
+          border: 'none',
+          backgroundColor: 'transparent',
           fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.3rem',
+          fontSize: '1.35rem',
           color: '#272729',
           outline: 'none',
         }}
       />
+
       <button
         type="submit"
         style={{
-          padding: '0.85rem 1.75rem',
-          backgroundColor: '#3a1f92',
+          padding: '1rem 2rem',
+          background: 'radial-gradient(circle at 30% 25%, #8a5cf5 0%, #5910b6 55%, #3a1f92 100%)',
           color: '#faf1ef',
           borderRadius: '500px',
-          border: '4px solid #2a1065',
+          border: 'none',
           fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.5rem',
+          fontSize: '1.4rem',
           fontWeight: 500,
           cursor: 'pointer',
           whiteSpace: 'nowrap',
+          boxShadow:
+            'inset 0 1px 1px rgba(255,255,255,0.3),' +
+            'inset 0 -3px 8px rgba(0,0,0,0.2),' +
+            '0 4px 12px rgba(89,16,182,0.3)',
         }}
       >
         Få direkt ›

@@ -3,153 +3,200 @@ import Footer from '../components/Footer'
 
 export const metadata = {
   title: 'Så funkar det – Kalaseriet',
-  description: 'Lär dig hur du snabbt planerar ett perfekt barnkalas med Kalaseriet.',
+  description: 'Absolut inget facit, men här är vår idé om ett oförglömligt kalas. Inför kalaset, under kalaset och hur du planerar.',
 }
 
-const STEPS = [
+const BEFORE = [
   {
-    num: '1',
-    phase: 'Välj kalas',
-    title: 'Hitta rätt tema och åldersgrupp',
-    desc: 'Välj bland 33 kalasteman för 4–8-åringar. Filtrera på ålder och tema så hittar du snabbt rätt paket.',
-    emoji: '🎯',
-    details: [
-      'Pirat, safari, superhjälte, ninja och mycket mer',
-      '4 åldersgrupper: 4, 5, 6 och 7–8-åringar',
-      'Alla lekar och recept är anpassade för rätt ålder',
-    ],
+    n: '1',
+    title: 'Välj ett tema som passar barnets ålder & intressen',
+    body: 'Låt gärna barnet vara med och välja från våra kompletta kalaskoncept.',
+    cta: { label: 'Välj tema här ›', href: '/kalas' },
   },
   {
-    num: '2',
-    phase: 'Betala',
-    title: 'Säker betalning på 30 sekunder',
-    desc: 'Betala tryggt med kort, Swish eller Klarna. Du betalar bara 99 kr – och slipper priset för tryckeriet.',
-    emoji: '💳',
-    details: [
-      'Tryggt med Stripe-betalning',
-      '100% nöjdhetsgaranti – eller pengarna tillbaka',
-      'Ordinarie pris 269 kr – du sparar 170 kr',
-    ],
+    n: '2',
+    title: 'Välj vilka av de 20 lekar & aktiviteter ni vill göra',
+    body: 'Ofta används ca 5-7 lekar för ett kalas på 2 timmar. Våra lekar är anpassade för både inne- och utemiljöer samt gjorda för att alla ska vinna. Varje kalaslek kommer med instruktioner och tips på rekvisita som behövs.',
   },
   {
-    num: '3',
-    phase: 'Ladda ner',
-    title: 'Direkt tillgång till alla filer',
-    desc: 'Direkt efter betalning får du ett e-postmeddelande med nedladdningslänk. Inga väntetider.',
-    emoji: '⚡',
-    details: [
-      '20 kalaslekar som PDF',
-      '20 festrecept med allergialternativ',
-      'Inbjudningskort, diplom, dekorationer, körschema och checklista',
-    ],
+    n: '3',
+    title: 'Använd mallen för inbjudan och bjud in barnen',
+    body: 'Bara skriva ut och fylla i detaljer — busenkelt och snyggt! Gärna 2-3 veckor innan kalaset.',
   },
   {
-    num: '4',
-    phase: 'Fira!',
-    title: 'Skriv ut och njut',
-    desc: 'Skriv ut hemma eller på ett kopieringscenter. Följ körschema och checklista – du kan inte missa något.',
-    emoji: '🎉',
-    details: [
-      'Körschema timme-för-timme',
-      'Checklista för inköp och förberedelser',
-      'Diplom till varje gäst som avslutning',
-    ],
+    n: '4',
+    title: 'Välj vilka recept ni ska göra',
+    body: 'Vi har testat typ allt och kommit fram till att dessa 20 recept passar bäst på barnkalas. Alternativ för allergier och kost finns!',
   },
 ]
 
-const FAQ = [
+const DURING = [
   {
-    q: 'Vad är ett digitalt kalaspaket?',
-    a: 'Det är en ZIP-fil med PDF-dokument du laddar ner och skriver ut hemma. Paketet innehåller allt du behöver: lekar, recept, inbjudningskort, dekorationer och körschema.',
+    n: '5',
+    title: 'Ta emot gästerna',
+    body: 'Ofta kommer barnen med föräldrar — se till att koka kaffe och gör lite extra godsaker för de vuxna.',
   },
   {
-    q: 'Behöver jag skriva ut allt?',
-    a: 'Nej! Du väljer själv vad du vill ha. Körschema och checklista kan du ha på telefonen. Inbjudningar kan du skicka digitalt.',
+    n: '6',
+    title: 'Ha kul med lekarna!',
+    body: 'Håll er till schemat med vårt körschema och checklistor. Använd musiken vi tipsar om och ha gärna plåster till hands om olyckan är framme.',
   },
   {
-    q: 'Vad händer om jag inte är nöjd?',
-    a: 'Vi erbjuder 100% nöjdhetsgaranti. Om du genomfört kalaset och inte är nöjd fyller du i feedbackformuläret så återbetalar vi hela summan.',
-  },
-  {
-    q: 'Hur länge är nedladdningslänken giltig?',
-    a: 'Nedladdningslänken är giltig i 30 dagar. Behöver du ladda ner igen efter det – kontakta oss så löser vi det.',
-  },
-  {
-    q: 'Kan jag använda paketet till flera barn?',
-    a: 'Paketet är licensierat för personligt bruk. Du kan använda det för dina egna barn, men det får inte delas vidare, säljas eller kopieras.',
+    n: '7',
+    title: 'Avsluta med fiskdam!',
+    body: 'Här får barnen fiska upp en godispåse — tänk på att packa in en frukt och lagom med godis.',
   },
 ]
 
-export default function SaFunkarDetPage() {
+const AGE_CTAS = [
+  { label: '4 år', href: '/kalas/4-aringar' },
+  { label: '5 år', href: '/kalas/5-aringar' },
+  { label: '6 år', href: '/kalas/6-aringar' },
+  { label: '7 eller 8 år', href: '/kalas/7-8-aringar' },
+]
+
+function Step({ n, title, body, cta }: { n: string; title: string; body: string; cta?: { label: string; href: string } }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gap: '1.5rem',
+      alignItems: 'start',
+    }}>
+      {/* Big number */}
+      <div style={{
+        fontFamily: 'caraque-solid, sans-serif',
+        fontSize: 'clamp(4rem, 8vw, 7rem)',
+        fontWeight: 800,
+        color: '#5910b6',
+        lineHeight: '85%',
+        minWidth: '4rem',
+      }}>{n}</div>
+
+      <div>
+        <h3 style={{
+          fontFamily: 'caraque-solid, sans-serif',
+          fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
+          fontWeight: 800,
+          color: '#272729',
+          lineHeight: '100%',
+          marginBottom: '0.75rem',
+        }}>{title}</h3>
+        <p style={{
+          fontFamily: 'caraque-melted, sans-serif',
+          fontSize: '1.2rem',
+          fontWeight: 500,
+          color: '#4e4e4e',
+          lineHeight: '150%',
+          marginBottom: cta ? '1rem' : 0,
+        }}>{body}</p>
+        {cta && (
+          <a href={cta.href} className="btn-primary" style={{ fontSize: '1.3rem', padding: '1.1rem 2rem' }}>
+            {cta.label}
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default function SaFunkarDet() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
-        {/* Hero */}
-        <div className="bg-violet-50 border-b border-violet-100 py-16 text-center">
-          <div className="max-w-3xl mx-auto px-4">
-            <p className="text-sm font-semibold text-[#7C3AED] uppercase tracking-wider mb-3">Steg för steg</p>
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Så funkar det</h1>
-            <p className="text-xl text-gray-500">
-              Från betalning till färdigt kalas på under 5 minuter. Inga planeringsheadaches.
-            </p>
-          </div>
-        </div>
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
 
-        {/* Steps */}
-        <div className="max-w-5xl mx-auto px-4 py-16">
-          <div className="space-y-16">
-            {STEPS.map((step, i) => (
-              <div key={step.num} className={`flex gap-10 items-start ${i % 2 === 1 ? 'flex-row-reverse' : ''}`}>
-                <div className="flex-shrink-0 w-56 h-56 rounded-3xl flex items-center justify-center text-8xl"
-                  style={{ background: i % 2 === 0 ? 'linear-gradient(135deg,#ede9fe,#ddd6fe)' : 'linear-gradient(135deg,#fce7f3,#fbcfe8)' }}>
-                  {step.emoji}
-                </div>
-                <div className="flex-1 pt-4">
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-[#7C3AED] mb-2">
-                    <span className="w-7 h-7 bg-[#7C3AED] text-white rounded-full flex items-center justify-center text-xs font-bold">{step.num}</span>
-                    {step.phase}
-                  </span>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-3">{step.title}</h2>
-                  <p className="text-gray-600 text-lg leading-relaxed mb-5">{step.desc}</p>
-                  <ul className="space-y-2">
-                    {step.details.map(d => (
-                      <li key={d} className="flex items-start gap-2 text-gray-700">
-                        <span className="text-[#7C3AED] font-bold mt-0.5">✓</span>
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+        {/* Header */}
+        <section style={{
+          textAlign: 'center',
+          padding: '5rem 1.5rem 4rem',
+          backgroundColor: '#faf1ef',
+        }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+            <h1 style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: 'clamp(3rem, 7vw, 6rem)',
+              fontWeight: 800,
+              color: '#5910b6',
+              lineHeight: '88%',
+              marginBottom: '1.25rem',
+            }}>Så funkar det</h1>
+            <p style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: 'clamp(1.3rem, 2.2vw, 1.7rem)',
+              color: '#272729',
+              fontWeight: 500,
+              lineHeight: '140%',
+            }}>Absolut inget facit, men här är vår idé om ett oförglömligt kalas.</p>
+          </div>
+        </section>
+
+        {/* Inför kalaset */}
+        <section style={{ padding: '5rem 1.5rem' }}>
+          <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+            <h2 style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+              fontWeight: 800,
+              color: '#272729',
+              marginBottom: '3rem',
+              lineHeight: '95%',
+              textAlign: 'center',
+            }}>Inför kalaset</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+              {BEFORE.map(s => <Step key={s.n} {...s} />)}
+            </div>
+          </div>
+        </section>
+
+        {/* Under kalaset */}
+        <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
+          <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+            <h2 style={{
+              fontFamily: 'caraque-solid, sans-serif',
+              fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+              fontWeight: 800,
+              color: '#272729',
+              marginBottom: '3rem',
+              lineHeight: '95%',
+              textAlign: 'center',
+            }}>Under kalaset</h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+              {DURING.map(s => <Step key={s.n} {...s} />)}
+            </div>
+          </div>
+        </section>
+
+        {/* Vad fyller barnet */}
+        <section style={{ padding: '5rem 1.5rem', textAlign: 'center' }}>
+          <h2 style={{
+            fontFamily: 'caraque-solid, sans-serif',
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+            fontWeight: 800,
+            color: '#5910b6',
+            marginBottom: '2.5rem',
+            lineHeight: '95%',
+          }}>Vad fyller barnet?</h2>
+
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '1rem',
+            maxWidth: '720px',
+            margin: '0 auto',
+          }}>
+            {AGE_CTAS.map(c => (
+              <a key={c.label} href={c.href} className="btn-primary" style={{
+                fontSize: '1.5rem',
+                padding: '1.3rem 2.6rem',
+                flex: '0 0 auto',
+              }}>
+                {c.label}
+              </a>
             ))}
           </div>
-        </div>
-
-        {/* Promo */}
-        <div className="bg-[#7C3AED] text-white py-12 text-center">
-          <p className="text-2xl font-bold mb-2">Prova med koden KALAS20</p>
-          <p className="text-violet-200 mb-6">20% rabatt på ditt första köp</p>
-          <a href="/kalas" className="inline-block bg-[#FCD34D] text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition-colors">
-            Se alla kalas →
-          </a>
-        </div>
-
-        {/* FAQ */}
-        <div className="max-w-3xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Vanliga frågor</h2>
-          <div className="space-y-4">
-            {FAQ.map(item => (
-              <details key={item.q} className="group border border-gray-200 rounded-2xl overflow-hidden">
-                <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50 transition-colors list-none">
-                  {item.q}
-                  <span className="text-[#7C3AED] text-xl transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <div className="px-5 pb-5 text-gray-600 leading-relaxed">{item.a}</div>
-              </details>
-            ))}
-          </div>
-        </div>
+        </section>
       </main>
       <Footer />
     </>
