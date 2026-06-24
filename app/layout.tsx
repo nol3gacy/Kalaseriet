@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+// Self-hosted Caraque @font-face (replaces Adobe Typekit) — declared before the
+// stylesheets that use the families.
+import "./webflow/caraque.css";
 // Webflow export stylesheets — imported AFTER globals so they own the styling (exact replica)
 import "./webflow/normalize.css";
 import "./webflow/webflow.css";
@@ -51,8 +54,9 @@ export default function RootLayout({
   return (
     <html lang="sv" data-wf-page="kalaseriet" data-wf-site="kalaseriet" className={manrope.variable}>
       <head>
-        {/* Caraque (caraque-solid, caraque-melted) via Adobe Typekit — same kit as Webflow site */}
-        <link rel="stylesheet" href="https://use.typekit.net/lee7ejt.css" />
+        {/* Preload the two most-used Caraque weights for fast first paint */}
+        <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldMelted.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldSolid.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body>
         <CartProvider>

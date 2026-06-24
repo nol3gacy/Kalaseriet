@@ -1,0 +1,55 @@
+/* Self-hosted Caraque (replaces the render-blocking Adobe Typekit request).
+   woff2-only, only the weights the site actually uses, font-display: swap. */
+
+/* ── caraque-melted (workhorse: headings, nav, buttons, bold body) ── */
+@font-face {
+  font-family: 'caraque-melted';
+  src: url('/wf/fonts/caraque/Caraque-RegularMelted.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'caraque-melted';
+  src: url('/wf/fonts/caraque/Caraque-MediumMelted.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'caraque-melted';
+  src: url('/wf/fonts/caraque/Caraque-BoldMelted.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'caraque-melted';
+  src: url('/wf/fonts/caraque/Caraque-XBoldMelted.woff2') format('woff2');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── caraque-solid (bubbly display: logo, bento headings) ── */
+@font-face {
+  font-family: 'caraque-solid';
+  src: url('/wf/fonts/caraque/Caraque-RegularSolid.woff2') format('woff2');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'caraque-solid';
+  src: url('/wf/fonts/caraque/Caraque-BoldSolid.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'caraque-solid';
+  src: url('/wf/fonts/caraque/Caraque-XBoldSolid.woff2') format('woff2');
+  font-weight: 800 900;
+  font-style: normal;
+  font-display: swap;
+}
