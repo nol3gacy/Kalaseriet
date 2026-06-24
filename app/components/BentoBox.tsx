@@ -1,209 +1,140 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import Lottie from './wf/Lottie'
 
-// Matches kalaseriet.se bento grid exactly:
-// .heading.is--bento: caraque-melted, 3.4rem, color: #6e42ff
-// .heading.is--bento.is--larger: 5rem
-// .text.is--bold: caraque-melted, bold
+// Exact replica of the kalaseriet.se Webflow bento grid.
+// Placement is driven by the w-node ids referenced in kalaseriet.webflow.css — keep them verbatim.
 
-interface BentoItem {
-  id: string
-  label?: string
-  title: string
-  subtitle?: string
-  color: string
-  textColor?: string
-  imageUrl?: string
-  animationUrl?: string
-  span?: 'full' | 'half' | 'normal'
-}
+const PLUS_PATH =
+  'M13.3836 25.1253C13.3586 24.2497 13.1084 23.6492 12.6331 23.324C12.1827 22.9737 11.4947 22.7861 10.569 22.7611L5.08989 22.4984C3.68884 22.3983 2.55048 21.9354 1.67482 21.1098C0.799158 20.2842 0.361328 19.2209 0.361328 17.9199C0.361328 16.669 0.76163 15.6307 1.56223 14.8051C2.38786 13.9544 3.56374 13.4791 5.08989 13.379L10.9443 13.1163C11.7449 13.0662 12.3454 12.8286 12.7457 12.4032C13.171 11.9529 13.3836 11.1648 13.3836 10.039L13.4212 5.57309C13.4962 1.99539 15.0224 0.206543 17.9996 0.206543C19.4757 0.206543 20.5891 0.619354 21.3396 1.44498C22.1152 2.2706 22.5656 3.60911 22.6907 5.4605L22.9909 10.7145C23.0409 11.7152 23.2661 12.3782 23.6664 12.7035C24.0917 13.0287 24.6797 13.2164 25.4302 13.2664H30.3089C32.1853 13.3415 33.5363 13.7668 34.362 14.5424C35.1876 15.3179 35.6004 16.4063 35.6004 17.8073C35.6004 19.2084 35.1626 20.3217 34.2869 21.1473C33.4113 21.9479 32.0102 22.4108 30.0837 22.5359H25.1675C24.467 22.5609 23.9416 22.7611 23.5913 23.1363C23.2411 23.4866 23.0409 24.1246 22.9909 25.0503L22.6907 30.6045C22.5906 32.3058 22.1528 33.6443 21.3772 34.62C20.6016 35.5707 19.4757 36.0461 17.9996 36.0461C15.0724 36.0461 13.5463 34.3073 13.4212 30.8296L13.3836 25.1253Z'
 
-interface BentoBoxProps {
-  items: BentoItem[]
-}
-
-function BentoCard({ item }: { item: BentoItem }) {
-  const [lottieReady, setLottieReady] = useState(false)
-
-  useEffect(() => {
-    if (item.animationUrl) {
-      if (!customElements.get('lottie-player')) {
-        import('@lottiefiles/lottie-player').then(() => setLottieReady(true))
-      } else {
-        setLottieReady(true)
-      }
-    }
-  }, [item.animationUrl])
-
-  const isHalf = item.span === 'half'
-  const isLarger = isHalf // half-span items use is--larger heading style
-
-  // Determine text color based on background
-  const textColor = item.textColor ?? '#272729'
-
-  // Heading color: match original - purple for most, inherit for image cards
-  const headingColor = item.imageUrl
-    ? '#faf1ef'
-    : item.color === '#ffa6a6'
-      ? '#faf1ef'
-      : item.color === '#3e755a'
-        ? '#faf1ef'
-        : item.color === '#6e42ff'
-          ? '#faf1ef'
-          : item.color === '#5910b6'
-            ? '#ffa6a6'  // melon on indigo
-            : '#6e42ff'  // purple by default
-
-  const labelColor = item.imageUrl
-    ? '#faf1ef'
-    : item.color === '#ffa6a6' ? '#faf1ef'
-    : item.color === '#3e755a' ? '#faf1ef'
-    : item.color === '#6e42ff' ? '#faf1ef'
-    : item.color === '#5910b6' ? '#faf1ef'
-    : '#272729'
-
-  const subtitleColor = labelColor
-
+function Plus({ cls = '' }: { cls?: string }) {
   return (
-    <div
-      style={{
-        backgroundColor: item.color,
-        backgroundImage: item.imageUrl ? `url(${item.imageUrl})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        borderRadius: '3rem',
-        overflow: 'hidden',
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        minHeight: isHalf ? '20rem' : '16rem',
-        padding: '1.5rem',
-        gridColumn: isHalf ? 'span 2' : 'span 1',
-      }}
-    >
-      {/* Dark overlay for image cards */}
-      {item.imageUrl && (
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.3)',
-          borderRadius: '3rem',
-        }} />
-      )}
-
-      {/* Content */}
-      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem', height: '100%', justifyContent: 'space-between' }}>
-        <div>
-          {item.label && (
-            <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.05rem',
-              fontWeight: 500,
-              color: labelColor,
-              lineHeight: 1.2,
-              marginBottom: '0.25rem',
-            }}>
-              {item.label}
-            </p>
-          )}
-          {/* Bento headings ARE caraque-melted per kalaseriet.se (.heading.is--bento) */}
-          <h2 style={{
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: isLarger ? '5rem' : '3.4rem',
-            fontWeight: 700,
-            color: headingColor,
-            lineHeight: '90%',
-            margin: 0,
-          }}>
-            {item.title}
-          </h2>
-        </div>
-
-        {item.subtitle && (
-          <p style={{
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '1.05rem',
-            fontWeight: 500,           /* was 700 — body softer now */
-            color: subtitleColor,
-            lineHeight: 1.35,
-            maxWidth: '28ch',
-          }}>
-            {item.subtitle}
-          </p>
-        )}
+    <div className={`bento-plus${cls ? ' ' + cls : ''}`}>
+      <div className="icon is--bento w-embed">
+        <svg viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d={PLUS_PATH} fill="currentColor" />
+        </svg>
       </div>
-
-      {/* Lottie animation — anchored bottom-right, slightly extending below */}
-      {item.animationUrl && lottieReady && (
-        <div style={{
-          position: 'absolute',
-          bottom: '-10%',
-          right: '-5%',
-          zIndex: 0,
-          width: '50%',
-          maxWidth: '260px',
-          pointerEvents: 'none',
-          opacity: 0.95,
-        }}>
-          {/* @ts-ignore */}
-          <lottie-player
-            src={item.animationUrl}
-            background="transparent"
-            speed="1"
-            style={{ width: '100%', height: 'auto' }}
-            loop
-            autoplay
-          />
-        </div>
-      )}
     </div>
   )
 }
 
-export default function BentoBox({ items }: BentoBoxProps) {
+export default function BentoBox() {
   return (
-    <section style={{
-      backgroundColor: 'white',
-      padding: '1.5rem',
-    }}>
-      <div className="bento-grid" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '1.5rem',
-        maxWidth: '1280px',
-        margin: '0 auto',
-      }}>
-        {items.map(item => (
-          <BentoCard key={item.id} item={item} />
-        ))}
-      </div>
+    <section className="bento">
+      <div id="w-node-_5c45588b-0eac-d457-3416-e88aa1e653b5-a1e653b4" className="w-layout-layout bento-grid wf-layout-layout">
 
-      <style>{`
-        @media (max-width: 900px) {
-          .bento-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .bento-grid > div[style*="grid-column: span 2"],
-          .bento-grid > div[style*="gridColumn"] {
-            grid-column: span 2 !important;
-          }
-        }
-        @media (max-width: 560px) {
-          .bento-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
-          }
-          .bento-grid > div {
-            grid-column: span 1 !important;
-            min-height: 14rem !important;
-          }
-          .bento-grid h2 {
-            font-size: 2.6rem !important;
-          }
-        }
-      `}</style>
+        {/* 1 — 20 st kalaslekar (2x2, flip back) */}
+        <div id="w-node-_5c45588b-0eac-d457-3416-e88aa1e653b6-a1e653b4" className="w-layout-cell bento-cell">
+          <div className="bento-cell-front is--vertical">
+            <div>
+              <div className="text is--bold is-muffin">I varje nedladdning ingår</div>
+              <h2 className="heading is--bento is--larger">20 st Kalaslekar &amp; aktiviteter</h2>
+            </div>
+            <div className="text is--bold is-muffin">Passar garanterat alla, ofta används 4-7 st under ett kalas</div>
+            <Lottie className="birthday-banner-anim" src="/wf/documents/banner-01.json" />
+            <Plus />
+          </div>
+          <div className="bento-cell-front is--back">
+            <div className="text is--bold is--pink">I varje nedladdning ingår</div>
+            <div className="text is--bold is--pink">Galna skattjakter, lugnare mysterier och allt däremellan</div>
+            <Plus cls="is--back" />
+          </div>
+        </div>
+
+        {/* 2 — Busenkelt att skriva ut (tall) */}
+        <div id="w-node-_5c45588b-0eac-d457-3416-e88aa1e653bd-a1e653b4" className="w-layout-cell bento-cell">
+          <div className="bento-cell-front is--printer">
+            <h2 className="heading is--bento">Busenkelt att skriva ut hemma</h2>
+            <div className="text is--bold is--printer">(Eller på jobbet)</div>
+            <Plus cls="is--printer" />
+          </div>
+          <Lottie className="skrivare" src="/wf/documents/printer-02.json" />
+        </div>
+
+        {/* 3 — Skriv bara ut det du behöver (green + leaf) */}
+        <div className="w-layout-cell bento-cell">
+          <div className="bento-cell-front">
+            <Plus />
+            <h2 className="heading is--bento is--green is--shorter">Skriv bara ut det du behöver</h2>
+            <div className="text is--green">Bättre för naturen!</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/wf/images/leaf.png" loading="lazy" alt="" className="leaf" />
+          </div>
+        </div>
+
+        {/* 4 — Inkluderande lekar (image spread) */}
+        <div className="w-layout-cell bento-cell is--including">
+          <div className="bento-cell-front is--spread">
+            <h2 className="heading is--bento is--light">Inkluderande lekar</h2>
+            <div className="text is--light">Alla vinner &amp; ingen blir utanför!</div>
+            <Plus />
+          </div>
+        </div>
+
+        {/* 5 — 20 st smarriga recept (muffin bg) */}
+        <div id="w-node-_5c45588b-0eac-d457-3416-e88aa1e653df-a1e653b4" className="w-layout-cell bento-cell is--recept">
+          <div className="bento-cell-front is--recepies">
+            <h2 className="heading is--bento is--recipe">20 st smarriga recept</h2>
+            <div className="bento-spacer" />
+            <div className="text is--bold is-muffin">Vi har samlat barnen och testat de bästa recepten, garanterat gott!</div>
+            <Plus />
+            <div className="muffin-top" />
+          </div>
+        </div>
+
+        {/* 6 — Festliga spellistor (soundwave) */}
+        <div className="w-layout-cell bento-cell">
+          <div className="bento-cell-front is--playlists">
+            <h2 className="heading is--bento is--light">Festliga spellistor</h2>
+            <Lottie className="sound-anim" src="/wf/documents/soundwave-01.json" />
+            <div className="text is--bold is-playlist">Länk till skräddarsydda spellistor ingår</div>
+            <Plus />
+          </div>
+        </div>
+
+        {/* 7 — Dekorera mera! */}
+        <div className="w-layout-cell">
+          <div className="bento-cell-front is--dekorera">
+            <h2 className="heading is--bento is-decoration">Dekorera mera!</h2>
+            <div className="text is--bold is--pink">Tips på 5 st dekorationer som passar varje tema</div>
+            <Plus />
+          </div>
+        </div>
+
+        {/* 8 — Supersnygg inbjudan ingår */}
+        <div className="w-layout-cell">
+          <div className="bento-cell-front">
+            <h2 className="heading is--bento is-decoration">Supersnygg inbjudan ingår</h2>
+            <div className="text is--bold is--pink">Skriv ut och fyll i detaljer. Superenkelt &amp; snyggt!</div>
+            <Plus />
+          </div>
+        </div>
+
+        {/* 9 — 100% nöjdhets-garanti */}
+        <div className="w-layout-cell">
+          <div className="bento-cell-front is--100">
+            <h2 className="heading is--bento is--light">100% nöjdhets-garanti</h2>
+            <div className="text is--bold is--light">Inte nöjd? Pengarna tillbaka.</div>
+            <Plus />
+          </div>
+        </div>
+
+        {/* 10 — Checklistor & körschema (wide) */}
+        <div id="w-node-_044c6808-3316-b199-52b7-adb96959b756-a1e653b4" className="w-layout-cell">
+          <div className="bento-cell-front is--inkopslistor">
+            <h2 className="heading is--bento is-shorter is--checklist">Checklistor &amp; körschema</h2>
+            <div className="text is--bold is--pink">Checka av inför, under &amp; efter kalaset. Så att inget missas!</div>
+            <div className="inkopslistor">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/wf/images/checklistad.png" loading="lazy" alt="" className="inkopslistor-img" />
+            </div>
+            <Plus />
+          </div>
+        </div>
+
+      </div>
     </section>
   )
 }

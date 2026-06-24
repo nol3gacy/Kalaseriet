@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+// Webflow export stylesheets — imported AFTER globals so they own the styling (exact replica)
+import "./webflow/normalize.css";
+import "./webflow/webflow.css";
+import "./webflow/kalaseriet.webflow.css";
 import { CartProvider } from "./lib/cart-context";
 import MiniCart from "./components/MiniCart";
 
@@ -45,12 +49,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv" className={`${manrope.variable} h-full antialiased`}>
+    <html lang="sv" data-wf-page="kalaseriet" data-wf-site="kalaseriet" className={manrope.variable}>
       <head>
-        {/* Caraque (caraque-melted, caraque-melted) via Adobe Fonts */}
+        {/* Caraque (caraque-solid, caraque-melted) via Adobe Typekit — same kit as Webflow site */}
         <link rel="stylesheet" href="https://use.typekit.net/lee7ejt.css" />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body>
         <CartProvider>
           {children}
           <MiniCart />

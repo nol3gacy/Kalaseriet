@@ -3,10 +3,9 @@ import { allProductsQuery } from '../sanity/lib/queries'
 import Navbar from './components/Navbar'
 import ProductGrid from './components/ProductGrid'
 import Footer from './components/Footer'
-import Testimonials from './components/Testimonials'
-import FAQ from './components/FAQ'
 import BentoBox from './components/BentoBox'
 import DiscountMarquee from './components/DiscountMarquee'
+import HeroVideo from './components/wf/HeroVideo'
 
 export const themeColors: Record<string, { from: string; to: string; emoji: string }> = {
   pirat:        { from: '#dde3ea', to: '#b8c4d0', emoji: '☠️' },
@@ -98,427 +97,55 @@ async function getProducts(): Promise<Product[]> {
 }
 
 
-const bentoItems = [
-  // Row 1: half + normal
-  {
-    id: 'lekar',
-    label: 'I varje nedladdning ingår',
-    title: '20 st Kalaslekar & aktiviteter',
-    subtitle: 'Passar garanterat alla, ofta används 4-7 st under ett kalas',
-    color: '#faf1ef',
-    textColor: '#272729',
-    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dce110e076dc1e3d6d49fd_banner-01.json',
-    span: 'half' as const,
-  },
-  {
-    id: 'skattjakt',
-    label: 'I varje nedladdning ingår',
-    title: 'Galna skattjakter',
-    subtitle: 'Lugnare mysterier och allt däremellan',
-    color: '#ffa6a6',
-    textColor: '#272729',
-    span: 'normal' as const,
-  },
-  // Row 2: normal + normal + normal
-  {
-    id: 'skriv',
-    title: 'Busenkelt att skriva ut hemma',
-    subtitle: 'Skriv bara ut det du behöver · Bättre för naturen!',
-    color: '#faf1ef',
-    textColor: '#272729',
-    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dd099c190adae07510ff3c_printer-02.json',
-    span: 'normal' as const,
-  },
-  {
-    id: 'inkluderande',
-    title: 'Inkluderande lekar',
-    subtitle: 'Alla vinner & ingen blir utanför!',
-    color: '#faf1ef',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/6570f5d00cd12f751f15bb78_inkluderande-kalaslekar.jpg',
-    span: 'normal' as const,
-  },
-  {
-    id: 'recept',
-    title: '20 st smarriga recept',
-    subtitle: 'Vi har samlat barnen och testat de bästa recepten, garanterat gott!',
-    color: '#faf1ef',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
-    span: 'normal' as const,
-  },
-  // Row 3: normal + normal + normal
-  {
-    id: 'spellistor',
-    title: 'Festliga spellistor',
-    subtitle: 'Länk till skräddarsydda spellistor ingår',
-    color: '#ffa6a6',
-    textColor: '#272729',
-    animationUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65dfa01d6a6f5cbd97ed0129_soundwave-01.json',
-    span: 'normal' as const,
-  },
-  {
-    id: 'dekorera',
-    title: 'Dekorera mera!',
-    subtitle: 'Tips på 5 st dekorationer som passar varje tema',
-    color: '#faf1ef',
-    textColor: '#272729',
-    span: 'normal' as const,
-  },
-  {
-    id: 'inbjudan',
-    title: 'Supersnygg inbjudan ingår',
-    subtitle: 'Skriv ut och fyll i detaljer. Superenkelt & snyggt!',
-    color: '#3e755a',
-    textColor: '#faf1ef',
-    span: 'normal' as const,
-  },
-  // Row 4: normal + half
-  {
-    id: 'garanti',
-    title: '100% nöjdhets-garanti',
-    subtitle: 'Inte nöjd? Pengarna tillbaka.',
-    color: '#6e42ff',
-    textColor: '#faf1ef',
-    span: 'normal' as const,
-  },
-  {
-    id: 'checklista',
-    title: 'Checklistor & körschema',
-    subtitle: 'Checka av inför, under & efter kalaset. Så att inget missas!',
-    color: '#5910b6',
-    textColor: '#faf1ef',
-    span: 'half' as const,
-  },
-]
-
 export default async function Home() {
   const products = await getProducts()
-  const popular = products.filter(p => p.isPopular)
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Navbar />
 
-      {/* ── Hero ────────────────────────────────────────────── */}
-      {/* Matches kalaseriet.se hero exactly:
-          - Fullscreen video background
-          - caraque-melted preamble + xxl heading + asterisk
-          - caraque-melted subtext
-          - Two buttons: indigo pill + secondary outline
-      */}
-      <section style={{
-        margin: '1.5rem',
-        marginBottom: '0.75rem',
-        paddingRight: '1.5rem',
-        paddingBottom: '1.5rem',
-        paddingLeft: '1.5rem',
-        borderRadius: '3rem',
-        color: '#faf1ef',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        height: 'calc(100svh - 3rem)',
-        position: 'relative',
-        overflow: 'hidden',
-        isolation: 'isolate',
-        backgroundColor: '#272729',
-      }}>
-        {/* Background video — z-index 0 inside isolated stacking context */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0,
-          }}
-          poster="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-poster-00001.jpg"
-        >
-          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-transcode.mp4" type="video/mp4" />
-          <source src="https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29-transcode.webm" type="video/webm" />
-        </video>
-
-        {/* Dark overlay for text legibility */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.25)',
-          zIndex: 1,
-        }} />
-
-        {/* Hero top: preamble + heading */}
-        <div style={{
-          marginBottom: '3rem',
-          textAlign: 'center',
-          textShadow: '0 1px 20px #0003',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          position: 'relative',
-          zIndex: 2,
-        }}>
-          <div style={{
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '3rem',
-            fontWeight: 700,
-            lineHeight: '100%',
-          }}>
-            Vi har tydligen
-          </div>
-          <h1 style={{
-            maxWidth: '16ch',
-            marginBottom: '1rem',
-            color: '#faf1ef',
-            letterSpacing: '0.01rem',
-            fontSize: '7rem',
-            fontWeight: 800,
-            lineHeight: '87%',
-            fontFamily: 'caraque-melted, sans-serif',
-          }}>
-            Sveriges bästa kalaslekar<span style={{
-              marginLeft: '4px',
-              fontSize: '4.7rem',
-              lineHeight: '50%',
-              position: 'relative',
-              top: '-23px',
-            }}>*</span>
-          </h1>
-
-          {/* Subtext */}
-          <div style={{
-            maxWidth: '42ch',
-            color: '#faf1ef',
-            textAlign: 'center',
-            letterSpacing: '0.01em',
-            textShadow: '0 1px 4px #0006',
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: '2.2rem',
-            fontWeight: 500,
-            lineHeight: '110%',
-          }}>
-            Gör barnkalaset oförglömligt med hjälp av våra{' '}
-            <a href="/kalasen" style={{ color: '#faf1ef' }}>kalasteman</a>!{' '}
-            Massor av idéer för kalaslekar, mall för inbjudning, recept, checklistor, musik med mera!
-          </div>
+      {/* ── Hero ──────────────────────────────────────────── */}
+      <section className="hero">
+        <HeroVideo />
+        <div className="hero-top">
+          <div className="hero-preample">Vi har tydligen</div>
+          <h1 className="heading is--xxl">Sveriges bästa kalaslekar<span className="hero-asterix">*</span></h1>
+          <div className="hero-smallprint is--text">*Enligt Leo &amp; Wilma</div>
         </div>
-
-        {/* Buttons */}
-        <div style={{ justifyContent: 'center', alignItems: 'center', width: '100%', marginTop: '27px', display: 'flex', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
-          <div style={{ display: 'flex', gap: '0.75em', alignItems: 'center' }}>
-            <a href="/kalasen" style={{
-              borderRadius: '3rem',
-              backgroundColor: '#5910b6',
-              color: '#6e42ff',
-              cursor: 'pointer',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '1.5rem 3rem',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.6rem',
-              fontWeight: 400,
-              lineHeight: '100%',
-            }}>
-              <span style={{ color: '#faf1ef' }}>Kolla in kalasen ›</span>
+        <div className="hero-sub is--hero">
+          Gör barnkalaset oförglömligt med hjälp av våra <a href="/kalas">kalasteman</a>! Massor av idéer för kalaslekar, mall för inbjudning, recept, checklistor, musik med mera!
+        </div>
+        <div className="hero-bottom">
+          <div className="hero-buttons-wrapper">
+            <a href="/kalas" className="btn is--hero w-inline-block">
+              <div><span className="btn-text">Kolla in kalasen ›</span></div>
             </a>
-            <a href="/sa-funkar-det" style={{
-              border: '3px solid #faf1ef',
-              borderRadius: '3rem',
-              backgroundColor: 'transparent',
-              color: '#faf1ef',
-              cursor: 'pointer',
-              justifyContent: 'center',
-              alignItems: 'center',
-              padding: '1.5rem 3rem',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.6rem',
-              fontWeight: 400,
-              lineHeight: '100%',
-            }}>
-              Så funkar det
+            <a href="/sa-funkar-det" className="btn is--secondary w-inline-block">
+              <div><span className="btn-text is--secondary">Så funkar det</span></div>
             </a>
           </div>
         </div>
-
-        {/* Smallprint asterisk */}
-        <div style={{
-          textShadow: '0 0 7px #00000080',
-          alignSelf: 'flex-end',
-          position: 'absolute',
-          right: '3%',
-          bottom: '2%',
-          fontFamily: 'caraque-melted, sans-serif',
-          fontSize: '1.2rem',
-          color: '#faf1ef',
-          opacity: 0.7,
-        }}>
-          *Enligt Leo &amp; Wilma
-        </div>
       </section>
 
-      {/* ── Bento (Vad ingår i paketet) directly under hero ── */}
-      <section>
-        <BentoBox items={bentoItems} />
-      </section>
-
-      {/* ── Marquee with Discount Code ────────────────────── */}
+      {/* ── Marquee ───────────────────────────────────────── */}
       <DiscountMarquee />
 
-      {/* ── Populära kalas ──────────────────────────────────── */}
-      {popular.length > 0 && (
-        <section id="populara" style={{ padding: '5rem 1.5rem', backgroundColor: 'white' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: 'clamp(2.4rem, 5vw, 4rem)',
-                fontWeight: 800,
-                color: '#5910b6',
-                lineHeight: '92%',
-                marginBottom: '0.75rem',
-              }}>Populära kalas</h2>
-              <p style={{
-                fontFamily: 'caraque-melted, sans-serif',
-                fontSize: '1.3rem',
-                color: '#4e4e4e',
-              }}>Barnens favoriter just nu</p>
-            </div>
-            <ProductGrid products={popular} />
-          </div>
-        </section>
-      )}
+      {/* ── Bento ─────────────────────────────────────────── */}
+      <BentoBox />
 
-      {/* ── Alla kalas ──────────────────────────────────────── */}
-      <section id="alla-kalas" style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <h2 style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)',
-              fontWeight: 800,
-              color: '#5910b6',
-              lineHeight: '92%',
-              marginBottom: '0.75rem',
-            }}>
-              Alla kalas{' '}
-              <span style={{ color: '#b1b1b1', fontSize: '0.5em', fontWeight: 600 }}>({products.length} st)</span>
-            </h2>
-            <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
-              fontSize: '1.3rem',
-              color: '#4e4e4e',
-            }}>Välj tema och åldersgrupp</p>
-          </div>
-          <ProductGrid products={products} showFilter />
-        </div>
-      </section>
+      {/* ── Kalasen (filter + all products) ───────────────── */}
+      <ProductGrid products={products} heading="Kalasen" />
 
-      {/* ── Så funkar det ───────────────────────────────────── */}
-      <section id="sa-funkar-det" className="py-16 sm:py-20 bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-14">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">Så funkar det</h2>
-            <p className="text-gray-500">Från köp till utskrivet på bara några minuter.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { n: '1', icon: '🎯', title: 'Välj tema',        body: 'Bläddra bland 33 teman och välj det perfekta för barnet.' },
-              { n: '2', icon: '💳', title: 'Betala tryggt',    body: 'Säker betalning med Swish, kort eller faktura.' },
-              { n: '3', icon: '📥', title: 'Ladda ner direkt', body: 'Du får en länk på mejl direkt – inga dagar att vänta.' },
-              { n: '4', icon: '🎉', title: 'Skriv ut & fira!', body: 'Skriv ut hemma eller hos en print-shop och fira!' },
-            ].map(s => (
-              <div key={s.n} className="text-center">
-                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-violet-50 text-3xl mb-5 mx-auto">
-                  {s.icon}
-                  <span className="absolute -top-2 -right-2 w-6 h-6 bg-[#FCD34D] text-gray-900 text-xs font-extrabold rounded-full flex items-center justify-center">{s.n}</span>
-                </div>
-                <h3 className="font-bold text-gray-900 text-base mb-2">{s.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{s.body}</p>
-              </div>
-            ))}
+      {/* ── About ─────────────────────────────────────────── */}
+      <section className="about">
+        <div className="container">
+          <div className="text is--about w-richtext">
+            <p>Hos Kalaseriet hittar du ett brett utbud av kalaslekpaket för det perfekta barnkalaset. Varje tema har roliga lekar som passar perfekt för kalas och för barnets ålder. Hos Kalaseriet gör vi varje kalas till en oförglömlig upplevelse!</p>
           </div>
         </div>
       </section>
 
-      {/* ── Fördelar ────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">Varför välja Kalaseriet?</h2>
-            <p className="text-gray-500 text-sm">Vi gör det enkelt och prisvärt att förbereda barnets stora dag.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: '⚡', title: 'Ladda ner direkt',    body: 'Ingen väntetid – filer direkt efter betalning.' },
-              { icon: '💰', title: 'Spara pengar',        body: 'Bråkdelen av kostnaden jämfört med tryckt material.' },
-              { icon: '🌍', title: 'Miljövänligt',        body: 'Skriv ut bara det du behöver och minska svinn.' },
-              { icon: '✏️', title: 'Anpassa enkelt',      body: 'Lägg till barnets namn med valfritt program.' },
-              { icon: '🖨️', title: 'Skriv ut hemma',     body: 'Fungerar med vanlig skrivare eller en print-shop.' },
-              { icon: '🎨', title: 'Brett utbud',         body: '33 teman för barn 4–8 år.' },
-              { icon: '🎂', title: 'Åldersanpassat',      body: 'Allt innehåll anpassat för rätt ålder.' },
-              { icon: '⭐', title: 'Nöjdhetsgaranti',     body: '100% pengarna tillbaka om du inte är nöjd.' },
-            ].map(f => (
-              <div key={f.title} className="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 hover:shadow-sm transition-all">
-                <div className="text-2xl mb-3">{f.icon}</div>
-                <h3 className="font-bold text-gray-900 text-sm mb-1">{f.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Garanti ─────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-white border-t border-gray-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-violet-100 rounded-2xl text-3xl mb-6">🛡️</div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-4">100% Nöjdhetsgaranti</h2>
-          <p className="text-gray-500 leading-relaxed mb-8">
-            Vi är övertygade om kvaliteten. Om du av någon anledning inte är nöjd,
-            kontaktar du oss inom 30 dagar – vi löser det direkt, inga frågor ställs.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['✅ 30 dagars garanti', '✅ Inga frågor ställs', '✅ Snabb återbetalning'].map(b => (
-              <span key={b} className="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-full px-4 py-2">{b}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonials ───────────────────────────────────── */}
-      <Testimonials />
-
-      {/* ── FAQ ─────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <FAQ />
-      </section>
-
-      {/* ── Kalasbloggen teaser ─────────────────────────────── */}
-      <section className="py-16 sm:py-20 bg-violet-50 border-t border-violet-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-semibold text-[#5910b6] uppercase tracking-widest mb-3 block">Kalasbloggen</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mb-3">Tips & inspiration</h2>
-          <p className="text-gray-500 text-sm mb-8 max-w-md mx-auto">
-            Recept, aktiviteter och idéer för att göra barnets kalas ännu mer minnesvärt.
-          </p>
-          <a href="/kalasbloggen" className="btn-primary">
-            Läs bloggen ›
-          </a>
-        </div>
-      </section>
-
-      {/* ── Footer ──────────────────────────────────────────── */}
       <Footer />
-    </div>
+    </>
   )
 }

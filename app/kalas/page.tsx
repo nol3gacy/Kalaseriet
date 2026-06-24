@@ -4,6 +4,7 @@ import { fallbackProducts, type Product } from '../page'
 import ProductGrid from '../components/ProductGrid'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import DiscountMarquee from '../components/DiscountMarquee'
 
 export const metadata = {
   title: 'Alla kalas – Kalaseriet',
@@ -21,24 +22,11 @@ async function getProducts(): Promise<Product[]> {
 
 export default async function AllKalasPage() {
   const products = await getProducts()
-
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
-        <div className="bg-violet-50 border-b border-violet-100 py-10">
-          <div className="max-w-7xl mx-auto px-4">
-            <h1 className="text-4xl font-bold text-gray-900">Alla kalas</h1>
-            <p className="text-gray-500 mt-2 text-lg">
-              {products.length} kalaspaket · Välj tema och åldersgrupp
-            </p>
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 py-10">
-          <ProductGrid products={products} showFilter />
-        </div>
-      </main>
+      <ProductGrid products={products} heading="Kalasen" />
+      <DiscountMarquee />
       <Footer />
     </>
   )
