@@ -37,8 +37,8 @@ export default function Lottie({
       src={src}
       background="transparent"
       speed="1"
-      loop={loop ? '' : undefined}
-      autoplay={autoplay ? '' : undefined}
+      loop={loop || undefined}
+      autoplay={autoplay || undefined}
       style={{ width: '100%', height: '100%', ...style }}
     />
   )

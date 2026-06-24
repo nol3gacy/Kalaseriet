@@ -38,7 +38,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound()
 
   const extra = getProductExtra(slug)
-  const images = extra?.images ?? (product.externalImageUrl ? [product.externalImageUrl] : [])
+  // Inspiration (kids cover) photo must always be the first slide
+  const scraped = extra?.images ?? []
+  const cover = product.externalImageUrl || scraped[0] || ''
+  const images = [cover, ...scraped.filter(i => i && i !== cover)].filter(Boolean)
   const description = extra?.longDescription ?? product.description
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
