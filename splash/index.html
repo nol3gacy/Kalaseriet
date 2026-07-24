@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalaseriet – kommer snart</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face{font-family:'caraque-melted';src:url('fonts/Caraque-RegularMelted.woff2') format('woff2');font-weight:400;font-display:swap}
+  @font-face{font-family:'caraque-melted';src:url('fonts/Caraque-BoldMelted.woff2') format('woff2');font-weight:700;font-display:swap}
+  @font-face{font-family:'caraque-melted';src:url('fonts/Caraque-XBoldMelted.woff2') format('woff2');font-weight:800;font-display:swap}
+  @font-face{font-family:'caraque-solid';src:url('fonts/Caraque-XBoldSolid.woff2') format('woff2');font-weight:800;font-display:swap}
+
+  :root{--indigo:#5910b6;--purple:#6e42ff;--melon:#ffa6a6;--cream:#faf1ef;--ink:#272729}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--cream);
+    font-family:'caraque-melted',sans-serif;
+    color:var(--ink);
+    min-height:100dvh;
+    display:flex;align-items:center;justify-content:center;
+    padding:2rem;
+  }
+  .wrap{width:100%;max-width:640px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2.5rem}
+
+  /* Logo (Lottie, tinted indigo) */
+  .logo{width:min(420px,80vw)}
+  .logo lottie-player svg path,.logo lottie-player svg g[fill],.logo lottie-player svg [fill]{fill:var(--indigo)!important;opacity:1!important}
+  .logo-fallback{font-family:'caraque-solid',sans-serif;font-weight:800;font-size:clamp(3rem,12vw,6rem);color:var(--indigo);line-height:1;letter-spacing:-.01em}
+
+  /* Newsletter field — same design as the site footer */
+  .news{width:100%;max-width:520px;display:flex;flex-direction:column;gap:1rem;align-items:center}
+  .tips{width:96px;transform:rotate(-10deg);margin-bottom:-.5rem}
+  form{position:relative;display:flex;align-items:center;background:#fff;border-radius:500px;padding:.5rem .5rem .5rem 1.5rem;width:100%;box-shadow:0 8px 30px rgba(89,16,182,.10)}
+  .blink{position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--indigo);font-weight:300;pointer-events:none;animation:blink 1s step-end infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  input{flex:1;min-width:0;padding:1.1rem .5rem;border:none;background:transparent;outline:none;font-family:'caraque-melted',sans-serif;font-size:1.4rem;font-weight:700;color:var(--indigo)}
+  input::placeholder{color:var(--indigo);opacity:1}
+  input:focus+.hide,.has-val .blink{display:none}
+  button{border:none;cursor:pointer;white-space:nowrap;padding:1.1rem 2rem;border-radius:500px;color:var(--cream);font-family:'caraque-melted',sans-serif;font-size:1.4rem;font-weight:500;
+    background:radial-gradient(circle at 30% 25%,#8a5cf5 0%,#5910b6 55%,#3a1f92 100%);
+    box-shadow:inset 0 1px 1px rgba(255,255,255,.3),inset 0 -3px 8px rgba(0,0,0,.2),0 4px 12px rgba(89,16,182,.3)}
+  .disclaimer{font-size:1.05rem;color:var(--indigo);line-height:1.4;font-weight:500;max-width:460px}
+  .done{font-size:1.4rem;color:#3e755a;font-weight:700}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo" id="logo"><div class="logo-fallback">Kalaseriet</div></div>
+
+    <div class="news">
+      <img class="tips" src="tips.svg" alt="">
+      <form id="f" onsubmit="return subscribe(event)">
+        <span class="blink" id="blink">|</span>
+        <input id="email" type="email" required placeholder="   Tips &amp; trix till kalaset?">
+        <button type="submit">Få direkt ›</button>
+      </form>
+      <p class="disclaimer">Få tips &amp; erbjudanden direkt till din E-mail! När du signar upp godkänner du villkoren, vi lovar att inte skicka tråkigheter, för vem gillar egentligen överraskningar ;-)</p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+  <script>
+    // Animated logo
+    var host=document.getElementById('logo');
+    var p=document.createElement('lottie-player');
+    p.setAttribute('src','anim/logo-anim.json');
+    p.setAttribute('background','transparent');p.setAttribute('speed','1');
+    p.setAttribute('loop','');p.setAttribute('autoplay','');
+    p.style.width='100%';
+    p.addEventListener('ready',function(){host.innerHTML='';host.appendChild(p);});
+    // append immediately; if it renders, swap out the fallback
+    host.appendChild(p);
+    setTimeout(function(){ if(p.shadowRoot){ var fb=host.querySelector('.logo-fallback'); if(fb) fb.remove(); } },600);
+
+    var email=document.getElementById('email'), blink=document.getElementById('blink');
+    email.addEventListener('input',function(){blink.style.display=email.value?'none':'';});
+    function subscribe(e){e.preventDefault();document.getElementById('f').outerHTML='<div class="done">✓ Tack! Vi hör av oss snart.</div>';return false;}
+  </script>
+</body>
+</html>
