@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 // Self-hosted Caraque @font-face (replaces Adobe Typekit) — declared before the
 // stylesheets that use the families.
@@ -48,6 +49,8 @@ export const metadata: Metadata = {
   },
 };
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,6 +62,19 @@ export default function RootLayout({
         {/* Preload the two most-used Caraque weights for fast first paint */}
         <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldMelted.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldSolid.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body>
         <CartProvider>
