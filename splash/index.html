@@ -13,15 +13,23 @@
 
   :root{--indigo:#5910b6;--purple:#6e42ff;--melon:#ffa6a6;--cream:#faf1ef;--ink:#272729}
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%}
-  body{
+  html,body{margin:0;height:100%;background:var(--cream)}
+
+  /* Real site, loaded underneath the splash */
+  #site{position:fixed;inset:0;width:100%;height:100%;border:0;z-index:1;background:#fff}
+
+  /* Splash overlay — full-screen shell on top of #site */
+  #splash{
+    position:fixed;inset:0;z-index:10;
     background:var(--cream);
     font-family:'caraque-melted',sans-serif;
     color:var(--ink);
-    min-height:100dvh;
     display:flex;align-items:center;justify-content:center;
     padding:2rem;
+    transition:opacity .35s ease, visibility .35s ease;
   }
+  #splash.hidden{opacity:0;visibility:hidden;pointer-events:none}
+
   .wrap{width:100%;max-width:640px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2.5rem}
 
   /* Logo (Lottie, tinted indigo) */
@@ -43,24 +51,39 @@
     box-shadow:inset 0 1px 1px rgba(255,255,255,.3),inset 0 -3px 8px rgba(0,0,0,.2),0 4px 12px rgba(89,16,182,.3)}
   .disclaimer{font-size:1.05rem;color:var(--indigo);line-height:1.4;font-weight:500;max-width:460px}
   .done{font-size:1.4rem;color:#3e755a;font-weight:700}
+
+  /* Invisible bypass hotspot, top-right, 50x50px */
+  #bypass{
+    position:fixed;top:0;right:0;width:50px;height:50px;z-index:20;
+    cursor:default;background:transparent;
+  }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="logo" id="logo"><div class="logo-fallback">Kalaseriet</div></div>
+  <!-- Real site underneath, loaded in the background -->
+  <iframe id="site" src="https://kalaseriet.vercel.app/" title="Kalaseriet" loading="eager"></iframe>
 
-    <div class="news">
-      <img class="tips" src="tips.svg" alt="">
-      <form id="f" onsubmit="return subscribe(event)">
-        <span class="blink" id="blink">|</span>
-        <input id="email" type="email" required placeholder="   Tips &amp; trix till kalaset?">
-        <button type="submit">Få direkt ›</button>
-      </form>
-      <p class="disclaimer">Få tips &amp; erbjudanden direkt till din E-mail! När du signar upp godkänner du villkoren, vi lovar att inte skicka tråkigheter, för vem gillar egentligen överraskningar ;-)</p>
+  <!-- Splash shell on top -->
+  <div id="splash">
+    <div class="wrap">
+      <div class="logo" id="logo"><div class="logo-fallback">Kalaseriet</div></div>
+
+      <div class="news">
+        <img class="tips" src="tips.svg" alt="">
+        <form id="f" onsubmit="return subscribe(event)">
+          <span class="blink" id="blink">|</span>
+          <input id="email" type="email" required placeholder="   Tips &amp; trix till kalaset?">
+          <button type="submit">Få direkt ›</button>
+        </form>
+        <p class="disclaimer">Få tips &amp; erbjudanden direkt till din E-mail! När du signar upp godkänner du villkoren, vi lovar att inte skicka tråkigheter, för vem gillar egentligen överraskningar ;-)</p>
+      </div>
     </div>
   </div>
 
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+  <!-- Click here (top-right 50x50) to skip the splash and see the real site -->
+  <div id="bypass" onclick="bypassSplash()" title=""></div>
+
+  <script src="lottie-player.js"></script>
   <script>
     // Animated logo
     var host=document.getElementById('logo');
@@ -70,13 +93,24 @@
     p.setAttribute('loop','');p.setAttribute('autoplay','');
     p.style.width='100%';
     p.addEventListener('ready',function(){host.innerHTML='';host.appendChild(p);});
-    // append immediately; if it renders, swap out the fallback
     host.appendChild(p);
     setTimeout(function(){ if(p.shadowRoot){ var fb=host.querySelector('.logo-fallback'); if(fb) fb.remove(); } },600);
 
     var email=document.getElementById('email'), blink=document.getElementById('blink');
     email.addEventListener('input',function(){blink.style.display=email.value?'none':'';});
     function subscribe(e){e.preventDefault();document.getElementById('f').outerHTML='<div class="done">✓ Tack! Vi hör av oss snart.</div>';return false;}
+
+    // Bypass: click the 50x50 top-right corner to reveal the real site
+    function bypassSplash(){
+      document.getElementById('splash').classList.add('hidden');
+      try{ sessionStorage.setItem('kalaseriet_splash_bypassed','1'); }catch(e){}
+    }
+    // Stay bypassed for the rest of this browser session
+    try{
+      if(sessionStorage.getItem('kalaseriet_splash_bypassed')==='1'){
+        document.getElementById('splash').classList.add('hidden');
+      }
+    }catch(e){}
   </script>
 </body>
 </html>
