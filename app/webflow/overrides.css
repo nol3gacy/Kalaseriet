@@ -1,0 +1,28 @@
+/* Project overrides — imported LAST so they win.
+   Caraque everywhere: nothing should fall back to Arial/Manrope ("linjär"). */
+
+body {
+  font-family: 'caraque-melted', sans-serif;
+}
+
+/* Form controls don't inherit font by default */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+/* Webflow's base body/heading defaults use Arial — force Caraque */
+h1, h2, h3, h4, h5, h6,
+p, li, a, span, div, blockquote, label, figcaption {
+  font-family: 'caraque-melted', sans-serif;
+}
+
+/* Keep the bubbly display font where the design uses it */
+.heading.is--bento,
+.heading.is--bento *,
+.brand,
+.footer-logo {
+  font-family: 'caraque-solid', sans-serif;
+}

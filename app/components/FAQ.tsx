@@ -30,7 +30,7 @@ export default function FAQ({
           }}>{heading}</h2>
           {subheading && (
             <p style={{
-              fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+              fontFamily: 'caraque-melted, sans-serif',
               fontSize: '1.05rem',
               color: '#4e4e4e',
               lineHeight: '140%',
@@ -64,7 +64,7 @@ export default function FAQ({
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                    fontFamily: 'caraque-melted, sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 700,
                     color: '#272729',
@@ -98,7 +98,7 @@ export default function FAQ({
                   <div
                     style={{
                       padding: '0 1rem 1.5rem',
-                      fontFamily: 'var(--font-manrope), system-ui, sans-serif',
+                      fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '1.05rem',
                       color: '#272729',
                       lineHeight: '160%',

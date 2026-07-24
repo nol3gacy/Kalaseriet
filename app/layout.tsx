@@ -8,6 +8,8 @@ import "./webflow/caraque.css";
 import "./webflow/normalize.css";
 import "./webflow/webflow.css";
 import "./webflow/kalaseriet.webflow.css";
+// Project overrides — must load last so Caraque wins everywhere
+import "./webflow/overrides.css";
 import { CartProvider } from "./lib/cart-context";
 import MiniCart from "./components/MiniCart";
 

@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="footer-spacer" />
       <div className="legal">© Kalaseriet <span className="year">{year}</span></div>
 
-      <div className="footer-wrapper w-layout-layout wf-layout-layout">
+      <div className="footer-wrapper w-layout-layout wf-layout-layout footer-grid">
         {/* Kalasteman */}
         <div className="w-layout-cell footer-cell">
           <div className="text is--footer-label">Kalasteman</div>
@@ -69,6 +69,24 @@ export default function Footer() {
       </div>
 
       <div className="footer-spacer is--double" />
+
+      <style>{`
+        /* Desktop: 3 link columns + wide newsletter, logo spans full width below */
+        .footer-grid {
+          grid-template-columns: 1.3fr 0.9fr 0.95fr 1.7fr;
+          align-items: start;
+        }
+        .footer-grid > .w-layout-cell { min-width: 0; }
+        .footer-grid .footer-cell.is--bottom { grid-column: 1 / -1; }
+        @media (max-width: 900px) {
+          .footer-grid { grid-template-columns: 1fr 1fr; }
+          .footer-grid .cell.is--newsletter { grid-column: 1 / -1; }
+          .footer-grid .footer-cell.is--bottom { grid-column: 1 / -1; }
+        }
+        @media (max-width: 560px) {
+          .footer-grid { grid-template-columns: 1fr; }
+        }
+      `}</style>
     </section>
   )
 }
