@@ -3,17 +3,15 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
+import { API_BASE } from '../../lib/api-base'
 import type { Product } from '../page'
 
 const FEATURES = ['Leveras direkt till din e-post', '100% Nöjdhetsgaranti', 'Säker betalning']
 
 function Check() {
   return (
-    <div className="icon is--feature w-embed" aria-hidden="true">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="20 6 9 17 4 12" />
-      </svg>
-    </div>
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img src="/wf/images/check-light.svg" alt="" aria-hidden="true" className="icon is--feature" />
   )
 }
 
@@ -31,7 +29,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
       })),
     ]
     try {
-      const res = await fetch('/api/checkout', {
+      const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: lineItems }),
       })
@@ -41,13 +39,21 @@ export default function ProductBuySection({ product }: { product: Product }) {
     router.push('/varukorg')
   }
 
-  // Reveal the fixed buy bar once the inline buy button scrolls out of view
+  // Reveal the fixed buy bar once the inline buy button scrolls out of view.
+  // Deferred to the next frame — observing immediately on mount can catch the
+  // anchor before layout has settled and report a false "not intersecting".
   useEffect(() => {
-    const target = document.querySelector('[data-buy-anchor]')
-    if (!target) return
-    const obs = new IntersectionObserver(([e]) => setShowSticky(!e.isIntersecting), { rootMargin: '0px 0px -80px 0px' })
-    obs.observe(target)
-    return () => obs.disconnect()
+    let obs: IntersectionObserver | undefined
+    const raf = requestAnimationFrame(() => {
+      const target = document.querySelector('[data-buy-anchor]')
+      if (!target) return
+      obs = new IntersectionObserver(([e]) => setShowSticky(!e.isIntersecting), { rootMargin: '0px 0px -80px 0px' })
+      obs.observe(target)
+    })
+    return () => {
+      cancelAnimationFrame(raf)
+      obs?.disconnect()
+    }
   }, [])
 
   const Price = ({ fixed = false }: { fixed?: boolean }) => (

@@ -6,7 +6,7 @@ import { useCart } from '../lib/cart-context'
 import Lottie from './wf/Lottie'
 
 const NAV_LINKS = [
-  { label: 'Populära kalas', href: '/#populara' },
+  { label: 'Populära kalas', href: '/populara-kalas' },
   { label: 'Alla kalas', href: '/kalas' },
   { label: 'Så funkar det', href: '/sa-funkar-det' },
   { label: 'Kalasbloggen', href: '/kalasbloggen' },
@@ -73,6 +73,16 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile-only floating logo (desktop logo lives inside .brand, hidden <=767px) */}
+      <Link
+        href="/"
+        className="mobile-logo w-nav-brand"
+        aria-label="Kalaseriet"
+        style={{ transform: hidden ? 'translateY(calc(-100% - 2rem))' : 'translateY(0)', transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)' }}
+      >
+        <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
+      </Link>
+
       {/* Cart wrapper — separate fixed pill (opens MiniCart) */}
       <div className="cart-wrapper">
         <div className="w-commerce-commercecartwrapper cart">
@@ -105,7 +115,7 @@ export default function Navbar() {
         .menu-button.w--open .wf-burger span:nth-child(2) { opacity: 0; }
         .menu-button.w--open .wf-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
         .wf-mobile-menu { position: fixed; inset: 0; z-index: 663; background: #fff; display: flex; flex-direction: column; gap: .5rem; padding: calc(3rem + 6rem) 1.5rem 2rem; overflow-y: auto; }
-        .wf-mobile-menu a { font-family: caraque-solid, sans-serif; font-size: clamp(3rem, 9vw, 4rem); font-weight: 800; color: var(--color--purple, #6e42ff); text-decoration: none; line-height: 95%; }
+        .wf-mobile-menu a { font-family: caraque-melted, sans-serif; font-size: clamp(3rem, 9vw, 4rem); font-weight: 800; color: var(--color--purple, #6e42ff); text-decoration: none; line-height: 95%; }
         /* Hide the desktop nav-menu and show the burger on small screens */
         @media (min-width: 992px) { #menu-button { display: none !important; } }
         @media (max-width: 991px) {

@@ -9,6 +9,24 @@ export type BlogPost = {
   imageUrl: string
 }
 
+const SV_MONTHS: Record<string, string> = {
+  januari: '01', februari: '02', mars: '03', april: '04', maj: '05', juni: '06',
+  juli: '07', augusti: '08', september: '09', oktober: '10', november: '11', december: '12',
+}
+
+/**
+ * Converts the human date string ("25 juni 2026") to ISO 8601 for Article
+ * structured data. Schema dates must match what's visible on the page —
+ * a mismatch is an inconsistency signal to Google.
+ */
+export function isoDate(date: string): string {
+  const m = date.trim().match(/^(\d{1,2})\s+(\p{L}+)\s+(\d{4})$/u)
+  if (!m) return ''
+  const [, day, month, year] = m
+  const mm = SV_MONTHS[month.toLowerCase()]
+  return mm ? `${year}-${mm}-${day.padStart(2, '0')}` : ''
+}
+
 export const blogPosts: BlogPost[] = [
   {
     slug: 'diy-kalaspase',
@@ -25,7 +43,7 @@ export const blogPosts: BlogPost[] = [
 <p>Lägg till barnens namn på påsarna för en personlig touch. Våra dekorationskit inkluderar etiketter och klistermärken som gör detta både enkelt och snyggt.</p>
 <p>Kalaspåsar är en liten gest som gör stort intryck. För fler tips och produkter som gör det enkelt att skapa en minnesvärd kalasfinal, kolla in <a href="/kalas">kalasen</a>!</p>`,
     category: 'Tips',
-    date: '17 November 2024',
+    date: '25 juni 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
   },
   {
@@ -45,7 +63,7 @@ export const blogPosts: BlogPost[] = [
 <p>Tänk på att fixa inbjudningar i god tid och dubbelkolla att du har allt hemma dagen innan kalaset. Våra checklistor och kalaspaket hjälper dig att inte missa något viktigt.</p>
 <p>Med denna checklista har du allt du behöver för att skapa ett lyckat och stressfritt barnkalas. För ännu fler tips och produkter, <a href="/kalas">bläddra bland kalasen</a>!</p>`,
     category: 'Tips',
-    date: '17 November 2024',
+    date: '25 maj 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a1343d2d3bd0a468873c1_photo-1509163245925-f4255dea7727.avif',
   },
   {
@@ -62,7 +80,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Mer inspiration</h3>
 <p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt!</p>`,
     category: 'Tips',
-    date: '17 November 2024',
+    date: '25 april 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a12849b5a83352927779d_photo-1469406396016-013bfae5d83e.avif',
   },
   {
@@ -76,7 +94,7 @@ export const blogPosts: BlogPost[] = [
 <p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Våra praktiska och snygga kalaspåsar är perfekta för ändamålet.</p>
 <p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
     category: 'Tips',
-    date: '17 November 2024',
+    date: '25 mars 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
   },
   // ─── SEO-optimerade nya inlägg (riktade mot organisk Google-trafik) ───
@@ -99,7 +117,7 @@ export const blogPosts: BlogPost[] = [
 <h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
 <p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller färdiga instruktioner, rekvisita-tips och spellistor till alla dessa lekar — plus 8 till.</p>`,
     category: 'Tips',
-    date: '25 maj 2026',
+    date: '25 februari 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
   },
   {
@@ -115,7 +133,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
 <p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
     category: 'Tips',
-    date: '23 maj 2026',
+    date: '25 januari 2026',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
   },
   {
@@ -137,7 +155,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Kalaspåsen</h3><p>Sjörövarpåse med guldmynt (godis), en ögonlapp, en pirat-klistermärke. Räcker långt.</p>
 <p><a href="/kalas/piratkalaset-for-4-aringar">Vårt piratkalaspaket</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
     category: 'Tema-guide',
-    date: '20 maj 2026',
+    date: '25 december 2025',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/662373210fabe6fc857df4ba_Piratkalaset-4-aringar-cover.avif',
   },
   {
@@ -154,7 +172,7 @@ export const blogPosts: BlogPost[] = [
 <p>Alla med tydliga recept och allergi-anpassningar finns i <a href="/kalas">våra kalaspaket</a>. Inkluderar både vanliga och vegan/glutenfria varianter.</p>
 <p><strong>Tips:</strong> Gör det mesta dagen innan. Stressa inte med matlagning samma dag — barnen bryr sig mer om aktiviteterna.</p>`,
     category: 'Tips',
-    date: '18 maj 2026',
+    date: '25 november 2025',
     imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
   },
   {
@@ -173,7 +191,7 @@ export const blogPosts: BlogPost[] = [
 <p>Alla våra teman kommer med inbjudningar, lekar, recept, dekorationstips, körschema och checklista — färdigt att skriva ut hemma.</p>
 <p><strong>Vilket ska du välja?</strong> Lyssna på barnet. 4-åringar VET vad de gillar. Fråga "vill du ha pirater, djur eller dinosaurier på ditt kalas?" och kör på svaret.</p>`,
     category: 'Tema-guide',
-    date: '16 maj 2026',
+    date: '25 oktober 2025',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/6623e1e4739522fe6ee458c1_Safarikalaset%20for%204-aringar.avif',
   },
   {
@@ -203,7 +221,7 @@ export const blogPosts: BlogPost[] = [
 <p>Ett kalas blir ännu mer minnesvärt med ett avslut som känns speciellt. Kanske en liten ceremoni där alla barn får en medalj eller present? Eller en överraskningsakt med såpbubblor?</p>
 <p>Med dessa tips har du en bra grund för att skapa ett magiskt barnkalas som alla kommer prata om länge.</p>`,
     category: 'Tips',
-    date: '10 November 2024',
+    date: '25 september 2025',
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673105975ce61d45f994aec1_10%20tips%20fo%CC%88r%20att%20planera%20ett%20barnkalas%20som%20alla%20kommer%20minnas.avif',
   },
 ]

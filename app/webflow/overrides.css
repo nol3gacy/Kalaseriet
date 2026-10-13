@@ -19,10 +19,62 @@ p, li, a, span, div, blockquote, label, figcaption {
   font-family: 'caraque-melted', sans-serif;
 }
 
-/* Keep the bubbly display font where the design uses it */
 .heading.is--bento,
 .heading.is--bento *,
 .brand,
 .footer-logo {
-  font-family: 'caraque-solid', sans-serif;
+  font-family: 'caraque-melted', sans-serif;
+}
+
+/* .navbar is position: fixed, so any page whose content starts in a plain
+   <main> (not the homepage's .hero, and not .section which already has its
+   own 9em padding-top) needs clearance or the navbar covers the top of it. */
+main {
+  padding-top: 9rem;
+}
+
+/* "Nedladdningen innehåller" list items — bolder for readability */
+.contain-text {
+  font-weight: 700;
+}
+
+/* Bunting on the bento "20 st Kalaslekar" card sat too high and covered the
+   heading/subtext — push it further down in the cell. Desktop only: mobile
+   needs its own (much lower) position, see media query below. */
+@media (min-width: 768px) {
+  .birthday-banner-anim {
+    inset: auto 0% 6% -18%;
+  }
+}
+@media (max-width: 767px) {
+  .birthday-banner-anim {
+    inset: auto 0% -2% -18%;
+  }
+}
+
+/* Printer image on the "Busenkelt att skriva ut hemma" card was left-biased
+   (inset had asymmetric -10% left offset) — center it in the cell instead. */
+.skrivare {
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+}
+
+.fs-copyclip_button {
+  font-size: 1.15rem;
+}
+
+/* Product page content (name, price, description...) had zero horizontal
+   padding on mobile, so text ran right up to the screen edge. */
+@media (max-width: 767px) {
+  .product-info-wrapper {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Checkmark icon on product feature list ("Leveras direkt...") sat too
+   close to its label text. */
+.icon.is--feature {
+  margin-right: 10px;
 }

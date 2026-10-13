@@ -5,6 +5,7 @@ import Footer from '../../components/Footer'
 import BentoBox from '../../components/BentoBox'
 import DiscountMarquee from '../../components/DiscountMarquee'
 import ProductBuySection from '../../components/ProductBuySection'
+import ProductGrid from '../../components/ProductGrid'
 import WfSlider from '../../components/wf/WfSlider'
 import Accordion from '../../components/wf/Accordion'
 import { getProductExtra } from '../../../lib/data/products-extra'
@@ -12,6 +13,7 @@ import { includedItems } from '../../../lib/data/included-items'
 import { randomTestimonials } from '../../../lib/data/testimonials'
 import { faqs } from '../../../lib/data/faq'
 import { notFound } from 'next/navigation'
+import { ORG_ID, absoluteUrl, breadcrumbSchema, canonical, faqSchema, jsonLd } from '../../../lib/seo'
 
 async function getProduct(slug: string): Promise<Product | null> {
   try {
@@ -29,7 +31,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const product = await getProduct(slug)
   if (!product) return {}
-  return { title: `${product.name} – Kalaseriet`, description: product.description }
+
+  const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
+  const extra = getProductExtra(slug)
+  const image = absoluteUrl(product.externalImageUrl || extra?.images[0] || '')
+  const path = `/kalas/${slug}`
+
+  // Keyword-led title: theme + "kalas för X-åringar" is the actual search
+  // phrasing, so lead with it rather than the bare brand product name.
+  const title = `${product.name} för ${ageLabel} – lekar, recept & inbjudan`
+  const description = `${product.description} Kalaspaketet innehåller 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för ${product.price} kr.`
+
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      locale: 'sv_SE',
+      url: canonical(path),
+      siteName: 'Kalaseriet',
+      images: [{ url: image, alt: `${product.name} för ${ageLabel}` }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: [image] },
+  }
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -45,18 +72,59 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const description = extra?.longDescription ?? product.description
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
+  const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup)
 
-  const BASE_URL = 'https://kalaseriet.vercel.app'
-  const productJsonLd = {
-    '@context': 'https://schema.org', '@type': 'Product', name: product.name, description, image: images, sku: slug,
+  const path = `/kalas/${slug}`
+  const categoryPath = `/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`
+
+  // No aggregateRating: we have no verified per-product review data, and
+  // fabricated review markup is a Google structured-data policy violation.
+  const productSchema = {
+    '@type': 'Product',
+    '@id': `${canonical(path)}#product`,
+    name: `${product.name} för ${ageLabel}`,
+    description,
+    image: images.map(absoluteUrl),
+    sku: slug,
+    category: `Kalaspaket för ${ageLabel}`,
+    audience: { '@type': 'PeopleAudience', suggestedMinAge: Number(product.ageGroup === '7-8' ? 7 : product.ageGroup) },
     brand: { '@type': 'Brand', name: 'Kalaseriet' },
-    offers: { '@type': 'Offer', url: `${BASE_URL}/kalas/${slug}`, priceCurrency: 'SEK', price: String(product.price), availability: 'https://schema.org/InStock', priceValidUntil: `${new Date().getFullYear() + 1}-12-31` },
-    aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', reviewCount: '12' },
+    isDigital: true,
+    offers: {
+      '@type': 'Offer',
+      url: canonical(path),
+      priceCurrency: 'SEK',
+      price: String(product.price),
+      availability: 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
+      seller: { '@id': ORG_ID },
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'SE',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 30,
+        returnMethod: 'https://schema.org/ReturnByMail',
+        returnFees: 'https://schema.org/FreeReturn',
+      },
+    },
   }
+
+  const crumbs = breadcrumbSchema([
+    { name: 'Hem', path: '/' },
+    { name: 'Alla kalas', path: '/kalas' },
+    { name: `Kalas för ${ageLabel}`, path: categoryPath },
+    { name: product.name, path },
+  ])
+
+  const productFaq = faqSchema(faqs.map(f => ({ question: f.question, answer: f.answer })))
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(productSchema, crumbs, productFaq) }}
+      />
       <Navbar />
 
       <section className="section">
@@ -122,9 +190,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       {/* FAQ accordion */}
       <section className="kalasen">
-        <h1 className="heading is--xl">Vanliga frågor om kalasen</h1>
+        <h2 className="heading is--xl">Vanliga frågor om kalasen</h2>
         <Accordion items={faqs.map(f => ({ q: f.question, a: f.answer }))} />
       </section>
+
+      <ProductGrid products={sameAgeProducts} heading={`Fler kalas för ${ageLabel}`} showFilter={false} headingLevel="h2" />
+      <div style={{ textAlign: 'center', padding: '0 1.5rem 4rem' }}>
+        <a href="/kalas" className="btn-primary">Kalas för alla åldrar</a>
+      </div>
 
       <DiscountMarquee />
       <BentoBox />

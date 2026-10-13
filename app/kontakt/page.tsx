@@ -4,6 +4,21 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
+const INDIGO = '#5910b6'
+const PURPLE = '#6e42ff'
+const CREAM = '#faf1ef'
+
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  border: '2px solid #f0ebee',
+  borderRadius: '1.25rem',
+  padding: '0.9rem 1.2rem',
+  color: '#4e4e4e',
+  fontFamily: 'caraque-melted, sans-serif',
+  fontSize: '1.05rem',
+  outline: 'none',
+}
+
 export default function KontaktPage() {
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', hasPurchased: 'nej', message: '', consent: false })
@@ -17,96 +32,120 @@ export default function KontaktPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
-        <div className="bg-violet-50 border-b border-violet-100 py-14 text-center">
-          <div className="max-w-2xl mx-auto px-4">
-            <h1 className="text-5xl font-bold text-gray-900 mb-3">E.T. Phone home</h1>
-            <p className="text-xl text-gray-500">Hör av dig – vi svarar så snabbt vi kan.</p>
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: CREAM, padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+            <h1 style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: 'clamp(3rem, 7vw, 5rem)',
+              fontWeight: 800,
+              color: '#4e4e4e',
+              lineHeight: '90%',
+              marginBottom: '1.5rem',
+            }}>E.T. Phone home</h1>
+            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', color: INDIGO, lineHeight: '130%' }}>
+              Hör av dig – vi svarar så snabbt vi kan.
+            </p>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-4 py-14">
+        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '4rem 1.5rem' }}>
           {sent ? (
-            <div className="text-center py-16">
-              <div className="text-7xl mb-6">📬</div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Tack för ditt meddelande!</h2>
-              <p className="text-gray-500">Vi återkommer inom 1–2 vardagar.</p>
+            <div style={{ textAlign: 'center', padding: '4rem 0' }}>
+              <div style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }}>📬</div>
+              <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '2.2rem', fontWeight: 800, color: INDIGO, marginBottom: '0.75rem' }}>
+                Tack för ditt meddelande!
+              </h2>
+              <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.2rem', color: '#7c7c7c' }}>
+                Vi återkommer inom 1–3 arbetsdagar, eller så snart vi kan.
+              </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', fontFamily: 'caraque-melted, sans-serif' }}>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Ditt namn *</label>
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Ditt namn *</label>
                 <input
                   type="text"
                   required
                   value={form.name}
                   onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-violet-100"
                   placeholder="Anna Andersson"
+                  style={inputStyle}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.75rem' }}>
                   Har du köpt en produkt?
                 </label>
-                <div className="flex gap-4">
+                <div style={{ display: 'flex', gap: '1.5rem' }}>
                   {['ja', 'nej'].map(v => (
-                    <label key={v} className="flex items-center gap-2 cursor-pointer">
+                    <label key={v} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '1.05rem', color: '#4e4e4e', textTransform: 'capitalize' }}>
                       <input
                         type="radio"
                         name="hasPurchased"
                         value={v}
                         checked={form.hasPurchased === v}
                         onChange={() => setForm(f => ({ ...f, hasPurchased: v }))}
-                        className="accent-[#7C3AED]"
+                        style={{ accentColor: PURPLE }}
                       />
-                      <span className="text-gray-700 capitalize">{v}</span>
+                      {v}
                     </label>
                   ))}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">E-post</label>
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>E-post</label>
                 <input
                   type="email"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-violet-100"
                   placeholder="anna@exempel.se"
+                  style={inputStyle}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">Meddelande *</label>
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Meddelande *</label>
                 <textarea
                   required
                   rows={5}
                   value={form.message}
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-violet-100 resize-none"
                   placeholder="Vad kan vi hjälpa dig med?"
+                  style={{ ...inputStyle, resize: 'none' }}
                 />
               </div>
 
-              <label className="flex items-start gap-3 cursor-pointer">
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', cursor: 'pointer' }}>
                 <input
                   type="checkbox"
                   required
                   checked={form.consent}
                   onChange={e => setForm(f => ({ ...f, consent: e.target.checked }))}
-                  className="mt-0.5 accent-[#7C3AED]"
+                  style={{ marginTop: '0.2rem', accentColor: PURPLE }}
                 />
-                <span className="text-sm text-gray-600">
+                <span style={{ fontSize: '0.95rem', color: '#7c7c7c', fontFamily: 'caraque-melted, sans-serif' }}>
                   Jag godkänner att Kalaseriet lagrar mina uppgifter för att kunna svara på mitt meddelande.{' '}
-                  <a href="/villkor#integritet" className="text-[#7C3AED] underline">Integritetspolicy</a>
+                  <a href="/villkor#integritetspolicy" style={{ color: PURPLE, textDecoration: 'underline' }}>Integritetspolicy</a>
                 </span>
               </label>
 
               <button
                 type="submit"
-                className="w-full bg-[#7C3AED] hover:bg-violet-700 text-white font-bold py-4 rounded-2xl text-lg transition-colors"
+                style={{
+                  width: '100%',
+                  backgroundColor: PURPLE,
+                  color: '#faf1ef',
+                  fontWeight: 700,
+                  fontFamily: 'caraque-melted, sans-serif',
+                  padding: '1.2rem',
+                  borderRadius: '500px',
+                  fontSize: '1.3rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
               >
                 Skicka meddelande
               </button>
@@ -114,9 +153,9 @@ export default function KontaktPage() {
           )}
 
           {/* Social */}
-          <div className="mt-14 pt-10 border-t border-gray-100 text-center">
-            <p className="text-gray-500 mb-4">Eller hitta oss på sociala medier</p>
-            <div className="flex justify-center gap-4">
+          <div style={{ marginTop: '3.5rem', paddingTop: '2.5rem', borderTop: '1px solid #f0ebee', textAlign: 'center' }}>
+            <p style={{ fontFamily: 'caraque-melted, sans-serif', color: '#7c7c7c', marginBottom: '1rem' }}>Eller hitta oss på sociala medier</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               {[
                 { label: 'Instagram', emoji: '📸', href: 'https://www.instagram.com/kalaseriet' },
                 { label: 'Facebook', emoji: '👍', href: 'https://www.facebook.com/kalaseriet' },
@@ -127,7 +166,19 @@ export default function KontaktPage() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-gray-100 hover:bg-violet-100 hover:text-[#7C3AED] px-4 py-2.5 rounded-full text-sm font-semibold text-gray-700 transition-colors"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    backgroundColor: CREAM,
+                    padding: '0.65rem 1.25rem',
+                    borderRadius: '500px',
+                    fontFamily: 'caraque-melted, sans-serif',
+                    fontSize: '0.95rem',
+                    fontWeight: 700,
+                    color: INDIGO,
+                    textDecoration: 'none',
+                  }}
                 >
                   {s.emoji} {s.label}
                 </a>

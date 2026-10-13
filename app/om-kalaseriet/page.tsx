@@ -2,82 +2,105 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 export const metadata = {
-  title: 'Om Kalaseriet',
-  description: 'Lär känna Kalaseriet – idén bakom Sveriges roligaste digitala kalaspaket.',
+  title: 'Om Kalaseriet – digitala kalaspaket för barnkalas',
+  description: 'Kalaseriet gör barnkalas enkla att planera. Läs om idén bakom våra digitala kalaspaket med 33 teman, lekar, recept och färdiga checklistor för barn 4–8 år.',
+  alternates: { canonical: '/om-kalaseriet' },
 }
+
+const STATS = [
+  { num: '33', label: 'kalasteman', emoji: '🎯' },
+  { num: '4', label: 'åldersgrupper', emoji: '👶' },
+  { num: '99 kr', label: 'per paket', emoji: '💜' },
+]
+
+const INCLUDES = [
+  '20 kalaslekar utvalda för rätt ålder och tema',
+  '20 festrecept – tårtor, muffins och snacks – med allergialternativ',
+  'Inbjudningskort att skriva ut eller skicka digitalt',
+  'Bordsdekorationer och flaggor',
+  'Körschema – timme för timme',
+  'Checklista för inköp och förberedelser',
+  'Diplom till varje gäst som minne',
+  'Musikspellista på Spotify',
+]
 
 export default function OmKalaserietPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
         {/* Hero */}
-        <div className="bg-violet-50 border-b border-violet-100 py-16 text-center">
-          <div className="max-w-3xl mx-auto px-4">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Om Kalaseriet</h1>
-            <p className="text-xl text-gray-500">Allt samlat på ett ställe – så att du kan fokusera på festen.</p>
+        <div style={{ backgroundColor: '#faf1ef', padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+            <h1 style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: 'clamp(3rem, 7vw, 5rem)',
+              fontWeight: 800,
+              color: '#4e4e4e',
+              lineHeight: '90%',
+              marginBottom: '1.25rem',
+            }}>Om Kalaseriet</h1>
+            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', color: '#5910b6', lineHeight: '130%' }}>
+              Allt samlat på ett ställe — så att du kan fokusera på festen.
+            </p>
           </div>
         </div>
 
-        {/* Story */}
-        <div className="max-w-3xl mx-auto px-4 py-16">
-          <div className="prose prose-lg max-w-none">
-            <div className="text-center mb-12">
-              <span className="text-8xl">🎉</span>
-            </div>
+        <div style={{ maxWidth: '780px', margin: '0 auto', padding: '4rem 1.5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '5rem' }}>🎉</div>
 
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Vår vision</h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
-              Kalaseriet grundades med en enkel tanke: att planera barnkalas ska vara roligt, inte stressigt.
-              Vi ville skapa en plats där allt finns samlat — lekar, recept, inbjudningar och dekorationer —
-              anpassat för rätt ålder och tema.
+          <h2 style={{
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
+            fontWeight: 800,
+            color: '#5910b6',
+            marginBottom: '1.25rem',
+          }}>Vår vision</h2>
+          <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.1rem', color: '#4e4e4e', lineHeight: '160%', marginBottom: '1.25rem' }}>
+            Kalaseriet grundades med en enkel tanke: att planera barnkalas ska vara roligt, inte stressigt.
+            Vi ville skapa en plats där allt finns samlat — lekar, recept, inbjudningar och dekorationer —
+            anpassat för rätt ålder och tema.
+          </p>
+          <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.1rem', color: '#4e4e4e', lineHeight: '160%', marginBottom: '2.5rem' }}>
+            Resultatet är våra &quot;kalaskoncept&quot; — digitala paket som kombinerar 20 utvalda lekar,
+            20 festrecept med allergialternativ, musikspellistor och alla utskrivbara material
+            du behöver. Ladda ner, skriv ut och fira!
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem', marginBottom: '2.5rem' }}>
+            {STATS.map(s => (
+              <div key={s.label} style={{ backgroundColor: '#faf1ef', borderRadius: '1.75rem', padding: '1.5rem 1rem', textAlign: 'center' }}>
+                <div style={{ fontSize: '2.2rem', marginBottom: '0.4rem' }}>{s.emoji}</div>
+                <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.8rem', fontWeight: 800, color: '#5910b6', margin: 0 }}>{s.num}</p>
+                <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.9rem', color: '#4e4e4e', margin: 0 }}>{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 style={{
+            fontFamily: 'caraque-melted, sans-serif',
+            fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
+            fontWeight: 800,
+            color: '#5910b6',
+            marginBottom: '1.25rem',
+          }}>Det här ingår alltid</h2>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2.5rem', padding: 0, listStyle: 'none' }}>
+            {INCLUDES.map(item => (
+              <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontFamily: 'caraque-melted, sans-serif', fontSize: '1.05rem', color: '#4e4e4e' }}>
+                <span style={{ color: '#5910b6', fontWeight: 700, fontSize: '1.1rem', lineHeight: '100%', marginTop: '0.15rem' }}>✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div style={{ backgroundColor: '#5910b6', borderRadius: '2rem', padding: '2.5rem 2rem', textAlign: 'center' }}>
+            <h3 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.8rem', fontWeight: 800, color: '#faf1ef', marginBottom: '0.75rem' }}>
+              Redo att köra igång?
+            </h3>
+            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.1rem', color: '#d9c9f5', marginBottom: '1.5rem' }}>
+              Prova med koden KALAS20 och få 20% på ditt första köp.
             </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Resultatet är våra "Kalaskoncept" — digitala paket som kombinerar 20 utvalda lekar,
-              20 festrecept med allergialternativ, musikspellistor och alla utskrivbara material
-              du behöver. Ladda ner, skriv ut och fira!
-            </p>
-
-            <div className="grid sm:grid-cols-3 gap-6 my-12">
-              {[
-                { num: '33', label: 'kalasteman', emoji: '🎯' },
-                { num: '4', label: 'åldersgrupper', emoji: '👶' },
-                { num: '99 kr', label: 'per paket', emoji: '💜' },
-              ].map(s => (
-                <div key={s.label} className="bg-violet-50 rounded-3xl p-6 text-center">
-                  <div className="text-4xl mb-2">{s.emoji}</div>
-                  <p className="text-4xl font-extrabold text-[#7C3AED]">{s.num}</p>
-                  <p className="text-gray-600 text-sm font-medium">{s.label}</p>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Det här ingår alltid</h2>
-            <ul className="space-y-3 mb-10">
-              {[
-                '20 kalaslekar utvalda för rätt ålder och tema',
-                '20 festrecept – tårtor, muffins och snacks – med allergialternativ',
-                'Inbjudningskort att skriva ut eller skicka digitalt',
-                'Bordsdekorationer och flaggor',
-                'Körschema – timme för timme',
-                'Checklista för inköp och förberedelser',
-                'Diplom till varje gäst som minne',
-                'Musikspellista på Spotify',
-              ].map(item => (
-                <li key={item} className="flex items-start gap-3 text-gray-700">
-                  <span className="text-[#7C3AED] font-bold text-lg leading-none mt-0.5">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <div className="bg-[#7C3AED] text-white rounded-3xl p-8 text-center">
-              <h3 className="text-2xl font-bold mb-3">Redo att köra igång?</h3>
-              <p className="text-violet-200 mb-6">Prova med koden KALAS20 och få 20% på ditt första köp.</p>
-              <a href="/kalas" className="inline-block bg-[#FCD34D] text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition-colors">
-                Se alla kalas →
-              </a>
-            </div>
+            <a href="/kalas" className="btn-primary">Se alla kalas ›</a>
           </div>
         </div>
       </main>

@@ -20,7 +20,7 @@ export default function Footer() {
             <a href="/kalas/5-aringar" className="footer-link">Kalas för 5-åringar</a>
             <a href="/kalas/6-aringar" className="footer-link">Kalas för 6-åringar</a>
             <a href="/kalas/7-8-aringar" className="footer-link">Kalas för 7 &amp; 8-åringar</a>
-            <a href="/#populara" className="footer-link">Populära kalas</a>
+            <a href="/populara-kalas" className="footer-link">Populära kalas</a>
             <a href="/kalas" className="footer-link">Alla kalas</a>
           </div>
         </div>
@@ -71,12 +71,13 @@ export default function Footer() {
       <div className="footer-spacer is--double" />
 
       <style>{`
-        /* Desktop: 3 link columns + wide newsletter, logo spans full width below */
+        /* Desktop: 3 link columns on one row, newsletter on its own row below, logo full width below that */
         .footer-grid {
-          grid-template-columns: 1.3fr 0.9fr 0.95fr 1.7fr;
+          grid-template-columns: 1.3fr 0.9fr 0.95fr;
           align-items: start;
         }
         .footer-grid > .w-layout-cell { min-width: 0; }
+        .footer-grid .cell.is--newsletter { grid-column: 1 / -1; }
         .footer-grid .footer-cell.is--bottom { grid-column: 1 / -1; }
         @media (max-width: 900px) {
           .footer-grid { grid-template-columns: 1fr 1fr; }
