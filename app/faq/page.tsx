@@ -1,39 +1,41 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import FAQ from '../components/FAQ'
-import Breadcrumbs from '../components/Breadcrumbs'
+import AgeCTAs from '../components/AgeCTAs'
+import { faqs } from '../../lib/data/faq'
+import { breadcrumbSchema, canonical, faqSchema, jsonLd } from '../../lib/seo'
 
 export const metadata = {
-  title: 'FAQ – Ofta ställda frågor | Kalaseriet',
-  description: 'Svar på de vanligaste frågorna om Kalaseriet kalaspaket, betalning, filformat och mer.',
+  title: 'Vanliga frågor om kalaspaketen',
+  description:
+    'Svar på vanliga frågor om Kalaseriets kalaspaket: hur nedladdningen fungerar, utskrift utan skrivare, filformat, allergier, betalning och nöjdhetsgaranti.',
+  alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'Vanliga frågor om kalaspaketen',
+    description: 'Svar på vanliga frågor om nedladdning, utskrift, betalning och nöjdhetsgaranti.',
+    type: 'website' as const,
+    locale: 'sv_SE',
+    url: canonical('/faq'),
+    siteName: 'Kalaseriet',
+  },
 }
 
 export default function FAQPage() {
+  const schema = jsonLd(
+    faqSchema(faqs.map(f => ({ question: f.question, answer: f.answer }))),
+    breadcrumbSchema([
+      { name: 'Hem', path: '/' },
+      { name: 'Vanliga frågor', path: '/faq' },
+    ]),
+  )
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema }} />
       <Navbar />
-      <main className="min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumbs */}
-          <div className="pt-6 mb-8">
-            <Breadcrumbs items={[
-              { label: 'FAQ', href: '/faq' }
-            ]} />
-          </div>
-
-          {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-              Ofta ställda frågor
-            </h1>
-            <p className="text-xl text-gray-600">
-              Svar på allt du behöver veta om Kalaseriet kalaspaket.
-            </p>
-          </div>
-
-          {/* FAQ Component */}
-          <FAQ />
-        </div>
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+        <FAQ headingLevel="h1" heading="Vanliga frågor om kalaspaketen" subheading="Svar på allt du behöver veta innan du laddar ner ditt kalaspaket." />
+        <AgeCTAs />
       </main>
       <Footer />
     </>

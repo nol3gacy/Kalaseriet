@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import type { Product } from '../page'
+import { getProductExtra } from '../../lib/data/products-extra'
 
 const AGES = [
   { key: '4', label: '4-åringar' },
@@ -18,11 +19,17 @@ export default function ProductGrid({
   products,
   heading = 'Kalasen',
   showFilter = true,
+  // Listing pages use h1 (it's the page's main heading); when the grid is
+  // embedded below other content (e.g. related products on a product page)
+  // it must be h2 so the page keeps exactly one h1.
+  headingLevel = 'h1',
 }: {
   products: Product[]
   heading?: string
   showFilter?: boolean
+  headingLevel?: 'h1' | 'h2'
 }) {
+  const Heading = headingLevel
   // All ages active by default
   const [active, setActive] = useState<Set<string>>(new Set(AGES.map(a => a.key)))
 
@@ -39,7 +46,7 @@ export default function ProductGrid({
 
   return (
     <section className="kalasen" id="populara">
-      {heading && <h1 className="heading is--xl">{heading}</h1>}
+      {heading && <Heading className="heading is--xl">{heading}</Heading>}
 
       {showFilter && (
         <div className="w-form">
@@ -81,7 +88,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading="lazy" src={p.externalImageUrl || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading="lazy" src={p.externalImageUrl || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">

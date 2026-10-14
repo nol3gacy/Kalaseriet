@@ -4,6 +4,10 @@ import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
+const INDIGO = '#5910b6'
+const PURPLE = '#6e42ff'
+const CREAM = '#faf1ef'
+
 export default function FeedbackPage() {
   const [sent, setSent] = useState(false)
   const [rating, setRating] = useState(0)
@@ -18,31 +22,40 @@ export default function FeedbackPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
-        <div className="bg-violet-50 border-b border-violet-100 py-14 text-center">
-          <div className="max-w-2xl mx-auto px-4">
-            <h1 className="text-5xl font-bold text-gray-900 mb-3">Lämna feedback</h1>
-            <p className="text-xl text-gray-500">
+      <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: CREAM, padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
+          <div style={{ maxWidth: '700px', margin: '0 auto' }}>
+            <h1 style={{
+              fontFamily: 'caraque-melted, sans-serif',
+              fontSize: 'clamp(3rem, 7vw, 5rem)',
+              fontWeight: 800,
+              color: '#4e4e4e',
+              lineHeight: '90%',
+              marginBottom: '1.5rem',
+            }}>Lämna feedback</h1>
+            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', color: INDIGO, lineHeight: '130%' }}>
               Hur gick kalaset? Din feedback hjälper oss att bli bättre.
             </p>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-4 py-14">
+        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '4rem 1.5rem' }}>
           {sent ? (
-            <div className="text-center py-16">
-              <div className="text-7xl mb-6">🌟</div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-3">Tack för din feedback!</h2>
-              <p className="text-gray-500">
+            <div style={{ textAlign: 'center', padding: '4rem 0' }}>
+              <div style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }}>🌟</div>
+              <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '2.2rem', fontWeight: 800, color: INDIGO, marginBottom: '0.75rem' }}>
+                Tack för din feedback!
+              </h2>
+              <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.2rem', color: '#7c7c7c' }}>
                 {form.wantRefund
-                  ? 'Vi behandlar din återbetalningsförfrågan inom 1–2 vardagar.'
+                  ? 'Vi behandlar din återbetalningsförfrågan inom 1–3 arbetsdagar, eller så snart vi kan.'
                   : 'Din feedback är ovärderlig för oss. Vi hoppas att kalaset var en succé!'}
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', fontFamily: 'caraque-melted, sans-serif' }}>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
                   Vilket kalaspaket köpte du? *
                 </label>
                 <input
@@ -50,22 +63,31 @@ export default function FeedbackPage() {
                   required
                   value={form.product}
                   onChange={e => setForm(f => ({ ...f, product: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-violet-100"
                   placeholder="T.ex. Piratkalaset för 5-åringar"
+                  style={inputStyle}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.75rem' }}>
                   Hur nöjd är du? *
                 </label>
-                <div className="flex gap-3">
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
                   {[1, 2, 3, 4, 5].map(n => (
                     <button
                       key={n}
                       type="button"
                       onClick={() => setRating(n)}
-                      className={`text-3xl transition-transform hover:scale-125 ${rating >= n ? 'opacity-100' : 'opacity-30'}`}
+                      style={{
+                        fontSize: '2rem',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        opacity: rating >= n ? 1 : 0.3,
+                        transition: 'transform 0.15s',
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.2)')}
+                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                     >
                       ⭐
                     </button>
@@ -74,7 +96,7 @@ export default function FeedbackPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
                   Berätta mer *
                 </label>
                 <textarea
@@ -82,21 +104,29 @@ export default function FeedbackPage() {
                   rows={5}
                   value={form.message}
                   onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:border-[#7C3AED] focus:ring-2 focus:ring-violet-100 resize-none"
                   placeholder="Vad var bäst? Vad kan vi förbättra? Hur reagerade barnen?"
+                  style={{ ...inputStyle, resize: 'none' }}
                 />
               </div>
 
-              <label className="flex items-start gap-3 cursor-pointer p-4 rounded-2xl border-2 border-gray-100 hover:border-violet-200 transition-colors">
+              <label style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '0.75rem',
+                cursor: 'pointer',
+                padding: '1.25rem',
+                borderRadius: '1.5rem',
+                backgroundColor: CREAM,
+              }}>
                 <input
                   type="checkbox"
                   checked={form.wantRefund}
                   onChange={e => setForm(f => ({ ...f, wantRefund: e.target.checked }))}
-                  className="mt-0.5 accent-[#7C3AED]"
+                  style={{ marginTop: '0.2rem', accentColor: PURPLE }}
                 />
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">Jag vill ha återbetalning</p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p style={{ fontWeight: 700, color: '#4e4e4e', fontSize: '1rem', margin: 0 }}>Jag vill ha återbetalning</p>
+                  <p style={{ fontSize: '0.9rem', color: '#7c7c7c', margin: '0.25rem 0 0' }}>
                     Enligt vår nöjdhetsgaranti återbetalar vi om du genomfört kalaset och inte är nöjd.
                   </p>
                 </div>
@@ -105,7 +135,19 @@ export default function FeedbackPage() {
               <button
                 type="submit"
                 disabled={!rating}
-                className="w-full bg-[#7C3AED] hover:bg-violet-700 disabled:opacity-40 text-white font-bold py-4 rounded-2xl text-lg transition-colors"
+                style={{
+                  width: '100%',
+                  backgroundColor: rating ? PURPLE : '#d9d3ea',
+                  color: '#faf1ef',
+                  fontWeight: 700,
+                  fontFamily: 'caraque-melted, sans-serif',
+                  padding: '1.2rem',
+                  borderRadius: '500px',
+                  fontSize: '1.3rem',
+                  border: 'none',
+                  cursor: rating ? 'pointer' : 'not-allowed',
+                  transition: 'background-color 0.2s',
+                }}
               >
                 Skicka feedback
               </button>
@@ -116,4 +158,15 @@ export default function FeedbackPage() {
       <Footer />
     </>
   )
+}
+
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  border: '2px solid #f0ebee',
+  borderRadius: '1.25rem',
+  padding: '0.9rem 1.2rem',
+  color: '#4e4e4e',
+  fontFamily: 'caraque-melted, sans-serif',
+  fontSize: '1.05rem',
+  outline: 'none',
 }

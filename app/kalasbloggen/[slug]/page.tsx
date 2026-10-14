@@ -1,8 +1,10 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import FAQ from '../../components/FAQ'
-import { blogPosts } from '../../../lib/data/blog-posts'
+import AgeCTAs from '../../components/AgeCTAs'
+import { blogPosts, isoDate } from '../../../lib/data/blog-posts'
 import { notFound } from 'next/navigation'
+import { absoluteUrl, breadcrumbSchema, canonical, jsonLd, LOGO_URL, ORG_ID } from '../../../lib/seo'
 
 export async function generateStaticParams() {
   return blogPosts.map(post => ({ slug: post.slug }))
@@ -11,9 +13,26 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const post = blogPosts.find(p => p.slug === slug)
+  if (!post) return {}
+
+  const path = `/kalasbloggen/${slug}`
+  const published = isoDate(post.date)
+
   return {
-    title: `${post?.title || 'Blog'} – Kalaseriet`,
-    description: post?.summary || 'Läs tipsen och inspirationen på Kalasbloggen',
+    title: post.title,
+    description: post.summary,
+    alternates: { canonical: path },
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      type: 'article' as const,
+      locale: 'sv_SE',
+      url: canonical(path),
+      siteName: 'Kalaseriet',
+      publishedTime: published || undefined,
+      images: [{ url: absoluteUrl(post.imageUrl), alt: post.title }],
+    },
+    twitter: { card: 'summary_large_image', title: post.title, description: post.summary, images: [absoluteUrl(post.imageUrl)] },
   }
 }
 
@@ -24,38 +43,40 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const otherPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 2)
 
-  // SEO: Article + BreadcrumbList JSON-LD
-  const BASE_URL = 'https://kalaseriet.vercel.app'
-  const articleJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.summary,
-    image: post.imageUrl,
-    datePublished: '2024-11-17',
-    dateModified: '2024-11-17',
-    author: { '@type': 'Organization', name: 'Kalaseriet' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Kalaseriet',
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/stickers/tips.svg` },
+  // Dates are derived from the post's own visible date so the markup can't
+  // drift from what the reader sees.
+  const path = `/kalasbloggen/${slug}`
+  const published = isoDate(post.date)
+
+  const schema = jsonLd(
+    {
+      '@type': 'BlogPosting',
+      '@id': `${canonical(path)}#article`,
+      headline: post.title,
+      description: post.summary,
+      image: [absoluteUrl(post.imageUrl)],
+      inLanguage: 'sv-SE',
+      ...(published ? { datePublished: published, dateModified: published } : {}),
+      author: { '@id': ORG_ID },
+      publisher: {
+        '@id': ORG_ID,
+        '@type': 'Organization',
+        name: 'Kalaseriet',
+        logo: { '@type': 'ImageObject', url: LOGO_URL },
+      },
+      isPartOf: { '@id': `${canonical('/')}#website` },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': canonical(path) },
     },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/kalasbloggen/${slug}` },
-  }
-  const breadcrumbsJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Hem',          item: `${BASE_URL}/` },
-      { '@type': 'ListItem', position: 2, name: 'Kalasbloggen', item: `${BASE_URL}/kalasbloggen` },
-      { '@type': 'ListItem', position: 3, name: post.title,     item: `${BASE_URL}/kalasbloggen/${slug}` },
-    ],
-  }
+    breadcrumbSchema([
+      { name: 'Hem', path: '/' },
+      { name: 'Kalasbloggen', path: '/kalasbloggen' },
+      { name: post.title, path },
+    ]),
+  )
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema }} />
       <Navbar />
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
 
@@ -74,7 +95,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span>/</span>
             <a href="/kalasbloggen" style={{ color: '#7c7c7c', textDecoration: 'none' }}>Kalasbloggen</a>
             <span>/</span>
-            <span style={{ color: '#272729', fontWeight: 700 }}>{post.title}</span>
+            <span style={{ color: '#4e4e4e', fontWeight: 700 }}>{post.title}</span>
           </nav>
         </div>
 
@@ -202,7 +223,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '1.6rem',
                       fontWeight: 800,
-                      color: '#272729',
+                      color: '#4e4e4e',
                       lineHeight: '95%',
                       margin: 0,
                     }}>{p.title}</h3>
@@ -222,6 +243,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </section>
 
         <FAQ heading="Vanliga frågor" />
+        <AgeCTAs />
       </main>
       <Footer />
 
@@ -229,7 +251,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         .blog-body {
           font-family: 'caraque-melted', sans-serif;
           font-size: 1.2rem;
-          color: #272729;
+          color: #4e4e4e;
           line-height: 160%;
         }
         .blog-body h2 {
@@ -244,7 +266,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           font-family: 'caraque-melted', sans-serif;
           font-size: 1.6rem;
           font-weight: 800;
-          color: #272729;
+          color: #4e4e4e;
           line-height: 105%;
           margin: 2rem 0 0.75rem;
         }

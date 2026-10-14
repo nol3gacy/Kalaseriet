@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
+import { API_BASE } from '../../lib/api-base'
 
 // Matches kalaseriet.se mini cart popover:
 // - White rounded card overlay
@@ -31,7 +32,7 @@ export default function MiniCart() {
 
   const handleCheckout = async () => {
     try {
-      const res = await fetch('/api/checkout', {
+      const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -141,7 +142,7 @@ export default function MiniCart() {
                 fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.5rem',
                 fontWeight: 700,
-                color: '#272729',
+                color: '#4e4e4e',
                 lineHeight: 1.4,
                 margin: 0,
               }}>

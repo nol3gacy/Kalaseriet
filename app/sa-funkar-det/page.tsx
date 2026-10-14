@@ -1,9 +1,11 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import AgeCTAs from '../components/AgeCTAs'
 
 export const metadata = {
-  title: 'Så funkar det – Kalaseriet',
-  description: 'Absolut inget facit, men här är vår idé om ett oförglömligt kalas. Inför kalaset, under kalaset och hur du planerar.',
+  title: 'Så funkar det – planera barnkalaset steg för steg',
+  description: 'Steg för steg-guide till barnkalaset: välj tema, planera lekarna, skicka inbjudan, fixa maten och håll körschemat. Så använder du ditt kalaspaket från Kalaseriet.',
+  alternates: { canonical: '/sa-funkar-det' },
 }
 
 const BEFORE = [
@@ -48,13 +50,6 @@ const DURING = [
   },
 ]
 
-const AGE_CTAS = [
-  { label: '4 år', href: '/kalas/4-aringar' },
-  { label: '5 år', href: '/kalas/5-aringar' },
-  { label: '6 år', href: '/kalas/6-aringar' },
-  { label: '7 eller 8 år', href: '/kalas/7-8-aringar' },
-]
-
 function Step({ n, title, body, cta }: { n: string; title: string; body: string; cta?: { label: string; href: string } }) {
   return (
     <div style={{
@@ -78,7 +73,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
           fontFamily: 'caraque-melted, sans-serif',
           fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
           fontWeight: 800,
-          color: '#272729',
+          color: '#4e4e4e',
           lineHeight: '100%',
           marginBottom: '0.75rem',
         }}>{title}</h3>
@@ -124,7 +119,7 @@ export default function SaFunkarDet() {
             <p style={{
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(1.3rem, 2.2vw, 1.7rem)',
-              color: '#272729',
+              color: '#4e4e4e',
               fontWeight: 500,
               lineHeight: '140%',
             }}>Absolut inget facit, men här är vår idé om ett oförglömligt kalas.</p>
@@ -138,7 +133,7 @@ export default function SaFunkarDet() {
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
-              color: '#272729',
+              color: '#4e4e4e',
               marginBottom: '3rem',
               lineHeight: '95%',
               textAlign: 'center',
@@ -156,7 +151,7 @@ export default function SaFunkarDet() {
               fontFamily: 'caraque-melted, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
-              color: '#272729',
+              color: '#4e4e4e',
               marginBottom: '3rem',
               lineHeight: '95%',
               textAlign: 'center',
@@ -167,36 +162,7 @@ export default function SaFunkarDet() {
           </div>
         </section>
 
-        {/* Vad fyller barnet */}
-        <section style={{ padding: '5rem 1.5rem', textAlign: 'center' }}>
-          <h2 style={{
-            fontFamily: 'caraque-melted, sans-serif',
-            fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
-            fontWeight: 800,
-            color: '#5910b6',
-            marginBottom: '2.5rem',
-            lineHeight: '95%',
-          }}>Vad fyller barnet?</h2>
-
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            maxWidth: '720px',
-            margin: '0 auto',
-          }}>
-            {AGE_CTAS.map(c => (
-              <a key={c.label} href={c.href} className="btn-primary" style={{
-                fontSize: '1.5rem',
-                padding: '1.3rem 2.6rem',
-                flex: '0 0 auto',
-              }}>
-                {c.label}
-              </a>
-            ))}
-          </div>
-        </section>
+        <AgeCTAs />
       </main>
       <Footer />
     </>

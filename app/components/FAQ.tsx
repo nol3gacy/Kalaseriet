@@ -13,21 +13,25 @@ import { faqs } from '../../lib/data/faq'
 export default function FAQ({
   heading = 'Vanliga frågor',
   subheading,
-}: { heading?: string; subheading?: string } = {}) {
+  // h2 when embedded in a longer page; h1 on the dedicated /faq page where
+  // this section *is* the page's main heading.
+  headingLevel = 'h2',
+}: { heading?: string; subheading?: string; headingLevel?: 'h1' | 'h2' } = {}) {
   const [expanded, setExpanded] = useState<number | null>(0)
+  const Heading = headingLevel
 
   return (
     <section style={{ padding: '4rem 1.5rem', backgroundColor: 'white' }}>
       <div style={{ maxWidth: '820px', margin: '0 auto' }}>
         <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
-          <h2 style={{
+          <Heading style={{
             fontFamily: 'caraque-melted, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',
             lineHeight: '95%',
             marginBottom: '0.75rem',
-          }}>{heading}</h2>
+          }}>{heading}</Heading>
           {subheading && (
             <p style={{
               fontFamily: 'caraque-melted, sans-serif',
@@ -67,7 +71,7 @@ export default function FAQ({
                     fontFamily: 'caraque-melted, sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 700,
-                    color: '#272729',
+                    color: '#4e4e4e',
                     textAlign: 'left',
                     gap: '1rem',
                   }}
@@ -79,7 +83,7 @@ export default function FAQ({
                     height="22"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#272729"
+                    stroke="#4e4e4e"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -100,7 +104,7 @@ export default function FAQ({
                       padding: '0 1rem 1.5rem',
                       fontFamily: 'caraque-melted, sans-serif',
                       fontSize: '1.05rem',
-                      color: '#272729',
+                      color: '#4e4e4e',
                       lineHeight: '160%',
                       fontWeight: 500,
                     }}

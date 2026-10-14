@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://kalaseriet.vercel.app'
+export const dynamic = 'force-static'
+
+const BASE_URL = 'https://kalaseriet.se'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/varukorg', '/tack', '/studio'],
+        disallow: ['/varukorg', '/tack'],
       },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,

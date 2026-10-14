@@ -1399,7 +1399,7 @@ a {
   color: var(--color--obsidian);
   text-transform: none;
   background-color: #fff;
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 1.15rem;
   font-weight: 500;
   line-height: 120%;
@@ -1422,7 +1422,7 @@ a {
   color: var(--color--obsidian);
   margin-top: 0;
   margin-bottom: 0;
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -1468,7 +1468,7 @@ a {
 
 .heading.is--bento {
   color: var(--color--purple);
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 3.4rem;
   font-weight: 700;
   line-height: 90%;
@@ -1948,7 +1948,7 @@ a {
   border-left-width: 0;
   margin-bottom: 12px;
   padding: 0;
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 1.4em;
   font-style: italic;
   font-weight: 400;
@@ -2307,7 +2307,7 @@ a {
 }
 
 .hero-preample {
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 100%;
@@ -2491,7 +2491,7 @@ a {
 ._404-sub-title {
   text-transform: none;
   max-width: 49ch;
-  font-family: caraque-solid, sans-serif;
+  font-family: caraque-melted, sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 117%;

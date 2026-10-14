@@ -1,0 +1,21 @@
+name = "kalaseriet-api"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Secrets (set via `wrangler secret put <NAME>`, not committed here):
+#   STRIPE_SECRET_KEY
+#   STRIPE_WEBHOOK_SECRET
+#   RESEND_API_KEY
+#   DOWNLOAD_SECRET
+#
+# Vars (non-secret, safe to keep in this file):
+[vars]
+ALLOWED_ORIGINS = "https://kalaseriet.se,https://www.kalaseriet.se"
+WORKER_BASE_URL = "https://kalaseriet-api.kalaseriet.workers.dev"
+# Verified sender in Resend. Must match the exact domain verified there —
+# send.kalaseriet.se, not the root kalaseriet.se. Otherwise
+# Resend rejects delivery to anyone but the account owner.
+EMAIL_FROM = "Kalaseriet <hej@send.kalaseriet.se>"
+# Customer replies go here — can be any inbox, unlike the From address.
+EMAIL_REPLY_TO = "nolegacy@gmail.com"

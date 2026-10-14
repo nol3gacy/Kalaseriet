@@ -1,0 +1,46 @@
+# Next.js static export serves clean URLs as sibling .html files
+# (e.g. /kalas -> kalas.html) alongside same-named directories that hold
+# client-navigation payloads. Apache's default DirectorySlash behavior
+# redirects /kalas -> /kalas/ (which has no index), causing a 403. Disable
+# that and rewrite clean paths to their .html file instead.
+DirectorySlash Off
+
+RewriteEngine On
+
+# The host's front proxy reports this as a plain-HTTP backend, so absolute
+# https:// targets in RewriteRule below get silently downgraded to http://
+# in the outgoing Location header (confirmed via curl -v). Force it back.
+<IfModule mod_headers.c>
+  Header edit Location ^http://kalaseriet\.se/ https://kalaseriet.se/
+</IfModule>
+
+# --- Permanent redirects from the old Webflow/Vercel site structure ---
+# Google still has these indexed and was sending real search traffic to
+# hard 404s. 301s here transfer that traffic (and any ranking signal) to
+# the current URLs instead of leaving it to die on arrival.
+
+# /product/<slug> -> /kalas/<slug>  (product slugs are unchanged)
+RewriteRule ^product/(.+)$ https://kalaseriet.se/kalas/$1 [R=301,L]
+
+# /category/kalas-for-<age>-aringar -> /kalas/<age>-aringar
+RewriteRule ^category/kalas-for-(.+)$ https://kalaseriet.se/kalas/$1 [R=301,L]
+
+# One blog post's slug was shortened during the migration
+RewriteRule ^kalasbloggen/diy-kalaspase-billiga-och-roliga-gavor-barnen-kommer-alska/?$ https://kalaseriet.se/kalasbloggen/diy-kalaspase [R=301,L]
+
+# Serve the matching .html file for a clean path, if one exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Trailing-slash paths: serve <path>/index.html if present, else strip
+# the slash and try <path>.html
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}index.html -f
+RewriteRule ^(.*)/$ $1/index.html [L]
+
+RewriteCond %{REQUEST_URI} ^/(.*)/$
+RewriteCond %{DOCUMENT_ROOT}/%1.html -f
+RewriteRule ^ /%1.html [L]
+
+ErrorDocument 404 /404.html

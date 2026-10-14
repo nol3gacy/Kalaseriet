@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useCart } from '../lib/cart-context'
+import { API_BASE } from '../../lib/api-base'
 
 export default function VarukorgPage() {
   const { items, removeItem, updateQuantity, total } = useCart()
@@ -16,7 +17,7 @@ export default function VarukorgPage() {
     setError(undefined)
 
     try {
-      const response = await fetch('/api/checkout', {
+      const response = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

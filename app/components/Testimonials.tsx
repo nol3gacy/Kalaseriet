@@ -61,7 +61,7 @@ export default function Testimonials({
               <p style={{
                 fontFamily: 'caraque-melted, sans-serif',
                 fontSize: '1.15rem',
-                color: '#272729',
+                color: '#4e4e4e',
                 lineHeight: '145%',
                 fontWeight: 500,
                 flex: 1,
