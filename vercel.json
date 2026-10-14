@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/product/:slug*", "destination": "/kalas/:slug*", "permanent": true },
+    { "source": "/category/kalas-for-:age", "destination": "/kalas/:age", "permanent": true },
+    { "source": "/kalasbloggen/diy-kalaspase-billiga-och-roliga-gavor-barnen-kommer-alska", "destination": "/kalasbloggen/diy-kalaspase", "permanent": true },
+    { "source": "/kalasbloggen/diy-kalaspase-billiga-och-roliga-gavor-barnen-kommer-alska/", "destination": "/kalasbloggen/diy-kalaspase", "permanent": true }
+  ]
+}
