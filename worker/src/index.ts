@@ -1,5 +1,5 @@
 import Stripe from 'stripe'
-import { getZipUrl } from '../../lib/downloads'
+import { getZipFilename, getZipUrl } from '../../lib/downloads'
 import { signDownloadToken, verifyDownloadToken } from '../../lib/download-token'
 import { getProductName, getProductPrice, isKnownProduct } from '../../lib/product-catalog'
 import { sendOrderConfirmationEmail, type OrderEmailItem } from '../../lib/email'
@@ -13,6 +13,8 @@ export interface Env {
   WORKER_BASE_URL: string
   EMAIL_FROM: string
   EMAIL_REPLY_TO: string
+  // Product ZIPs (private R2 bucket kalaseriet-downloads). Optional so a missing binding falls back to the old host.
+  ZIPS?: R2Bucket
 }
 
 type CartMetaItem = { id: string; q: number }
@@ -72,7 +74,7 @@ export default {
         return await handleWebhook(request, stripe, env, cors)
       }
       if (url.pathname === '/download' && request.method === 'GET') {
-        return handleDownload(url, cors)
+        return await handleDownload(url, env, cors)
       }
       if (url.pathname === '/session-status' && request.method === 'GET') {
         return await handleSessionStatus(url, stripe, env, cors)
@@ -201,7 +203,7 @@ async function fulfillOrder(session: Stripe.Checkout.Session, workerBaseUrl: str
   }
 }
 
-function handleDownload(url: URL, cors: HeadersInit): Response {
+async function handleDownload(url: URL, env: Env, cors: HeadersInit): Promise<Response> {
   const productId = url.searchParams.get('productId')
   const token = url.searchParams.get('token')
 
@@ -213,12 +215,31 @@ function handleDownload(url: URL, cors: HeadersInit): Response {
     return json({ error: 'Invalid or expired link' }, 403, cors)
   }
 
-  const zipUrl = getZipUrl(productId)
-  if (!zipUrl) {
+  const filename = getZipFilename(productId)
+  if (!filename) {
     return json({ error: 'Product not found' }, 404, cors)
   }
 
-  return Response.redirect(zipUrl, 307)
+  // The file is streamed from the private R2 bucket, so it never has a public address. The customer gets it
+  // named after the party pack. If the object is missing, fall back to the old host rather than failing.
+  const obj = env.ZIPS ? await env.ZIPS.get(filename) : null
+  if (obj) {
+    const name = `${getProductName(productId) || 'Kalaseriet'}.zip`
+    const ascii = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w .&-]/g, '')
+    return new Response(obj.body, {
+      headers: {
+        'Content-Type': 'application/zip',
+        'Content-Length': String(obj.size),
+        'Content-Disposition': `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(name)}`,
+        'Cache-Control': 'private, no-store',
+        ETag: obj.httpEtag,
+        ...cors,
+      },
+    })
+  }
+
+  console.warn('download: not in R2, falling back to the old host:', filename)
+  return Response.redirect(getZipUrl(productId)!, 307)
 }
 
 async function handleSessionStatus(url: URL, stripe: Stripe, env: Env, cors: HeadersInit): Promise<Response> {

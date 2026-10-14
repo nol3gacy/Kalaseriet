@@ -19,3 +19,8 @@ WORKER_BASE_URL = "https://kalaseriet-api.kalaseriet.workers.dev"
 EMAIL_FROM = "Kalaseriet <hej@send.kalaseriet.se>"
 # Customer replies go here — can be any inbox, unlike the From address.
 EMAIL_REPLY_TO = "nolegacy@gmail.com"
+
+# Product ZIPs, private. The Worker streams them after checking the signed download link.
+[[r2_buckets]]
+binding = "ZIPS"
+bucket_name = "kalaseriet-downloads"
