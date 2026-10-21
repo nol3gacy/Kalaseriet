@@ -136,7 +136,7 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
             </div>
           ) : (
             <div className="bg-gray-50 rounded-2xl p-8 text-gray-500">
-              Nedladdningslänken skickas till din e-post inom några minuter.
+              Nedladdningslänken skickas till din e-post inom några minuter. Kom den inte? Titta i skräpposten och ladda om den här sidan om en stund. Spara gärna adressen till sidan: där får du alltid nya nedladdningslänkar.
             </div>
           )}
 

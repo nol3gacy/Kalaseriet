@@ -161,13 +161,13 @@ async function handleWebhook(request: Request, stripe: Stripe, env: Env, cors: H
 
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
-    await fulfillOrder(session, env.WORKER_BASE_URL)
+    await fulfillOrder(session, env.WORKER_BASE_URL, env.ALLOWED_ORIGINS.split(',')[0].trim())
   }
 
   return json({ received: true }, 200, cors)
 }
 
-async function fulfillOrder(session: Stripe.Checkout.Session, workerBaseUrl: string) {
+async function fulfillOrder(session: Stripe.Checkout.Session, workerBaseUrl: string, siteOrigin: string) {
   const email = session.customer_details?.email
   if (!email) {
     console.error('Stripe webhook: no customer email on session', session.id)
@@ -197,7 +197,8 @@ async function fulfillOrder(session: Stripe.Checkout.Session, workerBaseUrl: str
   })
 
   try {
-    await sendOrderConfirmationEmail(email, emailItems)
+    // /tack mints fresh download tokens from the session id, so this link keeps working after the 7-day ones expire.
+    await sendOrderConfirmationEmail(email, emailItems, `${siteOrigin}/tack?session_id=${encodeURIComponent(session.id)}`)
   } catch (err) {
     console.error('Stripe webhook: failed to send confirmation email for session', session.id, err)
   }
