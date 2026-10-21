@@ -151,6 +151,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <ProductBuySection product={product} />
 
+            <p className="text is--bold" style={{ margin: '0 0 1rem' }}>
+              Digital nedladdning: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista &amp; körschema.
+            </p>
+
             <div className="text">{description}</div>
 
             <div className="contains-wrapper">
