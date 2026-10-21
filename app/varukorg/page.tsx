@@ -31,19 +31,18 @@ export default function VarukorgPage() {
       })
 
       const data = await response.json()
-      if (!response.ok) throw new Error(data.error || 'Checkout failed')
+      const checkoutUrl = data?.checkoutUrl ?? data?.url
 
       // Redirect to Stripe Checkout
-      if (data.checkoutUrl) {
-        window.location.href = data.checkoutUrl
+      if (response.ok && checkoutUrl) {
+        window.location.href = checkoutUrl
         return
       }
+    } catch { /* fall through to the message below */ }
 
-      throw new Error('No checkout URL received')
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong')
-      setLoading(false)
-    }
+    // Customers read this, so keep it Swedish whatever the API or network said.
+    setError('Det gick inte att öppna kassan just nu. Din varukorg är kvar, försök igen om en stund eller hör av dig via Kontakt.')
+    setLoading(false)
   }
 
   if (items.length === 0) {
@@ -122,7 +121,7 @@ export default function VarukorgPage() {
             </div>
 
             {error && (
-              <div className="mb-6 p-4 bg-red-50 text-red-800 rounded-xl text-sm">
+              <div role="alert" className="mb-6 p-4 bg-red-50 text-red-800 rounded-xl text-sm">
                 {error}
               </div>
             )}
@@ -132,7 +131,7 @@ export default function VarukorgPage() {
               disabled={loading}
               className="btn-primary w-full !text-lg disabled:opacity-60"
             >
-              {loading ? 'Laddar...' : `Gå till betalning – ${total} kr`}
+              {loading ? 'Öppnar kassan…' : `Gå till betalning – ${total} kr`}
             </button>
 
             <Link href="/kalas" className="btn-secondary w-full mt-3">
