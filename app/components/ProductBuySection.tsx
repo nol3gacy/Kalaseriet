@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
 import type { Product } from '../page'
@@ -16,11 +15,15 @@ function Check() {
 }
 
 export default function ProductBuySection({ product }: { product: Product }) {
-  const router = useRouter()
   const { addItem, items } = useCart()
   const [showSticky, setShowSticky] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
 
   const buyNow = async () => {
+    if (busy) return
+    setBusy(true)
+    setError('')
     addItem(product)
     const lineItems = [
       { productId: product._id, productName: product.name, price: product.price, quantity: 1 },
@@ -36,7 +39,9 @@ export default function ProductBuySection({ product }: { product: Product }) {
       const data = await res.json()
       if (data?.url) { window.location.href = data.url; return }
     } catch { /* fall through */ }
-    router.push('/varukorg')
+    // Checkout unavailable: the item is in the cart, tell the customer and let them continue there.
+    setBusy(false)
+    setError('Det gick inte att öppna kassan just nu. Din vara ligger kvar i varukorgen, försök igen eller gå till varukorgen.')
   }
 
   // Reveal the fixed buy bar once the inline buy button scrolls out of view.
@@ -72,10 +77,15 @@ export default function ProductBuySection({ product }: { product: Product }) {
           <Price />
           <div className="add-to-cart">
             <form className="w-commerce-commerceaddtocartform default-state" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} className="w-commerce-commercebuynowbutton button is--special" type="button">Köp nu ›</button>
+              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>
+        {error && (
+          <p role="alert" style={{ color: '#b00020', margin: '0.75rem 0', fontWeight: 600 }}>
+            {error} <a href="/varukorg" style={{ textDecoration: 'underline' }}>Till varukorgen</a>
+          </p>
+        )}
         <div className="div-block-2">
           {FEATURES.map(f => (
             <div className="buy-feature-wrapper" key={f}>
@@ -92,7 +102,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
           <Price fixed />
           <div>
             <form className="w-commerce-commerceaddtocartform default-state-3" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} className="w-commerce-commercebuynowbutton button is--special" type="button">Köp nu ›</button>
+              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>
