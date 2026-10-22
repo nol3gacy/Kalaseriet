@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { API_BASE } from '../../lib/api-base'
 
 const INDIGO = '#5910b6'
 const PURPLE = '#6e42ff'
@@ -11,12 +12,27 @@ const CREAM = '#faf1ef'
 export default function FeedbackPage() {
   const [sent, setSent] = useState(false)
   const [rating, setRating] = useState(0)
-  const [form, setForm] = useState({ product: '', message: '', wantRefund: false })
+  const [form, setForm] = useState({ product: '', email: '', message: '', wantRefund: false, website: '' })
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // TODO: connect form backend
-    setSent(true)
+    if (busy) return
+    setBusy(true)
+    setError('')
+    try {
+      const res = await fetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'feedback', rating, ...form }),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+    } catch {
+      setError('Det gick inte att skicka just nu. Försök igen om en stund.')
+    }
+    setBusy(false)
   }
 
   return (
@@ -97,6 +113,20 @@ export default function FeedbackPage() {
 
               <div>
                 <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                  Din e-post (så att vi kan svara) *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  placeholder="anna@exempel.se"
+                  style={inputStyle}
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
                   Berätta mer *
                 </label>
                 <textarea
@@ -132,9 +162,16 @@ export default function FeedbackPage() {
                 </div>
               </label>
 
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                value={form.website}
+                onChange={e => setForm(f => ({ ...f, website: e.target.value }))}
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+
+              {error && <p role="alert" style={{ color: '#b00020', fontWeight: 600, margin: 0 }}>{error}</p>}
+
               <button
                 type="submit"
-                disabled={!rating}
+                disabled={!rating || busy}
                 style={{
                   width: '100%',
                   backgroundColor: rating ? PURPLE : '#d9d3ea',
@@ -149,7 +186,7 @@ export default function FeedbackPage() {
                   transition: 'background-color 0.2s',
                 }}
               >
-                Skicka feedback
+                {busy ? 'Skickar…' : 'Skicka feedback'}
               </button>
             </form>
           )}

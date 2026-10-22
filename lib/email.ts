@@ -69,6 +69,37 @@ export async function sendOrderConfirmationEmail(to: string, items: OrderEmailIt
   }
 }
 
+// Forwards a contact/feedback form message to the shop's own inbox (REPLY_TO),
+// with the customer's address as reply-to so answering the mail answers them.
+export async function sendFormMessageEmail(opts: {
+  subject: string
+  customerEmail: string
+  fields: Array<[string, string]>
+}): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) throw new Error('RESEND_API_KEY is not set')
+  if (!REPLY_TO) throw new Error('EMAIL_REPLY_TO is not set')
+
+  const rows = opts.fields.map(([k, v]) =>
+    `<p style="margin:0 0 12px;"><strong>${escapeHtml(k)}</strong><br>${escapeHtml(v).replace(/\n/g, '<br>')}</p>`).join('')
+
+  const res = await fetch(RESEND_API_URL, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: FROM_ADDRESS,
+      to: [REPLY_TO],
+      reply_to: opts.customerEmail,
+      subject: opts.subject,
+      html: `<div style="font-family:sans-serif;font-size:15px;">${rows}</div>`,
+    }),
+  })
+  if (!res.ok) {
+    const body = await res.text().catch(() => '')
+    throw new Error(`Resend send failed: ${res.status} ${body}`)
+  }
+}
+
 function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]!))
 }

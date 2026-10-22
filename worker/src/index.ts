@@ -2,7 +2,7 @@ import Stripe from 'stripe'
 import { getZipFilename, getZipUrl } from '../../lib/downloads'
 import { signDownloadToken, verifyDownloadToken } from '../../lib/download-token'
 import { getProductName, getProductPrice, isKnownProduct } from '../../lib/product-catalog'
-import { sendOrderConfirmationEmail, type OrderEmailItem } from '../../lib/email'
+import { sendOrderConfirmationEmail, sendFormMessageEmail, type OrderEmailItem } from '../../lib/email'
 
 export interface Env {
   STRIPE_SECRET_KEY: string
@@ -78,6 +78,9 @@ export default {
       }
       if (url.pathname === '/session-status' && request.method === 'GET') {
         return await handleSessionStatus(url, stripe, env, cors)
+      }
+      if (url.pathname === '/contact' && request.method === 'POST') {
+        return await handleContact(request, cors)
       }
       return json({ error: 'Not found' }, 404, cors)
     } catch (error) {
@@ -280,4 +283,48 @@ async function handleSessionStatus(url: URL, stripe: Stripe, env: Env, cors: Hea
 
 function buildDownloadUrl(workerBaseUrl: string, productId: string, token: string): string {
   return `${workerBaseUrl}/download?productId=${encodeURIComponent(productId)}&token=${encodeURIComponent(token)}`
+}
+
+const FORM_LIMITS = { name: 100, email: 200, text: 4000 }
+
+// Contact and feedback forms (/kontakt, /feedback). Validates, then mails the shop inbox via Resend.
+async function handleContact(request: Request, cors: HeadersInit): Promise<Response> {
+  let body: Record<string, unknown>
+  try {
+    body = await request.json() as Record<string, unknown>
+  } catch {
+    return json({ error: 'Invalid request' }, 400, cors)
+  }
+  const str = (k: string, max: number) => (typeof body[k] === 'string' ? (body[k] as string).trim().slice(0, max) : '')
+
+  // Honeypot: real visitors never fill this hidden field. Pretend success so bots learn nothing.
+  if (str('website', 100)) return json({ ok: true }, 200, cors)
+
+  const kind = body.kind === 'feedback' ? 'feedback' : 'contact'
+  const email = str('email', FORM_LIMITS.email)
+  const message = str('message', FORM_LIMITS.text)
+  if (!message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return json({ error: 'Missing message or valid email' }, 400, cors)
+  }
+
+  const fields: Array<[string, string]> = [['E-post', email]]
+  let subject: string
+  if (kind === 'feedback') {
+    const rating = Number(body.rating)
+    subject = `Feedback${body.wantRefund === true ? ' (ÅTERBETALNING)' : ''}${rating >= 1 && rating <= 5 ? ` · ${rating}/5` : ''}`
+    fields.push(['Produkt', str('product', FORM_LIMITS.name)], ['Betyg', rating >= 1 && rating <= 5 ? `${rating}/5` : '-'],
+      ['Vill ha återbetalning', body.wantRefund === true ? 'JA' : 'nej'])
+  } else {
+    subject = `Kontakt från ${str('name', FORM_LIMITS.name) || email}`
+    fields.push(['Namn', str('name', FORM_LIMITS.name)], ['Har köpt', str('hasPurchased', 10)])
+  }
+  fields.push(['Meddelande', message])
+
+  try {
+    await sendFormMessageEmail({ subject, customerEmail: email, fields })
+  } catch (err) {
+    console.error('Contact form: failed to send', err)
+    return json({ error: 'Could not send' }, 502, cors)
+  }
+  return json({ ok: true }, 200, cors)
 }

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { API_BASE } from '../../lib/api-base'
 
 const INDIGO = '#5910b6'
 const PURPLE = '#6e42ff'
@@ -21,12 +22,28 @@ const inputStyle: React.CSSProperties = {
 
 export default function KontaktPage() {
   const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', hasPurchased: 'nej', message: '', consent: false })
+  const [form, setForm] = useState({ name: '', email: '', hasPurchased: 'nej', message: '', consent: false, website: '' })
 
-  function handleSubmit(e: React.FormEvent) {
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    // TODO: connect to form backend (e.g. Resend, Formspree)
-    setSent(true)
+    if (busy) return
+    setBusy(true)
+    setError('')
+    try {
+      const res = await fetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'contact', ...form }),
+      })
+      if (!res.ok) throw new Error()
+      setSent(true)
+    } catch {
+      setError('Meddelandet gick inte att skicka just nu. Försök igen om en stund.')
+    }
+    setBusy(false)
   }
 
   return (
@@ -96,9 +113,10 @@ export default function KontaktPage() {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>E-post</label>
+                <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>E-post *</label>
                 <input
                   type="email"
+                  required
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                   placeholder="anna@exempel.se"
@@ -132,8 +150,17 @@ export default function KontaktPage() {
                 </span>
               </label>
 
+              {/* Honeypot: hidden from people, bots fill it. */}
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                value={form.website}
+                onChange={e => setForm(f => ({ ...f, website: e.target.value }))}
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+
+              {error && <p role="alert" style={{ color: '#b00020', fontWeight: 600, margin: 0 }}>{error}</p>}
+
               <button
                 type="submit"
+                disabled={busy}
                 style={{
                   width: '100%',
                   backgroundColor: PURPLE,
@@ -147,7 +174,7 @@ export default function KontaktPage() {
                   cursor: 'pointer',
                 }}
               >
-                Skicka meddelande
+                {busy ? 'Skickar…' : 'Skicka meddelande'}
               </button>
             </form>
           )}
