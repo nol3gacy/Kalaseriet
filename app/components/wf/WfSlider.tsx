@@ -120,7 +120,7 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
                   loading={isCover ? 'eager' : 'lazy'}
                   decoding="async"
                   fetchPriority={isCover ? 'high' : 'auto'}
-                  src={src}
+                  src={src.startsWith('/wf/images/covers/') ? src.replace(/\.jpg$/, '.webp') : src}
                   className="product-image wf-slide-image"
                 />
               </div>

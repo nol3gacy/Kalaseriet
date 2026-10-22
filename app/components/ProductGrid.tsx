@@ -15,6 +15,9 @@ function ageText(g: string) {
   return g === '7-8' ? '7 & 8-åringar' : `${g}-åringar`
 }
 
+// Local cover JPGs have a WebP twin (~40% smaller); the JPG stays for og:image and structured data.
+const toWebp = (u?: string | null) => (u?.startsWith('/wf/images/covers/') ? u.replace(/\.jpg$/, '.webp') : u)
+
 export default function ProductGrid({
   products,
   heading = 'Kalasen',
@@ -88,7 +91,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading={i < 4 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} decoding="async" src={p.externalImageUrl || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading={i < 4 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">
