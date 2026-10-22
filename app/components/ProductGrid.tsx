@@ -75,7 +75,7 @@ export default function ProductGrid({
 
       <div className="kalaslekarna-clw w-dyn-list">
         <div role="list" className="kalaslekarna-list w-dyn-items">
-          {filtered.map(p => (
+          {filtered.map((p, i) => (
             <div role="listitem" className="kalaslekarna-item w-dyn-item" key={p._id}>
               <a href={`/kalas/${p.slug.current}`} className="kalaslekarna-link-block w-inline-block">
                 {p.isNew && (
@@ -88,7 +88,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading="lazy" src={p.externalImageUrl || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading={i < 4 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} decoding="async" src={p.externalImageUrl || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">
