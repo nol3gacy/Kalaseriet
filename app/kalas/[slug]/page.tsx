@@ -149,6 +149,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               Digital nedladdning: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista &amp; körschema.
             </p>
 
+            <ol aria-label="Så funkar det" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.25rem', listStyle: 'none', padding: 0, margin: '0 0 1.25rem', fontWeight: 700, color: 'var(--color--indigo)' }}>
+              <li>1. Köp</li>
+              <li>2. Ladda ner direkt</li>
+              <li>3. Skriv ut &amp; fira</li>
+            </ol>
+
             <div className="text">{description}</div>
 
             <div className="contains-wrapper">
