@@ -14,6 +14,17 @@ function Check() {
   )
 }
 
+function Price({ product, fixed = false }: { product: Product; fixed?: boolean }) {
+  return (
+    <div className="price-wrapper">
+      {product.originalPrice && product.originalPrice > product.price && (
+        <div className={`price was${fixed ? ' fixed' : ''}`}>{product.originalPrice} kr</div>
+      )}
+      <div className="price">{product.price} kr</div>
+    </div>
+  )
+}
+
 export default function ProductBuySection({ product }: { product: Product }) {
   const { addItem, items } = useCart()
   const [showSticky, setShowSticky] = useState(false)
@@ -61,20 +72,11 @@ export default function ProductBuySection({ product }: { product: Product }) {
     }
   }, [])
 
-  const Price = ({ fixed = false }: { fixed?: boolean }) => (
-    <div className="price-wrapper">
-      {product.originalPrice && product.originalPrice > product.price && (
-        <div className={`price was${fixed ? ' fixed' : ''}`}>{product.originalPrice} kr</div>
-      )}
-      <div className="price">{product.price} kr</div>
-    </div>
-  )
-
   return (
     <>
       <div className="div-block-3">
         <div className="div-block" data-buy-anchor>
-          <Price />
+          <Price product={product} />
           <div className="add-to-cart">
             <form className="w-commerce-commerceaddtocartform default-state" onSubmit={e => e.preventDefault()}>
               <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
@@ -99,7 +101,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
       {/* Fixed reveal-on-scroll buy bar */}
       <div className="buy-wrapper" style={{ transform: showSticky ? 'translate3d(0,0,0)' : 'translate3d(0,100%,0)', transition: 'transform .35s cubic-bezier(0.4,0,0.2,1)' }}>
         <div className="buy-base">
-          <Price fixed />
+          <Price product={product} fixed />
           <div>
             <form className="w-commerce-commerceaddtocartform default-state-3" onSubmit={e => e.preventDefault()}>
               <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
