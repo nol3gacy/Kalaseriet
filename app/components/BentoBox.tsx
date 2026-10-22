@@ -128,7 +128,7 @@ export default function BentoBox() {
             <div className="text is--bold is--pink">Checka av inför, under &amp; efter kalaset. Så att inget missas!</div>
             <div className="inkopslistor">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/wf/images/checklistad.png" loading="lazy" alt="" className="inkopslistor-img" />
+              <img src="/wf/images/checklistad.webp" loading="lazy" alt="" className="inkopslistor-img" />
             </div>
             <Plus />
           </div>

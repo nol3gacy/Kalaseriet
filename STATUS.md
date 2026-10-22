@@ -8,7 +8,7 @@
 - Product structured data no longer claims a 30-day return-by-mail policy (contradicted /villkor).
 - Blog posts end with a package box linking to the matching theme/age page (offerForPost in lib/data/blog-posts.ts).
 - Perf (measured with Lighthouse via npx, serving out/): first 4 grid images eager on /kalas, /kalas 68 to 83, LCP 13.1 s to 4.3 s. Product page 73 (LCP 11.3 s) next.
-- Next: BACKLOG.md item 3 (Lighthouse + WebP). Items 1-2 wait on Joel.
+- Product page slider: only the cover image is high-priority, shared slides are WebP (73 to 79, LCP 11.3 s to 5.5 s). Next: BACKLOG.md item 3 (CSS weight, gtag).
 - Known: pre-existing lint errors in ProductBuySection (Price component defined in render).
 - 2026-10-21 21:40: Backloggen var tom: skrev 9 prioriterade punkter. Gjorde punkt 1 på grenen work/backlog-buy-feedback (ej deployad, ej mergad): Köp nu-knappen visar nu 'Öppnar kassan…', kan inte dubbelklickas och visar ett tydligt fel istället för att tyst skicka kunden till varukorgen. Bygget går igenom.
 - 2026-10-21 22:25: Punkt 1 klar på grenen work/backlog-buy-feedback (ej deployad): kassaknappen i /varukorg hade redan laddningsläge, men visade engelska/råa felmeddelanden. Nu visas alltid ett svenskt, begripligt fel om kassan inte öppnas, och koden klarar både url och checkoutUrl från Worker. Bygget går igenom.
@@ -17,3 +17,4 @@
 - 2026-10-22 00:41: Punkt 1 klar på grenen work/backlog-buy-feedback (ej deployad): produktsidornas strukturerade data påstod 30 dagars retur per post, vilket inte stämmer med /villkor (nöjdhetsgaranti, inget fönster). Påståendet är borttaget. Joel kan titta på: /villkor säger att nedladdningslänken gäller 30 dagar men koden och mejlet säger 7. Jag har inte ändrat villkorstexten.
 - 2026-10-22 01:27: Gjorde blogglänkarna (punkt 1 och 2 väntar på Joel: riktiga omdömen resp. e-posttjänst). På grenen work/backlog-buy-feedback, ej deployat: varje blogginlägg slutar nu med en ruta 'Vill du slippa planera själv?' som länkar till matchande paket (pirat, 4-/6-åringar) eller alla kalas. Bygget går igenom.
 - 2026-10-22 02:12: Prestandapass 1 på grenen work/backlog-buy-feedback, ej deployat: produktkorten laddar bilder lazy (33 kort i rutnätet) och muffinsbakgrunden är krympt från 913 KB. Lighthouse finns inte på minin, så inga mätvärden än; nästa runda är mätning och WebP. Bygget går igenom.
+- 2026-10-22 03:19: Prestandapass 2 på grenen work/backlog-buy-feedback, ej deployat. Mätte med Lighthouse (mobil, lokalt bygge): /kalas gick från 68 till 83 poäng och LCP från 13,1 s till 4,3 s genom att de första fyra bilderna i rutnätet laddas direkt istället för lazy. Produktsidan ligger på 73 (LCP 11,3 s) och är nästa mål.
