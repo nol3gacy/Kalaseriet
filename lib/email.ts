@@ -37,7 +37,7 @@ export async function sendOrderConfirmationEmail(to: string, items: OrderEmailIt
     <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#faf1ef;border-radius:24px;">
       <h1 style="color:#5910b6;font-size:28px;margin:0 0 8px;">Tack för ditt köp! 🎉</h1>
       <p style="color:#272729;font-size:16px;line-height:1.5;margin:0 0 24px;">
-        Här är dina nedladdningslänkar. Länkarna är giltiga i 7 dagar.
+        Här är dina nedladdningslänkar. Länkarna är giltiga i 30 dagar.
       </p>
       <table style="width:100%;border-collapse:collapse;">
         ${itemsHtml}

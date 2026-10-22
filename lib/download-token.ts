@@ -11,7 +11,7 @@ function secret(): string {
   return SECRET
 }
 
-export function signDownloadToken(productId: string, ttlMs = 7 * 24 * 60 * 60 * 1000): string {
+export function signDownloadToken(productId: string, ttlMs = 30 * 24 * 60 * 60 * 1000): string {
   const expiresAt = Date.now() + ttlMs
   const mac = createHmac('sha256', secret()).update(`${productId}.${expiresAt}`).digest('hex')
   return `${expiresAt}.${mac}`
