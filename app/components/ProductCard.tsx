@@ -48,6 +48,8 @@ export default function ProductCard({ product }: { product: Product }) {
             <img
               src={imageUrl}
               alt={product.name}
+              loading="lazy"
+              decoding="async"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           ) : (
