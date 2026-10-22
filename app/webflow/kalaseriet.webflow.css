@@ -2124,7 +2124,7 @@ a {
 }
 
 .bento-cell.is--including {
-  background-image: url('/wf/images/inkluderande-kalaslekar.jpg');
+  background-image: url('/wf/images/inkluderande-kalaslekar.webp');
   background-position: 50%;
   background-size: cover;
 }
@@ -2197,7 +2197,7 @@ a {
 }
 
 .bento-cell-front.is--spread {
-  background-image: url('/wf/images/inkluderande-kalaslekar.jpg');
+  background-image: url('/wf/images/inkluderande-kalaslekar.webp');
   background-position: 50%;
   background-size: cover;
   flex-direction: column;
@@ -2213,7 +2213,7 @@ a {
 }
 
 .bento-cell-front.is--recepies {
-  background-image: url('/wf/images/muffins_1.jpg');
+  background-image: url('/wf/images/muffins_1.webp');
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;

@@ -225,3 +225,18 @@ export const blogPosts: BlogPost[] = [
     imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673105975ce61d45f994aec1_10%20tips%20fo%CC%88r%20att%20planera%20ett%20barnkalas%20som%20alla%20kommer%20minnas.avif',
   },
 ]
+
+
+// Where a reader of each post should go next: the package page that matches
+// the post's topic (a theme or age group), so the article leads to a purchase.
+export type PostOffer = { label: string; href: string }
+
+const POST_OFFERS: Record<string, PostOffer> = {
+  'tema-piratkalas': { label: 'Piratkalaset för 4-åringar', href: '/kalas/piratkalaset-for-4-aringar' },
+  'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
+  'kalas-tema-4-aringar': { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },
+}
+
+export function offerForPost(slug: string): PostOffer {
+  return POST_OFFERS[slug] ?? { label: 'Alla kalaspaket', href: '/kalas' }
+}

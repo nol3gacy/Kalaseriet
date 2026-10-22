@@ -117,9 +117,9 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt={`${alt} – bild ${extIdx + 1}`}
-                  loading="eager"
+                  loading={isCover ? 'eager' : 'lazy'}
                   decoding="async"
-                  fetchPriority={extIdx <= 2 ? 'high' : 'auto'}
+                  fetchPriority={isCover ? 'high' : 'auto'}
                   src={src}
                   className="product-image wf-slide-image"
                 />

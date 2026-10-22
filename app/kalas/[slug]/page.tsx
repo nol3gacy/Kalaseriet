@@ -77,6 +77,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const path = `/kalas/${slug}`
   const categoryPath = `/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`
 
+  // No hasMerchantReturnPolicy: /villkor promises a satisfaction guarantee with no fixed window or
+  // return-by-mail, so a 30-day mail-return claim here would contradict the terms.
   // No aggregateRating: we have no verified per-product review data, and
   // fabricated review markup is a Google structured-data policy violation.
   const productSchema = {
@@ -99,14 +101,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       itemCondition: 'https://schema.org/NewCondition',
       priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
       seller: { '@id': ORG_ID },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'SE',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 30,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        returnFees: 'https://schema.org/FreeReturn',
-      },
     },
   }
 
@@ -150,6 +144,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <h1 className="heading">{product.name}</h1>
 
             <ProductBuySection product={product} />
+
+            <p className="text is--bold" style={{ margin: '0 0 1rem' }}>
+              Digital nedladdning: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista &amp; körschema.
+            </p>
 
             <div className="text">{description}</div>
 

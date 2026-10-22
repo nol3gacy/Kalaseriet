@@ -1,8 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Lightweight wrapper around the lottie-player web component.
+// Loads the player (and the animation JSON) only once the element is near the
+// viewport, so below-the-fold animations don't cost anything on first paint.
 // Loads the player once, then renders a <lottie-player> filling its parent.
 export default function Lottie({
   src,
@@ -18,17 +20,29 @@ export default function Lottie({
   style?: React.CSSProperties
 }) {
   const [ready, setReady] = useState(false)
+  const [near, setNear] = useState(false)
+  const holder = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    const el = holder.current
+    if (!el || typeof IntersectionObserver === 'undefined') { setNear(true); return }
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setNear(true); obs.disconnect() }
+    }, { rootMargin: '300px' })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!near) return
     if (!customElements.get('lottie-player')) {
       import('@lottiefiles/lottie-player').then(() => setReady(true))
     } else {
       setReady(true)
     }
-  }, [])
+  }, [near])
 
-  if (!ready) return <div className={className} style={style} />
+  if (!ready) return <div ref={holder} className={className} style={style} />
 
   return (
     /* @ts-expect-error web component */

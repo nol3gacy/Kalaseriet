@@ -18,7 +18,7 @@ export interface OrderEmailItem {
   downloadUrl: string
 }
 
-export async function sendOrderConfirmationEmail(to: string, items: OrderEmailItem[]): Promise<void> {
+export async function sendOrderConfirmationEmail(to: string, items: OrderEmailItem[], orderPageUrl?: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) throw new Error('RESEND_API_KEY is not set')
 
@@ -37,13 +37,13 @@ export async function sendOrderConfirmationEmail(to: string, items: OrderEmailIt
     <div style="font-family:sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#faf1ef;border-radius:24px;">
       <h1 style="color:#5910b6;font-size:28px;margin:0 0 8px;">Tack för ditt köp! 🎉</h1>
       <p style="color:#272729;font-size:16px;line-height:1.5;margin:0 0 24px;">
-        Här är dina nedladdningslänkar. Länkarna är giltiga i 7 dagar.
+        Här är dina nedladdningslänkar. Länkarna är giltiga i 30 dagar.
       </p>
       <table style="width:100%;border-collapse:collapse;">
         ${itemsHtml}
       </table>
       <p style="color:#7c7c7c;font-size:13px;line-height:1.5;margin:24px 0 0;">
-        Problem med nedladdningen? Svara på det här mejlet så hjälper vi dig direkt.
+        ${orderPageUrl ? `Har länkarna gått ut? <a href="${orderPageUrl}" style="color:#5910b6;">Öppna din orderssida</a> så får du nya nedladdningslänkar.<br><br>` : ''}Problem med nedladdningen? Svara på det här mejlet så hjälper vi dig direkt.
       </p>
     </div>
   `

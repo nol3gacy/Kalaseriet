@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import FAQ from '../../components/FAQ'
 import AgeCTAs from '../../components/AgeCTAs'
-import { blogPosts, isoDate } from '../../../lib/data/blog-posts'
+import { blogPosts, isoDate, offerForPost } from '../../../lib/data/blog-posts'
 import { notFound } from 'next/navigation'
 import { absoluteUrl, breadcrumbSchema, canonical, jsonLd, LOGO_URL, ORG_ID } from '../../../lib/seo'
 
@@ -41,6 +41,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = blogPosts.find(p => p.slug === slug)
   if (!post) notFound()
 
+  const offer = offerForPost(slug)
   const otherPosts = blogPosts.filter(p => p.slug !== slug).slice(0, 2)
 
   // Dates are derived from the post's own visible date so the markup can't
@@ -146,6 +147,23 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             className="blog-body"
             dangerouslySetInnerHTML={{ __html: post.body }}
           />
+
+          <aside style={{
+            margin: '2.5rem 0 0',
+            padding: '1.5rem 1.75rem',
+            backgroundColor: '#faf1ef',
+            borderRadius: '2rem',
+            fontFamily: 'caraque-melted, sans-serif',
+            color: '#5910b6',
+          }}>
+            <p style={{ fontSize: '1.4rem', fontWeight: 700, margin: '0 0 0.5rem', lineHeight: '110%' }}>
+              Vill du slippa planera allt själv?
+            </p>
+            <p style={{ fontSize: '1.15rem', margin: '0 0 1rem' }}>
+              Våra kalaspaket har 20 lekar, 20 recept, inbjudan och körschema, färdiga att ladda ner.
+            </p>
+            <a href={offer.href} className="btn-primary">{offer.label} ›</a>
+          </aside>
         </article>
 
         {/* CTA */}
