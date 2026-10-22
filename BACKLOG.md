@@ -3,8 +3,10 @@
 Top item next. Keep 5–15 items, ordered by what brings paying customers closer.
 Live site with real customers: work on a branch, never deploy, propose to Joel.
 
-1. Verify the structured data return policy for digital goods (ReturnByMail looks wrong) against /villkor.
-2. Real per-product reviews (only with verified data; no fabricated ratings).
-3. Newsletter/lead capture backend (form exists without backend); needs Joel's OK for any email service.
-4. Performance pass: Lighthouse on /, /kalas, product page (images, fonts, Webflow CSS weight).
-5. Blog: internal links from posts to matching age-group packages.
+1. Real per-product reviews (only with verified data; no fabricated ratings).
+2. Newsletter/lead capture backend (form exists without backend); needs Joel's OK for any email service.
+3. Performance pass: Lighthouse on /, /kalas, product page (images, fonts, Webflow CSS weight).
+4. Blog: internal links from posts to matching age-group packages.
+- [ ] Överväg: **Generated share images with next/og** från Begraveriet (se ~/nolegacy/shared/LIBRARY.md). Bygg in det bara om det hjälper Kalaseriet; annars stryk raden.
+
+Överväg (Joel): /villkor says download links last 30 days but the code and email say 7; align the text or the TTL in lib/download-token.ts (/tack now renews links anyway).
