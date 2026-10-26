@@ -97,7 +97,8 @@ export default function RootLayout({
                 __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
-                gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied' });
+                var c = 'denied'; try { if (localStorage.getItem('kalaseriet_cookie_consent') === 'accepted') c = 'granted'; } catch (e) {}
+                gtag('consent', 'default', { analytics_storage: c, ad_storage: c });
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}');
               `,
