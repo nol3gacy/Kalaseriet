@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { gtag } from '../../lib/gtag'
 
 const STORAGE_KEY = 'kalaseriet_cookie_consent'
 
@@ -12,8 +13,6 @@ declare global {
 }
 
 function grantConsent(granted: boolean) {
-  window.dataLayer = window.dataLayer || []
-  function gtag(...args: unknown[]) { window.dataLayer!.push(args) }
   gtag('consent', 'update', {
     analytics_storage: granted ? 'granted' : 'denied',
     ad_storage: granted ? 'granted' : 'denied',

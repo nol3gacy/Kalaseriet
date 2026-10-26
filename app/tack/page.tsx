@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { API_BASE } from '../../lib/api-base'
+import { gtag } from '../../lib/gtag'
 
 interface DownloadItem {
   productId: string
@@ -40,8 +41,7 @@ function isNewOrder(orderId: string): boolean {
 function trackPurchase({ items, orderId, value, currency }: SessionStatus) {
   if (!orderId || !value || !isNewOrder(orderId)) return
 
-  window.dataLayer = window.dataLayer || []
-  window.dataLayer.push(['event', 'purchase', {
+  gtag('event', 'purchase', {
     transaction_id: orderId,
     value,
     currency,
@@ -51,7 +51,7 @@ function trackPurchase({ items, orderId, value, currency }: SessionStatus) {
       price: i.price,
       quantity: i.quantity,
     })),
-  }])
+  })
 
   window.fbq?.('track', 'Purchase', {
     value,
