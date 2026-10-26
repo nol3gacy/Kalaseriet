@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
 
 // Matches kalaseriet.se mini cart popover:
 // - White rounded card overlay
@@ -31,18 +32,18 @@ export default function MiniCart() {
   }, [miniCartOpen])
 
   const handleCheckout = async () => {
+    const lineItems = items.map(({ product, quantity }) => ({
+      productId: product._id,
+      productName: product.name,
+      price: product.price,
+      quantity,
+    }))
+    trackCart('begin_checkout', lineItems)
     try {
       const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: items.map(({ product, quantity }) => ({
-            productId: product._id,
-            productName: product.name,
-            price: product.price,
-            quantity,
-          })),
-        }),
+        body: JSON.stringify({ items: lineItems }),
       })
       const data = await res.json()
       if (data?.url) {

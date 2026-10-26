@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
 import type { Product } from '../page'
 
 const FEATURES = ['Leveras direkt till din e-post', '100% Nöjdhetsgaranti', 'Säker betalning']
@@ -42,6 +43,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
         productId: p._id, productName: p.name, price: p.price, quantity,
       })),
     ]
+    trackCart('begin_checkout', lineItems)
     try {
       const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },

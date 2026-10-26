@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
 
 export default function VarukorgPage() {
   const { items, removeItem, updateQuantity, total } = useCart()
@@ -15,19 +16,19 @@ export default function VarukorgPage() {
   async function handleCheckout() {
     setLoading(true)
     setError(undefined)
+    const lineItems = items.map(item => ({
+      productId: item.product._id,
+      productName: item.product.name,
+      price: item.product.price,
+      quantity: item.quantity,
+    }))
+    trackCart('begin_checkout', lineItems)
 
     try {
       const response = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: items.map(item => ({
-            productId: item.product._id,
-            productName: item.product.name,
-            price: item.product.price,
-            quantity: item.quantity,
-          })),
-        }),
+        body: JSON.stringify({ items: lineItems }),
       })
 
       const data = await response.json()
