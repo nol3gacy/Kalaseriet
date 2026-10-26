@@ -32,6 +32,10 @@ export default function ProductBuySection({ product }: { product: Product }) {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
 
+  useEffect(() => {
+    trackCart('view_item', [{ productId: product._id, productName: product.name, price: product.price, quantity: 1 }])
+  }, [product._id, product.name, product.price])
+
   const buyNow = async () => {
     if (busy) return
     setBusy(true)
