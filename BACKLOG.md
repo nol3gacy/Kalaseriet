@@ -5,7 +5,7 @@ Live site with real customers: work on a branch, never deploy, propose to Joel.
 
 1. (Blocked: needs real review data from Joel) Real per-product reviews, no fabricated ratings.
 2. Newsletter/lead capture backend (form exists without backend); needs Joel's OK for any email service.
-3. Product page LCP ~5 s on mobile (the cover image in the carousel): check it gets a preload with fetchpriority=high like the hero poster, and measure with --throttling-method=devtools as well (the simulated number barely moves for preload fixes).
+3. Accessibility on the buy path: the product slider's dots are divs with role=button but no tabIndex/keyboard, the slider images all say only 'bild N'. Run Lighthouse accessibility on a product page, /varukorg and /kalas and fix what a keyboard or screen-reader buyer would hit.
 4. Deploy the Worker + site with the new /contact endpoint, then send one test message through /kontakt and /feedback (Joel decides: live change). Consider rate limiting /contact (Cloudflare rule) if spam shows up.
 5. Connect Analytics (funnel view_item, add_to_cart, begin_checkout, purchase to GA4 and Meta now on the branch)/Search Console/Stripe to the control room (Joel: `node company-data.mjs auth` in No legacy OS/mini, then KALASERIET_GA4_PROPERTY / _GSC_SITE / _STRIPE_KEY in ~/.nolegacy.env). Merge the gtag fix first or GA4 shows no purchases.
 6. Meta pixel is not on the live site (NEXT_PUBLIC_META_PIXEL_ID empty). Joel: add the pixel id in Vercel env if Meta ads are planned; the funnel events are already wired.
