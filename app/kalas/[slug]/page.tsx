@@ -9,6 +9,7 @@ import ProductGrid from '../../components/ProductGrid'
 import WfSlider from '../../components/wf/WfSlider'
 import Accordion from '../../components/wf/Accordion'
 import { getProductExtra } from '../../../lib/data/products-extra'
+import { themePageFor } from '../../../lib/data/themes'
 import { includedItems } from '../../../lib/data/included-items'
 import { randomTestimonials } from '../../../lib/data/testimonials'
 import { faqs } from '../../../lib/data/faq'
@@ -72,6 +73,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const description = extra?.longDescription ?? product.description
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
+  const themePage = product.theme ? themePageFor(product.theme) : undefined
   const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup)
 
   const path = `/kalas/${slug}`
@@ -141,6 +143,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <a href={`/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`} className="link-block w-inline-block">
               <div className="tag-text">Kalas för {ageLabel}</div>
             </a>
+            {themePage && (
+              <a href={`/kalas/tema/${themePage.slug}`} className="link-block w-inline-block">
+                <div className="tag-text">Alla {themePage.heading.toLowerCase()}</div>
+              </a>
+            )}
             <h1 className="heading">{product.name}</h1>
 
             <ProductBuySection product={product} />

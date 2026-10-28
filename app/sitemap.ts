@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { fallbackProducts } from './page'
 import { blogPosts } from '../lib/data/blog-posts'
 import { categories } from '../lib/data/categories'
+import { themePages } from '../lib/data/themes'
 import { BASE_URL } from '../lib/seo'
 
 export const dynamic = 'force-static'
@@ -34,6 +35,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
+  const themeRoutes: MetadataRoute.Sitemap = themePages.map(t => ({
+    url: `${BASE_URL}/kalas/tema/${t.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
   const productRoutes: MetadataRoute.Sitemap = fallbackProducts.map(p => ({
     url: `${BASE_URL}/kalas/${p.slug.current}`,
     lastModified: now,
@@ -48,5 +56,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
+  return [...staticRoutes, ...categoryRoutes, ...themeRoutes, ...productRoutes, ...blogRoutes]
 }
