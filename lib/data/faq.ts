@@ -13,7 +13,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: 'Kan jag ändra mig efteråt?',
-    answer: '<p>Vi har 100% nöjdhetsgaranti, så om du inte är nöjd efter att du genomfört kalaset så får du pengarna tillbaka genom att följa denna <a href="/feedback">länk</a>. Kommentera gärna vad ni inte gillade, vi älskar feedback!</p>',
+    answer: '<p>Vi har 100% nöjdhetsgaranti, så om du inte är nöjd efter att du genomfört kalaset så får du pengarna tillbaka via <a href="/feedback">feedbackformuläret</a>. Kommentera gärna vad ni inte gillade, vi älskar feedback!</p>',
     order: 2,
   },
   {

@@ -105,7 +105,8 @@ export default function ProductBuySection({ product }: { product: Product }) {
       </div>
 
       {/* Fixed reveal-on-scroll buy bar */}
-      <div className="buy-wrapper" style={{ transform: showSticky ? 'translate3d(0,0,0)' : 'translate3d(0,100%,0)', transition: 'transform .35s cubic-bezier(0.4,0,0.2,1)' }}>
+      {/* inert while slid off-screen, so Tab doesn't land on an invisible button */}
+      <div className="buy-wrapper" inert={!showSticky} style={{ transform: showSticky ? 'translate3d(0,0,0)' : 'translate3d(0,100%,0)', transition: 'transform .35s cubic-bezier(0.4,0,0.2,1)' }}>
         <div className="buy-base">
           <Price product={product} fixed />
           <div>

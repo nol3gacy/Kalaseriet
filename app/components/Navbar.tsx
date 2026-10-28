@@ -46,7 +46,7 @@ export default function Navbar() {
         style={{ transform: hidden ? 'translateY(calc(-100% - 3rem))' : 'translateY(0)', transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)' }}
       >
         <div className="nav-container">
-          <Link href="/" className="brand w-nav-brand" onClick={() => setMenuOpen(false)}>
+          <Link href="/" className="brand w-nav-brand" aria-label="Kalaseriet, till startsidan" onClick={() => setMenuOpen(false)}>
             <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
           </Link>
           <nav role="navigation" className="nav-menu-wrapper w-nav-menu">

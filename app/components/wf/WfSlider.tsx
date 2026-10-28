@@ -214,6 +214,7 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
           align-items: center;
           justify-content: center;
         }
+        .wf-arrow:focus-visible { outline: 3px solid #5910b6; outline-offset: 2px; border-radius: 6px; }
         .wf-arrow.is--left { left: 0.5rem; }
         .wf-arrow.is--right { right: 0.5rem; }
 

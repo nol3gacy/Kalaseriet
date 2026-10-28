@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
@@ -14,6 +14,7 @@ import { trackCart } from '../../lib/gtag'
 export default function MiniCart() {
   const router = useRouter()
   const { items, removeItem, miniCartOpen, closeMiniCart, total } = useCart()
+  const panelRef = useRef<HTMLDivElement>(null)
 
   // ESC closes
   useEffect(() => {
@@ -24,6 +25,26 @@ export default function MiniCart() {
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [miniCartOpen, closeMiniCart])
+
+  // Modal focus: move into the panel on open, keep Tab inside it, and hand
+  // focus back to whatever opened it (the cart button) on close.
+  useEffect(() => {
+    if (!miniCartOpen) return
+    const opener = document.activeElement as HTMLElement | null
+    const focusables = () => panelRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []
+    focusables()[0]?.focus()
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      const f = focusables()
+      if (!f.length) return
+      const first = f[0], last = f[f.length - 1], active = document.activeElement
+      if (!panelRef.current?.contains(active)) { e.preventDefault(); first.focus() }
+      else if (e.shiftKey && active === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus() }
+    }
+    window.addEventListener('keydown', trap)
+    return () => { window.removeEventListener('keydown', trap); opener?.focus() }
+  }, [miniCartOpen])
 
   // Lock body scroll
   useEffect(() => {
@@ -77,7 +98,9 @@ export default function MiniCart() {
 
       {/* Popover card — anchored top-right, full-width on mobile */}
       <div
+        ref={panelRef}
         role="dialog"
+        aria-modal="true"
         aria-label="Varukorg"
         className="mini-cart-panel"
         style={{
