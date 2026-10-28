@@ -5,6 +5,11 @@ body {
   font-family: 'caraque-melted', sans-serif;
 }
 
+/* Footer links stack tightly at 21 px on mobile; 24 px is the minimum touch target. */
+.footer-link {
+  min-height: 24px;
+}
+
 /* Form controls don't inherit font by default */
 input,
 textarea,

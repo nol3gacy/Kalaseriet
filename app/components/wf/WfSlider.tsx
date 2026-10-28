@@ -15,6 +15,15 @@ function ArrowIcon({ flip }: { flip?: boolean }) {
   )
 }
 
+// Screen-reader text for the slide kinds a product page passes (cover, invitation, checklist, contents).
+function describe(src: string) {
+  if (src.includes('/covers/')) return 'inspirationsbild från kalaset'
+  if (src.includes('/inbjudan/')) return 'inbjudan som ingår'
+  if (src.includes('checklist')) return 'checklista som ingår'
+  if (src.includes('Innehaller')) return 'allt som ingår i nedladdningen'
+  return 'produktbild'
+}
+
 // Reproduces the Webflow product slider markup/classes as a real horizontal
 // scroll-snap carousel with infinite looping (clone-based), Webflow's own
 // lightbox chevron for arrows, a mobile "peek" layout (94vw + next slide
@@ -30,10 +39,10 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
   // (the last slide, lazy-loaded) instead of the cover, and it was the LCP.
   const [headClone, setHeadClone] = useState(false)
   const extended = loop
-    ? [...(headClone ? [{ src: slides[total - 1], real: total - 1, key: 'head' }] : []),
-       ...slides.map((src, real) => ({ src, real, key: `s${real}` })),
-       { src: slides[0], real: 0, key: 'tail' }]
-    : slides.map((src, real) => ({ src, real, key: `s${real}` }))
+    ? [...(headClone ? [{ src: slides[total - 1], key: 'head' }] : []),
+       ...slides.map((src, i) => ({ src, key: `s${i}` })),
+       { src: slides[0], key: 'tail' }]
+    : slides.map((src, i) => ({ src, key: `s${i}` }))
   const lastExt = extended.length - 1
 
   const trackRef = useRef<HTMLDivElement>(null)
@@ -115,7 +124,7 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
   return (
     <div className="slider w-slider wf-slider-v2">
       <div className="mask w-slider-mask wf-slider-track" ref={trackRef} onScroll={onScroll}>
-        {extended.map(({ src, real, key }) => {
+        {extended.map(({ src, key }) => {
           const isCover = key === 's0'
           return (
             <div className="slide w-slide wf-slide" key={key}>
@@ -123,7 +132,7 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
                 {isCover && <div className="disclaimer-product-image">(Inspirationsbild)</div>}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt={`${alt} – bild ${real + 1}`}
+                  alt={`${alt} – ${describe(src)}`}
                   loading={isCover ? 'eager' : 'lazy'}
                   decoding="async"
                   fetchPriority={isCover ? 'high' : 'auto'}
@@ -138,21 +147,20 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
 
       {loop && (
         <>
-          <button type="button" className="left-arrow w-slider-arrow-left wf-arrow is--left" onClick={() => go(-1)} aria-label="Föregående">
+          <button type="button" className="left-arrow w-slider-arrow-left wf-arrow is--left" onClick={() => go(-1)} aria-label="Föregående bild">
             <ArrowIcon flip />
           </button>
-          <button type="button" className="right-arrow w-slider-arrow-right wf-arrow is--right" onClick={() => go(1)} aria-label="Nästa">
+          <button type="button" className="right-arrow w-slider-arrow-right wf-arrow is--right" onClick={() => go(1)} aria-label="Nästa bild">
             <ArrowIcon />
           </button>
 
-          <div className="slide-nav w-slider-nav w-round">
+          {/* Visual position only: the labelled arrow buttons do the same for keyboard and screen readers. */}
+          <div className="slide-nav w-slider-nav w-round" aria-hidden="true">
             {slides.map((_, idx) => (
               <div
                 key={idx}
                 className={`w-slider-dot${idx === index ? ' w-active' : ''}`}
                 onClick={() => { setIndex(idx); scrollToExt(idx + 1, true) }}
-                role="button"
-                aria-label={`Bild ${idx + 1}`}
               />
             ))}
           </div>

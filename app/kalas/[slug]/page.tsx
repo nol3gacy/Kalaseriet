@@ -158,7 +158,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <div className="text">{description}</div>
 
             <div className="contains-wrapper">
-              <h3 className="heading-4">Nedladdningen innehåller:</h3>
+              {/* h2 keeps the heading order after the h1; line-height matches the h3 it was */}
+              <h2 className="heading-4" style={{ lineHeight: '30px' }}>Nedladdningen innehåller:</h2>
               <div className="w-dyn-list">
                 <div role="list" className="collection-list-4 w-dyn-items">
                   {includedItems.map(item => (

@@ -88,7 +88,7 @@ export default function Navbar() {
         <div className="w-commerce-commercecartwrapper cart">
           <button
             className="w-commerce-commercecartopenlink cart-button w-inline-block"
-            aria-label="Öppna varukorg"
+            aria-label={`Öppna varukorg, ${cartCount} i varukorgen`}
             onClick={() => openMiniCart()}
             style={{ background: 'none', border: 'none', cursor: 'pointer' }}
           >
