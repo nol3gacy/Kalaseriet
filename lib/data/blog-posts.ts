@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Avslöja skatten</h3>
 <p>Skattjakten når sin höjdpunkt när barnen hittar den gömda skatten. Våra dekorerade kalaspåsar och små presenter är perfekta för att skapa en minnesvärd final.</p>
 <h3>Mer inspiration</h3>
-<p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt!</p>`,
+<p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt! Skattjakter passar extra bra på ett <a href="/kalas/tema/piratkalas">piratkalas</a> eller ett <a href="/kalas/tema/aventyrskalas">äventyrskalas</a>.</p>`,
     category: 'Tips',
     date: '25 april 2026',
     imageUrl: '/wf/images/blogg/photo-1469406396016.jpg',
@@ -153,7 +153,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 <h3>Maten</h3><p>"Skeppsskorpor" (kex), "havsvatten" (blå festis), fruktspett som "skattens juveler", piratkaka med flaggor.</p>
 <h3>Kalaspåsen</h3><p>Sjörövarpåse med guldmynt (godis), en ögonlapp, en pirat-klistermärke. Räcker långt.</p>
-<p><a href="/kalas/piratkalaset-for-4-aringar">Vårt piratkalaspaket</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
+<p><a href="/kalas/tema/piratkalas">Våra piratkalaspaket för 4- och 5-åringar</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
     category: 'Tema-guide',
     date: '25 december 2025',
     imageUrl: '/wf/images/blogg/piratkalaset-4-aringar.jpg',
@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Här är våra bästa tips för att sätta ihop ett kalas som kommer få barnens ögon att lysa och göra planeringen rolig och enkel för dig.',
     body: `<h2>Att fixa ett barnkalas som blir magiskt för både barn och vuxna kan kännas som en utmaning – men med lite planering och inspiration går det att skapa en dag fylld av glädje, bus och minnen för livet. Här är våra bästa tips för att sätta ihop ett kalas som kommer få barnens ögon att lysa och göra planeringen rolig och enkel för dig.</h2>
 <h3>1. Börja med ett tema som barnet älskar</h3>
-<p>Temat ger både dig och barnet en chans att sätta prägel på kalaset och gör det lättare att planera allt från dekorationer till lekar. Vad sägs om ett enhörningstema för den lilla drömmaren eller ett djungeltema för de små äventyrarna? På <a href="/kalas">Kalaseriet</a> har vi samlat allt du kan behöva för att enkelt fixa temat.</p>
+<p>Temat ger både dig och barnet en chans att sätta prägel på kalaset och gör det lättare att planera allt från dekorationer till lekar. Vad sägs om ett enhörningstema för den lilla drömmaren eller ett djungeltema för de små äventyrarna? Andra populära teman är <a href="/kalas/tema/piratkalas">piratkalas</a>, <a href="/kalas/tema/superhjaltekalas">superhjältekalas</a> och <a href="/kalas/tema/rymdkalas">rymdkalas</a>. På <a href="/kalas">Kalaseriet</a> har vi samlat allt du kan behöva för att enkelt fixa temat.</p>
 <h3>2. Skicka inbjudningar som sätter stämningen</h3>
 <p>Skapa en känsla av förväntan redan från start! Oavsett om du väljer digitala eller fysiska inbjudningar, kan du matcha dem med temat. Vill du spara tid? Kika på våra färdig-designade inbjudningar som både är enkla och supersnygga. Varje nedladdning har en egen design.</p>
 <h3>3. Planera en skattjakt</h3>
@@ -232,7 +232,8 @@ export const blogPosts: BlogPost[] = [
 export type PostOffer = { label: string; href: string }
 
 const POST_OFFERS: Record<string, PostOffer> = {
-  'tema-piratkalas': { label: 'Piratkalaset för 4-åringar', href: '/kalas/piratkalaset-for-4-aringar' },
+  'tema-piratkalas': { label: 'Alla piratkalas', href: '/kalas/tema/piratkalas' },
+  'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
   'kalas-tema-4-aringar': { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },
 }
