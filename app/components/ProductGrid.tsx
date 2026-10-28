@@ -33,6 +33,9 @@ export default function ProductGrid({
   headingLevel?: 'h1' | 'h2'
 }) {
   const Heading = headingLevel
+  // Only a page-leading grid (h1) has its first row above the fold; an embedded
+  // one eager-loading (and preloading) covers competes with the page's own LCP image.
+  const atTop = headingLevel === 'h1'
   // All ages active by default
   const [active, setActive] = useState<Set<string>>(new Set(AGES.map(a => a.key)))
 
@@ -91,7 +94,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading={i < 4 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading={atTop && i < 4 ? 'eager' : 'lazy'} fetchPriority={atTop && i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">
