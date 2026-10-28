@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import DiscountMarquee from '../components/DiscountMarquee'
 import SeoText from '../components/SeoText'
 import AgeCTAs from '../components/AgeCTAs'
+import ThemeLinks from '../components/ThemeLinks'
 import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export const metadata = {
@@ -69,6 +70,7 @@ export default async function AllKalasPage() {
           'Är du osäker på vilket tema som passar bäst? Kika på våra populäraste kalas eller läs mer om hur det hela går till på sidan så funkar det.',
         ]}
       />
+      <ThemeLinks />
       <AgeCTAs />
       </main>
       <Footer />

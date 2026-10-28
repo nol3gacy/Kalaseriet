@@ -60,6 +60,78 @@ export const themePages: ThemePage[] = [
       'Rymdkalaset finns för 4- och 5-åringar och Astronautkalaset för 6- och 7–8-åringar. Varje paket innehåller 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, länk till spellistor, dekorationstips samt checklista och körschema.',
     ],
   },
+  {
+    slug: 'safarikalas',
+    themes: ['safari'],
+    heading: 'Safarikalas',
+    description: 'Safarikalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett safarikalas',
+    paragraphs: [
+      'Ett safarikalas passar barn som kan härma alla djurläten och gärna kryper runt på golvet som lejon. Temat är tacksamt eftersom det går att göra med det du redan har hemma: gosedjur blir vilda djur att spana efter, en kikare av två toarullar räcker som utrustning och en filt blir savann.',
+      'Gör kalaset till en upptäcktsfärd. Gästerna är safariguider som ska hitta, känna igen och ta hand om djuren, och varje fynd tar dem ett steg närmare målet. Gröna och bruna färger, leopardmönster och lite djungelljud i högtalaren gör resten av stämningen.',
+      'Safarikalaset finns för 4- och 5-åringar. Varje paket innehåller 20 färdiga lekar och aktiviteter, 20 recept, inbjudan att skriva ut och fylla i, diplom, länk till spellistor, dekorationstips samt checklista och körschema.',
+    ],
+  },
+  {
+    slug: 'cirkuskalas',
+    themes: ['cirkus'],
+    heading: 'Cirkuskalas',
+    description: 'Cirkuskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett cirkuskalas',
+    paragraphs: [
+      'På ett cirkuskalas är alla gäster artister. Sex- till åttaåringar gillar att visa vad de kan, och cirkustemat ger dem en scen: balansera, jonglera med sjalar, göra konster eller vara clown. Ingen behöver vara bäst, publiken applåderar ändå.',
+      'Låt kalaset sluta med en föreställning. Under kalaset övar barnen in sina nummer i lekarna, och i slutet får de uppträda för varandra eller för föräldrarna vid hämtningen. Randiga dukar, ballonger och en hemmagjord manege av ett rep på golvet räcker långt.',
+      'Cirkuskalaset finns för 6-åringar och för 7- och 8-åringar. I varje paket ingår 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, länk till spellistor, tips på dekorationer och en checklista med körschema.',
+    ],
+  },
+  {
+    slug: 'robotkalas',
+    themes: ['robot'],
+    heading: 'Robotkalas',
+    description: 'Robotkalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett robotkalas',
+    paragraphs: [
+      'Små barn älskar att röra sig som robotar, med stela armar, pipande ljud och knappar som startar och stoppar. Därför fungerar ett robotkalas så bra för fyra- och femåringar: lekarna bygger på att lyssna på kommandon, vilket är både roligt och lätt att förstå.',
+      'Spara kartonger, toarullar och aluminiumfolie veckan före kalaset, så kan gästerna bygga varsin robothjälm eller robotkompis att ta med hem. Silver, blinkande lampor och ett par pipande ljud från spellistan räcker för att göra vardagsrummet till en robotfabrik.',
+      'Robotkalaset finns för 4- och 5-åringar. Varje paket innehåller 20 färdiga lekar och aktiviteter, 20 recept, inbjudan att skriva ut, diplom, länk till spellistor, dekorationstips samt checklista och körschema.',
+    ],
+  },
+  {
+    slug: 'sportkalas',
+    themes: ['sport'],
+    heading: 'Sportkalas',
+    description: 'Sportkalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett sportkalas',
+    paragraphs: [
+      'Ett sportkalas är rätt val för barn som har svårt att sitta still. Sex- till åttaåringar älskar stationer, tidtagning och lag, och ett sportkalas ger utlopp för all energi innan det är dags för tårta. Det fungerar bäst utomhus, men många grenar går att göra inne med lite plats.',
+      'Dela in gästerna i lag och låt dem samla poäng genom olika grenar, gärna en blandning av snabbhet, precision och samarbete så att alla får chansen att lyckas. Avsluta med prisutdelning där alla får diplom, så slutar kalaset i glädje i stället för i besvikelse.',
+      'Sportkalaset finns för 6-åringar och för 7- och 8-åringar. I varje paket ingår 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, länk till spellistor, tips på dekorationer och en checklista med körschema.',
+    ],
+  },
+  {
+    slug: 'vetenskapskalas',
+    themes: ['vetenskap'],
+    heading: 'Vetenskapskalas',
+    description: 'Vetenskapskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett vetenskapskalas',
+    paragraphs: [
+      'Ett vetenskapskalas passar nyfikna barn som alltid frågar varför. I sex- till åttaårsåldern tycker många att det är magiskt när något bubblar, byter färg eller flyger, och det mesta går att göra med bikarbonat, ättika, ballonger och vatten från köket.',
+      'Klä gästerna i förkläden eller gamla vita skjortor som labbrockar, och låt dem bli forskare för en dag. Barnen gissar först vad som kommer att hända och testar sedan, så blir varje experiment en liten tävling. Lägg en plastduk på bordet, det kan bli kladdigt.',
+      'Vetenskapskalaset finns för 6-åringar och för 7- och 8-åringar. Varje paket innehåller 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, länk till spellistor, dekorationstips samt checklista och körschema.',
+    ],
+  },
+  {
+    slug: 'aventyrskalas',
+    themes: ['äventyr'],
+    heading: 'Äventyrskalas',
+    description: 'Äventyrskalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    seoHeading: 'Så ordnar du ett äventyrskalas',
+    paragraphs: [
+      'Ett äventyrskalas är för barn som vill ut och upptäcka. Temat är friare än pirater eller dinosaurier, så det passar en blandad barngrupp där alla inte gillar samma sak. Det går lika bra att genomföra i en park eller skogsdunge som hemma i lägenheten.',
+      'Rita en enkel karta över kalasplatsen och låt gästerna följa den från station till station. Små gåtor, gömda föremål och en hemlig slutpunkt ger fyra- och femåringar precis lagom mycket spänning. Ryggsäckar, ficklampor och kompassen från förrådet gör dem till riktiga upptäcktsresande.',
+      'Äventyrskalaset finns för 4- och 5-åringar. I varje paket ingår 20 färdiga lekar och aktiviteter, 20 recept, inbjudan att skriva ut och fylla i, diplom, länk till spellistor, tips på dekorationer och en checklista med körschema.',
+    ],
+  },
 ]
 
 export function themePageFor(productTheme: string) {

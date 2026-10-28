@@ -6,6 +6,7 @@ import ProductGrid from '../../../components/ProductGrid'
 import DiscountMarquee from '../../../components/DiscountMarquee'
 import SeoText from '../../../components/SeoText'
 import AgeCTAs from '../../../components/AgeCTAs'
+import ThemeLinks from '../../../components/ThemeLinks'
 import { themePages } from '../../../../lib/data/themes'
 import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../../../lib/seo'
 
@@ -80,6 +81,7 @@ export default async function ThemePage({ params }: { params: Promise<{ tema: st
         <ProductGrid products={products} heading={page.heading} showFilter={false} />
         <DiscountMarquee />
         <SeoText heading={page.seoHeading} paragraphs={page.paragraphs} />
+        <ThemeLinks heading="Fler teman" exclude={page.slug} />
         <AgeCTAs />
       </main>
       <Footer />
