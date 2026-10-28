@@ -54,7 +54,7 @@ export default function CookieConsent() {
     <div className={`cookie-banner${visible && !leaving ? ' is--in' : ''}`} role="dialog" aria-label="Cookies">
       <p className="cookie-text">
         Vi använder cookies för att förbättra din upplevelse.{' '}
-        <a href="/villkor#cookies">Läs mer</a>
+        <a href="/villkor#cookies">Läs mer om cookies</a>
       </p>
       <button type="button" className="cookie-ok" onClick={accept}>OK</button>
 
