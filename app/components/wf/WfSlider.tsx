@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
 
 // Chevron traced from Webflow's own lightbox arrow SVG (webflow.css .w-lightbox-left/-right).
 // Base path points right, so the left arrow is the flipped one.
@@ -25,7 +25,16 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
   const slides = cleaned.length ? cleaned : ['/wf/images/mockup.jpg']
   const total = slides.length
   const loop = total > 1
-  const extended = loop ? [slides[total - 1], ...slides, slides[0]] : slides
+  // The leading clone is added only after hydration: server-rendered, the
+  // track starts at scrollLeft 0, so a leading clone would be what paints first
+  // (the last slide, lazy-loaded) instead of the cover, and it was the LCP.
+  const [headClone, setHeadClone] = useState(false)
+  const extended = loop
+    ? [...(headClone ? [{ src: slides[total - 1], real: total - 1, key: 'head' }] : []),
+       ...slides.map((src, real) => ({ src, real, key: `s${real}` })),
+       { src: slides[0], real: 0, key: 'tail' }]
+    : slides.map((src, real) => ({ src, real, key: `s${real}` }))
+  const lastExt = extended.length - 1
 
   const trackRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
@@ -40,17 +49,15 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
     window.setTimeout(() => { suppress.current = false }, smooth ? 450 : 60)
   }, [])
 
-  // Position at the real first slide (skip leading clone). Deferred two
-  // animation frames so the flex layout has actually settled — doing this
-  // synchronously on mount can read a stale offsetLeft of 0 and no-op.
-  useEffect(() => {
-    if (!loop) return
-    let raf1 = 0, raf2 = 0
-    raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => scrollToExt(1, false))
-    })
-    return () => { cancelAnimationFrame(raf1); cancelAnimationFrame(raf2) }
-  }, [loop, scrollToExt])
+  // Insert the leading clone and jump past it before the browser paints, so
+  // the cover stays in place.
+  useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- must re-render before first paint
+    if (loop) setHeadClone(true)
+  }, [loop])
+  useLayoutEffect(() => {
+    if (headClone) scrollToExt(1, false)
+  }, [headClone, scrollToExt])
 
   // Subtle "look, it scrolls" bounce hint, twice, shortly after load.
   useEffect(() => {
@@ -98,25 +105,25 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
     })
     if (nearest === 0) {
       requestAnimationFrame(() => { scrollToExt(total, false); setIndex(total - 1) })
-    } else if (nearest === extended.length - 1) {
+    } else if (nearest === lastExt) {
       requestAnimationFrame(() => { scrollToExt(1, false); setIndex(0) })
     } else {
       setIndex(nearest - 1)
     }
-  }, [extended.length, loop, scrollToExt, total])
+  }, [lastExt, loop, scrollToExt, total])
 
   return (
     <div className="slider w-slider wf-slider-v2">
       <div className="mask w-slider-mask wf-slider-track" ref={trackRef} onScroll={onScroll}>
-        {extended.map((src, extIdx) => {
-          const isCover = loop ? extIdx === 1 : extIdx === 0
+        {extended.map(({ src, real, key }) => {
+          const isCover = key === 's0'
           return (
-            <div className="slide w-slide wf-slide" key={extIdx}>
+            <div className="slide w-slide wf-slide" key={key}>
               <div className="slide-inner-wrapper">
                 {isCover && <div className="disclaimer-product-image">(Inspirationsbild)</div>}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt={`${alt} – bild ${extIdx + 1}`}
+                  alt={`${alt} – bild ${real + 1}`}
                   loading={isCover ? 'eager' : 'lazy'}
                   decoding="async"
                   fetchPriority={isCover ? 'high' : 'auto'}
