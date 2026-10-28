@@ -29,6 +29,50 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-superhjaltekalas',
+    title: 'Superhjältekalas: Guide till lekar, utklädnad och mat',
+    summary: 'Så gör du ett superhjältekalas där varje barn får vara hjälte för en dag, från mantlar och uppdrag till hjältemat och kalaspåse.',
+    body: `<h2>Superhjältekalas fungerar för barn från fyra år och uppåt, och det kräver nästan ingen rekvisita. Här är vår guide till hur du lägger upp kalaset.</h2>
+<h3>Stämningen</h3><p>Starka färger: rött, blått och gult. Rita stora "POW!" och "BAM!"-bubblor på papper och tejpa upp på väggarna, och gör en stadssiluett av svarta sopsäckar eller kartong längs en vägg. Spela filmmusik med mycket trummor när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett hemligt uppdrag: "Staden behöver din hjälp, inställ dig klockan 14.00." Be gästerna komma utklädda eller lova att de får göra sin egen dräkt på plats.</p>
+<h3>Utklädnad</h3><p>En mantel av en gammal handduk, ett tygstycke eller en uppklippt t-shirt räcker. Masker i papp med ett gummiband, och en hjältelogga som barnen ritar själva och tejpar på bröstet. Låt varje barn hitta på sitt hjältenamn när de kommer, det blir en bra start.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Hjälteträningen</strong>: en hinderbana med kuddar att hoppa över, en tunnel av stolar och en "laserkorridor" av snören att kliva mellan.</li>
+<li><strong>Rädda gosedjuren</strong>: gosedjur är gömda runt om i rummet och ska räddas tillbaka till "sjukhuset" innan tiden är slut.</li>
+<li><strong>Frys-hjälten</strong>: dansstopp där alla fryser i sin bästa hjältepose när musiken tystnar.</li>
+<li><strong>Superstyrka</strong>: lag som bär ballonger mellan sig utan att använda händerna.</li>
+</ul>
+<h3>Maten</h3><p>"Kryptonitgelé" (grön gelé), hjältesmörgåsar utstansade som blixtar, fruktspett i röda och blå färger och en tårta med barnets hjältelogga.</p>
+<h3>Kalaspåsen</h3><p>En mask, ett klistermärke med en blixt och ett diplom för "Årets hjälte". Mer behövs inte.</p>
+<p><a href="/kalas/tema/superhjaltekalas">Superhjältekalaset finns för 4-, 5- och 6-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/superhjaltekalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-dinosauriekalas',
+    title: 'Dinosauriekalas: Guide till dekoration, lekar och meny',
+    summary: 'Allt du behöver för ett dinosauriekalas för 4- och 5-åringar, från fossiljakt och dinoägg till urtidsmat och kalaspåse.',
+    body: `<h2>Dinosauriekalas passar både barn som kan alla dinosauriernas namn och barn som mest vill vråla som en T-rex. Här är vår guide till ett kalas från urtiden.</h2>
+<h3>Stämningen</h3><p>Grönt och brunt. Klipp stora blad av grönt papper och tejpa upp i hörnen, ställ ut krukväxter och några plastdinosaurier på bordet. Fotspår av papper från dörren och in till kalasrummet visar gästerna vägen.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en expedition: "Forskare sökes till en utgrävning". Inbjudan kan gärna se ut som ett gammalt fynd, med ett fotavtryck av en dinosaurie i hörnet.</p>
+<h3>Utklädnad</h3><p>En ryggkam av filt eller kartong som fästs på en tröja räcker långt. Den som vill kan komma som forskare med keps, kikare och ryggsäck i stället.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Fossiljakten</strong>: göm plastdinosaurier eller "ben" av pasta i en sandlåda eller en balja med ris, och låt barnen gräva fram dem med penslar och skedar.</li>
+<li><strong>Dinoäggen</strong>: frys in små plastdinosaurier i ballonger med vatten. Barnen får "kläcka" äggen med varmt vatten och skedar.</li>
+<li><strong>Vulkanen</strong>: en vuxen visar ett utbrott med bikarbonat och ättika i en kopp gömd i en sandhög. Enkelt och alltid lika populärt.</li>
+<li><strong>T-rex-tafatt</strong>: tafatt där den som har den ska gå med korta T-rex-armar.</li>
+</ul>
+<h3>Maten</h3><p>"Dinoägg" (kokta ägg eller vindruvor), grönsaksstavar som "träd", korv i bröd som "dinosauriefötter" och en grön tårta med dinosaurier i plast på toppen.</p>
+<h3>Kalaspåsen</h3><p>En liten plastdinosaurie, ett "fossil" av saltdeg och ett diplom som utbildad dinosaurieforskare.</p>
+<p><a href="/kalas/tema/dinosauriekalas">Dinosauriekalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/dinosauriekalaset-for-4-aringar.jpg',
+  },
+  {
     slug: 'diy-kalaspase',
     title: 'DIY-kalaspåse: Billiga och roliga gåvor barnen kommer älska',
     summary: 'Här är våra bästa tips på hur du skapar enkla, prisvärda och uppskattade kalaspåsar.',
@@ -233,6 +277,8 @@ export type PostOffer = { label: string; href: string }
 
 const POST_OFFERS: Record<string, PostOffer> = {
   'tema-piratkalas': { label: 'Alla piratkalas', href: '/kalas/tema/piratkalas' },
+  'tema-superhjaltekalas': { label: 'Alla superhjältekalas', href: '/kalas/tema/superhjaltekalas' },
+  'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
   'kalas-tema-4-aringar': { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },
