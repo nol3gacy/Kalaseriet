@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
 <p>Kalaspåsar är en liten gest som gör stort intryck. För fler tips och produkter som gör det enkelt att skapa en minnesvärd kalasfinal, kolla in <a href="/kalas">kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 juni 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
+    imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
   },
   {
     slug: 'checklista-allt-du-behover-for-ett-lyckat-barnkalas',
@@ -64,7 +64,7 @@ export const blogPosts: BlogPost[] = [
 <p>Med denna checklista har du allt du behöver för att skapa ett lyckat och stressfritt barnkalas. För ännu fler tips och produkter, <a href="/kalas">bläddra bland kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 maj 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a1343d2d3bd0a468873c1_photo-1509163245925-f4255dea7727.avif',
+    imageUrl: '/wf/images/blogg/photo-1509163245925.jpg',
   },
   {
     slug: 'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset',
@@ -81,7 +81,7 @@ export const blogPosts: BlogPost[] = [
 <p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt!</p>`,
     category: 'Tips',
     date: '25 april 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a12849b5a83352927779d_photo-1469406396016-013bfae5d83e.avif',
+    imageUrl: '/wf/images/blogg/photo-1469406396016.jpg',
   },
   {
     slug: 'enkla-och-roliga-lekar-for-kalaset',
@@ -95,7 +95,7 @@ export const blogPosts: BlogPost[] = [
 <p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
     category: 'Tips',
     date: '25 mars 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
+    imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
   },
   // ─── SEO-optimerade nya inlägg (riktade mot organisk Google-trafik) ───
   {
@@ -118,7 +118,7 @@ export const blogPosts: BlogPost[] = [
 <p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller färdiga instruktioner, rekvisita-tips och spellistor till alla dessa lekar — plus 8 till.</p>`,
     category: 'Tips',
     date: '25 februari 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
+    imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
   },
   {
     slug: 'budget-barnkalas-tips',
@@ -134,7 +134,7 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
     category: 'Tips',
     date: '25 januari 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
+    imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
   },
   {
     slug: 'tema-piratkalas',
@@ -156,7 +156,7 @@ export const blogPosts: BlogPost[] = [
 <p><a href="/kalas/piratkalaset-for-4-aringar">Vårt piratkalaspaket</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
     category: 'Tema-guide',
     date: '25 december 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/662373210fabe6fc857df4ba_Piratkalaset-4-aringar-cover.avif',
+    imageUrl: '/wf/images/blogg/piratkalaset-4-aringar.jpg',
   },
   {
     slug: 'barnkalas-mat-recept',
@@ -173,7 +173,7 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Tips:</strong> Gör det mesta dagen innan. Stressa inte med matlagning samma dag — barnen bryr sig mer om aktiviteterna.</p>`,
     category: 'Tips',
     date: '25 november 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
+    imageUrl: '/wf/images/blogg/muffins.jpg',
   },
   {
     slug: 'kalas-tema-4-aringar',
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Vilket ska du välja?</strong> Lyssna på barnet. 4-åringar VET vad de gillar. Fråga "vill du ha pirater, djur eller dinosaurier på ditt kalas?" och kör på svaret.</p>`,
     category: 'Tema-guide',
     date: '25 oktober 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/6623e1e4739522fe6ee458c1_Safarikalaset%20for%204-aringar.avif',
+    imageUrl: '/wf/images/blogg/safarikalaset-4-aringar.jpg',
   },
   {
     slug: '10-tips-for-att-planera-ett-barnkalas',
@@ -222,7 +222,7 @@ export const blogPosts: BlogPost[] = [
 <p>Med dessa tips har du en bra grund för att skapa ett magiskt barnkalas som alla kommer prata om länge.</p>`,
     category: 'Tips',
     date: '25 september 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673105975ce61d45f994aec1_10%20tips%20fo%CC%88r%20att%20planera%20ett%20barnkalas%20som%20alla%20kommer%20minnas.avif',
+    imageUrl: '/wf/images/blogg/10-tips-barnkalas.jpg',
   },
 ]
 

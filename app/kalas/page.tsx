@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import DiscountMarquee from '../components/DiscountMarquee'
 import SeoText from '../components/SeoText'
 import AgeCTAs from '../components/AgeCTAs'
-import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID } from '../../lib/seo'
+import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export const metadata = {
   title: 'Alla kalas – 33 kalaspaket för barnkalas 4–8 år',
@@ -20,6 +20,7 @@ export const metadata = {
     locale: 'sv_SE',
     url: canonical('/kalas'),
     siteName: 'Kalaseriet',
+    images: [OG_IMAGE],
   },
 }
 

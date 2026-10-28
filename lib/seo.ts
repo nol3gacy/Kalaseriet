@@ -9,7 +9,10 @@ export const SITE_NAME = 'Kalaseriet'
 export const ORG_ID = `${BASE_URL}/#organization`
 export const SITE_ID = `${BASE_URL}/#website`
 
-export const LOGO_URL = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65da1a384ef1f371942f39e0_webclip.png'
+// Default share image (1200x630) for pages without their own.
+export const OG_IMAGE = '/wf/images/OpenGraph.jpg'
+
+export const LOGO_URL = `${BASE_URL}/wf/images/webclip.png`
 
 export const SOCIAL_PROFILES = [
   'https://www.instagram.com/kalaseriet',

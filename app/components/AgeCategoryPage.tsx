@@ -5,7 +5,7 @@ import ProductGrid from './ProductGrid'
 import DiscountMarquee from './DiscountMarquee'
 import SeoText from './SeoText'
 import AgeCTAs from './AgeCTAs'
-import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID } from '../../lib/seo'
+import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export type AgeGroup = '4' | '5' | '6' | '7-8'
 
@@ -77,6 +77,7 @@ export function categoryMetadata(age: AgeGroup) {
       locale: 'sv_SE',
       url: canonical(path),
       siteName: 'Kalaseriet',
+      images: [OG_IMAGE],
     },
   }
 }

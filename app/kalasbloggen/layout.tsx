@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { OG_IMAGE } from '../../lib/seo'
 
 // The blog index is a Client Component (it uses hover handlers), so it can't
 // export metadata itself — this route layout supplies it.
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
     locale: 'sv_SE',
     url: 'https://kalaseriet.se/kalasbloggen',
     siteName: 'Kalaseriet',
+    images: [OG_IMAGE],
   },
 }
 

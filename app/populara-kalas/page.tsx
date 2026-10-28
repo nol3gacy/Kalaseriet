@@ -5,7 +5,7 @@ import ProductGrid from '../components/ProductGrid'
 import DiscountMarquee from '../components/DiscountMarquee'
 import SeoText from '../components/SeoText'
 import AgeCTAs from '../components/AgeCTAs'
-import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID } from '../../lib/seo'
+import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export const metadata = {
   title: 'Populära kalas – våra mest bokade kalasteman',
@@ -18,6 +18,7 @@ export const metadata = {
     locale: 'sv_SE',
     url: canonical('/populara-kalas'),
     siteName: 'Kalaseriet',
+    images: [OG_IMAGE],
   },
 }
 

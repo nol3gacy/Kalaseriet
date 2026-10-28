@@ -13,7 +13,7 @@ import "./webflow/overrides.css";
 import { CartProvider } from "./lib/cart-context";
 import MiniCart from "./components/MiniCart";
 import CookieConsent from "./components/CookieConsent";
-import { BASE_URL, SITE_NAME, jsonLd, organizationSchema, websiteSchema } from "../lib/seo";
+import { BASE_URL, OG_IMAGE, SITE_NAME, jsonLd, organizationSchema, websiteSchema } from "../lib/seo";
 
 // Body font — exact match with kalaseriet.se
 const manrope = Manrope({
@@ -22,8 +22,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const FAVICON = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65da1a3331d71fae16c689a3_favicon.png'
-const WEBCLIP = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65da1a384ef1f371942f39e0_webclip.png'
+const FAVICON = '/wf/images/favicon.png'
+const WEBCLIP = '/wf/images/webclip.png'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: FAVICON, type: 'image/png' }],
     shortcut: FAVICON,
-    apple: [{ url: WEBCLIP, sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: WEBCLIP, sizes: '256x256', type: 'image/png' }],
   },
   openGraph: {
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     locale: 'sv_SE',
     url: BASE_URL,
     siteName: SITE_NAME,
-    images: [{ url: WEBCLIP, width: 1200, height: 630, alt: 'Kalaseriet – digitala kalaspaket för barnkalas' }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Kalaseriet – digitala kalaspaket för barnkalas' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
     description: 'Kompletta kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 99 kr och skriv ut hemma.',
-    images: [WEBCLIP],
+    images: [OG_IMAGE],
   },
 };
 
