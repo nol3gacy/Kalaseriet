@@ -7,6 +7,11 @@ export type FAQ = {
 
 export const faqs: FAQ[] = [
   {
+    question: 'Vilket kalas passar mitt barn?',
+    answer: '<p>Börja med åldern: vi har kalaspaket för <a href="/kalas/4-aringar">4-åringar</a>, <a href="/kalas/5-aringar">5-åringar</a>, <a href="/kalas/6-aringar">6-åringar</a> samt <a href="/kalas/7-8-aringar">7- och 8-åringar</a>, och lekarna är anpassade efter vad den åldern orkar och tycker är roligt. Välj sedan tema tillsammans med barnet, det gör förberedelserna roligare. Populära teman är <a href="/kalas/tema/piratkalas">piratkalas</a>, <a href="/kalas/tema/superhjaltekalas">superhjältekalas</a>, <a href="/kalas/tema/dinosauriekalas">dinosauriekalas</a> och <a href="/kalas/tema/rymdkalas">rymdkalas</a>.</p>',
+    order: 0,
+  },
+  {
     question: 'Jag har ingen skrivare?',
     answer: '<p>Om du inte har en skrivare brukar vi rekommendera detta:</p><ul><li><strong>På jobbet</strong> – Kanske har du eller nån du känner möjlighet att skriva ut på jobbet</li><li><strong>Biblioteket</strong> – där kan man ofta skriva ut mot en liten kostnad</li><li>Din <strong>lokala butik</strong> eller <strong>internetcafé</strong> brukar ha utskriftstjänster</li><li>Tryckerier kan ofta hjälpa till, kolla om det finns något i närheten</li><li><a href="https://skrivutonline.se/" target="_blank" rel="noopener noreferrer">Skriv ut online</a> är en tjänst som hjälper dig att skriva ut, bara ladda upp PDF och välj antal</li></ul>',
     order: 1,
@@ -33,7 +38,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: 'Hur får jag filerna?',
-    answer: '<p>Direkt efter att köpet gjorts får du ett mail med länk till nedladdning. Om du inte ser något mail, kolla i skräpkorgen. Om du fortfarande inte hittar det, <a href="mailto:hej@kalaseriet.se">kontakta oss</a> så löser vi det brådskande.</p>',
+    answer: '<p>Direkt efter att köpet gjorts får du ett mail med länk till nedladdning. Om du inte ser något mail, kolla i skräpkorgen. Om du fortfarande inte hittar det, <a href="/kontakt">kontakta oss</a> så löser vi det brådskande.</p>',
     order: 6,
   },
 ]

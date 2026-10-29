@@ -100,6 +100,7 @@ export default function FAQ({
                 </button>
                 {open && (
                   <div
+                    className="faq-answer"
                     style={{
                       padding: '0 1rem 1.5rem',
                       fontFamily: 'caraque-melted, sans-serif',
