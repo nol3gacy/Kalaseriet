@@ -29,6 +29,28 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-sportkalas',
+    title: 'Sportkalas: Guide till grenar, lag och meny',
+    summary: 'Så gör du ett sportkalas för barn 6 till 8 år, med lag, grenar och prisutdelning där alla får vara med och vinna.',
+    body: `<h2>Sportkalas är rätt val för barn som har svårt att sitta still. Här är vår guide till ett kalas med lag, grenar och en prisutdelning där alla får diplom.</h2>
+<h3>Stämningen</h3><p>Ett sportkalas behöver mest plats. Trädgården, en park eller en gympasal fungerar bäst, men många grenar går att göra inomhus med lite möbelflytt. Koner av muggar, startlinjer av maskeringstejp och en visselpipa till "domaren" sätter stämningen direkt.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en kallelse till en tävling: "Du är uttagen till kalasets mästerskap". Skriv tydligt om det blir utomhus, så att gästerna kommer i kläder och skor som tål att springa i.</p>
+<h3>Utklädnad</h3><p>Sportkläder räcker långt. Gör gärna egna lagtröjor med nummer av tejp, eller dela ut pannband i två lagfärger när gästerna kommer.</p>
+<h3>Grenar i prioritetsordning</h3>
+<ul>
+<li><strong>Hinderbanan</strong>: hoppa över kuddar, krypa under en filt och slalom mellan koner, på tid eller som stafett.</li>
+<li><strong>Precisionsgrenen</strong>: kasta ärtpåsar eller bollar i hinkar på olika avstånd, där hinkarna längst bort ger flest poäng.</li>
+<li><strong>Lagstafett</strong>: lagen springer med en ägg-och-sked eller en ballong mellan knäna. Samarbete väger lika tungt som fart.</li>
+<li><strong>Prisutdelningen</strong>: alla får diplom och en egen kategori, som "bästa lagkamrat" eller "snabbaste fötterna", så att ingen går hem som förlorare.</li>
+</ul>
+<h3>Maten</h3><p>Mycket vatten och saft, fruktbitar i "energiboxar", pastasallad eller korv med bröd som "matchmat" och en tårta formad som en fotboll eller en medalj.</p>
+<h3>Kalaspåsen</h3><p>En medalj av papp eller choklad, ett pannband i lagfärgen och ett diplom.</p>
+<p><a href="/kalas/tema/sportkalas">Sportkalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/sportkalaset-for-6-aringar.jpg',
+  },
+  {
     slug: 'tema-robotkalas',
     title: 'Robotkalas: Guide till dekoration, lekar och meny',
     summary: 'Så gör du ett robotkalas för 4- och 5-åringar, från robotdans och kartongrobotar till robotmat och kalaspåse.',
@@ -370,6 +392,7 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
   'tema-cirkuskalas': { label: 'Alla cirkuskalas', href: '/kalas/tema/cirkuskalas' },
   'tema-robotkalas': { label: 'Alla robotkalas', href: '/kalas/tema/robotkalas' },
+  'tema-sportkalas': { label: 'Alla sportkalas', href: '/kalas/tema/sportkalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },

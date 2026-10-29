@@ -108,6 +108,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'sportkalas',
     themes: ['sport'],
+    guide: 'tema-sportkalas',
     heading: 'Sportkalas',
     description: 'Sportkalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett sportkalas',
