@@ -134,6 +134,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'aventyrskalas',
     themes: ['äventyr'],
+    guide: 'tema-aventyrskalas',
     heading: 'Äventyrskalas',
     description: 'Äventyrskalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett äventyrskalas',

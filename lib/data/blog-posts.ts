@@ -29,6 +29,28 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-aventyrskalas',
+    title: 'Äventyrskalas: Guide till karta, lekar och meny',
+    summary: 'Så gör du ett äventyrskalas för 4- och 5-åringar, med skattkarta, upptäcktsfärd och mat för små upptäckare.',
+    body: `<h2>Äventyrskalas är för barn som vill ut och upptäcka. Temat är friare än pirater eller dinosaurier, så det passar en blandad barngrupp. Här är vår guide till en upptäcktsfärd på kalaset.</h2>
+<h3>Stämningen</h3><p>Grönt, brunt och naturmaterial. Kalaset fungerar lika bra i en park eller skogsdunge som hemma: häng upp en karta på väggen, ställ ut ryggsäckar, ficklampor och en kompass, och låt ett tält eller en koja av filtar bli basläger.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett uppdrag: "Upptäcktsresande sökes till expedition". Rita en liten karta på baksidan som visar vägen till kalaset.</p>
+<h3>Utklädnad</h3><p>Keps eller solhatt, en ryggsäck och en kikare av två toarullar räcker. Den som vill kan komma som djungelforskare, polarresenär eller skattletare.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Kartjakten</strong>: följ en enkel bildkarta från station till station. Vid varje station väntar en ledtråd till nästa, och den sista leder till en skattkista.</li>
+<li><strong>Djungelstigen</strong>: en bana med "stenar" av kuddar att kliva på och en "flod" av en blå filt som inte får nuddas.</li>
+<li><strong>Vad finns i ryggsäcken?</strong>: barnen känner på saker i en ryggsäck och gissar vad expeditionen behöver.</li>
+<li><strong>Lägerelden</strong>: en lugn stund med en ficklampa som "eld", en kort saga om en expedition och kalasets tårta.</li>
+</ul>
+<h3>Maten</h3><p>"Expeditionsproviant" i små påsar med russin, majskrokar och fruktbitar, korv i bröd vid "lägret", vatten i egna flaskor och en tårta med en skattkarta av glasyr.</p>
+<h3>Kalaspåsen</h3><p>En liten ficklampa eller kompass, en ritad karta att ta hem och ett diplom som "Modig upptäcktsresande".</p>
+<p><a href="/kalas/tema/aventyrskalas">Äventyrskalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '30 oktober 2026',
+    imageUrl: '/wf/images/covers/aventyrskalaset-for-5-aringar.jpg',
+  },
+  {
     slug: 'tema-vetenskapskalas',
     title: 'Vetenskapskalas: Guide till experiment, dekoration och meny',
     summary: 'Så gör du ett vetenskapskalas för barn 6 till 8 år, med enkla experiment från köket, labbrockar och forskarmat.',
@@ -417,6 +439,7 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-robotkalas': { label: 'Alla robotkalas', href: '/kalas/tema/robotkalas' },
   'tema-sportkalas': { label: 'Alla sportkalas', href: '/kalas/tema/sportkalas' },
   'tema-vetenskapskalas': { label: 'Alla vetenskapskalas', href: '/kalas/tema/vetenskapskalas' },
+  'tema-aventyrskalas': { label: 'Alla äventyrskalas', href: '/kalas/tema/aventyrskalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
