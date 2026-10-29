@@ -3,6 +3,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { blogPosts } from '../../lib/data/blog-posts'
+import { toWebp } from '../../lib/cover'
 
 const POSTS = blogPosts.map(p => ({
   slug: p.slug,
@@ -65,7 +66,7 @@ export default function KalasbloggenPage() {
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
           gap: '1.5rem',
         }}>
-          {POSTS.map(post => (
+          {POSTS.map((post, i) => (
             <a
               key={post.slug}
               href={`/kalasbloggen/${post.slug}`}
@@ -88,8 +89,9 @@ export default function KalasbloggenPage() {
               }}
             >
               <img
-                src={post.imageUrl}
+                src={toWebp(post.imageUrl)}
                 alt={post.title}
+                loading={i < 3 ? 'eager' : 'lazy'}
                 style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
               />
               <div style={{

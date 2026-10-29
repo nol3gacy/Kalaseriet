@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { Product } from '../page'
 import { getProductExtra } from '../../lib/data/products-extra'
+import { toWebp } from '../../lib/cover'
 
 const AGES = [
   { key: '4', label: '4-åringar' },
@@ -15,8 +16,6 @@ function ageText(g: string) {
   return g === '7-8' ? '7 & 8-åringar' : `${g}-åringar`
 }
 
-// Local cover JPGs have a WebP twin (~40% smaller); the JPG stays for og:image and structured data.
-const toWebp = (u?: string | null) => (u?.startsWith('/wf/images/covers/') ? u.replace(/\.jpg$/, '.webp') : u)
 
 export default function ProductGrid({
   products,

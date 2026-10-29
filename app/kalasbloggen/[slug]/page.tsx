@@ -3,6 +3,7 @@ import Footer from '../../components/Footer'
 import FAQ from '../../components/FAQ'
 import AgeCTAs from '../../components/AgeCTAs'
 import { blogPosts, isoDate, offerForPost } from '../../../lib/data/blog-posts'
+import { toWebp } from '../../../lib/cover'
 import { notFound } from 'next/navigation'
 import { absoluteUrl, breadcrumbSchema, canonical, jsonLd, LOGO_URL, ORG_ID } from '../../../lib/seo'
 
@@ -139,7 +140,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {/* Hero image */}
           <div style={{ borderRadius: '2.5rem', overflow: 'hidden', marginBottom: '3rem', aspectRatio: '16 / 9' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.imageUrl} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <img src={toWebp(post.imageUrl)} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
           </div>
 
           {/* Body (HTML from CMS) */}
@@ -235,7 +236,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.imageUrl} alt={p.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
+                  <img src={toWebp(p.imageUrl)} alt={p.title} loading="lazy" style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
                   <div style={{ padding: '1.5rem' }}>
                     <h3 style={{
                       fontFamily: 'caraque-melted, sans-serif',
