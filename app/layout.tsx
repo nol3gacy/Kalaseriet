@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 99 kr och skriv ut hemma.",
+    "Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 129 kr och skriv ut hemma.",
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },
   robots: {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
-    description: 'Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 99 kr.',
+    description: 'Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 129 kr.',
     type: 'website',
     locale: 'sv_SE',
     url: BASE_URL,
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
-    description: 'Kompletta kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Kompletta kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 129 kr och skriv ut hemma.',
     images: [OG_IMAGE],
   },
 };
