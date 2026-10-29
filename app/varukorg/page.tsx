@@ -72,7 +72,8 @@ export default function VarukorgPage() {
       <Navbar />
       <main className="min-h-screen bg-white">
         <div className="max-w-2xl mx-auto px-4 py-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Varukorgen</h1>
+          {/* `!` utilities: Webflow's unlayered h1/h3/p/button rules otherwise beat Tailwind's layered ones. */}
+          <h1 className="!text-4xl font-bold text-gray-900 !mb-8">Varukorgen</h1>
 
           <div className="space-y-4 mb-10">
             {items.map(item => (
@@ -92,9 +93,9 @@ export default function VarukorgPage() {
                 {/* Product info */}
                 <div className="flex-1">
                   <Link href={`/kalas/${item.product.slug.current}`} className="hover:opacity-70">
-                    <h3 className="font-bold text-lg text-gray-900 mb-1">{item.product.name}</h3>
+                    <h3 className="font-bold !text-lg text-gray-900 !mb-1">{item.product.name}</h3>
                   </Link>
-                  <p className="text-sm text-gray-500 mb-4">
+                  <p className="text-sm text-gray-500 !mb-4">
                     för {item.product.ageGroup === '7-8' ? '7 & 8' : item.product.ageGroup}-åringar
                   </p>
 
@@ -102,12 +103,12 @@ export default function VarukorgPage() {
 
                 {/* Price & remove */}
                 <div className="text-right flex-shrink-0">
-                  <p className="text-2xl font-extrabold text-gray-900 mb-4">
+                  <p className="text-2xl font-extrabold text-gray-900 !mb-4">
                     {item.product.price * item.quantity} kr
                   </p>
                   <button
                     onClick={() => removeItem(item.product._id)}
-                    className="text-sm text-red-600 hover:text-red-700 font-semibold"
+                    className="text-sm !text-red-600 hover:!text-red-700 !font-semibold"
                   >
                     Ta bort
                   </button>

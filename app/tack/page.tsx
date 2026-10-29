@@ -117,8 +117,9 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
       <main className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-20">
         <div className="max-w-lg w-full text-center">
           <div className="text-8xl mb-6">🎉</div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">Tack för ditt köp!</h1>
-          <p className="text-gray-500 text-lg mb-10">
+          {/* `!` utilities: Webflow's unlayered h1/p/a rules otherwise beat Tailwind's layered ones. */}
+          <h1 className="!text-4xl font-bold text-gray-900 !mb-3">Tack för ditt köp!</h1>
+          <p className="text-gray-500 text-lg !mb-10">
             Din betalning är bekräftad. Ladda ner dina kalaspaket nedan — länkarna är även skickade till din e-post.
           </p>
 
@@ -160,8 +161,8 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
             ].map(s => (
               <div key={s.label} className="bg-violet-50 rounded-2xl p-4">
                 <div className="text-3xl mb-2">{s.icon}</div>
-                <p className="font-semibold text-gray-900 text-sm">{s.label}</p>
-                <p className="text-gray-500 text-xs mt-0.5">{s.desc}</p>
+                <p className="font-semibold text-gray-900 text-sm !mb-0">{s.label}</p>
+                <p className="text-gray-500 text-xs mt-0.5 !mb-0">{s.desc}</p>
               </div>
             ))}
           </div>
