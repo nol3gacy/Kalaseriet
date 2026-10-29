@@ -81,7 +81,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
   const themePage = product.theme ? themePageFor(product.theme) : undefined
-  const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup)
+  const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup && p.slug.current !== slug)
 
   const path = `/kalas/${slug}`
   const categoryPath = `/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`
