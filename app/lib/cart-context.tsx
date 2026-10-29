@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react'
 import type { Product } from '../page'
+import { trackCart } from '../../lib/gtag'
 
 export interface CartItem {
   product: Product
@@ -48,6 +49,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, [items, mounted])
 
   const addItem = (product: Product, quantity = 1) => {
+    trackCart('add_to_cart', [{ productId: product._id, productName: product.name, price: product.price, quantity }])
     setItems(prev => {
       const existing = prev.find(item => item.product._id === product._id)
       if (existing) {

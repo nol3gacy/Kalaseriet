@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
+import { coverSrcSet, toWebp } from '../../../lib/cover'
 
 // Chevron traced from Webflow's own lightbox arrow SVG (webflow.css .w-lightbox-left/-right).
 // Base path points right, so the left arrow is the flipped one.
@@ -15,6 +16,15 @@ function ArrowIcon({ flip }: { flip?: boolean }) {
   )
 }
 
+// Screen-reader text for the slide kinds a product page passes (cover, invitation, checklist, contents).
+function describe(src: string) {
+  if (src.includes('/covers/')) return 'inspirationsbild från kalaset'
+  if (src.includes('/inbjudan/')) return 'inbjudan som ingår'
+  if (src.includes('checklist')) return 'checklista som ingår'
+  if (src.includes('Innehaller')) return 'allt som ingår i nedladdningen'
+  return 'produktbild'
+}
+
 // Reproduces the Webflow product slider markup/classes as a real horizontal
 // scroll-snap carousel with infinite looping (clone-based), Webflow's own
 // lightbox chevron for arrows, a mobile "peek" layout (94vw + next slide
@@ -25,7 +35,16 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
   const slides = cleaned.length ? cleaned : ['/wf/images/mockup.jpg']
   const total = slides.length
   const loop = total > 1
-  const extended = loop ? [slides[total - 1], ...slides, slides[0]] : slides
+  // The leading clone is added only after hydration: server-rendered, the
+  // track starts at scrollLeft 0, so a leading clone would be what paints first
+  // (the last slide, lazy-loaded) instead of the cover, and it was the LCP.
+  const [headClone, setHeadClone] = useState(false)
+  const extended = loop
+    ? [...(headClone ? [{ src: slides[total - 1], key: 'head' }] : []),
+       ...slides.map((src, i) => ({ src, key: `s${i}` })),
+       { src: slides[0], key: 'tail' }]
+    : slides.map((src, i) => ({ src, key: `s${i}` }))
+  const lastExt = extended.length - 1
 
   const trackRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
@@ -40,17 +59,15 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
     window.setTimeout(() => { suppress.current = false }, smooth ? 450 : 60)
   }, [])
 
-  // Position at the real first slide (skip leading clone). Deferred two
-  // animation frames so the flex layout has actually settled — doing this
-  // synchronously on mount can read a stale offsetLeft of 0 and no-op.
-  useEffect(() => {
-    if (!loop) return
-    let raf1 = 0, raf2 = 0
-    raf1 = requestAnimationFrame(() => {
-      raf2 = requestAnimationFrame(() => scrollToExt(1, false))
-    })
-    return () => { cancelAnimationFrame(raf1); cancelAnimationFrame(raf2) }
-  }, [loop, scrollToExt])
+  // Insert the leading clone and jump past it before the browser paints, so
+  // the cover stays in place.
+  useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- must re-render before first paint
+    if (loop) setHeadClone(true)
+  }, [loop])
+  useLayoutEffect(() => {
+    if (headClone) scrollToExt(1, false)
+  }, [headClone, scrollToExt])
 
   // Subtle "look, it scrolls" bounce hint, twice, shortly after load.
   useEffect(() => {
@@ -98,29 +115,31 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
     })
     if (nearest === 0) {
       requestAnimationFrame(() => { scrollToExt(total, false); setIndex(total - 1) })
-    } else if (nearest === extended.length - 1) {
+    } else if (nearest === lastExt) {
       requestAnimationFrame(() => { scrollToExt(1, false); setIndex(0) })
     } else {
       setIndex(nearest - 1)
     }
-  }, [extended.length, loop, scrollToExt, total])
+  }, [lastExt, loop, scrollToExt, total])
 
   return (
     <div className="slider w-slider wf-slider-v2">
       <div className="mask w-slider-mask wf-slider-track" ref={trackRef} onScroll={onScroll}>
-        {extended.map((src, extIdx) => {
-          const isCover = loop ? extIdx === 1 : extIdx === 0
+        {extended.map(({ src, key }) => {
+          const isCover = key === 's0'
           return (
-            <div className="slide w-slide wf-slide" key={extIdx}>
+            <div className="slide w-slide wf-slide" key={key}>
               <div className="slide-inner-wrapper">
                 {isCover && <div className="disclaimer-product-image">(Inspirationsbild)</div>}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt={`${alt} – bild ${extIdx + 1}`}
+                  alt={`${alt} – ${describe(src)}`}
                   loading={isCover ? 'eager' : 'lazy'}
                   decoding="async"
                   fetchPriority={isCover ? 'high' : 'auto'}
-                  src={src}
+                  src={toWebp(src)}
+                  srcSet={coverSrcSet(src)}
+                  sizes="(max-width: 767px) 94vw, 690px"
                   className="product-image wf-slide-image"
                 />
               </div>
@@ -131,21 +150,20 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
 
       {loop && (
         <>
-          <button type="button" className="left-arrow w-slider-arrow-left wf-arrow is--left" onClick={() => go(-1)} aria-label="Föregående">
+          <button type="button" className="left-arrow w-slider-arrow-left wf-arrow is--left" onClick={() => go(-1)} aria-label="Föregående bild">
             <ArrowIcon flip />
           </button>
-          <button type="button" className="right-arrow w-slider-arrow-right wf-arrow is--right" onClick={() => go(1)} aria-label="Nästa">
+          <button type="button" className="right-arrow w-slider-arrow-right wf-arrow is--right" onClick={() => go(1)} aria-label="Nästa bild">
             <ArrowIcon />
           </button>
 
-          <div className="slide-nav w-slider-nav w-round">
+          {/* Visual position only: the labelled arrow buttons do the same for keyboard and screen readers. */}
+          <div className="slide-nav w-slider-nav w-round" aria-hidden="true">
             {slides.map((_, idx) => (
               <div
                 key={idx}
                 className={`w-slider-dot${idx === index ? ' w-active' : ''}`}
                 onClick={() => { setIndex(idx); scrollToExt(idx + 1, true) }}
-                role="button"
-                aria-label={`Bild ${idx + 1}`}
               />
             ))}
           </div>
@@ -199,6 +217,7 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
           align-items: center;
           justify-content: center;
         }
+        .wf-arrow:focus-visible { outline: 3px solid #5910b6; outline-offset: 2px; border-radius: 6px; }
         .wf-arrow.is--left { left: 0.5rem; }
         .wf-arrow.is--right { right: 0.5rem; }
 

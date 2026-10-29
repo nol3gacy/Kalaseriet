@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { gtag } from '../../lib/gtag'
 
 const STORAGE_KEY = 'kalaseriet_cookie_consent'
 
@@ -12,8 +13,6 @@ declare global {
 }
 
 function grantConsent(granted: boolean) {
-  window.dataLayer = window.dataLayer || []
-  function gtag(...args: unknown[]) { window.dataLayer!.push(args) }
   gtag('consent', 'update', {
     analytics_storage: granted ? 'granted' : 'denied',
     ad_storage: granted ? 'granted' : 'denied',
@@ -55,7 +54,7 @@ export default function CookieConsent() {
     <div className={`cookie-banner${visible && !leaving ? ' is--in' : ''}`} role="dialog" aria-label="Cookies">
       <p className="cookie-text">
         Vi använder cookies för att förbättra din upplevelse.{' '}
-        <a href="/villkor#cookies">Läs mer</a>
+        <a href="/villkor#cookies">Läs mer om cookies</a>
       </p>
       <button type="button" className="cookie-ok" onClick={accept}>OK</button>
 

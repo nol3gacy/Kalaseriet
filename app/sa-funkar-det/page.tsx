@@ -4,7 +4,7 @@ import AgeCTAs from '../components/AgeCTAs'
 
 export const metadata = {
   title: 'Så funkar det – planera barnkalaset steg för steg',
-  description: 'Steg för steg-guide till barnkalaset: välj tema, planera lekarna, skicka inbjudan, fixa maten och håll körschemat. Så använder du ditt kalaspaket från Kalaseriet.',
+  description: 'Steg för steg-guide till barnkalaset: välj tema, planera lekarna, skicka inbjudan, fixa maten och håll körschemat. Så använder du ditt kalaspaket.',
   alternates: { canonical: '/sa-funkar-det' },
 }
 

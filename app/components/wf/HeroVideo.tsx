@@ -1,7 +1,10 @@
-// Webflow background-video hero. Video stays on the Webflow CDN (not bundled).
-const BASE = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/657f16ae465ed5c6e78582ef_pexels_videos_1908423%20%282160p%29'
+import { preload } from 'react-dom'
+
+// Webflow background-video hero, self-hosted so it survives the Webflow account.
 
 export default function HeroVideo() {
+  // The poster is the LCP element; fetch it ahead of scripts.
+  preload('/wf/video/hero-poster.webp', { as: 'image', fetchPriority: 'high' })
   return (
     <div className="hero-video w-background-video w-background-video-atom">
       <video
@@ -10,11 +13,10 @@ export default function HeroVideo() {
         muted
         playsInline
         preload="auto"
-        poster={`${BASE}-poster-00001.jpg`}
+        poster="/wf/video/hero-poster.webp"
         style={{ backgroundPosition: '50% 50%', objectFit: 'cover' }}
       >
-        <source src={`${BASE}-transcode.mp4`} type="video/mp4" />
-        <source src={`${BASE}-transcode.webm`} type="video/webm" />
+        <source src="/wf/video/hero.mp4" type="video/mp4" />
       </video>
       <div className="hero-smallprint">*Enligt Leo &amp; Wilma</div>
     </div>

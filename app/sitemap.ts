@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { fallbackProducts } from './page'
 import { blogPosts } from '../lib/data/blog-posts'
 import { categories } from '../lib/data/categories'
+import { themePages } from '../lib/data/themes'
 import { BASE_URL } from '../lib/seo'
 
 export const dynamic = 'force-static'
@@ -18,7 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/kalasbloggen`,      lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${BASE_URL}/sa-funkar-det`,     lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/faq`,               lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/spellistor`,        lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/om-kalaseriet`,     lastModified: now, changeFrequency: 'yearly',  priority: 0.5 },
     { url: `${BASE_URL}/kontakt`,           lastModified: now, changeFrequency: 'yearly',  priority: 0.4 },
     { url: `${BASE_URL}/feedback`,          lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
@@ -32,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.85,
+  }))
+
+  const themeRoutes: MetadataRoute.Sitemap = themePages.map(t => ({
+    url: `${BASE_URL}/kalas/tema/${t.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.8,
   }))
 
   const productRoutes: MetadataRoute.Sitemap = fallbackProducts.map(p => ({
@@ -48,5 +55,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
+  return [...staticRoutes, ...categoryRoutes, ...themeRoutes, ...productRoutes, ...blogRoutes]
 }

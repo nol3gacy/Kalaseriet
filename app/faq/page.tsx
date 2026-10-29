@@ -3,7 +3,7 @@ import Footer from '../components/Footer'
 import FAQ from '../components/FAQ'
 import AgeCTAs from '../components/AgeCTAs'
 import { faqs } from '../../lib/data/faq'
-import { breadcrumbSchema, canonical, faqSchema, jsonLd } from '../../lib/seo'
+import { breadcrumbSchema, canonical, faqSchema, jsonLd, OG_IMAGE } from '../../lib/seo'
 
 export const metadata = {
   title: 'Vanliga frågor om kalaspaketen',
@@ -17,6 +17,7 @@ export const metadata = {
     locale: 'sv_SE',
     url: canonical('/faq'),
     siteName: 'Kalaseriet',
+    images: [OG_IMAGE],
   },
 }
 

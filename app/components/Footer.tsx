@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Lottie from './wf/Lottie'
+import { API_BASE } from '../../lib/api-base'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -63,7 +64,7 @@ export default function Footer() {
         {/* Big Lottie logo */}
         <div className="w-layout-cell footer-cell is--bottom">
           <a href="/" className="footer-logo w-inline-block" aria-label="Kalaseriet">
-            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
+            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" poster="/wf/images/logo.svg" />
           </a>
         </div>
       </div>
@@ -92,20 +93,50 @@ export default function Footer() {
   )
 }
 
+// Until there is an email service (backlog), sign-ups go to the shop inbox through the
+// Worker's /contact endpoint, subject "Kontakt från Nyhetsbrev". Before this the form
+// said thanks and kept nothing.
 function NewsletterForm() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (busy || !email) return
+    setBusy(true)
+    setError(false)
+    try {
+      const res = await fetch(`${API_BASE}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          kind: 'contact',
+          name: 'Nyhetsbrev',
+          email,
+          message: 'Vill ha tips & erbjudanden via nyhetsbrevet (anmälan i sidfoten).',
+          website: new FormData(e.currentTarget).get('website') ?? '',
+        }),
+      })
+      if (!res.ok) throw new Error()
+      setSubmitted(true)
+    } catch {
+      setError(true)
+    }
+    setBusy(false)
+  }
 
   if (submitted) {
     return (
-      <div className="nyhetskorv" style={{ justifyContent: 'center', color: 'var(--color--amazon, #3e755a)', fontWeight: 700 }}>
-        ✓ Tack! Vi hör av oss snart.
+      <div className="nyhetskorv" role="status" style={{ justifyContent: 'center', color: 'var(--color--amazon, #3e755a)', fontWeight: 700 }}>
+        ✓ Tack! Vi har sparat din e-post.
       </div>
     )
   }
 
   return (
-    <form className="newsletter-form" onSubmit={e => { e.preventDefault(); if (email) setSubmitted(true) }}>
+    <form className="newsletter-form" onSubmit={handleSubmit}>
       <div className="nyhetskorv">
         <div className="newsletter-tf-wrapper">
           {email === '' && (
@@ -125,8 +156,12 @@ function NewsletterForm() {
             onChange={e => setEmail(e.target.value)}
           />
         </div>
-        <input type="submit" className="button is--special w-button" value="Få direkt ›" />
+        <input type="submit" className="button is--special w-button" value={busy ? 'Skickar…' : 'Få direkt ›'} disabled={busy} />
       </div>
+      {/* Honeypot: hidden from people, bots fill it. */}
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+      {error && <p role="alert" style={{ color: '#b00020', fontWeight: 600, margin: '0.5rem 0 0' }}>Det gick inte att anmäla dig just nu. Försök igen om en stund.</p>}
     </form>
   )
 }

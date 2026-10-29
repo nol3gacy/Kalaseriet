@@ -38,7 +38,7 @@ function AccordionRow({ item, open, onToggle }: { item: Item; open: boolean; onT
       </div>
       <div className="accordion-bottom" style={{ height: h, overflow: 'hidden', transition: 'height .25s ease' }}>
         <div className="accordion-text-wrapper" ref={bodyRef}>
-          <div className="text w-richtext" dangerouslySetInnerHTML={{ __html: item.a }} />
+          <div className="text w-richtext faq-answer" dangerouslySetInnerHTML={{ __html: item.a }} />
         </div>
       </div>
     </div>

@@ -5,6 +5,19 @@ body {
   font-family: 'caraque-melted', sans-serif;
 }
 
+/* Links inside FAQ answers (HTML from lib/data/faq.ts) were invisible: Webflow's
+   a { color: inherit; text-decoration: none } made them look like plain text. */
+.faq-answer a {
+  color: var(--color--indigo, #5910b6);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Footer links stack tightly at 21 px on mobile; 24 px is the minimum touch target. */
+.footer-link {
+  min-height: 24px;
+}
+
 /* Form controls don't inherit font by default */
 input,
 textarea,

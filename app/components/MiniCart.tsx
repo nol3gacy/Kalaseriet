@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
 
 // Matches kalaseriet.se mini cart popover:
 // - White rounded card overlay
@@ -13,6 +14,8 @@ import { API_BASE } from '../../lib/api-base'
 export default function MiniCart() {
   const router = useRouter()
   const { items, removeItem, miniCartOpen, closeMiniCart, total } = useCart()
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [busy, setBusy] = useState(false)
 
   // ESC closes
   useEffect(() => {
@@ -24,6 +27,26 @@ export default function MiniCart() {
     return () => window.removeEventListener('keydown', handler)
   }, [miniCartOpen, closeMiniCart])
 
+  // Modal focus: move into the panel on open, keep Tab inside it, and hand
+  // focus back to whatever opened it (the cart button) on close.
+  useEffect(() => {
+    if (!miniCartOpen) return
+    const opener = document.activeElement as HTMLElement | null
+    const focusables = () => panelRef.current?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []
+    focusables()[0]?.focus()
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      const f = focusables()
+      if (!f.length) return
+      const first = f[0], last = f[f.length - 1], active = document.activeElement
+      if (!panelRef.current?.contains(active)) { e.preventDefault(); first.focus() }
+      else if (e.shiftKey && active === first) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && active === last) { e.preventDefault(); first.focus() }
+    }
+    window.addEventListener('keydown', trap)
+    return () => { window.removeEventListener('keydown', trap); opener?.focus() }
+  }, [miniCartOpen])
+
   // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = miniCartOpen ? 'hidden' : ''
@@ -31,18 +54,20 @@ export default function MiniCart() {
   }, [miniCartOpen])
 
   const handleCheckout = async () => {
+    if (busy) return  // a double click would otherwise open two Stripe sessions
+    setBusy(true)
+    const lineItems = items.map(({ product, quantity }) => ({
+      productId: product._id,
+      productName: product.name,
+      price: product.price,
+      quantity,
+    }))
+    trackCart('begin_checkout', lineItems)
     try {
       const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: items.map(({ product, quantity }) => ({
-            productId: product._id,
-            productName: product.name,
-            price: product.price,
-            quantity,
-          })),
-        }),
+        body: JSON.stringify({ items: lineItems }),
       })
       const data = await res.json()
       if (data?.url) {
@@ -56,6 +81,7 @@ export default function MiniCart() {
       router.push('/varukorg')
       closeMiniCart()
     }
+    setBusy(false)
   }
 
   if (!miniCartOpen) return null
@@ -76,7 +102,9 @@ export default function MiniCart() {
 
       {/* Popover card — anchored top-right, full-width on mobile */}
       <div
+        ref={panelRef}
         role="dialog"
+        aria-modal="true"
         aria-label="Varukorg"
         className="mini-cart-panel"
         style={{
@@ -186,6 +214,11 @@ export default function MiniCart() {
                     lineHeight: '92%',
                     margin: 0,
                   }}>{product.name}</h3>
+                  {product.ageGroup && (
+                    <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#4e4e4e', margin: '-0.25rem 0 0' }}>
+                      för {product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup}-åringar
+                    </p>
+                  )}
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
@@ -249,15 +282,18 @@ export default function MiniCart() {
             </div>
             <button
               onClick={handleCheckout}
+              aria-disabled={busy}
+              aria-busy={busy}
               className="btn-primary"
               style={{
+                cursor: busy ? 'progress' : undefined,
                 width: '100%',
                 fontSize: '1.5rem',
                 padding: '1.3rem 2rem',
                 justifyContent: 'center',
               }}
             >
-              Till kassan
+              {busy ? 'Öppnar kassan…' : 'Till kassan'}
             </button>
           </div>
         )}

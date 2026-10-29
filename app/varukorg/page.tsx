@@ -6,28 +6,31 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
+import { coverSrcSet, toWebp } from '../../lib/cover'
 
 export default function VarukorgPage() {
-  const { items, removeItem, updateQuantity, total } = useCart()
+  const { items, removeItem, total } = useCart()
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string>()
+  const [error, setError] = useState(false)
 
   async function handleCheckout() {
+    if (loading) return  // aria-disabled (keeps focus), so guard double clicks here
     setLoading(true)
-    setError(undefined)
+    setError(false)
+    const lineItems = items.map(item => ({
+      productId: item.product._id,
+      productName: item.product.name,
+      price: item.product.price,
+      quantity: item.quantity,
+    }))
+    trackCart('begin_checkout', lineItems)
 
     try {
       const response = await fetch(`${API_BASE}/checkout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          items: items.map(item => ({
-            productId: item.product._id,
-            productName: item.product.name,
-            price: item.product.price,
-            quantity: item.quantity,
-          })),
-        }),
+        body: JSON.stringify({ items: lineItems }),
       })
 
       const data = await response.json()
@@ -40,8 +43,7 @@ export default function VarukorgPage() {
       }
     } catch { /* fall through to the message below */ }
 
-    // Customers read this, so keep it Swedish whatever the API or network said.
-    setError('Det gick inte att öppna kassan just nu. Din varukorg är kvar, försök igen om en stund eller hör av dig via Kontakt.')
+    setError(true)
     setLoading(false)
   }
 
@@ -71,7 +73,8 @@ export default function VarukorgPage() {
       <Navbar />
       <main className="min-h-screen bg-white">
         <div className="max-w-2xl mx-auto px-4 py-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-8">Varukorgen</h1>
+          {/* `!` utilities: Webflow's unlayered h1/h3/p/button rules otherwise beat Tailwind's layered ones. */}
+          <h1 className="!text-4xl font-bold text-gray-900 !mb-8">Varukorgen</h1>
 
           <div className="space-y-4 mb-10">
             {items.map(item => (
@@ -80,7 +83,9 @@ export default function VarukorgPage() {
                 {item.product.externalImageUrl && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={item.product.externalImageUrl}
+                    src={toWebp(item.product.externalImageUrl)}
+                    srcSet={coverSrcSet(item.product.externalImageUrl)}
+                    sizes="96px"
                     alt={item.product.name}
                     className="w-24 h-24 object-cover rounded-xl flex-shrink-0"
                   />
@@ -89,9 +94,9 @@ export default function VarukorgPage() {
                 {/* Product info */}
                 <div className="flex-1">
                   <Link href={`/kalas/${item.product.slug.current}`} className="hover:opacity-70">
-                    <h3 className="font-bold text-lg text-gray-900 mb-1">{item.product.name}</h3>
+                    <h3 className="font-bold !text-lg text-gray-900 !mb-1">{item.product.name}</h3>
                   </Link>
-                  <p className="text-sm text-gray-500 mb-4">
+                  <p className="text-sm text-gray-500 !mb-4">
                     för {item.product.ageGroup === '7-8' ? '7 & 8' : item.product.ageGroup}-åringar
                   </p>
 
@@ -99,12 +104,12 @@ export default function VarukorgPage() {
 
                 {/* Price & remove */}
                 <div className="text-right flex-shrink-0">
-                  <p className="text-2xl font-extrabold text-gray-900 mb-4">
+                  <p className="text-2xl font-extrabold text-gray-900 !mb-4">
                     {item.product.price * item.quantity} kr
                   </p>
                   <button
                     onClick={() => removeItem(item.product._id)}
-                    className="text-sm text-red-600 hover:text-red-700 font-semibold"
+                    className="text-sm !text-red-600 hover:!text-red-700 !font-semibold"
                   >
                     Ta bort
                   </button>
@@ -122,25 +127,27 @@ export default function VarukorgPage() {
 
             {error && (
               <div role="alert" className="mb-6 p-4 bg-red-50 text-red-800 rounded-xl text-sm">
-                {error}
+                {/* Customers read this, so keep it Swedish whatever the API or network said. */}
+                Det gick inte att öppna kassan just nu. Din varukorg är kvar, försök igen om en stund eller{' '}
+                <Link href="/kontakt" style={{ textDecoration: 'underline' }}>hör av dig till oss</Link>.
               </div>
             )}
 
             <button
               onClick={handleCheckout}
-              disabled={loading}
-              className="btn-primary w-full !text-lg disabled:opacity-60"
+              aria-disabled={loading}
+              className="btn-primary w-full !text-xl aria-disabled:opacity-60"
             >
               {loading ? 'Öppnar kassan…' : `Gå till betalning – ${total} kr`}
             </button>
 
-            <Link href="/kalas" className="btn-secondary w-full mt-3">
+            <Link href="/kalas" className="btn-secondary w-full mt-3 !text-xl">
               Fortsätt handla
             </Link>
           </div>
 
           <p className="text-center text-sm text-gray-500">
-            Betala tryggt med kort, Klarna eller PayPal. Din data är helt säker.
+            Du betalar tryggt via Stripe. Vi ser aldrig dina kortuppgifter.
           </p>
         </div>
       </main>

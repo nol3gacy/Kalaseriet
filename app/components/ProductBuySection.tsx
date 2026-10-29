@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
+import { trackCart } from '../../lib/gtag'
 import type { Product } from '../page'
 
 const FEATURES = ['Leveras direkt till din e-post', '100% Nöjdhetsgaranti', 'Säker betalning']
@@ -14,12 +15,29 @@ function Check() {
   )
 }
 
+function Price({ product, fixed = false }: { product: Product; fixed?: boolean }) {
+  return (
+    <div className="price-wrapper">
+      {product.originalPrice && product.originalPrice > product.price && (
+        <div className={`price was${fixed ? ' fixed' : ''}`}>{product.originalPrice} kr</div>
+      )}
+      <div className="price">{product.price} kr</div>
+    </div>
+  )
+}
+
 export default function ProductBuySection({ product }: { product: Product }) {
   const { addItem, items } = useCart()
   const [showSticky, setShowSticky] = useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
 
+  useEffect(() => {
+    trackCart('view_item', [{ productId: product._id, productName: product.name, price: product.price, quantity: 1 }])
+  }, [product._id, product.name, product.price])
+
+  // aria-disabled, not disabled, while busy: a disabled button drops keyboard focus to
+  // the page start. The busy guard below keeps double clicks out.
   const buyNow = async () => {
     if (busy) return
     setBusy(true)
@@ -31,6 +49,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
         productId: p._id, productName: p.name, price: p.price, quantity,
       })),
     ]
+    trackCart('begin_checkout', lineItems)
     try {
       const res = await fetch(`${API_BASE}/checkout`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -61,23 +80,14 @@ export default function ProductBuySection({ product }: { product: Product }) {
     }
   }, [])
 
-  const Price = ({ fixed = false }: { fixed?: boolean }) => (
-    <div className="price-wrapper">
-      {product.originalPrice && product.originalPrice > product.price && (
-        <div className={`price was${fixed ? ' fixed' : ''}`}>{product.originalPrice} kr</div>
-      )}
-      <div className="price">{product.price} kr</div>
-    </div>
-  )
-
   return (
     <>
       <div className="div-block-3">
         <div className="div-block" data-buy-anchor>
-          <Price />
+          <Price product={product} />
           <div className="add-to-cart">
             <form className="w-commerce-commerceaddtocartform default-state" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
+              <button onClick={buyNow} aria-disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button" style={busy ? { cursor: 'progress' } : undefined}>{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>
@@ -97,12 +107,13 @@ export default function ProductBuySection({ product }: { product: Product }) {
       </div>
 
       {/* Fixed reveal-on-scroll buy bar */}
-      <div className="buy-wrapper" style={{ transform: showSticky ? 'translate3d(0,0,0)' : 'translate3d(0,100%,0)', transition: 'transform .35s cubic-bezier(0.4,0,0.2,1)' }}>
+      {/* inert while slid off-screen, so Tab doesn't land on an invisible button */}
+      <div className="buy-wrapper" inert={!showSticky} style={{ transform: showSticky ? 'translate3d(0,0,0)' : 'translate3d(0,100%,0)', transition: 'transform .35s cubic-bezier(0.4,0,0.2,1)' }}>
         <div className="buy-base">
-          <Price fixed />
+          <Price product={product} fixed />
           <div>
             <form className="w-commerce-commerceaddtocartform default-state-3" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
+              <button onClick={buyNow} aria-disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button" style={busy ? { cursor: 'progress' } : undefined}>{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>

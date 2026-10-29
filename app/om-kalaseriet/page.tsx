@@ -3,25 +3,27 @@ import Footer from '../components/Footer'
 
 export const metadata = {
   title: 'Om Kalaseriet – digitala kalaspaket för barnkalas',
-  description: 'Kalaseriet gör barnkalas enkla att planera. Läs om idén bakom våra digitala kalaspaket med 33 teman, lekar, recept och färdiga checklistor för barn 4–8 år.',
+  description: 'Kalaseriet gör barnkalas enkla att planera. Läs om idén bakom våra 33 digitala kalaspaket med lekar, recept och färdiga checklistor för barn 4–8 år.',
   alternates: { canonical: '/om-kalaseriet' },
 }
 
 const STATS = [
-  { num: '33', label: 'kalasteman', emoji: '🎯' },
+  { num: '33', label: 'kalaspaket', emoji: '🎯' },
   { num: '4', label: 'åldersgrupper', emoji: '👶' },
-  { num: '99 kr', label: 'per paket', emoji: '💜' },
+  { num: '129 kr', label: 'per paket', emoji: '💜' },
 ]
 
+// Matches the product pages' "Nedladdningen innehåller" (lib/data/included-items.ts);
+// this list used to promise table decorations, flags and digital invitations.
 const INCLUDES = [
-  '20 kalaslekar utvalda för rätt ålder och tema',
-  '20 festrecept – tårtor, muffins och snacks – med allergialternativ',
-  'Inbjudningskort att skriva ut eller skicka digitalt',
-  'Bordsdekorationer och flaggor',
-  'Körschema – timme för timme',
-  'Checklista för inköp och förberedelser',
-  'Diplom till varje gäst som minne',
-  'Musikspellista på Spotify',
+  '20 kalaslekar och aktiviteter utvalda för rätt ålder och tema',
+  '20 recept, allt från tårtor till milkshakes',
+  'Inbjudan att skriva ut och fylla i',
+  '5 tips på dekorationer som passar temat',
+  'Checklista och körschema',
+  'Diplom till varje barn',
+  'Länk till spellista med passande musik',
+  'Utskrivbara instruktioner för allt',
 ]
 
 export default function OmKalaserietPage() {

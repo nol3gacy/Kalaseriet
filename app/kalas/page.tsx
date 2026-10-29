@@ -7,19 +7,21 @@ import Footer from '../components/Footer'
 import DiscountMarquee from '../components/DiscountMarquee'
 import SeoText from '../components/SeoText'
 import AgeCTAs from '../components/AgeCTAs'
-import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID } from '../../lib/seo'
+import ThemeLinks from '../components/ThemeLinks'
+import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export const metadata = {
   title: 'Alla kalas – 33 kalaspaket för barnkalas 4–8 år',
-  description: 'Bläddra bland alla 33 kalaspaket för barnkalas. Varje tema har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 99 kr.',
+  description: 'Bläddra bland alla 33 kalaspaket för barnkalas. Varje tema har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 129 kr.',
   alternates: { canonical: '/kalas' },
   openGraph: {
     title: 'Alla kalas – 33 kalaspaket för barnkalas 4–8 år',
-    description: 'Bläddra bland alla 33 kalaspaket för barnkalas. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Bläddra bland alla 33 kalaspaket för barnkalas. Ladda ner direkt för 129 kr och skriv ut hemma.',
     type: 'website' as const,
     locale: 'sv_SE',
     url: canonical('/kalas'),
     siteName: 'Kalaseriet',
+    images: [OG_IMAGE],
   },
 }
 
@@ -64,10 +66,11 @@ export default async function AllKalasPage() {
         heading="Digitala kalaspaket för alla åldrar och teman"
         paragraphs={[
           'Här hittar du alla 33 kalaspaket vi har att erbjuda — från piratäventyr och rymdresor till detektivgåtor och discofester. Varje kalaspaket är en komplett digital nedladdning med allt du behöver för att planera ett minnesvärt barnkalas: 20 st testade kalaslekar, en snygg mall för inbjudan, körschema och checklista, tips på dekorationer, spellista och recept.',
-          'Filtrera på ålder ovan för att hitta teman som passar just ditt barn — vi har paket anpassade för 4, 5, 6 samt 7 & 8-åringar. Oavsett om barnet drömmer om att vara pirat, superhjälte, prinsessa eller upptäcktsresande så finns det ett tema som passar. Alla paket kostar 99 kr, levereras direkt till din e-post efter köp och går att skriva ut hemma på vanlig skrivare.',
+          'Filtrera på ålder ovan för att hitta teman som passar just ditt barn — vi har paket anpassade för 4, 5, 6 samt 7 & 8-åringar. Oavsett om barnet drömmer om att vara pirat, superhjälte, prinsessa eller upptäcktsresande så finns det ett tema som passar. Alla paket kostar 129 kr, levereras direkt till din e-post efter köp och går att skriva ut hemma på vanlig skrivare.',
           'Är du osäker på vilket tema som passar bäst? Kika på våra populäraste kalas eller läs mer om hur det hela går till på sidan så funkar det.',
         ]}
       />
+      <ThemeLinks />
       <AgeCTAs />
       </main>
       <Footer />

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { Product } from '../page'
 import { getProductExtra } from '../../lib/data/products-extra'
+import { coverSrcSet, toWebp } from '../../lib/cover'
 
 const AGES = [
   { key: '4', label: '4-åringar' },
@@ -14,6 +15,7 @@ const AGES = [
 function ageText(g: string) {
   return g === '7-8' ? '7 & 8-åringar' : `${g}-åringar`
 }
+
 
 export default function ProductGrid({
   products,
@@ -30,6 +32,9 @@ export default function ProductGrid({
   headingLevel?: 'h1' | 'h2'
 }) {
   const Heading = headingLevel
+  // Only a page-leading grid (h1) has its first row above the fold; an embedded
+  // one eager-loading (and preloading) covers competes with the page's own LCP image.
+  const atTop = headingLevel === 'h1'
   // All ages active by default
   const [active, setActive] = useState<Set<string>>(new Set(AGES.map(a => a.key)))
 
@@ -88,7 +93,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading={i < 4 ? 'eager' : 'lazy'} fetchPriority={i === 0 ? 'high' : undefined} decoding="async" src={p.externalImageUrl || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading={atTop && i < 4 ? 'eager' : 'lazy'} fetchPriority={atTop && i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} srcSet={coverSrcSet(p.externalImageUrl)} sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 25vw" className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">

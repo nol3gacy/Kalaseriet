@@ -13,7 +13,7 @@ import "./webflow/overrides.css";
 import { CartProvider } from "./lib/cart-context";
 import MiniCart from "./components/MiniCart";
 import CookieConsent from "./components/CookieConsent";
-import { BASE_URL, SITE_NAME, jsonLd, organizationSchema, websiteSchema } from "../lib/seo";
+import { BASE_URL, OG_IMAGE, SITE_NAME, jsonLd, organizationSchema, websiteSchema } from "../lib/seo";
 
 // Body font — exact match with kalaseriet.se
 const manrope = Manrope({
@@ -22,8 +22,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const FAVICON = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65da1a3331d71fae16c689a3_favicon.png'
-const WEBCLIP = 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65da1a384ef1f371942f39e0_webclip.png'
+const FAVICON = '/wf/images/favicon.png'
+const WEBCLIP = '/wf/images/webclip.png'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 99 kr och skriv ut hemma.",
+    "Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 129 kr och skriv ut hemma.",
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },
   robots: {
@@ -44,22 +44,22 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: FAVICON, type: 'image/png' }],
     shortcut: FAVICON,
-    apple: [{ url: WEBCLIP, sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: WEBCLIP, sizes: '256x256', type: 'image/png' }],
   },
   openGraph: {
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
-    description: 'Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 99 kr.',
+    description: 'Kompletta kalaspaket för barnkalas 4–8 år: 20 kalaslekar, 20 recept, inbjudan, checklista & körschema. Ladda ner direkt för 129 kr.',
     type: 'website',
     locale: 'sv_SE',
     url: BASE_URL,
     siteName: SITE_NAME,
-    images: [{ url: WEBCLIP, width: 1200, height: 630, alt: 'Kalaseriet – digitala kalaspaket för barnkalas' }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: 'Kalaseriet – digitala kalaspaket för barnkalas' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kalaspaket för barnkalas – lekar, recept & inbjudan',
-    description: 'Kompletta kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 99 kr och skriv ut hemma.',
-    images: [WEBCLIP],
+    description: 'Kompletta kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 129 kr och skriv ut hemma.',
+    images: [OG_IMAGE],
   },
 };
 
@@ -97,7 +97,8 @@ export default function RootLayout({
                 __html: `
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
-                gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied' });
+                var c = 'denied'; try { if (localStorage.getItem('kalaseriet_cookie_consent') === 'accepted') c = 'granted'; } catch (e) {}
+                gtag('consent', 'default', { analytics_storage: c, ad_storage: c });
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}');
               `,

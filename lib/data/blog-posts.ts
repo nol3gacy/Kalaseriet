@@ -29,12 +29,100 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-rymdkalas',
+    title: 'Rymdkalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett rymdkalas för barn 4 till 8 år, från mörklagd raket och planetjakt till rymdmat och kalaspåse.',
+    body: `<h2>Rymdkalas passar lika bra för fyraåringar som drömmer om stjärnor som för åttaåringar som vill bli astronauter. Här är vår guide till ett kalas i omloppsbana.</h2>
+<h3>Stämningen</h3><p>Mörkblått, svart och silver. Dra för gardinerna, häng upp stjärnor av folie i taket och använd en ficklampa eller en stjärnprojektor om du har en. En stor kartong med fönster blir en raket som barnen kan krypa in i.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en biljett till en rymdresa, med avgångstid, "uppskjutningsplats" (er adress) och en ruta för passagerarens namn. Barnen tycker om att visa upp sin biljett när de kommer.</p>
+<h3>Utklädnad</h3><p>Ett par tomma petflaskor som spraymålas silver och fästs med band blir syrgastuber. En vit overall eller pyjamas fungerar som rymddräkt, och en hjälm går att göra av en papperskasse med ett utklippt visir.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Planetjakten</strong>: ballonger i olika färger är planeter som är gömda i huset. Laget som hittar alla först har "kartlagt solsystemet".</li>
+<li><strong>Uppskjutningen</strong>: alla räknar ner från tio och hoppar så högt de kan på noll. Upprepa mellan lekarna, det blir kalasets signal för att byta aktivitet.</li>
+<li><strong>Månpromenaden</strong>: barnen ska ta sig över golvet i "låg gravitation", i slow motion, utan att röra vid "kratrarna" (kuddar).</li>
+<li><strong>Rymdvarelsen</strong>: en variant av kurragömma där den som letar är en rymdvarelse och de andra är astronauter som gömmer sig i mörkret med ficklampa.</li>
+</ul>
+<h3>Maten</h3><p>"Asteroider" (popcorn eller chokladbollar), "planeter" av melonbollar, "rymdmat" i form av smoothie i flaska med sugrör och en mörkblå tårta med strössel som stjärnor.</p>
+<h3>Kalaspåsen</h3><p>Självlysande stjärnor till taket, ett klistermärke med en raket och ett astronautdiplom.</p>
+<p><a href="/kalas/tema/rymdkalas">Rymdkalaset finns för 4- och 5-åringar och Astronautkalaset för 6–8 år</a>, båda med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/rymdkalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-safarikalas',
+    title: 'Safarikalas: Guide till dekoration, lekar och meny',
+    summary: 'Allt du behöver för ett safarikalas för 4- och 5-åringar, från djurspårning och kikare till savannmat och kalaspåse.',
+    body: `<h2>Safarikalas är perfekt för barn som älskar djur, och det går att ordna med det mesta du redan har hemma. Här är vår guide till en dag på savannen.</h2>
+<h3>Stämningen</h3><p>Grönt, beige och djurmönster. Häng gröna pappersremsor som lianer i dörröppningen, ställ ut gosedjur som vilda djur runt om i rummet och spela djurläten eller trummusik när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en kallelse till en safariexpedition: "Guider sökes för att hitta savannens djur". Ett tryckt tassavtryck i hörnet gör den direkt igenkännbar.</p>
+<h3>Utklädnad</h3><p>Keps eller solhatt, en beige skjorta och en ryggsäck räcker för en safariguide. Den som hellre vill vara djur kan få en mask av papptallrik med öron, eller ansiktsmålning med morrhår.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Djurspaningen</strong>: gosedjur eller bilder av djur är gömda i huset. Barnen letar med kikare gjorda av två toarullar och bockar av djuren på en lista med bilder.</li>
+<li><strong>Härma djuret</strong>: en vuxen visar en bild av ett djur och barnen rör sig och låter som det, från smygande lejon till trampande elefanter.</li>
+<li><strong>Vattenhålet</strong>: en stoldans där stolarna är "vattenhål" och djuren måste hitta ett när musiken tystnar.</li>
+<li><strong>Spåra djuren</strong>: följ fotspår av papper genom huset till en låda med en överraskning.</li>
+</ul>
+<h3>Maten</h3><p>"Apbröd" (bananer eller bananbröd), fruktspett som "papegojor", ostbågar som "lejonsvansar" och en tårta med djur i marsipan eller plast.</p>
+<h3>Kalaspåsen</h3><p>Ett litet plastdjur, en kikare av toarullar som barnen gjort själva och ett diplom som safariguide.</p>
+<p><a href="/kalas/tema/safarikalas">Safarikalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/safarikalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-superhjaltekalas',
+    title: 'Superhjältekalas: Guide till lekar, utklädnad och mat',
+    summary: 'Så gör du ett superhjältekalas där varje barn får vara hjälte för en dag, från mantlar och uppdrag till hjältemat och kalaspåse.',
+    body: `<h2>Superhjältekalas fungerar för barn från fyra år och uppåt, och det kräver nästan ingen rekvisita. Här är vår guide till hur du lägger upp kalaset.</h2>
+<h3>Stämningen</h3><p>Starka färger: rött, blått och gult. Rita stora "POW!" och "BAM!"-bubblor på papper och tejpa upp på väggarna, och gör en stadssiluett av svarta sopsäckar eller kartong längs en vägg. Spela filmmusik med mycket trummor när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett hemligt uppdrag: "Staden behöver din hjälp, inställ dig klockan 14.00." Be gästerna komma utklädda eller lova att de får göra sin egen dräkt på plats.</p>
+<h3>Utklädnad</h3><p>En mantel av en gammal handduk, ett tygstycke eller en uppklippt t-shirt räcker. Masker i papp med ett gummiband, och en hjältelogga som barnen ritar själva och tejpar på bröstet. Låt varje barn hitta på sitt hjältenamn när de kommer, det blir en bra start.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Hjälteträningen</strong>: en hinderbana med kuddar att hoppa över, en tunnel av stolar och en "laserkorridor" av snören att kliva mellan.</li>
+<li><strong>Rädda gosedjuren</strong>: gosedjur är gömda runt om i rummet och ska räddas tillbaka till "sjukhuset" innan tiden är slut.</li>
+<li><strong>Frys-hjälten</strong>: dansstopp där alla fryser i sin bästa hjältepose när musiken tystnar.</li>
+<li><strong>Superstyrka</strong>: lag som bär ballonger mellan sig utan att använda händerna.</li>
+</ul>
+<h3>Maten</h3><p>"Kryptonitgelé" (grön gelé), hjältesmörgåsar utstansade som blixtar, fruktspett i röda och blå färger och en tårta med barnets hjältelogga.</p>
+<h3>Kalaspåsen</h3><p>En mask, ett klistermärke med en blixt och ett diplom för "Årets hjälte". Mer behövs inte.</p>
+<p><a href="/kalas/tema/superhjaltekalas">Superhjältekalaset finns för 4-, 5- och 6-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/superhjaltekalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-dinosauriekalas',
+    title: 'Dinosauriekalas: Guide till dekoration, lekar och meny',
+    summary: 'Allt du behöver för ett dinosauriekalas för 4- och 5-åringar, från fossiljakt och dinoägg till urtidsmat och kalaspåse.',
+    body: `<h2>Dinosauriekalas passar både barn som kan alla dinosauriernas namn och barn som mest vill vråla som en T-rex. Här är vår guide till ett kalas från urtiden.</h2>
+<h3>Stämningen</h3><p>Grönt och brunt. Klipp stora blad av grönt papper och tejpa upp i hörnen, ställ ut krukväxter och några plastdinosaurier på bordet. Fotspår av papper från dörren och in till kalasrummet visar gästerna vägen.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en expedition: "Forskare sökes till en utgrävning". Inbjudan kan gärna se ut som ett gammalt fynd, med ett fotavtryck av en dinosaurie i hörnet.</p>
+<h3>Utklädnad</h3><p>En ryggkam av filt eller kartong som fästs på en tröja räcker långt. Den som vill kan komma som forskare med keps, kikare och ryggsäck i stället.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Fossiljakten</strong>: göm plastdinosaurier eller "ben" av pasta i en sandlåda eller en balja med ris, och låt barnen gräva fram dem med penslar och skedar.</li>
+<li><strong>Dinoäggen</strong>: frys in små plastdinosaurier i ballonger med vatten. Barnen får "kläcka" äggen med varmt vatten och skedar.</li>
+<li><strong>Vulkanen</strong>: en vuxen visar ett utbrott med bikarbonat och ättika i en kopp gömd i en sandhög. Enkelt och alltid lika populärt.</li>
+<li><strong>T-rex-tafatt</strong>: tafatt där den som har den ska gå med korta T-rex-armar.</li>
+</ul>
+<h3>Maten</h3><p>"Dinoägg" (kokta ägg eller vindruvor), grönsaksstavar som "träd", korv i bröd som "dinosauriefötter" och en grön tårta med dinosaurier i plast på toppen.</p>
+<h3>Kalaspåsen</h3><p>En liten plastdinosaurie, ett "fossil" av saltdeg och ett diplom som utbildad dinosaurieforskare.</p>
+<p><a href="/kalas/tema/dinosauriekalas">Dinosauriekalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/dinosauriekalaset-for-4-aringar.jpg',
+  },
+  {
     slug: 'diy-kalaspase',
     title: 'DIY-kalaspåse: Billiga och roliga gåvor barnen kommer älska',
     summary: 'Här är våra bästa tips på hur du skapar enkla, prisvärda och uppskattade kalaspåsar.',
     body: `<p>En kalaspåse är det perfekta sättet att avsluta ett kalas och ge barnen något att ta med hem. Här är våra bästa tips på hur du skapar enkla, prisvärda och uppskattade kalaspåsar.</p>
 <h3>Små presenter</h3>
-<p>Fyll påsarna med små leksaker, klistermärken eller pysselmaterial. Våra kalaspaket innehåller ett brett utbud av småsaker som barn i alla åldrar älskar, och det gör det enkelt för dig att hitta något som passar kalastemat.</p>
+<p>Fyll påsarna med små leksaker, klistermärken eller pysselmaterial. Välj gärna saker som knyter an till kalastemat, så hänger påsen ihop med resten av kalaset.</p>
 <h3>Godis och snacks</h3>
 <p>Inget slår en påse fylld med godis eller popcorn! Använd våra färdiga kalaspåsar med roliga mönster och färger för att ge dem en extra festlig känsla. Kombinera gärna med ett klistermärke eller en liten hälsning för att göra dem ännu mer personliga.</p>
 <h3>Tema för kalaspåsen</h3>
@@ -44,12 +132,12 @@ export const blogPosts: BlogPost[] = [
 <p>Kalaspåsar är en liten gest som gör stort intryck. För fler tips och produkter som gör det enkelt att skapa en minnesvärd kalasfinal, kolla in <a href="/kalas">kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 juni 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
+    imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
   },
   {
     slug: 'checklista-allt-du-behover-for-ett-lyckat-barnkalas',
     title: 'Checklista: Allt du behöver för ett lyckat barnkalas',
-    summary: 'Här är de viktigaste punkterna att tänka på.',
+    summary: 'Checklista för barnkalaset: allt från gästlista, inbjudan och tema till mat, lekar, kalaspåsar och dagen efter, punkt för punkt.',
     body: `<h2>Att hålla koll på allt inför ett barnkalas kan kännas överväldigande, men med en praktisk checklista blir det både enkelt och roligt att planera. Här är de viktigaste punkterna att tänka på.</h2>
 <h3>Dekorationer</h3>
 <p>Välj ett tema som barnet älskar och dekorera därefter. Tematiska tallrikar, muggar och ballonger kan förvandla vilket rum som helst till en festlig plats. Våra färdiga temapaket gör det enkelt att skapa en röd tråd genom hela kalaset.</p>
@@ -58,13 +146,13 @@ export const blogPosts: BlogPost[] = [
 <h3>Aktiviteter</h3>
 <p>Förbered några roliga aktiviteter eller lekar som passar åldersgruppen. Klassiska alternativ som fiskdamm eller skattjakt är alltid populära, och våra aktivitetskit gör det enkelt att komma igång.</p>
 <h3>Kalaspåsar</h3>
-<p>Avsluta kalaset med att ge varje barn en påse fylld med små överraskningar. Våra kalaspåsar är både snygga och praktiska, och vi har många roliga prylar att fylla dem med.</p>
+<p>Avsluta kalaset med att ge varje barn en påse fylld med små överraskningar. Håll det enkelt: några små saker som passar temat räcker långt.</p>
 <h3>Glöm inte detaljerna</h3>
 <p>Tänk på att fixa inbjudningar i god tid och dubbelkolla att du har allt hemma dagen innan kalaset. Våra checklistor och kalaspaket hjälper dig att inte missa något viktigt.</p>
 <p>Med denna checklista har du allt du behöver för att skapa ett lyckat och stressfritt barnkalas. För ännu fler tips och produkter, <a href="/kalas">bläddra bland kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 maj 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a1343d2d3bd0a468873c1_photo-1509163245925-f4255dea7727.avif',
+    imageUrl: '/wf/images/blogg/photo-1509163245925.jpg',
   },
   {
     slug: 'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset',
@@ -74,14 +162,14 @@ export const blogPosts: BlogPost[] = [
 <h3>Planera kartan</h3>
 <p>Börja med att rita en karta som visar de platser där ledtrådar finns gömda. Använd enkla symboler och färger så att barnen lätt kan följa den. Våra skattjaktskit inkluderar färdiga kartor och ledtrådar för enkel planering.</p>
 <h3>Göm ledtrådarna</h3>
-<p>Göm ledtrådarna på platser som är både roliga och utmanande att hitta. Varje ledtråd kan leda till nästa tills skatten avslöjas – till exempel en påse fylld med godis eller små leksaker från våra kalaspaket.</p>
+<p>Göm ledtrådarna på platser som är både roliga och utmanande att hitta. Varje ledtråd kan leda till nästa tills skatten avslöjas – till exempel en påse fylld med godis eller små leksaker.</p>
 <h3>Avslöja skatten</h3>
 <p>Skattjakten når sin höjdpunkt när barnen hittar den gömda skatten. Våra dekorerade kalaspåsar och små presenter är perfekta för att skapa en minnesvärd final.</p>
 <h3>Mer inspiration</h3>
-<p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt!</p>`,
+<p>På <a href="/kalas">kalaseriet.se</a> hittar du allt du behöver för att skapa en skattjakt som blir dagens höjdpunkt! Skattjakter passar extra bra på ett <a href="/kalas/tema/piratkalas">piratkalas</a> eller ett <a href="/kalas/tema/aventyrskalas">äventyrskalas</a>.</p>`,
     category: 'Tips',
     date: '25 april 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a12849b5a83352927779d_photo-1469406396016-013bfae5d83e.avif',
+    imageUrl: '/wf/images/blogg/photo-1469406396016.jpg',
   },
   {
     slug: 'enkla-och-roliga-lekar-for-kalaset',
@@ -89,13 +177,13 @@ export const blogPosts: BlogPost[] = [
     summary: 'Att planera roliga lekar är nyckeln till ett lyckat kalas! Här är två favoriter som garanterat skapar glädje och energi.',
     body: `<h2>Att planera roliga lekar är nyckeln till ett lyckat kalas! Här är två favoriter som garanterat skapar glädje och energi.</h2>
 <h3>Dansstopp</h3>
-<p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Våra färdiga kalaspaket innehåller små överraskningar som passar perfekt som priser till vinnarna.</p>
+<p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Ha några små priser redo, och dela gärna ut diplom till alla, de ingår i <a href="/kalas">våra kalaspaket</a>.</p>
 <h3>Fiskdamm</h3>
 <p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Våra praktiska och snygga kalaspåsar är perfekta för ändamålet.</p>
 <p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
     category: 'Tips',
     date: '25 mars 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
+    imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
   },
   // ─── SEO-optimerade nya inlägg (riktade mot organisk Google-trafik) ───
   {
@@ -104,7 +192,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Här är våra 12 mest populära kalaslekar för 6-åringar — bevisade i skarpt läge och alla med tydliga instruktioner.',
     body: `<h2>Söker du roliga lekar till sex-årskalaset? Här är vår testade samling — alla anpassade efter vad sex-åringar älskar, klarar och blir engagerade av.</h2>
 <h3>1. Klassisk fiskdamm</h3><p>Ett laken eller en filt över en stol, en fiskespö med klädnypa, och små godispåsar att fiska upp. Funkar varje gång.</p>
-<h3>2. Skattjakt med karta</h3><p>Rita en enkel karta över hemmet. 5-6 ledtrådar leder till en gömd skatt. <a href="/kalas/6-aringar">Våra färdiga kalaspaket</a> innehåller skattjakt-mallar.</p>
+<h3>2. Skattjakt med karta</h3><p>Rita en enkel karta över hemmet. 5-6 ledtrådar leder till en gömd skatt. I <a href="/kalas/6-aringar">våra kalaspaket</a> finns 20 färdiga lekar och aktiviteter med instruktioner.</p>
 <h3>3. Stoppdans</h3><p>Pop på en spellista, dansa loss — när musiken stannar måste alla frysa. Den som rör sig är ute.</p>
 <h3>4. Pinjata</h3><p>Slå sönder en pinjata fylld med godis. Sex-åringar älskar fysiken i det.</p>
 <h3>5. Charader för barn</h3><p>Skriv ut djur, yrken eller saker på lappar. Barnen drar och agerar utan ord.</p>
@@ -115,10 +203,10 @@ export const blogPosts: BlogPost[] = [
 <h3>10. Mjölkkartong-bowling</h3><p>Töm 6 mjölkkartonger, ställ upp som kägglor, rulla en boll.</p>
 <h3>11. Memory IRL</h3><p>Vänd lock från små burkar uppochner. Barnen letar par.</p>
 <h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
-<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller färdiga instruktioner, rekvisita-tips och spellistor till alla dessa lekar — plus 8 till.</p>`,
+<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
     category: 'Tips',
     date: '25 februari 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a121220d7a9f8ed03e1dd_photo-1627764940620-90393d0e8c34.avif',
+    imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
   },
   {
     slug: 'budget-barnkalas-tips',
@@ -129,12 +217,12 @@ export const blogPosts: BlogPost[] = [
 <h3>Dekorationer: max 150 kr</h3><p>Ballonger från IKEA (29 kr för 50 st), wimpel i pappersremsor du klipper själv, blommor från trädgården. Färdiga PDF-dekorationer från oss att skriva ut hemma.</p>
 <h3>Mat: 200-300 kr</h3><p>Tre val: muffins (40 kr för 12 st), popcorn (15 kr), fruktspett (50 kr). Skippa cateringen — barnen vill ha snacks de känner igen.</p>
 <h3>Kalaspåsar: 250 kr för 10 barn</h3><p>Köp i bulk på Clas Ohlson eller Åhléns. Klistermärken, små klossar, lite godis. Sätter sammans till ca 25 kr per påse. Vår <a href="/kalasbloggen/diy-kalaspase">DIY-kalaspåse-guide</a> har fler tips.</p>
-<h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 99 kr och innehåller 20 testade lekar.</p>
+<h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 129 kr och innehåller 20 testade lekar.</p>
 <h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
 <p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
     category: 'Tips',
     date: '25 januari 2026',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673a13b4f0694f8a0b8fc662_photo-1586738730873-bdd59a596a2d.avif',
+    imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
   },
   {
     slug: 'tema-piratkalas',
@@ -153,10 +241,10 @@ export const blogPosts: BlogPost[] = [
 </ul>
 <h3>Maten</h3><p>"Skeppsskorpor" (kex), "havsvatten" (blå festis), fruktspett som "skattens juveler", piratkaka med flaggor.</p>
 <h3>Kalaspåsen</h3><p>Sjörövarpåse med guldmynt (godis), en ögonlapp, en pirat-klistermärke. Räcker långt.</p>
-<p><a href="/kalas/piratkalaset-for-4-aringar">Vårt piratkalaspaket</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
+<p><a href="/kalas/tema/piratkalas">Våra piratkalaspaket för 4- och 5-åringar</a> innehåller 20 lekar och aktiviteter, inbjudan, diplom, 20 recept och checklista — du slipper Pinterest-spiraler.</p>`,
     category: 'Tema-guide',
     date: '25 december 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/662373210fabe6fc857df4ba_Piratkalaset-4-aringar-cover.avif',
+    imageUrl: '/wf/images/blogg/piratkalaset-4-aringar.jpg',
   },
   {
     slug: 'barnkalas-mat-recept',
@@ -173,7 +261,7 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Tips:</strong> Gör det mesta dagen innan. Stressa inte med matlagning samma dag — barnen bryr sig mer om aktiviteterna.</p>`,
     category: 'Tips',
     date: '25 november 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc3301afe859e486de65d/65df99cfd7d310e5190b03c9_muffins.jpg',
+    imageUrl: '/wf/images/blogg/muffins.jpg',
   },
   {
     slug: 'kalas-tema-4-aringar',
@@ -192,7 +280,7 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Vilket ska du välja?</strong> Lyssna på barnet. 4-åringar VET vad de gillar. Fråga "vill du ha pirater, djur eller dinosaurier på ditt kalas?" och kör på svaret.</p>`,
     category: 'Tema-guide',
     date: '25 oktober 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/6623e1e4739522fe6ee458c1_Safarikalaset%20for%204-aringar.avif',
+    imageUrl: '/wf/images/blogg/safarikalaset-4-aringar.jpg',
   },
   {
     slug: '10-tips-for-att-planera-ett-barnkalas',
@@ -200,7 +288,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Här är våra bästa tips för att sätta ihop ett kalas som kommer få barnens ögon att lysa och göra planeringen rolig och enkel för dig.',
     body: `<h2>Att fixa ett barnkalas som blir magiskt för både barn och vuxna kan kännas som en utmaning – men med lite planering och inspiration går det att skapa en dag fylld av glädje, bus och minnen för livet. Här är våra bästa tips för att sätta ihop ett kalas som kommer få barnens ögon att lysa och göra planeringen rolig och enkel för dig.</h2>
 <h3>1. Börja med ett tema som barnet älskar</h3>
-<p>Temat ger både dig och barnet en chans att sätta prägel på kalaset och gör det lättare att planera allt från dekorationer till lekar. Vad sägs om ett enhörningstema för den lilla drömmaren eller ett djungeltema för de små äventyrarna? På <a href="/kalas">Kalaseriet</a> har vi samlat allt du kan behöva för att enkelt fixa temat.</p>
+<p>Temat ger både dig och barnet en chans att sätta prägel på kalaset och gör det lättare att planera allt från dekorationer till lekar. Vad sägs om ett enhörningstema för den lilla drömmaren eller ett djungeltema för de små äventyrarna? Andra populära teman är <a href="/kalas/tema/piratkalas">piratkalas</a>, <a href="/kalas/tema/superhjaltekalas">superhjältekalas</a> och <a href="/kalas/tema/rymdkalas">rymdkalas</a>. På <a href="/kalas">Kalaseriet</a> har vi samlat allt du kan behöva för att enkelt fixa temat.</p>
 <h3>2. Skicka inbjudningar som sätter stämningen</h3>
 <p>Skapa en känsla av förväntan redan från start! Oavsett om du väljer digitala eller fysiska inbjudningar, kan du matcha dem med temat. Vill du spara tid? Kika på våra färdig-designade inbjudningar som både är enkla och supersnygga. Varje nedladdning har en egen design.</p>
 <h3>3. Planera en skattjakt</h3>
@@ -222,7 +310,7 @@ export const blogPosts: BlogPost[] = [
 <p>Med dessa tips har du en bra grund för att skapa ett magiskt barnkalas som alla kommer prata om länge.</p>`,
     category: 'Tips',
     date: '25 september 2025',
-    imageUrl: 'https://cdn.prod.website-files.com/656cc33f15901291e8334d1e/673105975ce61d45f994aec1_10%20tips%20fo%CC%88r%20att%20planera%20ett%20barnkalas%20som%20alla%20kommer%20minnas.avif',
+    imageUrl: '/wf/images/blogg/10-tips-barnkalas.jpg',
   },
 ]
 
@@ -232,7 +320,12 @@ export const blogPosts: BlogPost[] = [
 export type PostOffer = { label: string; href: string }
 
 const POST_OFFERS: Record<string, PostOffer> = {
-  'tema-piratkalas': { label: 'Piratkalaset för 4-åringar', href: '/kalas/piratkalaset-for-4-aringar' },
+  'tema-piratkalas': { label: 'Alla piratkalas', href: '/kalas/tema/piratkalas' },
+  'tema-superhjaltekalas': { label: 'Alla superhjältekalas', href: '/kalas/tema/superhjaltekalas' },
+  'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
+  'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
+  'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
+  'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
   'kalas-tema-4-aringar': { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },
 }

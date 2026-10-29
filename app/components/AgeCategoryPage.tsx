@@ -5,7 +5,7 @@ import ProductGrid from './ProductGrid'
 import DiscountMarquee from './DiscountMarquee'
 import SeoText from './SeoText'
 import AgeCTAs from './AgeCTAs'
-import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID } from '../../lib/seo'
+import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export type AgeGroup = '4' | '5' | '6' | '7-8'
 
@@ -33,7 +33,7 @@ export const AGE_COPY: Record<AgeGroup, Copy> = {
     paragraphs: [
       'Femåringar klarar längre lekar och mer avancerade regler än fyraåringar, vilket öppnar för tävlingsmoment, lagbaserade lekar och skattjakter med flera ledtrådar. Räkna med att ett barnkalas för 5-åringar kan pågå 2–3 timmar, och planera in en tydlig höjdpunkt ungefär mitt i kalaset.',
       'Våra kalaspaket för 5-åringar innehåller 20 testade kalaslekar med olika svårighetsgrad, så att du kan anpassa efter barngruppen. Utöver lekarna får du 20 recept med allergialternativ, inbjudningsmall att skriva ut, diplom, dekorationstips, Spotify-spellista och ett färdigt körschema.',
-      'Bland de mest bokade temana för femåringar hittar du Superhjältekalaset, Piratkalaset, Safarikalaset och Vilda västern-kalaset. Alla paket kostar 99 kr, laddas ner direkt efter köp och skrivs ut hemma på vanlig A4-skrivare.',
+      'Bland de mest bokade temana för femåringar hittar du Superhjältekalaset, Piratkalaset, Safarikalaset och Vilda västern-kalaset. Alla paket kostar 129 kr, laddas ner direkt efter köp och skrivs ut hemma på vanlig A4-skrivare.',
     ],
   },
   '6': {
@@ -51,7 +51,7 @@ export const AGE_COPY: Record<AgeGroup, Copy> = {
     paragraphs: [
       'Sju- och åttaåringar vill ha utmaning och egen delaktighet. Lekar med poäng, lag och tydliga vinnarmoment fungerar bra, liksom aktiviteter där barnen får skapa något eget att ta med hem. Ett barnkalas för den här åldern klarar 3 timmar utan problem.',
       'Våra kalaspaket för 7- och 8-åringar innehåller 20 kalaslekar anpassade för äldre barn, 20 recept, inbjudningsmall, diplom, dekorationstips, spellista och ett körschema som håller ihop dagen.',
-      'Discokalaset, Filmkvällskalaset, Sportkalaset och Konstnärskalaset hör till favoriterna i den här åldersgruppen. Ladda ner direkt för 99 kr och skriv ut hemma — inget att beställa hem och vänta på.',
+      'Discokalaset, Filmkvällskalaset, Sportkalaset och Konstnärskalaset hör till favoriterna i den här åldersgruppen. Ladda ner direkt för 129 kr och skriv ut hemma — inget att beställa hem och vänta på.',
     ],
   },
 }
@@ -64,10 +64,11 @@ export function categoryMetadata(age: AgeGroup) {
   const count = fallbackProducts.filter(p => p.ageGroup === age).length
 
   const title = `Kalas för ${ageLabel} – ${count} kalaspaket med lekar & recept`
-  const description = `${count} kompletta kalaspaket för barnkalas för ${ageLabel}. Varje paket har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 99 kr.`
+  const description = `${count} kalaspaket för barnkalas för ${ageLabel}. Varje paket har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 129 kr.`
 
   return {
-    title,
+    // Site name left out, as on product pages: keeps the title within what Google shows.
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: {
@@ -77,6 +78,7 @@ export function categoryMetadata(age: AgeGroup) {
       locale: 'sv_SE',
       url: canonical(path),
       siteName: 'Kalaseriet',
+      images: [OG_IMAGE],
     },
   }
 }

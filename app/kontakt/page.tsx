@@ -186,7 +186,6 @@ export default function KontaktPage() {
               {[
                 { label: 'Instagram', emoji: '📸', href: 'https://www.instagram.com/kalaseriet' },
                 { label: 'Facebook', emoji: '👍', href: 'https://www.facebook.com/kalaseriet' },
-                { label: 'TikTok', emoji: '🎵', href: 'https://www.tiktok.com/@kalaseriet' },
               ].map(s => (
                 <a
                   key={s.label}

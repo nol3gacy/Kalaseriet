@@ -9,6 +9,8 @@ import ProductGrid from '../../components/ProductGrid'
 import WfSlider from '../../components/wf/WfSlider'
 import Accordion from '../../components/wf/Accordion'
 import { getProductExtra } from '../../../lib/data/products-extra'
+import { themePageFor } from '../../../lib/data/themes'
+import GuideLink from '../../components/GuideLink'
 import { includedItems } from '../../../lib/data/included-items'
 import { randomTestimonials } from '../../../lib/data/testimonials'
 import { faqs } from '../../../lib/data/faq'
@@ -39,11 +41,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Keyword-led title: theme + "kalas för X-åringar" is the actual search
   // phrasing, so lead with it rather than the bare brand product name.
+  // No " | Kalaseriet" suffix: Google shows the site name above the result,
+  // and the suffix pushed these titles past the ~60 characters it displays.
   const title = `${product.name} för ${ageLabel} – lekar, recept & inbjudan`
-  const description = `${product.description} Kalaspaketet innehåller 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för ${product.price} kr.`
+  // Price and contents first enough to fit the ~155 characters shown in results;
+  // the product's opening sentence keeps each description distinct.
+  // Opening sentence(s), at least 25 characters (one product opens with just "Arrr!").
+  const opener = product.description.match(/^.{25,}?[.!?](?=\s|$)/)?.[0] ?? product.description
+  const description = `${opener} Kalaspaket för ${ageLabel}, ${product.price} kr: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema.`
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: {
@@ -72,7 +80,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const description = extra?.longDescription ?? product.description
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
-  const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup)
+  const themePage = product.theme ? themePageFor(product.theme) : undefined
+  const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup && p.slug.current !== slug)
 
   const path = `/kalas/${slug}`
   const categoryPath = `/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`
@@ -141,6 +150,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <a href={`/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`} className="link-block w-inline-block">
               <div className="tag-text">Kalas för {ageLabel}</div>
             </a>
+            {themePage && (
+              <a href={`/kalas/tema/${themePage.slug}`} className="link-block w-inline-block">
+                <div className="tag-text">Alla {themePage.heading.toLowerCase()}</div>
+              </a>
+            )}
             <h1 className="heading">{product.name}</h1>
 
             <ProductBuySection product={product} />
@@ -149,10 +163,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               Digital nedladdning: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista &amp; körschema.
             </p>
 
+            <ol aria-label="Så funkar det" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.25rem', listStyle: 'none', padding: 0, margin: '0 0 1.25rem', fontWeight: 700, color: 'var(--color--indigo)' }}>
+              <li>1. Köp</li>
+              <li>2. Ladda ner direkt</li>
+              <li>3. Skriv ut &amp; fira</li>
+            </ol>
+
             <div className="text">{description}</div>
+            {themePage?.guide && <GuideLink slug={themePage.guide} theme={themePage.heading} />}
 
             <div className="contains-wrapper">
-              <h3 className="heading-4">Nedladdningen innehåller:</h3>
+              {/* h2 keeps the heading order after the h1; line-height matches the h3 it was */}
+              <h2 className="heading-4" style={{ lineHeight: '30px' }}>Nedladdningen innehåller:</h2>
               <div className="w-dyn-list">
                 <div role="list" className="collection-list-4 w-dyn-items">
                   {includedItems.map(item => (
