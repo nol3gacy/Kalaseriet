@@ -47,7 +47,7 @@ export default function Navbar() {
       >
         <div className="nav-container">
           <Link href="/" className="brand w-nav-brand" aria-label="Kalaseriet, till startsidan" onClick={() => setMenuOpen(false)}>
-            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
+            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" poster="/wf/images/logo.svg" />
           </Link>
           <nav role="navigation" className="nav-menu-wrapper w-nav-menu">
             <div className="nav-menu">
@@ -80,7 +80,7 @@ export default function Navbar() {
         aria-label="Kalaseriet"
         style={{ transform: hidden ? 'translateY(calc(-100% - 2rem))' : 'translateY(0)', transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)' }}
       >
-        <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
+        <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" poster="/wf/images/logo.svg" />
       </Link>
 
       {/* Cart wrapper — separate fixed pill (opens MiniCart) */}
