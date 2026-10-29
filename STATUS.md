@@ -45,7 +45,7 @@
 - Price 129 kr for all 33, struck-through 199 kr removed (Joel's decision): PR #7 (work/price-129, based on this branch). Site and Worker must go live together.
 - Branch work/listing-review: age filter on /kalas and home uses real checkboxes (keyboard and screen reader). POPPIS/NYHET badges have no data behind them: question for Joel.
 - Live checkout checked (no payment): 129,00 kr, product name with age, promotion-code field, card/Klarna/Apple Pay (varies). KALAS20 is rejected as invalid: PR #8 hides the offer until the code exists in Stripe (Joel).
-- Open PRs for Joel: #8 (hide KALAS20 until it exists), #9 (age filter keyboard fix), #10 (age pages link their themes, stacked on #9), #12 (cirkuskalas guide, stacked on #10).
+- Open PRs for Joel: #8 (hide KALAS20 until it exists), #9 (age filter keyboard fix), #10 (age pages link their themes, stacked on #9), #12 (cirkuskalas and robotkalas guides, stacked on #10).
 - Vercel builds only main now (Ignored Build Step, no PR comments); no preview links for branches, test locally.
 - CSS weight measured and dropped as a task: unused CSS is below Lighthouse's threshold, FCP 1.5 s; experimental.inlineCss made each HTML page 14 to 95 KB gzip with no FCP gain.
 - 2026-10-21 21:40: Backloggen var tom: skrev 9 prioriterade punkter. Gjorde punkt 1 på grenen work/backlog-buy-feedback (ej deployad, ej mergad): Köp nu-knappen visar nu 'Öppnar kassan…', kan inte dubbelklickas och visar ett tydligt fel istället för att tyst skicka kunden till varukorgen. Bygget går igenom.
@@ -130,3 +130,4 @@
 - 2026-10-29 19:47: Backloggen hade bara punkter som väntar på Joel, så jag fyllde på med fyra egna (länkar på åldersidorna, fler temaguider, genomgång av orderbekräftelsen, 'finns även för X-åringar' på tacksidan) och slog ihop småsaker. Gjort: åldersidorna länkar nu till temasidorna som finns för respektive ålder (PR #10, ovanpå PR #9). Filterrättningen fick också en PR (#9). Öppna PR:er för Joel: #8 (dölj KALAS20), #9, #10. Inget deployat.
 - 2026-10-29 20:31: Ny guide i Kalasbloggen: Cirkuskalas (6–8 år), länkad från temasidan och båda cirkusprodukterna. PR #11, ovanpå #10, ej mergad. Öppna PR:er för Joel: #8 (dölj KALAS20 – brådskande), #9, #10, #11. Nästa: guide för robotkalas.
 - 2026-10-29 20:32: Rättelse: cirkusguiden är PR #12, inte #11.
+- 2026-10-29 20:35: Noterat: Vercel bygger bara main, inga förhandslänkar; jag testar lokalt som hittills. Strök backlogpunkten om Preview-variablerna.
