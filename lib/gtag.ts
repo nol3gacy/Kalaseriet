@@ -1,3 +1,5 @@
+import { PRODUCT_NAMES } from './product-catalog'
+
 // gtag.js only reads Arguments objects from dataLayer; a pushed plain array
 // (e.g. from rest params) is silently ignored, so consent and purchases never land.
 export const gtag: (...args: unknown[]) => void = function () {
@@ -17,7 +19,8 @@ export function trackCart(event: keyof typeof META_EVENT, items: LineItem[]) {
   gtag('event', event, {
     currency: 'SEK',
     value,
-    items: items.map(i => ({ item_id: i.productId, item_name: i.productName, price: i.price, quantity: i.quantity })),
+    // Same item_name as purchase on /tack (the Worker's catalogue name, with age), so GA4 doesn't split one product in two.
+    items: items.map(i => ({ item_id: i.productId, item_name: PRODUCT_NAMES[i.productId] ?? i.productName, price: i.price, quantity: i.quantity })),
   })
   window.fbq?.('track', META_EVENT[event], {
     value,

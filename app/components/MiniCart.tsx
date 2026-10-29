@@ -210,6 +210,11 @@ export default function MiniCart() {
                     lineHeight: '92%',
                     margin: 0,
                   }}>{product.name}</h3>
+                  {product.ageGroup && (
+                    <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#4e4e4e', margin: '-0.25rem 0 0' }}>
+                      för {product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup}-åringar
+                    </p>
+                  )}
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
