@@ -19,7 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/kalasbloggen`,      lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
     { url: `${BASE_URL}/sa-funkar-det`,     lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/faq`,               lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE_URL}/spellistor`,        lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/om-kalaseriet`,     lastModified: now, changeFrequency: 'yearly',  priority: 0.5 },
     { url: `${BASE_URL}/kontakt`,           lastModified: now, changeFrequency: 'yearly',  priority: 0.4 },
     { url: `${BASE_URL}/feedback`,          lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },

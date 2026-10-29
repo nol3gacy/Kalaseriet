@@ -17,7 +17,6 @@ export const LOGO_URL = `${BASE_URL}/wf/images/webclip.png`
 export const SOCIAL_PROFILES = [
   'https://www.instagram.com/kalaseriet',
   'https://www.facebook.com/kalaseriet',
-  'https://www.tiktok.com/@kalaseriet',
 ]
 
 export function canonical(path = '/') {
