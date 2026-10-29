@@ -35,6 +35,8 @@ who knows Swedish consumer and data-protection law. It is not legal advice.
    be the lowest price charged in the 30 days before the discount. If the packages have
    sold at 99 kr all along, 199 kr is a misleading reference price. Joel: has 199 kr
    ever been the real price? If not, drop the strike price (one field per product).
+   **Decided 2026-10-29:** Joel: never the real price; price 129 kr, strike price removed
+   (PR #7).
 
 ## Mismatches with what the code does
 
