@@ -45,6 +45,7 @@
 - Price 129 kr for all 33, struck-through 199 kr removed (Joel's decision): PR #7 (work/price-129, based on this branch). Site and Worker must go live together.
 - Branch work/listing-review: age filter on /kalas and home uses real checkboxes (keyboard and screen reader). POPPIS/NYHET badges have no data behind them: question for Joel.
 - Live checkout checked (no payment): 129,00 kr, product name with age, promotion-code field, card/Klarna/Apple Pay (varies). KALAS20 is rejected as invalid: PR #8 hides the offer until the code exists in Stripe (Joel).
+- Open PRs for Joel: #8 (hide KALAS20 until it exists), #9 (age filter keyboard fix), #10 (age pages link their themes, stacked on #9).
 - CSS weight measured and dropped as a task: unused CSS is below Lighthouse's threshold, FCP 1.5 s; experimental.inlineCss made each HTML page 14 to 95 KB gzip with no FCP gain.
 - 2026-10-21 21:40: Backloggen var tom: skrev 9 prioriterade punkter. Gjorde punkt 1 på grenen work/backlog-buy-feedback (ej deployad, ej mergad): Köp nu-knappen visar nu 'Öppnar kassan…', kan inte dubbelklickas och visar ett tydligt fel istället för att tyst skicka kunden till varukorgen. Bygget går igenom.
 - 2026-10-21 22:25: Punkt 1 klar på grenen work/backlog-buy-feedback (ej deployad): kassaknappen i /varukorg hade redan laddningsläge, men visade engelska/råa felmeddelanden. Nu visas alltid ett svenskt, begripligt fel om kassan inte öppnas, och koden klarar både url och checkoutUrl från Worker. Bygget går igenom.
