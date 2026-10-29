@@ -29,6 +29,50 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-rymdkalas',
+    title: 'Rymdkalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett rymdkalas för barn 4 till 8 år, från mörklagd raket och planetjakt till rymdmat och kalaspåse.',
+    body: `<h2>Rymdkalas passar lika bra för fyraåringar som drömmer om stjärnor som för åttaåringar som vill bli astronauter. Här är vår guide till ett kalas i omloppsbana.</h2>
+<h3>Stämningen</h3><p>Mörkblått, svart och silver. Dra för gardinerna, häng upp stjärnor av folie i taket och använd en ficklampa eller en stjärnprojektor om du har en. En stor kartong med fönster blir en raket som barnen kan krypa in i.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en biljett till en rymdresa, med avgångstid, "uppskjutningsplats" (er adress) och en ruta för passagerarens namn. Barnen tycker om att visa upp sin biljett när de kommer.</p>
+<h3>Utklädnad</h3><p>Ett par tomma petflaskor som spraymålas silver och fästs med band blir syrgastuber. En vit overall eller pyjamas fungerar som rymddräkt, och en hjälm går att göra av en papperskasse med ett utklippt visir.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Planetjakten</strong>: ballonger i olika färger är planeter som är gömda i huset. Laget som hittar alla först har "kartlagt solsystemet".</li>
+<li><strong>Uppskjutningen</strong>: alla räknar ner från tio och hoppar så högt de kan på noll. Upprepa mellan lekarna, det blir kalasets signal för att byta aktivitet.</li>
+<li><strong>Månpromenaden</strong>: barnen ska ta sig över golvet i "låg gravitation", i slow motion, utan att röra vid "kratrarna" (kuddar).</li>
+<li><strong>Rymdvarelsen</strong>: en variant av kurragömma där den som letar är en rymdvarelse och de andra är astronauter som gömmer sig i mörkret med ficklampa.</li>
+</ul>
+<h3>Maten</h3><p>"Asteroider" (popcorn eller chokladbollar), "planeter" av melonbollar, "rymdmat" i form av smoothie i flaska med sugrör och en mörkblå tårta med strössel som stjärnor.</p>
+<h3>Kalaspåsen</h3><p>Självlysande stjärnor till taket, ett klistermärke med en raket och ett astronautdiplom.</p>
+<p><a href="/kalas/tema/rymdkalas">Rymdkalaset finns för 4- och 5-åringar och Astronautkalaset för 6–8 år</a>, båda med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/rymdkalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-safarikalas',
+    title: 'Safarikalas: Guide till dekoration, lekar och meny',
+    summary: 'Allt du behöver för ett safarikalas för 4- och 5-åringar, från djurspårning och kikare till savannmat och kalaspåse.',
+    body: `<h2>Safarikalas är perfekt för barn som älskar djur, och det går att ordna med det mesta du redan har hemma. Här är vår guide till en dag på savannen.</h2>
+<h3>Stämningen</h3><p>Grönt, beige och djurmönster. Häng gröna pappersremsor som lianer i dörröppningen, ställ ut gosedjur som vilda djur runt om i rummet och spela djurläten eller trummusik när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en kallelse till en safariexpedition: "Guider sökes för att hitta savannens djur". Ett tryckt tassavtryck i hörnet gör den direkt igenkännbar.</p>
+<h3>Utklädnad</h3><p>Keps eller solhatt, en beige skjorta och en ryggsäck räcker för en safariguide. Den som hellre vill vara djur kan få en mask av papptallrik med öron, eller ansiktsmålning med morrhår.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Djurspaningen</strong>: gosedjur eller bilder av djur är gömda i huset. Barnen letar med kikare gjorda av två toarullar och bockar av djuren på en lista med bilder.</li>
+<li><strong>Härma djuret</strong>: en vuxen visar en bild av ett djur och barnen rör sig och låter som det, från smygande lejon till trampande elefanter.</li>
+<li><strong>Vattenhålet</strong>: en stoldans där stolarna är "vattenhål" och djuren måste hitta ett när musiken tystnar.</li>
+<li><strong>Spåra djuren</strong>: följ fotspår av papper genom huset till en låda med en överraskning.</li>
+</ul>
+<h3>Maten</h3><p>"Apbröd" (bananer eller bananbröd), fruktspett som "papegojor", ostbågar som "lejonsvansar" och en tårta med djur i marsipan eller plast.</p>
+<h3>Kalaspåsen</h3><p>Ett litet plastdjur, en kikare av toarullar som barnen gjort själva och ett diplom som safariguide.</p>
+<p><a href="/kalas/tema/safarikalas">Safarikalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/safarikalaset-for-5-aringar.jpg',
+  },
+  {
     slug: 'tema-superhjaltekalas',
     title: 'Superhjältekalas: Guide till lekar, utklädnad och mat',
     summary: 'Så gör du ett superhjältekalas där varje barn får vara hjälte för en dag, från mantlar och uppdrag till hjältemat och kalaspåse.',
@@ -279,6 +323,8 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-piratkalas': { label: 'Alla piratkalas', href: '/kalas/tema/piratkalas' },
   'tema-superhjaltekalas': { label: 'Alla superhjältekalas', href: '/kalas/tema/superhjaltekalas' },
   'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
+  'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
+  'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
   'kalas-tema-4-aringar': { label: 'Kalas för 4-åringar', href: '/kalas/4-aringar' },

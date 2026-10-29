@@ -56,6 +56,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'rymdkalas',
     themes: ['rymd', 'astronaut'],
+    guide: 'tema-rymdkalas',
     heading: 'Rymdkalas',
     description: 'Rymdkalas för 4 till 8 år: Rymdkalaset och Astronautkalaset med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett rymdkalas',
@@ -68,6 +69,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'safarikalas',
     themes: ['safari'],
+    guide: 'tema-safarikalas',
     heading: 'Safarikalas',
     description: 'Safarikalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett safarikalas',
