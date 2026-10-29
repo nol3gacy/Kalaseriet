@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
@@ -15,6 +15,7 @@ export default function MiniCart() {
   const router = useRouter()
   const { items, removeItem, miniCartOpen, closeMiniCart, total } = useCart()
   const panelRef = useRef<HTMLDivElement>(null)
+  const [busy, setBusy] = useState(false)
 
   // ESC closes
   useEffect(() => {
@@ -53,6 +54,8 @@ export default function MiniCart() {
   }, [miniCartOpen])
 
   const handleCheckout = async () => {
+    if (busy) return  // a double click would otherwise open two Stripe sessions
+    setBusy(true)
     const lineItems = items.map(({ product, quantity }) => ({
       productId: product._id,
       productName: product.name,
@@ -78,6 +81,7 @@ export default function MiniCart() {
       router.push('/varukorg')
       closeMiniCart()
     }
+    setBusy(false)
   }
 
   if (!miniCartOpen) return null
@@ -278,15 +282,18 @@ export default function MiniCart() {
             </div>
             <button
               onClick={handleCheckout}
+              aria-disabled={busy}
+              aria-busy={busy}
               className="btn-primary"
               style={{
+                cursor: busy ? 'progress' : undefined,
                 width: '100%',
                 fontSize: '1.5rem',
                 padding: '1.3rem 2rem',
                 justifyContent: 'center',
               }}
             >
-              Till kassan
+              {busy ? 'Öppnar kassan…' : 'Till kassan'}
             </button>
           </div>
         )}

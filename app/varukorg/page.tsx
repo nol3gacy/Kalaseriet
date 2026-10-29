@@ -15,6 +15,7 @@ export default function VarukorgPage() {
   const [error, setError] = useState(false)
 
   async function handleCheckout() {
+    if (loading) return  // aria-disabled (keeps focus), so guard double clicks here
     setLoading(true)
     setError(false)
     const lineItems = items.map(item => ({
@@ -134,8 +135,8 @@ export default function VarukorgPage() {
 
             <button
               onClick={handleCheckout}
-              disabled={loading}
-              className="btn-primary w-full !text-xl disabled:opacity-60"
+              aria-disabled={loading}
+              className="btn-primary w-full !text-xl aria-disabled:opacity-60"
             >
               {loading ? 'Öppnar kassan…' : `Gå till betalning – ${total} kr`}
             </button>

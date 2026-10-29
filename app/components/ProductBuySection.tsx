@@ -36,6 +36,8 @@ export default function ProductBuySection({ product }: { product: Product }) {
     trackCart('view_item', [{ productId: product._id, productName: product.name, price: product.price, quantity: 1 }])
   }, [product._id, product.name, product.price])
 
+  // aria-disabled, not disabled, while busy: a disabled button drops keyboard focus to
+  // the page start. The busy guard below keeps double clicks out.
   const buyNow = async () => {
     if (busy) return
     setBusy(true)
@@ -85,7 +87,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
           <Price product={product} />
           <div className="add-to-cart">
             <form className="w-commerce-commerceaddtocartform default-state" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
+              <button onClick={buyNow} aria-disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button" style={busy ? { cursor: 'progress' } : undefined}>{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>
@@ -111,7 +113,7 @@ export default function ProductBuySection({ product }: { product: Product }) {
           <Price product={product} fixed />
           <div>
             <form className="w-commerce-commerceaddtocartform default-state-3" onSubmit={e => e.preventDefault()}>
-              <button onClick={buyNow} disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button">{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
+              <button onClick={buyNow} aria-disabled={busy} aria-busy={busy} className="w-commerce-commercebuynowbutton button is--special" type="button" style={busy ? { cursor: 'progress' } : undefined}>{busy ? 'Öppnar kassan…' : 'Köp nu ›'}</button>
             </form>
           </div>
         </div>
