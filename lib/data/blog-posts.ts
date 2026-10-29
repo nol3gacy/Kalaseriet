@@ -29,6 +29,28 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-cirkuskalas',
+    title: 'Cirkuskalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett cirkuskalas för barn 6 till 8 år, där varje gäst blir artist, från manege och jonglering till popcorn och föreställning.',
+    body: `<h2>Cirkuskalas passar barn som gillar att visa vad de kan. Här är vår guide till ett kalas där alla gäster är artister och kvällen slutar med en föreställning.</h2>
+<h3>Stämningen</h3><p>Rött, gult och vitt i ränder. Häng upp ballonger och vimplar i taket, lägg ett rep i en cirkel på golvet som manege och ställ stolarna runt den som publikplatser. Klassisk cirkusmusik med trumvirvel gör resten.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en biljett till "Den stora föreställningen", med tid, plats och en rad för gästens artistnamn. Be gärna gästerna fundera på vilket nummer de vill göra.</p>
+<h3>Utklädnad</h3><p>En randig tröja, hängslen och en röd näsa räcker för en clown. Den som hellre vill vara akrobat, trollkarl eller cirkusdirektör kan komma i hatt och kavaj. Ansiktsmålning på plats är ett bra sätt att starta kalaset.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Artistskolan</strong>: stationer där barnen tränar på att jonglera med sjalar, balansera en bok på huvudet och gå på ett rep som ligger på golvet.</li>
+<li><strong>Clownstafetten</strong>: lag som springer med stora skor eller en ballong mellan knäna och lämnar över en clownnäsa.</li>
+<li><strong>Trollkarlens låda</strong>: gissa vad som döljs i en låda bara genom att känna, en lugnare lek mitt i kalaset.</li>
+<li><strong>Föreställningen</strong>: avsluta med att varje barn visar sitt nummer i manegen, gärna för föräldrarna vid hämtningen.</li>
+</ul>
+<h3>Maten</h3><p>Popcorn i strutar, "clownsmörgåsar" med ansikten av grönsaker, fruktspett i cirkusfärger och en randig tårta. Saft serverad i små plastglas med sugrör som i en kiosk.</p>
+<h3>Kalaspåsen</h3><p>En röd clownnäsa, några ballonger och ett diplom som "Kvällens stjärnartist".</p>
+<p><a href="/kalas/tema/cirkuskalas">Cirkuskalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/cirkuskalaset-for-6-aringar.jpg',
+  },
+  {
     slug: 'tema-rymdkalas',
     title: 'Rymdkalas: Guide till dekoration, lekar och meny',
     summary: 'Så gör du ett rymdkalas för barn 4 till 8 år, från mörklagd raket och planetjakt till rymdmat och kalaspåse.',
@@ -324,6 +346,7 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-superhjaltekalas': { label: 'Alla superhjältekalas', href: '/kalas/tema/superhjaltekalas' },
   'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
   'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
+  'tema-cirkuskalas': { label: 'Alla cirkuskalas', href: '/kalas/tema/cirkuskalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },

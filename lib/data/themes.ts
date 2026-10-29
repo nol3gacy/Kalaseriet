@@ -82,6 +82,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'cirkuskalas',
     themes: ['cirkus'],
+    guide: 'tema-cirkuskalas',
     heading: 'Cirkuskalas',
     description: 'Cirkuskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett cirkuskalas',
