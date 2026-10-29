@@ -64,10 +64,11 @@ export function categoryMetadata(age: AgeGroup) {
   const count = fallbackProducts.filter(p => p.ageGroup === age).length
 
   const title = `Kalas för ${ageLabel} – ${count} kalaspaket med lekar & recept`
-  const description = `${count} kompletta kalaspaket för barnkalas för ${ageLabel}. Varje paket har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 99 kr.`
+  const description = `${count} kalaspaket för barnkalas för ${ageLabel}. Varje paket har 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för 99 kr.`
 
   return {
-    title,
+    // Site name left out, as on product pages: keeps the title within what Google shows.
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: {

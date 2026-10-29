@@ -41,11 +41,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Keyword-led title: theme + "kalas för X-åringar" is the actual search
   // phrasing, so lead with it rather than the bare brand product name.
+  // No " | Kalaseriet" suffix: Google shows the site name above the result,
+  // and the suffix pushed these titles past the ~60 characters it displays.
   const title = `${product.name} för ${ageLabel} – lekar, recept & inbjudan`
-  const description = `${product.description} Kalaspaketet innehåller 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema. Ladda ner direkt för ${product.price} kr.`
+  // Price and contents first enough to fit the ~155 characters shown in results;
+  // the product's opening sentence keeps each description distinct.
+  // Opening sentence(s), at least 25 characters (one product opens with just "Arrr!").
+  const opener = product.description.match(/^.{25,}?[.!?](?=\s|$)/)?.[0] ?? product.description
+  const description = `${opener} Kalaspaket för ${ageLabel}, ${product.price} kr: 20 kalaslekar, 20 recept, inbjudan, diplom, checklista & körschema.`
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: path },
     openGraph: {

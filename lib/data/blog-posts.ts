@@ -137,7 +137,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: 'checklista-allt-du-behover-for-ett-lyckat-barnkalas',
     title: 'Checklista: Allt du behöver för ett lyckat barnkalas',
-    summary: 'Här är de viktigaste punkterna att tänka på.',
+    summary: 'Checklista för barnkalaset: allt från gästlista, inbjudan och tema till mat, lekar, kalaspåsar och dagen efter, punkt för punkt.',
     body: `<h2>Att hålla koll på allt inför ett barnkalas kan kännas överväldigande, men med en praktisk checklista blir det både enkelt och roligt att planera. Här är de viktigaste punkterna att tänka på.</h2>
 <h3>Dekorationer</h3>
 <p>Välj ett tema som barnet älskar och dekorera därefter. Tematiska tallrikar, muggar och ballonger kan förvandla vilket rum som helst till en festlig plats. Våra färdiga temapaket gör det enkelt att skapa en röd tråd genom hela kalaset.</p>
