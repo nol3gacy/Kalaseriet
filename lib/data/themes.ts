@@ -95,6 +95,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'robotkalas',
     themes: ['robot'],
+    guide: 'tema-robotkalas',
     heading: 'Robotkalas',
     description: 'Robotkalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett robotkalas',

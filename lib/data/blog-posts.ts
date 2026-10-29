@@ -29,6 +29,28 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-robotkalas',
+    title: 'Robotkalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett robotkalas för 4- och 5-åringar, från robotdans och kartongrobotar till robotmat och kalaspåse.',
+    body: `<h2>Robotkalas är perfekt för små teknikfantaster, och det mesta går att bygga av sådant som annars hamnar i återvinningen. Här är vår guide till ett kalas i robotfabriken.</h2>
+<h3>Stämningen</h3><p>Silver, blått och lite neonfärger. Klä några kartonger i aluminiumfolie och ställ dem som "maskiner" i rummet, häng upp ljusslingor och spela elektronisk musik med pip och surr när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett meddelande från robotfabriken: "Ny robot sökes för uppdrag den 12 maj". En ritad robot med kalasdetaljerna på displayen gör den rolig att läsa högt för barnet.</p>
+<h3>Utklädnad</h3><p>En kartong med armhål blir robotkropp, och en mindre kartong eller en papperspåse blir huvud. Kapsyler, knappar och folie som limmas på ger panel och lampor. Bygg gärna dräkterna tillsammans som första aktivitet.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Robotdansen</strong>: barnen dansar som robotar med stela armar och fryser i en robotpose när musiken tystnar.</li>
+<li><strong>Robotkommandon</strong>: en vuxen är robotchef och ger kommandon som "gå tre steg framåt" eller "snurra ett varv". Den som gör fel blir hjälprobot.</li>
+<li><strong>Bygg en robot</strong>: lag bygger en robotkompis av kartonger, toarullar och tejp på tio minuter.</li>
+<li><strong>Batteriladdning</strong>: en lugn stund där robotarna "laddar" med en saga eller ett pussel innan tårtan.</li>
+</ul>
+<h3>Maten</h3><p>"Muttrar och skruvar" av ostbågar och kringlor, smörgåsar utstansade som kugghjul, grönsaker med dipp som "kablar" och en tårta med en robot av godis på toppen.</p>
+<h3>Kalaspåsen</h3><p>Robotklistermärken, ett litet pyssel att bygga hemma och ett diplom som "Certifierad robotingenjör".</p>
+<p><a href="/kalas/tema/robotkalas">Robotkalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/robotkalaset-for-5-aringar.jpg',
+  },
+  {
     slug: 'tema-cirkuskalas',
     title: 'Cirkuskalas: Guide till dekoration, lekar och meny',
     summary: 'Så gör du ett cirkuskalas för barn 6 till 8 år, där varje gäst blir artist, från manege och jonglering till popcorn och föreställning.',
@@ -347,6 +369,7 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
   'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
   'tema-cirkuskalas': { label: 'Alla cirkuskalas', href: '/kalas/tema/cirkuskalas' },
+  'tema-robotkalas': { label: 'Alla robotkalas', href: '/kalas/tema/robotkalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
