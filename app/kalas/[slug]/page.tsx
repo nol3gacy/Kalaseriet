@@ -10,6 +10,7 @@ import WfSlider from '../../components/wf/WfSlider'
 import Accordion from '../../components/wf/Accordion'
 import { getProductExtra } from '../../../lib/data/products-extra'
 import { themePageFor } from '../../../lib/data/themes'
+import GuideLink from '../../components/GuideLink'
 import { includedItems } from '../../../lib/data/included-items'
 import { randomTestimonials } from '../../../lib/data/testimonials'
 import { faqs } from '../../../lib/data/faq'
@@ -163,6 +164,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </ol>
 
             <div className="text">{description}</div>
+            {themePage?.guide && <GuideLink slug={themePage.guide} theme={themePage.heading} />}
 
             <div className="contains-wrapper">
               {/* h2 keeps the heading order after the h1; line-height matches the h3 it was */}

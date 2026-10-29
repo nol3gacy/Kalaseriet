@@ -9,12 +9,15 @@ export type ThemePage = {
   description: string
   seoHeading: string
   paragraphs: string[]
+  /** Blog theme guide slug (/kalasbloggen/<guide>), if one exists. */
+  guide?: string
 }
 
 export const themePages: ThemePage[] = [
   {
     slug: 'piratkalas',
     themes: ['pirat'],
+    guide: 'tema-piratkalas',
     heading: 'Piratkalas',
     description: 'Piratkalas för barn: kompletta kalaspaket med skattjakt-känsla, lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett piratkalas',
@@ -27,6 +30,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'superhjaltekalas',
     themes: ['superhjälte'],
+    guide: 'tema-superhjaltekalas',
     heading: 'Superhjältekalas',
     description: 'Superhjältekalas för 4-, 5- och 6-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett superhjältekalas',
@@ -39,6 +43,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'dinosauriekalas',
     themes: ['dinosaurie'],
+    guide: 'tema-dinosauriekalas',
     heading: 'Dinosauriekalas',
     description: 'Dinosauriekalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett dinosauriekalas',

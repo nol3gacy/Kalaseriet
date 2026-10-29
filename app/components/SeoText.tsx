@@ -1,4 +1,4 @@
-export default function SeoText({ heading, paragraphs }: { heading: string; paragraphs: string[] }) {
+export default function SeoText({ heading, paragraphs, children }: { heading: string; paragraphs: string[]; children?: React.ReactNode }) {
   return (
     <section style={{ padding: '4rem 1.5rem', backgroundColor: '#faf1ef' }}>
       <div style={{ maxWidth: '780px', margin: '0 auto' }}>
@@ -21,6 +21,7 @@ export default function SeoText({ heading, paragraphs }: { heading: string; para
             }}>{p}</p>
           ))}
         </div>
+        {children}
       </div>
     </section>
   )
