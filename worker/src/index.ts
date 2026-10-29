@@ -132,6 +132,10 @@ async function handleCheckout(request: Request, stripe: Stripe, cors: HeadersIni
       cancel_url: `${siteOrigin}/varukorg`,
       locale: 'sv',
       billing_address_collection: 'auto',
+      // The site advertises KALAS20 on every page ("Lägg till i kassan sen");
+      // without this Stripe Checkout has no field to enter it in. The code itself
+      // must exist as a promotion code in the Stripe Dashboard.
+      allow_promotion_codes: true,
       metadata: { items: itemsMeta },
     })
 
