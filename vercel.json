@@ -1,4 +1,5 @@
 {
+  "git": { "deploymentEnabled": { "work/*": false } },
   "redirects": [
     { "source": "/product/:slug*", "destination": "/kalas/:slug*", "permanent": true },
     { "source": "/category/kalas-for-:age", "destination": "/kalas/:age", "permanent": true },
