@@ -5,7 +5,7 @@ Live site with real customers: work on a branch, never deploy, propose to Joel.
 
 1. (Blocked: needs real review data from Joel) Real per-product reviews, no fabricated ratings.
 2. Newsletter/lead capture backend (form exists without backend); needs Joel's OK for any email service.
-3. SEO sweep over every built page (script over out/*.html): duplicate or too long titles and descriptions, exactly one h1, images without alt, internal links that 404 (old Webflow paths in blog bodies, etc.). Fix what it finds.
+3. /tack after purchase: check that it helps the buyer finish (download links, print tips, what to do if the email is missing) and offers one relevant next step, e.g. the theme guide for the theme they bought. Purchase-flow change on a live shop: build on the branch, Joel decides.
 4. Deploy the Worker + site with the new /contact endpoint, then send one test message through /kontakt and /feedback (Joel decides: live change). Consider rate limiting /contact (Cloudflare rule) if spam shows up.
 5. Connect Analytics (funnel view_item, add_to_cart, begin_checkout, purchase to GA4 and Meta now on the branch)/Search Console/Stripe to the control room (Joel: `node company-data.mjs auth` in No legacy OS/mini, then KALASERIET_GA4_PROPERTY / _GSC_SITE / _STRIPE_KEY in ~/.nolegacy.env). Merge the gtag fix first or GA4 shows no purchases.
 6. Meta pixel is not on the live site (NEXT_PUBLIC_META_PIXEL_ID empty). Joel: add the pixel id in Vercel env if Meta ads are planned; the funnel events are already wired.
