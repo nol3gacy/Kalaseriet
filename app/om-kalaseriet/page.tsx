@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { DISCOUNT_CODE_LIVE } from '../../lib/discount'
 
 export const metadata = {
   title: 'Om Kalaseriet – digitala kalaspaket för barnkalas',
@@ -100,7 +101,7 @@ export default function OmKalaserietPage() {
               Redo att köra igång?
             </h3>
             <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.1rem', color: '#d9c9f5', marginBottom: '1.5rem' }}>
-              Prova med koden KALAS20 och få 20% på ditt första köp.
+              {DISCOUNT_CODE_LIVE ? 'Prova med koden KALAS20 och få 20% på ditt första köp.' : '33 kalaspaket, klara att ladda ner och skriva ut.'}
             </p>
             <a href="/kalas" className="btn-primary">Se alla kalas ›</a>
           </div>
