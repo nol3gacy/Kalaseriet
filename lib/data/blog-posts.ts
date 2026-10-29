@@ -217,7 +217,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Dekorationer: max 150 kr</h3><p>Ballonger från IKEA (29 kr för 50 st), wimpel i pappersremsor du klipper själv, blommor från trädgården. Färdiga PDF-dekorationer från oss att skriva ut hemma.</p>
 <h3>Mat: 200-300 kr</h3><p>Tre val: muffins (40 kr för 12 st), popcorn (15 kr), fruktspett (50 kr). Skippa cateringen — barnen vill ha snacks de känner igen.</p>
 <h3>Kalaspåsar: 250 kr för 10 barn</h3><p>Köp i bulk på Clas Ohlson eller Åhléns. Klistermärken, små klossar, lite godis. Sätter sammans till ca 25 kr per påse. Vår <a href="/kalasbloggen/diy-kalaspase">DIY-kalaspåse-guide</a> har fler tips.</p>
-<h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 99 kr och innehåller 20 testade lekar.</p>
+<h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 129 kr och innehåller 20 testade lekar.</p>
 <h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
 <p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
     category: 'Tips',

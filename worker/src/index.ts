@@ -101,7 +101,7 @@ async function handleCheckout(request: Request, stripe: Stripe, cors: HeadersIni
     // Reject anything we don't sell, then price and name it from the
     // server-side catalog. The request body only chooses *what* and *how
     // many* — never what it costs. Trusting item.price would let anyone
-    // buy a 99 kr package for 1 kr by editing the request.
+    // buy a 129 kr package for 1 kr by editing the request.
     const unknown = items.filter(i => !isKnownProduct(i.productId))
     if (unknown.length) {
       return json({ error: 'Unknown product' }, 400, cors)

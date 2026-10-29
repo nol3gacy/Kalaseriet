@@ -10,7 +10,7 @@ export const metadata = {
 const STATS = [
   { num: '33', label: 'kalaspaket', emoji: '🎯' },
   { num: '4', label: 'åldersgrupper', emoji: '👶' },
-  { num: '99 kr', label: 'per paket', emoji: '💜' },
+  { num: '129 kr', label: 'per paket', emoji: '💜' },
 ]
 
 // Matches the product pages' "Nedladdningen innehåller" (lib/data/included-items.ts);

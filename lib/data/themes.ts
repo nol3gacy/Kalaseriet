@@ -19,7 +19,7 @@ export const themePages: ThemePage[] = [
     themes: ['pirat'],
     guide: 'tema-piratkalas',
     heading: 'Piratkalas',
-    description: 'Piratkalas för barn: kompletta kalaspaket med skattjakt-känsla, lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Piratkalas för barn: kompletta kalaspaket med skattjakt-känsla, lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett piratkalas',
     paragraphs: [
       'Ett piratkalas har allt barn i förskoleåldern älskar: skatter att leta efter, en kapten att lyda och en rejäl portion bus. Temat fungerar lika bra inomhus i vardagsrummet som ute i trädgården, och det kräver inga dyra rekvisita. En sjal runt huvudet, en ritad ögonlapp och en kartong som skattkista räcker långt.',
@@ -32,7 +32,7 @@ export const themePages: ThemePage[] = [
     themes: ['superhjälte'],
     guide: 'tema-superhjaltekalas',
     heading: 'Superhjältekalas',
-    description: 'Superhjältekalas för 4-, 5- och 6-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Superhjältekalas för 4-, 5- och 6-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett superhjältekalas',
     paragraphs: [
       'På ett superhjältekalas får varje barn vara hjälte för en dag. Temat passar gäster som gillar att springa, klättra och tävla, och det är lätt att klä ut sig: en mantel av en gammal handduk eller ett tygstycke och en egen hjältelogga gör susen. Många barn kommer gärna utklädda om du skriver det i inbjudan.',
@@ -45,7 +45,7 @@ export const themePages: ThemePage[] = [
     themes: ['dinosaurie'],
     guide: 'tema-dinosauriekalas',
     heading: 'Dinosauriekalas',
-    description: 'Dinosauriekalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Dinosauriekalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett dinosauriekalas',
     paragraphs: [
       'Dinosaurier fascinerar barn som kan alla namnen utantill, men också de som bara gillar att låta som en T-rex. Ett dinosauriekalas ger plats för både vilda lekar och lugnare stunder, som att gräva fram fossiler i en sandlåda eller en balja med ris.',
@@ -58,7 +58,7 @@ export const themePages: ThemePage[] = [
     themes: ['rymd', 'astronaut'],
     guide: 'tema-rymdkalas',
     heading: 'Rymdkalas',
-    description: 'Rymdkalas för 4 till 8 år: Rymdkalaset och Astronautkalaset med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Rymdkalas för 4 till 8 år: Rymdkalaset och Astronautkalaset med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett rymdkalas',
     paragraphs: [
       'Ett rymdkalas tar gästerna bort från jorden för en eftermiddag. Släck ner, häng upp några stjärnor och låt barnen bli besättning på en raket, så är stämningen satt. Temat passar både barn som drömmer om planeter och barn som mest vill räkna ner till uppskjutning.',
@@ -71,7 +71,7 @@ export const themePages: ThemePage[] = [
     themes: ['safari'],
     guide: 'tema-safarikalas',
     heading: 'Safarikalas',
-    description: 'Safarikalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Safarikalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett safarikalas',
     paragraphs: [
       'Ett safarikalas passar barn som kan härma alla djurläten och gärna kryper runt på golvet som lejon. Temat är tacksamt eftersom det går att göra med det du redan har hemma: gosedjur blir vilda djur att spana efter, en kikare av två toarullar räcker som utrustning och en filt blir savann.',
@@ -83,7 +83,7 @@ export const themePages: ThemePage[] = [
     slug: 'cirkuskalas',
     themes: ['cirkus'],
     heading: 'Cirkuskalas',
-    description: 'Cirkuskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Cirkuskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett cirkuskalas',
     paragraphs: [
       'På ett cirkuskalas är alla gäster artister. Sex- till åttaåringar gillar att visa vad de kan, och cirkustemat ger dem en scen: balansera, jonglera med sjalar, göra konster eller vara clown. Ingen behöver vara bäst, publiken applåderar ändå.',
@@ -95,7 +95,7 @@ export const themePages: ThemePage[] = [
     slug: 'robotkalas',
     themes: ['robot'],
     heading: 'Robotkalas',
-    description: 'Robotkalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Robotkalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett robotkalas',
     paragraphs: [
       'Små barn älskar att röra sig som robotar, med stela armar, pipande ljud och knappar som startar och stoppar. Därför fungerar ett robotkalas så bra för fyra- och femåringar: lekarna bygger på att lyssna på kommandon, vilket är både roligt och lätt att förstå.',
@@ -107,7 +107,7 @@ export const themePages: ThemePage[] = [
     slug: 'sportkalas',
     themes: ['sport'],
     heading: 'Sportkalas',
-    description: 'Sportkalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Sportkalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett sportkalas',
     paragraphs: [
       'Ett sportkalas är rätt val för barn som har svårt att sitta still. Sex- till åttaåringar älskar stationer, tidtagning och lag, och ett sportkalas ger utlopp för all energi innan det är dags för tårta. Det fungerar bäst utomhus, men många grenar går att göra inne med lite plats.',
@@ -119,7 +119,7 @@ export const themePages: ThemePage[] = [
     slug: 'vetenskapskalas',
     themes: ['vetenskap'],
     heading: 'Vetenskapskalas',
-    description: 'Vetenskapskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Vetenskapskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett vetenskapskalas',
     paragraphs: [
       'Ett vetenskapskalas passar nyfikna barn som alltid frågar varför. I sex- till åttaårsåldern tycker många att det är magiskt när något bubblar, byter färg eller flyger, och det mesta går att göra med bikarbonat, ättika, ballonger och vatten från köket.',
@@ -131,7 +131,7 @@ export const themePages: ThemePage[] = [
     slug: 'aventyrskalas',
     themes: ['äventyr'],
     heading: 'Äventyrskalas',
-    description: 'Äventyrskalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 99 kr och skriv ut hemma.',
+    description: 'Äventyrskalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett äventyrskalas',
     paragraphs: [
       'Ett äventyrskalas är för barn som vill ut och upptäcka. Temat är friare än pirater eller dinosaurier, så det passar en blandad barngrupp där alla inte gillar samma sak. Det går lika bra att genomföra i en park eller skogsdunge som hemma i lägenheten.',

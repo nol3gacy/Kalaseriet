@@ -50,7 +50,7 @@ export function getProductName(productId: string): string {
  * Authoritative price in SEK, keyed by product id.
  *
  * The checkout request body must NEVER decide what a customer is charged —
- * a client can post any price it likes. Everything is 99 kr today, so this is
+ * a client can post any price it likes. Everything is 129 kr today, so this is
  * a lookup with a default rather than 33 duplicated lines; override per id
  * here if pricing ever differs.
  */
@@ -63,7 +63,7 @@ const PRICE_OVERRIDES: Record<string, number> = {
   ptest: 3,
 }
 
-const DEFAULT_PRICE_SEK = 99
+const DEFAULT_PRICE_SEK = 129
 
 export function getProductPrice(productId: string): number {
   return PRICE_OVERRIDES[productId] ?? DEFAULT_PRICE_SEK

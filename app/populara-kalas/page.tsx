@@ -9,11 +9,11 @@ import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE }
 
 export const metadata = {
   title: 'Populära kalas – våra mest bokade kalasteman',
-  description: 'Våra mest populära kalaspaket för barnkalas 4–8 år — teman som fungerar för de flesta barngrupper. 20 kalaslekar, recept, inbjudan & körschema för 99 kr.',
+  description: 'Våra mest populära kalaspaket för barnkalas 4–8 år — teman som fungerar för de flesta barngrupper. 20 kalaslekar, recept, inbjudan & körschema för 129 kr.',
   alternates: { canonical: '/populara-kalas' },
   openGraph: {
     title: 'Populära kalas – våra mest bokade kalasteman',
-    description: 'Våra mest populära kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 99 kr.',
+    description: 'Våra mest populära kalaspaket för barnkalas 4–8 år. Ladda ner direkt för 129 kr.',
     type: 'website' as const,
     locale: 'sv_SE',
     url: canonical('/populara-kalas'),
@@ -54,7 +54,7 @@ export default function PopularaKalasPage() {
         heading="Våra mest älskade kalasteman"
         paragraphs={[
           'Det här är kalaspaketen som flest föräldrar väljer om och om igen. Teman som Piratkalaset, Superhjältekalaset och Rymdkalaset toppar listan år efter år eftersom de funkar för de flesta barngrupper — lagom mycket spänning, lekar som passar både pojkar och flickor, och tydliga instruktioner som gör planeringen enkel.',
-          'Varje populärt kalaspaket innehåller samma kompletta innehåll som alla våra teman: 20 testade kalaslekar, inbjudningsmall, checklista och körschema, dekorationstips, spellista och recept — allt samlat i en digital nedladdning för 99 kr.',
+          'Varje populärt kalaspaket innehåller samma kompletta innehåll som alla våra teman: 20 testade kalaslekar, inbjudningsmall, checklista och körschema, dekorationstips, spellista och recept — allt samlat i en digital nedladdning för 129 kr.',
           'Hittar du inte rätt tema här? Bläddra bland alla kalas eller filtrera på ålder för att se fler alternativ.',
         ]}
       />
