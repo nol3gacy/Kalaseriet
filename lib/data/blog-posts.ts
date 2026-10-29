@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Här är våra bästa tips på hur du skapar enkla, prisvärda och uppskattade kalaspåsar.',
     body: `<p>En kalaspåse är det perfekta sättet att avsluta ett kalas och ge barnen något att ta med hem. Här är våra bästa tips på hur du skapar enkla, prisvärda och uppskattade kalaspåsar.</p>
 <h3>Små presenter</h3>
-<p>Fyll påsarna med små leksaker, klistermärken eller pysselmaterial. Våra kalaspaket innehåller ett brett utbud av småsaker som barn i alla åldrar älskar, och det gör det enkelt för dig att hitta något som passar kalastemat.</p>
+<p>Fyll påsarna med små leksaker, klistermärken eller pysselmaterial. Välj gärna saker som knyter an till kalastemat, så hänger påsen ihop med resten av kalaset.</p>
 <h3>Godis och snacks</h3>
 <p>Inget slår en påse fylld med godis eller popcorn! Använd våra färdiga kalaspåsar med roliga mönster och färger för att ge dem en extra festlig känsla. Kombinera gärna med ett klistermärke eller en liten hälsning för att göra dem ännu mer personliga.</p>
 <h3>Tema för kalaspåsen</h3>
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Aktiviteter</h3>
 <p>Förbered några roliga aktiviteter eller lekar som passar åldersgruppen. Klassiska alternativ som fiskdamm eller skattjakt är alltid populära, och våra aktivitetskit gör det enkelt att komma igång.</p>
 <h3>Kalaspåsar</h3>
-<p>Avsluta kalaset med att ge varje barn en påse fylld med små överraskningar. Våra kalaspåsar är både snygga och praktiska, och vi har många roliga prylar att fylla dem med.</p>
+<p>Avsluta kalaset med att ge varje barn en påse fylld med små överraskningar. Håll det enkelt: några små saker som passar temat räcker långt.</p>
 <h3>Glöm inte detaljerna</h3>
 <p>Tänk på att fixa inbjudningar i god tid och dubbelkolla att du har allt hemma dagen innan kalaset. Våra checklistor och kalaspaket hjälper dig att inte missa något viktigt.</p>
 <p>Med denna checklista har du allt du behöver för att skapa ett lyckat och stressfritt barnkalas. För ännu fler tips och produkter, <a href="/kalas">bläddra bland kalasen</a>!</p>`,
@@ -162,7 +162,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Planera kartan</h3>
 <p>Börja med att rita en karta som visar de platser där ledtrådar finns gömda. Använd enkla symboler och färger så att barnen lätt kan följa den. Våra skattjaktskit inkluderar färdiga kartor och ledtrådar för enkel planering.</p>
 <h3>Göm ledtrådarna</h3>
-<p>Göm ledtrådarna på platser som är både roliga och utmanande att hitta. Varje ledtråd kan leda till nästa tills skatten avslöjas – till exempel en påse fylld med godis eller små leksaker från våra kalaspaket.</p>
+<p>Göm ledtrådarna på platser som är både roliga och utmanande att hitta. Varje ledtråd kan leda till nästa tills skatten avslöjas – till exempel en påse fylld med godis eller små leksaker.</p>
 <h3>Avslöja skatten</h3>
 <p>Skattjakten når sin höjdpunkt när barnen hittar den gömda skatten. Våra dekorerade kalaspåsar och små presenter är perfekta för att skapa en minnesvärd final.</p>
 <h3>Mer inspiration</h3>
@@ -177,7 +177,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Att planera roliga lekar är nyckeln till ett lyckat kalas! Här är två favoriter som garanterat skapar glädje och energi.',
     body: `<h2>Att planera roliga lekar är nyckeln till ett lyckat kalas! Här är två favoriter som garanterat skapar glädje och energi.</h2>
 <h3>Dansstopp</h3>
-<p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Våra färdiga kalaspaket innehåller små överraskningar som passar perfekt som priser till vinnarna.</p>
+<p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Ha några små priser redo, och dela gärna ut diplom till alla, de ingår i <a href="/kalas">våra kalaspaket</a>.</p>
 <h3>Fiskdamm</h3>
 <p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Våra praktiska och snygga kalaspåsar är perfekta för ändamålet.</p>
 <p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
     summary: 'Här är våra 12 mest populära kalaslekar för 6-åringar — bevisade i skarpt läge och alla med tydliga instruktioner.',
     body: `<h2>Söker du roliga lekar till sex-årskalaset? Här är vår testade samling — alla anpassade efter vad sex-åringar älskar, klarar och blir engagerade av.</h2>
 <h3>1. Klassisk fiskdamm</h3><p>Ett laken eller en filt över en stol, en fiskespö med klädnypa, och små godispåsar att fiska upp. Funkar varje gång.</p>
-<h3>2. Skattjakt med karta</h3><p>Rita en enkel karta över hemmet. 5-6 ledtrådar leder till en gömd skatt. <a href="/kalas/6-aringar">Våra färdiga kalaspaket</a> innehåller skattjakt-mallar.</p>
+<h3>2. Skattjakt med karta</h3><p>Rita en enkel karta över hemmet. 5-6 ledtrådar leder till en gömd skatt. I <a href="/kalas/6-aringar">våra kalaspaket</a> finns 20 färdiga lekar och aktiviteter med instruktioner.</p>
 <h3>3. Stoppdans</h3><p>Pop på en spellista, dansa loss — när musiken stannar måste alla frysa. Den som rör sig är ute.</p>
 <h3>4. Pinjata</h3><p>Slå sönder en pinjata fylld med godis. Sex-åringar älskar fysiken i det.</p>
 <h3>5. Charader för barn</h3><p>Skriv ut djur, yrken eller saker på lappar. Barnen drar och agerar utan ord.</p>
@@ -203,7 +203,7 @@ export const blogPosts: BlogPost[] = [
 <h3>10. Mjölkkartong-bowling</h3><p>Töm 6 mjölkkartonger, ställ upp som kägglor, rulla en boll.</p>
 <h3>11. Memory IRL</h3><p>Vänd lock från små burkar uppochner. Barnen letar par.</p>
 <h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
-<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller färdiga instruktioner, rekvisita-tips och spellistor till alla dessa lekar — plus 8 till.</p>`,
+<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
     category: 'Tips',
     date: '25 februari 2026',
     imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
@@ -241,7 +241,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 <h3>Maten</h3><p>"Skeppsskorpor" (kex), "havsvatten" (blå festis), fruktspett som "skattens juveler", piratkaka med flaggor.</p>
 <h3>Kalaspåsen</h3><p>Sjörövarpåse med guldmynt (godis), en ögonlapp, en pirat-klistermärke. Räcker långt.</p>
-<p><a href="/kalas/tema/piratkalas">Våra piratkalaspaket för 4- och 5-åringar</a> innehåller färdig skattjaktmall, inbjudan, diplom, recept och checklista — du slipper Pinterest-spiraler.</p>`,
+<p><a href="/kalas/tema/piratkalas">Våra piratkalaspaket för 4- och 5-åringar</a> innehåller 20 lekar och aktiviteter, inbjudan, diplom, 20 recept och checklista — du slipper Pinterest-spiraler.</p>`,
     category: 'Tema-guide',
     date: '25 december 2025',
     imageUrl: '/wf/images/blogg/piratkalaset-4-aringar.jpg',
