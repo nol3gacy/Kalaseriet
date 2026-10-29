@@ -4,8 +4,8 @@ Top item next. Keep 5–15 items, ordered by what brings paying customers closer
 Live site with real customers: work on a branch, never deploy, propose to Joel.
 
 1. (Blocked: needs real review data from Joel) Real per-product reviews, no fabricated ratings.
-2. Newsletter/lead capture backend (form exists without backend); needs Joel's OK for any email service.
-3. Footer newsletter form ("Tips & trix till kalaset? Få direkt", on every page): check what it does on submit. If it shows a thank-you but stores nothing (like the contact forms did), the honest fix until Joel picks an email service (item 2) is to hide it or send it to the existing Worker /contact inbox as a sign-up note.
+2. Newsletter: sign-ups from the footer now arrive in the shop inbox (subject "Kontakt från Nyhetsbrev") once the site is deployed. A real list and sending need an email service; Joel's OK.
+3. Sweep the Tailwind-built pages (/tack, /varukorg, /kontakt, /feedback, 404, testkop) for utility classes that Webflow's unlayered CSS cancels (colours, backgrounds, underline, font sizes on a/button/h*): compare computed styles with the classes in Chrome and fix with inline styles where it matters. It hid the purple download button on /tack.
 4. Deploy the Worker + site with the new /contact endpoint and the age-labelled product names (after the site deploy, check curl -sI https://kalaseriet.se/wf/images/leaf.png shows max-age=604800), then send one test message through /kontakt and /feedback (Joel decides: live change). Consider rate limiting /contact (Cloudflare rule) if spam shows up.
 5. Connect Analytics (funnel view_item, add_to_cart, begin_checkout, purchase to GA4 and Meta now on the branch)/Search Console/Stripe to the control room (Joel: `node company-data.mjs auth` in No legacy OS/mini, then KALASERIET_GA4_PROPERTY / _GSC_SITE / _STRIPE_KEY in ~/.nolegacy.env). Merge the gtag fix first or GA4 shows no purchases.
 6. Meta pixel is not on the live site (NEXT_PUBLIC_META_PIXEL_ID empty). Joel: add the pixel id in Vercel env if Meta ads are planned; the funnel events are already wired.
