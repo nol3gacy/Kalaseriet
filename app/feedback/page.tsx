@@ -19,6 +19,8 @@ export default function FeedbackPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (busy) return
+    // The button stays enabled (a disabled one gave no reason and dropped focus); say what's missing instead.
+    if (!rating) { setError('Välj hur nöjd du är, 1–5 stjärnor.'); return }
     setBusy(true)
     setError('')
     try {
@@ -57,8 +59,8 @@ export default function FeedbackPage() {
 
         <div style={{ maxWidth: '700px', margin: '0 auto', padding: '4rem 1.5rem' }}>
           {sent ? (
-            <div style={{ textAlign: 'center', padding: '4rem 0' }}>
-              <div style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }}>🌟</div>
+            <div role="status" style={{ textAlign: 'center', padding: '4rem 0' }}>
+              <div style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }} aria-hidden="true">🌟</div>
               <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '2.2rem', fontWeight: 800, color: INDIGO, marginBottom: '0.75rem' }}>
                 Tack för din feedback!
               </h2>
@@ -88,12 +90,14 @@ export default function FeedbackPage() {
                 <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.75rem' }}>
                   Hur nöjd är du? *
                 </label>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <div role="group" aria-label="Hur nöjd är du?" style={{ display: 'flex', gap: '0.5rem' }}>
                   {[1, 2, 3, 4, 5].map(n => (
                     <button
                       key={n}
                       type="button"
-                      onClick={() => setRating(n)}
+                      aria-label={`${n} av 5`}
+                      aria-pressed={rating === n}
+                      onClick={() => { setRating(n); setError('') }}
                       style={{
                         fontSize: '2rem',
                         background: 'none',
@@ -171,7 +175,7 @@ export default function FeedbackPage() {
 
               <button
                 type="submit"
-                disabled={!rating || busy}
+                aria-disabled={busy}
                 style={{
                   width: '100%',
                   backgroundColor: rating ? PURPLE : '#d9d3ea',
@@ -182,7 +186,7 @@ export default function FeedbackPage() {
                   borderRadius: '500px',
                   fontSize: '1.3rem',
                   border: 'none',
-                  cursor: rating ? 'pointer' : 'not-allowed',
+                  cursor: busy ? 'progress' : 'pointer',
                   transition: 'background-color 0.2s',
                 }}
               >
