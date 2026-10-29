@@ -30,6 +30,12 @@ who knows Swedish consumer and data-protection law. It is not legal advice.
    Checkout can show a terms checkbox and custom text (consent_collection /
    custom_text) if Joel wants that.
 
+5. **Struck-through "199 kr" next to 99 kr on all 33 products** (originalPrice in
+   app/page.tsx). Under Swedish price-marking rules a crossed-out "before" price should
+   be the lowest price charged in the 30 days before the discount. If the packages have
+   sold at 99 kr all along, 199 kr is a misleading reference price. Joel: has 199 kr
+   ever been the real price? If not, drop the strike price (one field per product).
+
 ## Mismatches with what the code does
 
 | Page says | Reality |

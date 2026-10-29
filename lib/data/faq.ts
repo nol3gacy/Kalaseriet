@@ -38,7 +38,7 @@ export const faqs: FAQ[] = [
   },
   {
     question: 'Hur får jag filerna?',
-    answer: '<p>Direkt efter att köpet gjorts får du ett mail med länk till nedladdning. Om du inte ser något mail, kolla i skräpkorgen. Om du fortfarande inte hittar det, <a href="/kontakt">kontakta oss</a> så löser vi det brådskande.</p>',
+    answer: '<p>Direkt efter köpet kommer du till en bekräftelsesida där du laddar ner filerna, och du får samma länk i ett mail. Om du inte ser något mail, kolla i skräpkorgen. Om du fortfarande inte hittar det, <a href="/kontakt">kontakta oss</a> så löser vi det brådskande.</p>',
     order: 6,
   },
 ]
