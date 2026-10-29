@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { API_BASE } from '../../lib/api-base'
 import { gtag } from '../../lib/gtag'
+import { themePageForName } from '../../lib/data/themes'
+import GuideLink from '../components/GuideLink'
 
 interface DownloadItem {
   productId: string
@@ -104,6 +106,11 @@ function TackContent() {
 }
 
 function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[] }) {
+  // One guide per bought theme (two ages of the same theme share a guide).
+  const guides = [...new Map(items.flatMap(i => {
+    const t = themePageForName(i.name)
+    return t?.guide ? [[t.guide, t.heading] as const] : []
+  })).entries()]
   return (
     <>
       <Navbar />
@@ -126,6 +133,8 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
                   key={item.productId}
                   href={item.downloadUrl}
                   className="inline-flex items-center justify-center gap-3 bg-[#7C3AED] hover:bg-violet-700 text-white font-bold py-5 px-10 rounded-2xl text-xl transition-colors shadow-xl shadow-violet-200"
+                  // Webflow's unlayered `a` rules (colour inherit, transparent background) beat Tailwind's layered utilities.
+                  style={{ backgroundColor: '#7C3AED', color: '#fff' }}
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -133,6 +142,9 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
                   Ladda ner {item.name}
                 </a>
               ))}
+              <p className="text-gray-500 text-sm mt-2">
+                Ingen skrivare hemma? Se våra tips i <a href="/faq" style={{ color: '#7C3AED', textDecoration: 'underline' }}>vanliga frågor</a>.
+              </p>
             </div>
           ) : (
             <div className="bg-gray-50 rounded-2xl p-8 text-gray-500">
@@ -154,9 +166,16 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
             ))}
           </div>
 
+          {guides.length > 0 && (
+            <div className="mt-10 bg-violet-50 rounded-2xl p-6 text-left">
+              <p className="font-semibold text-gray-900">Nästa steg: planera dagen</p>
+              {guides.map(([slug, heading]) => <GuideLink key={slug} slug={slug} theme={heading} />)}
+            </div>
+          )}
+
           <p className="mt-10 text-sm text-gray-400">
             Problem?{' '}
-            <a href="/kontakt" className="text-[#7C3AED] underline">Kontakta oss</a> så hjälper vi dig direkt.
+            <a href="/kontakt" style={{ color: '#7C3AED', textDecoration: 'underline' }}>Kontakta oss</a> så hjälper vi dig direkt.
           </p>
         </div>
       </main>

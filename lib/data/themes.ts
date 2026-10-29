@@ -144,3 +144,9 @@ export const themePages: ThemePage[] = [
 export function themePageFor(productTheme: string) {
   return themePages.find(t => t.themes.includes(productTheme))
 }
+
+/** By product name ("Astronautkalaset" -> rymdkalas), for pages that only get names (/tack). */
+export function themePageForName(productName: string) {
+  const name = productName.toLowerCase()
+  return themePages.find(t => t.themes.some(theme => name.startsWith(theme)))
+}
