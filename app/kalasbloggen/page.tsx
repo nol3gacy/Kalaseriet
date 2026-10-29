@@ -3,7 +3,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { blogPosts } from '../../lib/data/blog-posts'
-import { toWebp } from '../../lib/cover'
+import { coverSrcSet, toWebp } from '../../lib/cover'
 
 const POSTS = blogPosts.map(p => ({
   slug: p.slug,
@@ -90,6 +90,8 @@ export default function KalasbloggenPage() {
             >
               <img
                 src={toWebp(post.imageUrl)}
+                srcSet={coverSrcSet(post.imageUrl)}
+                sizes="(max-width: 767px) 90vw, 350px"
                 alt={post.title}
                 loading={i < 3 ? 'eager' : 'lazy'}
                 style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}

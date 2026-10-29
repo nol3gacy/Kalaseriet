@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
-import { toWebp } from '../../../lib/cover'
+import { coverSrcSet, toWebp } from '../../../lib/cover'
 
 // Chevron traced from Webflow's own lightbox arrow SVG (webflow.css .w-lightbox-left/-right).
 // Base path points right, so the left arrow is the flipped one.
@@ -138,6 +138,8 @@ export default function WfSlider({ images, alt }: { images: string[]; alt: strin
                   decoding="async"
                   fetchPriority={isCover ? 'high' : 'auto'}
                   src={toWebp(src)}
+                  srcSet={coverSrcSet(src)}
+                  sizes="(max-width: 767px) 94vw, 690px"
                   className="product-image wf-slide-image"
                 />
               </div>

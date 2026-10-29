@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { Product } from '../page'
 import { getProductExtra } from '../../lib/data/products-extra'
-import { toWebp } from '../../lib/cover'
+import { coverSrcSet, toWebp } from '../../lib/cover'
 
 const AGES = [
   { key: '4', label: '4-åringar' },
@@ -93,7 +93,7 @@ export default function ProductGrid({
                 )}
                 <div className="listing-image-wrapper">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img alt={p.name} loading={atTop && i < 4 ? 'eager' : 'lazy'} fetchPriority={atTop && i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} className="listing-image" />
+                  <img alt={p.name} loading={atTop && i < 4 ? 'eager' : 'lazy'} fetchPriority={atTop && i === 0 ? 'high' : undefined} decoding="async" src={toWebp(p.externalImageUrl) || getProductExtra(p.slug.current)?.images[0] || '/wf/images/mockup.jpg'} srcSet={coverSrcSet(p.externalImageUrl)} sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 25vw" className="listing-image" />
                 </div>
                 <div className="listing-text-content">
                   <div className="listing-header-wrapper">
