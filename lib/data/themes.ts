@@ -121,6 +121,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'vetenskapskalas',
     themes: ['vetenskap'],
+    guide: 'tema-vetenskapskalas',
     heading: 'Vetenskapskalas',
     description: 'Vetenskapskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett vetenskapskalas',

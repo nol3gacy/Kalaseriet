@@ -29,6 +29,29 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-vetenskapskalas',
+    title: 'Vetenskapskalas: Guide till experiment, dekoration och meny',
+    summary: 'Så gör du ett vetenskapskalas för barn 6 till 8 år, med enkla experiment från köket, labbrockar och forskarmat.',
+    body: `<h2>Vetenskapskalas passar nyfikna barn som alltid frågar varför. Här är vår guide till ett kalas där gästerna blir forskare och experimenten görs med sådant som finns i köket.</h2>
+<h3>Stämningen</h3><p>Vitt, grönt och lite neon. Täck bordet med en plastduk (det blir kladdigt), ställ fram glasburkar och mätkannor som "labbutrustning" och sätt upp en skylt med "Kalaslabbet". En lista med "dagens experiment" på väggen ger barnen något att se fram emot.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en antagning till forskarskolan: "Du är utvald till kalaslabbet". Be gästerna ta med kläder som får bli fläckiga.</p>
+<h3>Utklädnad</h3><p>Gamla vita skjortor eller förkläden blir labbrockar, och skyddsglasögon från en leksaksaffär eller simglasögon gör alla till riktiga forskare. Ett namnskylt med "Dr" framför namnet uppskattas.</p>
+<h3>Experiment i prioritetsordning</h3>
+<ul>
+<li><strong>Vulkanen</strong>: bikarbonat och ättika med lite karamellfärg i en plastflaska som står i en balja. Barnen gissar först hur högt det ska skumma.</li>
+<li><strong>Ballongen som blåser upp sig själv</strong>: häll ättika i en flaska, fyll en ballong med bikarbonat, trä den över flaskhalsen och lyft.</li>
+<li><strong>Färgfyrverkeri i mjölk</strong>: droppa karamellfärg i en tallrik mjölk och nudda med en tops doppad i diskmedel.</li>
+<li><strong>Lavalampan</strong>: vatten, matolja och karamellfärg i ett glas, sedan en bit brustablett. Ett lugnt experiment att avsluta med.</li>
+</ul>
+<p>En vuxen håller i flaskorna och ättikan, och allt görs i en balja eller på en plastduk.</p>
+<h3>Maten</h3><p>"Provrörsdryck" i genomskinliga muggar, "atomer" av vindruvor och ost på pinne, pizzabitar som "forskarlunch" och en tårta med en vulkan av glass eller bär.</p>
+<h3>Kalaspåsen</h3><p>Ett förstoringsglas, ett litet experiment att göra hemma med bruksanvisning och ett diplom som "Kalaslabbets forskare".</p>
+<p><a href="/kalas/tema/vetenskapskalas">Vetenskapskalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/vetenskapskalaset-for-6-aringar.jpg',
+  },
+  {
     slug: 'tema-sportkalas',
     title: 'Sportkalas: Guide till grenar, lag och meny',
     summary: 'Så gör du ett sportkalas för barn 6 till 8 år, med lag, grenar och prisutdelning där alla får vara med och vinna.',
@@ -393,6 +416,7 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-cirkuskalas': { label: 'Alla cirkuskalas', href: '/kalas/tema/cirkuskalas' },
   'tema-robotkalas': { label: 'Alla robotkalas', href: '/kalas/tema/robotkalas' },
   'tema-sportkalas': { label: 'Alla sportkalas', href: '/kalas/tema/sportkalas' },
+  'tema-vetenskapskalas': { label: 'Alla vetenskapskalas', href: '/kalas/tema/vetenskapskalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },
