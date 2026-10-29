@@ -63,7 +63,7 @@ export default function Footer() {
         {/* Big Lottie logo */}
         <div className="w-layout-cell footer-cell is--bottom">
           <a href="/" className="footer-logo w-inline-block" aria-label="Kalaseriet">
-            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" />
+            <Lottie className="logo-anim" src="/wf/documents/logo-anim.json" poster="/wf/images/logo.svg" />
           </a>
         </div>
       </div>

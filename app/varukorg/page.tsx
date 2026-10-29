@@ -7,15 +7,16 @@ import Footer from '../components/Footer'
 import { useCart } from '../lib/cart-context'
 import { API_BASE } from '../../lib/api-base'
 import { trackCart } from '../../lib/gtag'
+import { coverSrcSet, toWebp } from '../../lib/cover'
 
 export default function VarukorgPage() {
-  const { items, removeItem, updateQuantity, total } = useCart()
+  const { items, removeItem, total } = useCart()
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string>()
+  const [error, setError] = useState(false)
 
   async function handleCheckout() {
     setLoading(true)
-    setError(undefined)
+    setError(false)
     const lineItems = items.map(item => ({
       productId: item.product._id,
       productName: item.product.name,
@@ -41,8 +42,7 @@ export default function VarukorgPage() {
       }
     } catch { /* fall through to the message below */ }
 
-    // Customers read this, so keep it Swedish whatever the API or network said.
-    setError('Det gick inte att öppna kassan just nu. Din varukorg är kvar, försök igen om en stund eller hör av dig via Kontakt.')
+    setError(true)
     setLoading(false)
   }
 
@@ -81,7 +81,9 @@ export default function VarukorgPage() {
                 {item.product.externalImageUrl && (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
-                    src={item.product.externalImageUrl}
+                    src={toWebp(item.product.externalImageUrl)}
+                    srcSet={coverSrcSet(item.product.externalImageUrl)}
+                    sizes="96px"
                     alt={item.product.name}
                     className="w-24 h-24 object-cover rounded-xl flex-shrink-0"
                   />
@@ -123,25 +125,27 @@ export default function VarukorgPage() {
 
             {error && (
               <div role="alert" className="mb-6 p-4 bg-red-50 text-red-800 rounded-xl text-sm">
-                {error}
+                {/* Customers read this, so keep it Swedish whatever the API or network said. */}
+                Det gick inte att öppna kassan just nu. Din varukorg är kvar, försök igen om en stund eller{' '}
+                <Link href="/kontakt" style={{ textDecoration: 'underline' }}>hör av dig till oss</Link>.
               </div>
             )}
 
             <button
               onClick={handleCheckout}
               disabled={loading}
-              className="btn-primary w-full !text-lg disabled:opacity-60"
+              className="btn-primary w-full !text-xl disabled:opacity-60"
             >
               {loading ? 'Öppnar kassan…' : `Gå till betalning – ${total} kr`}
             </button>
 
-            <Link href="/kalas" className="btn-secondary w-full mt-3">
+            <Link href="/kalas" className="btn-secondary w-full mt-3 !text-xl">
               Fortsätt handla
             </Link>
           </div>
 
           <p className="text-center text-sm text-gray-500">
-            Betala tryggt med kort, Klarna eller PayPal. Din data är helt säker.
+            Du betalar tryggt via Stripe. Vi ser aldrig dina kortuppgifter.
           </p>
         </div>
       </main>
