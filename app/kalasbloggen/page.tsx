@@ -14,6 +14,12 @@ const POSTS = blogPosts.map(p => ({
   imageUrl: p.imageUrl,
 }))
 
+// Theme guides first (each leads to its packages), then the general tips.
+const SECTIONS = [
+  { id: 'temaguider', title: 'Temaguider', posts: POSTS.filter(p => p.category === 'Tema-guide') },
+  { id: 'tips', title: 'Tips & inspiration', posts: POSTS.filter(p => p.category !== 'Tema-guide') },
+]
+
 export default function KalasbloggenPage() {
   return (
     <>
@@ -57,16 +63,20 @@ export default function KalasbloggenPage() {
           </div>
         </div>
 
+        {SECTIONS.map((sec, si) => (
+        <section key={sec.id} id={sec.id} style={{ maxWidth: '1100px', margin: '0 auto', padding: si === 0 ? '4rem 1.5rem 0' : '3rem 1.5rem 0' }}>
+        <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 800, color: '#5910b6', margin: '0 0 1.5rem' }}>
+          {sec.title}
+        </h2>
         {/* Posts grid — same card style for every post, including the first */}
         <div style={{
-          maxWidth: '1100px',
           margin: '0 auto',
-          padding: '4rem 1.5rem',
+          padding: si === SECTIONS.length - 1 ? '0 0 4rem' : '0',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
           gap: '1.5rem',
         }}>
-          {POSTS.map((post, i) => (
+          {sec.posts.map((post, i) => (
             <a
               key={post.slug}
               href={`/kalasbloggen/${post.slug}`}
@@ -93,7 +103,7 @@ export default function KalasbloggenPage() {
                 srcSet={coverSrcSet(post.imageUrl)}
                 sizes="(max-width: 767px) 90vw, 350px"
                 alt={post.title}
-                loading={i < 3 ? 'eager' : 'lazy'}
+                loading={si === 0 && i < 3 ? 'eager' : 'lazy'}
                 style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }}
               />
               <div style={{
@@ -119,7 +129,7 @@ export default function KalasbloggenPage() {
                     {post.date}
                   </span>
                 </div>
-                <h2 style={{
+                <h3 style={{
                   fontFamily: 'caraque-melted, sans-serif',
                   fontSize: '1.8rem',
                   fontWeight: 800,
@@ -128,7 +138,7 @@ export default function KalasbloggenPage() {
                   margin: 0,
                 }}>
                   {post.title}
-                </h2>
+                </h3>
                 <p style={{
                   fontFamily: 'caraque-melted, sans-serif',
                   fontSize: '1.1rem',
@@ -150,6 +160,8 @@ export default function KalasbloggenPage() {
             </a>
           ))}
         </div>
+        </section>
+        ))}
       </main>
       <Footer />
     </>
