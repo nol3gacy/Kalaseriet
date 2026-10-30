@@ -90,12 +90,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             gap: '0.5rem',
             fontFamily: 'caraque-melted, sans-serif',
             fontSize: '1.2rem',
-            color: '#7c7c7c',
+            color: '#4e4e4e',
             flexWrap: 'wrap',
           }}>
-            <a href="/" style={{ color: '#7c7c7c', textDecoration: 'none' }}>Hem</a>
+            <a href="/" style={{ color: '#4e4e4e', textDecoration: 'none' }}>Hem</a>
             <span>/</span>
-            <a href="/kalasbloggen" style={{ color: '#7c7c7c', textDecoration: 'none' }}>Kalasbloggen</a>
+            <a href="/kalasbloggen" style={{ color: '#4e4e4e', textDecoration: 'none' }}>Kalasbloggen</a>
             <span>/</span>
             <span style={{ color: '#4e4e4e', fontWeight: 700 }}>{post.title}</span>
           </nav>
@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
               }}>{post.category}</span>
-              <span style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1rem', color: '#7c7c7c' }}>
+              <span style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1rem', color: '#4e4e4e' }}>
                 {post.date}
               </span>
             </div>

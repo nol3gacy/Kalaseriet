@@ -125,7 +125,7 @@ export default function KalasbloggenPage() {
                     padding: '0.2rem 0.75rem',
                     borderRadius: '500px',
                   }}>{post.category}</span>
-                  <span style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#7c7c7c' }}>
+                  <span style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#4e4e4e' }}>
                     {post.date}
                   </span>
                 </div>

@@ -172,7 +172,7 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
               <div key={s.label} className="bg-violet-50 rounded-2xl p-4">
                 <div className="text-3xl mb-2">{s.icon}</div>
                 <p className="font-semibold text-gray-900 text-sm !mb-0">{s.label}</p>
-                <p className="text-gray-500 text-xs mt-0.5 !mb-0">{s.desc}</p>
+                <p className="text-gray-600 text-xs mt-0.5 !mb-0">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -190,7 +190,7 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
             </div>
           )}
 
-          <p className="mt-10 text-sm text-gray-400">
+          <p className="mt-10 text-sm text-gray-600">
             Problem?{' '}
             <a href="/kontakt" style={{ color: '#7C3AED', textDecoration: 'underline' }}>Kontakta oss</a> så hjälper vi dig direkt.
           </p>
