@@ -30,3 +30,45 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* ── caraque-fallback: Arial resized to Caraque's metrics ──
+   Shown only until Caraque has loaded (font-display: swap). Without it the text
+   reflowed at the swap and moved headings and buttons (layout shift). Values
+   measured with canvas over the site's own text: size-adjust = Caraque width /
+   Arial width, ascent/descent = Caraque's metrics divided by size-adjust. */
+@font-face {
+  font-family: 'caraque-fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica');
+  font-weight: 400;
+  size-adjust: 78.7%;
+  ascent-override: 119.4%;
+  descent-override: 30.5%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'caraque-fallback';
+  src: local('Arial'), local('ArialMT'), local('Liberation Sans'), local('Helvetica');
+  font-weight: 500 600;
+  size-adjust: 80.8%;
+  ascent-override: 116.3%;
+  descent-override: 29.7%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'caraque-fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Helvetica Bold');
+  font-weight: 700;
+  size-adjust: 77%;
+  ascent-override: 122%;
+  descent-override: 31.2%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'caraque-fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Helvetica Bold');
+  font-weight: 800 900;
+  size-adjust: 77.8%;
+  ascent-override: 120.8%;
+  descent-override: 30.8%;
+  line-gap-override: 0%;
+}

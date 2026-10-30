@@ -60,7 +60,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
     }}>
       {/* Big number */}
       <div style={{
-        fontFamily: 'caraque-melted, sans-serif',
+        fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
         fontSize: 'clamp(4rem, 8vw, 7rem)',
         fontWeight: 800,
         color: '#5910b6',
@@ -70,7 +70,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
 
       <div>
         <h3 style={{
-          fontFamily: 'caraque-melted, sans-serif',
+          fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
           fontSize: 'clamp(1.6rem, 2.6vw, 2.2rem)',
           fontWeight: 800,
           color: '#4e4e4e',
@@ -78,7 +78,7 @@ function Step({ n, title, body, cta }: { n: string; title: string; body: string;
           marginBottom: '0.75rem',
         }}>{title}</h3>
         <p style={{
-          fontFamily: 'caraque-melted, sans-serif',
+          fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
           fontSize: '1.2rem',
           fontWeight: 500,
           color: '#4e4e4e',
@@ -109,7 +109,7 @@ export default function SaFunkarDet() {
         }}>
           <div style={{ maxWidth: '760px', margin: '0 auto' }}>
             <h1 style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(3rem, 7vw, 6rem)',
               fontWeight: 800,
               color: '#5910b6',
@@ -117,7 +117,7 @@ export default function SaFunkarDet() {
               marginBottom: '1.25rem',
             }}>Så funkar det</h1>
             <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(1.3rem, 2.2vw, 1.7rem)',
               color: '#4e4e4e',
               fontWeight: 500,
@@ -130,7 +130,7 @@ export default function SaFunkarDet() {
         <section style={{ padding: '5rem 1.5rem' }}>
           <div style={{ maxWidth: '880px', margin: '0 auto' }}>
             <h2 style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
               color: '#4e4e4e',
@@ -148,7 +148,7 @@ export default function SaFunkarDet() {
         <section style={{ padding: '5rem 1.5rem', backgroundColor: '#faf1ef' }}>
           <div style={{ maxWidth: '880px', margin: '0 auto' }}>
             <h2 style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
               fontWeight: 800,
               color: '#4e4e4e',

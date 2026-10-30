@@ -1331,7 +1331,7 @@ a {
 
 .price {
   color: var(--color--indigo);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2.7rem;
   font-weight: 700;
   line-height: 100%;
@@ -1399,7 +1399,7 @@ a {
   color: var(--color--obsidian);
   text-transform: none;
   background-color: #fff;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.15rem;
   font-weight: 500;
   line-height: 120%;
@@ -1412,7 +1412,7 @@ a {
 .heading {
   margin-top: var(--0-25rem);
   color: var(--color--indigo);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 4.4rem;
   font-weight: 700;
   line-height: 100%;
@@ -1422,7 +1422,7 @@ a {
   color: var(--color--obsidian);
   margin-top: 0;
   margin-bottom: 0;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -1468,7 +1468,7 @@ a {
 
 .heading.is--bento {
   color: var(--color--purple);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 3.4rem;
   font-weight: 700;
   line-height: 90%;
@@ -1619,7 +1619,7 @@ a {
   color: var(--color--purple);
   letter-spacing: .02em;
   border-radius: 30px;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 100%;
@@ -1740,7 +1740,7 @@ a {
 .text.is--footer-label {
   color: var(--color--purple);
   letter-spacing: .01em;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
   line-height: 100%;
@@ -1754,7 +1754,7 @@ a {
 
 .text.is--checkout.is-product-heading {
   color: var(--color--indigo);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2.5rem;
   line-height: 100%;
 }
@@ -1778,7 +1778,7 @@ a {
 
 .text.is--process-list-heading {
   color: inherit;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 100%;
@@ -1790,11 +1790,11 @@ a {
 }
 
 .text.is--bento h1 {
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
 }
 
 .text.is--bento h2 {
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 4rem;
   line-height: 100%;
 }
@@ -1879,7 +1879,7 @@ a {
 
 .logo-placeholder {
   letter-spacing: .02em;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2rem;
   font-weight: 800;
 }
@@ -1948,7 +1948,7 @@ a {
   border-left-width: 0;
   margin-bottom: 12px;
   padding: 0;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.4em;
   font-style: italic;
   font-weight: 400;
@@ -2281,7 +2281,7 @@ a {
   text-align: center;
   letter-spacing: .01em;
   text-shadow: 0 1px 4px #0006;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2.2rem;
   font-weight: 500;
   line-height: 110%;
@@ -2307,7 +2307,7 @@ a {
 }
 
 .hero-preample {
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 3rem;
   font-weight: 700;
   line-height: 100%;
@@ -2341,7 +2341,7 @@ a {
   color: var(--color--spökmjölk);
   padding-top: .6em;
   padding-bottom: .6em;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2.2rem;
   font-weight: 500;
 }
@@ -2358,7 +2358,7 @@ a {
   align-self: center;
   align-items: center;
   margin-top: 0;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.8rem;
   font-weight: 500;
   line-height: 100%;
@@ -2427,7 +2427,7 @@ a {
 .footer-link {
   color: var(--color--indigo);
   white-space: nowrap;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2rem;
   font-weight: 500;
   line-height: 110%;
@@ -2491,7 +2491,7 @@ a {
 ._404-sub-title {
   text-transform: none;
   max-width: 49ch;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 117%;
@@ -2712,7 +2712,7 @@ a {
 
 .contain-text {
   color: var(--color--indigo);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.6rem;
 }
 
@@ -3122,7 +3122,7 @@ a {
   align-items: center;
   margin-top: .1em;
   padding: 0 .5em;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   display: flex;
@@ -3228,7 +3228,7 @@ a {
 }
 
 .r {
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.7rem;
   font-weight: 900;
   position: relative;
@@ -3239,7 +3239,7 @@ a {
   opacity: 1;
   margin-left: -10px;
   margin-right: 7px;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.4rem;
   font-weight: 500;
 }
@@ -3350,7 +3350,7 @@ a {
   color: var(--color--indigo);
   border: 0 #000;
   margin-bottom: 0;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2rem;
   font-weight: 400;
 }
@@ -3519,7 +3519,7 @@ a {
 
 .newsletter-cover-text {
   color: var(--color--indigo);
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 2rem;
   font-weight: 500;
   line-height: 100%;
@@ -4084,7 +4084,7 @@ a {
   justify-content: center;
   align-items: center;
   margin-top: .3em;
-  font-family: caraque-melted, sans-serif;
+  font-family: caraque-melted, caraque-fallback, sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
   display: flex;
