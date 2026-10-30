@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import { API_BASE } from '../../lib/api-base'
 import { gtag } from '../../lib/gtag'
 import { themePageForName } from '../../lib/data/themes'
+import { PRODUCT_NAMES } from '../../lib/product-catalog'
 import GuideLink from '../components/GuideLink'
 
 interface DownloadItem {
@@ -111,6 +112,15 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
     const t = themePageForName(i.name)
     return t?.guide ? [[t.guide, t.heading] as const] : []
   })).entries()]
+  // Same package for other ages (a sibling, next year's party): from the catalogue names,
+  // "Piratkalaset för 4-åringar" -> "5-åringar", linked to the theme page.
+  const bought = new Set(items.map(i => i.name))
+  const otherAges = [...new Map(items.flatMap(i => {
+    const [base] = i.name.split(' för ')
+    const theme = themePageForName(i.name)
+    const ages = Object.values(PRODUCT_NAMES).filter(n => n.startsWith(`${base} för `) && !bought.has(n)).map(n => n.split(' för ')[1])
+    return theme && ages.length ? [[base, { base, ages, slug: theme.slug }] as const] : []
+  })).values()]
   return (
     <>
       <Navbar />
@@ -167,10 +177,16 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
             ))}
           </div>
 
-          {guides.length > 0 && (
+          {(guides.length > 0 || otherAges.length > 0) && (
             <div className="mt-10 bg-violet-50 rounded-2xl p-6 text-left">
               <p className="font-semibold text-gray-900">Nästa steg: planera dagen</p>
               {guides.map(([slug, heading]) => <GuideLink key={slug} slug={slug} theme={heading} />)}
+              {otherAges.map(o => (
+                <p key={o.base} className="text-gray-600 text-sm !mt-3 !mb-0">
+                  {o.base} finns även för {o.ages.join(' och ')}.{' '}
+                  <a href={`/kalas/tema/${o.slug}`} style={{ color: '#7C3AED', textDecoration: 'underline' }}>Se alla åldrar</a>
+                </p>
+              ))}
             </div>
           )}
 
