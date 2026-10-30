@@ -159,11 +159,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="tag-text">Alla {themePage.heading.toLowerCase()}</div>
               </a>
             )}
-            {otherAges.map(p => (
-              <a key={p.slug.current} href={`/kalas/${p.slug.current}`} className="link-block w-inline-block">
-                <div className="tag-text">Även för {p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`}</div>
-              </a>
-            ))}
             </div>
             <h1 className="heading">{product.name}</h1>
 
@@ -181,6 +176,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <div className="text">{description}</div>
             {themePage?.guide && <GuideLink slug={themePage.guide} theme={themePage.heading} />}
+            {/* Below the description, not in the tag row above the h1: extra tags wrapped onto
+                another row with the fallback font and shifted the heading and buy button (CLS 0.22). */}
+            {otherAges.length > 0 && (
+              <p style={{ margin: '0.75rem 0 0', fontSize: '1.05rem' }}>
+                Finns även för{' '}
+                {otherAges.map((p, i) => (
+                  <span key={p.slug.current}>
+                    {i > 0 && (i === otherAges.length - 1 ? ' och ' : ', ')}
+                    <a href={`/kalas/${p.slug.current}`} style={{ color: '#5910b6', fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                      {p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`}
+                    </a>
+                  </span>
+                ))}
+              </p>
+            )}
 
             <div className="contains-wrapper">
               {/* h2 keeps the heading order after the h1; line-height matches the h3 it was */}
