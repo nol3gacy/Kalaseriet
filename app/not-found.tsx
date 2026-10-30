@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import AgeCTAs from './components/AgeCTAs'
+import ThemeLinks from './components/ThemeLinks'
 
 export const metadata = {
   title: 'Sidan hittades inte',
@@ -20,6 +21,9 @@ export default function NotFound() {
         </p>
         <a href="/kalas" className="btn-primary">Se alla kalaspaket ›</a>
         <AgeCTAs />
+        <div style={{ paddingBottom: '3rem' }}>
+          <ThemeLinks />
+        </div>
       </main>
       <Footer />
     </>
