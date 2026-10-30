@@ -61,14 +61,16 @@ export default function ProductGrid({
               {AGES.map(a => {
                 const on = active.has(a.key)
                 return (
-                  <label key={a.key} className="w-checkbox filter-btn" onClick={e => { e.preventDefault(); toggle(a.key) }}>
-                    <div className={`w-checkbox-input w-checkbox-input--inputType-custom checkbox${on ? ' w--redirected-checked' : ''}`} />
+                  <label key={a.key} className="w-checkbox filter-btn">
+                    {/* Real checkbox (visually hidden) so the filter works with keyboard and screen readers. */}
+                    <input type="checkbox" className="filter-input" checked={on} onChange={() => toggle(a.key)} />
+                    <div className={`w-checkbox-input w-checkbox-input--inputType-custom checkbox${on ? ' w--redirected-checked' : ''}`} aria-hidden="true" />
                     <span className="checkbox-label w-form-label">{a.label}</span>
                   </label>
                 )
               })}
             </div>
-            <div className="div-block-17">
+            <div className="div-block-17" aria-live="polite">
               <div className="checkbox-label count">(</div>
               <div className="checkbox-label count">{filtered.length}</div>
               <div className="checkbox-label count">)</div>
