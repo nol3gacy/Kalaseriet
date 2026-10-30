@@ -239,7 +239,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Tema för kalaspåsen</h3>
 <p>Om kalaset har ett tema, varför inte matcha kalaspåsen med det? För ett prinsesstema kan du lägga till små kronor eller glitterprodukter, medan ett djungeltema kan innehålla djurklistermärken eller små figurer. Våra temaprodukter gör det enkelt att skapa en genomtänkt look.</p>
 <h3>Gör det personligt</h3>
-<p>Lägg till barnens namn på påsarna för en personlig touch. Våra dekorationskit inkluderar etiketter och klistermärken som gör detta både enkelt och snyggt.</p>
+<p>Lägg till barnens namn på påsarna för en personlig touch. Fler idéer för kalaspåsar som passar ett visst tema finns i <a href="/kalasbloggen#temaguider">våra temaguider</a>.</p>
 <p>Kalaspåsar är en liten gest som gör stort intryck. För fler tips och produkter som gör det enkelt att skapa en minnesvärd kalasfinal, kolla in <a href="/kalas">kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 juni 2026',
@@ -290,8 +290,8 @@ export const blogPosts: BlogPost[] = [
 <h3>Dansstopp</h3>
 <p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Ha några små priser redo, och dela gärna ut diplom till alla, de ingår i <a href="/kalas">våra kalaspaket</a>.</p>
 <h3>Fiskdamm</h3>
-<p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Våra praktiska och snygga kalaspåsar är perfekta för ändamålet.</p>
-<p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
+<p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Påsar i olika färger gör det lätt att dela ut en till varje barn.</p>
+<p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Lekar för ett visst tema hittar du i <a href="/kalasbloggen#temaguider">våra temaguider</a>, och färdiga paket bland <a href="/kalas">kalasen</a>.</p>`,
     category: 'Tips',
     date: '25 mars 2026',
     imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
 <h3>10. Mjölkkartong-bowling</h3><p>Töm 6 mjölkkartonger, ställ upp som kägglor, rulla en boll.</p>
 <h3>11. Memory IRL</h3><p>Vänd lock från små burkar uppochner. Barnen letar par.</p>
 <h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
-<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
+<p>Populära teman för sexåringar är <a href="/kalas/tema/superhjaltekalas">superhjältekalas</a>, <a href="/kalas/tema/cirkuskalas">cirkuskalas</a> och <a href="/kalas/tema/vetenskapskalas">vetenskapskalas</a>.</p> <p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
     category: 'Tips',
     date: '25 februari 2026',
     imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
@@ -329,8 +329,8 @@ export const blogPosts: BlogPost[] = [
 <h3>Mat: 200-300 kr</h3><p>Tre val: muffins (40 kr för 12 st), popcorn (15 kr), fruktspett (50 kr). Skippa cateringen — barnen vill ha snacks de känner igen.</p>
 <h3>Kalaspåsar: 250 kr för 10 barn</h3><p>Köp i bulk på Clas Ohlson eller Åhléns. Klistermärken, små klossar, lite godis. Sätter sammans till ca 25 kr per påse. Vår <a href="/kalasbloggen/diy-kalaspase">DIY-kalaspåse-guide</a> har fler tips.</p>
 <h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 129 kr och innehåller 20 testade lekar.</p>
-<h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
-<p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
+<h3>Total: ca 700-1000 kr</h3><p>Jämför med ett kalas på lekland, som för 8 barn ofta kostar betydligt mer.</p>
+<p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen. Idéer finns i <a href="/kalasbloggen#temaguider">våra temaguider</a>.</p>`,
     category: 'Tips',
     date: '25 januari 2026',
     imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
