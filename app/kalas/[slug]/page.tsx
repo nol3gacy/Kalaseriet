@@ -81,6 +81,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
   const themePage = product.theme ? themePageFor(product.theme) : undefined
+  // The same package for other ages, for parents who landed on the wrong age from a search.
+  const otherAges = fallbackProducts.filter(p => p.name === product.name && p.slug.current !== slug)
   const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup && p.slug.current !== slug)
 
   const path = `/kalas/${slug}`
@@ -147,6 +149,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         <div className="product-info-wrapper">
           <div className="div-block-4">
+            {/* Tags wrap onto two rows when a theme has other ages; the gap keeps the rows apart. */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem 0.3rem' }}>
             <a href={`/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`} className="link-block w-inline-block">
               <div className="tag-text">Kalas för {ageLabel}</div>
             </a>
@@ -155,6 +159,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="tag-text">Alla {themePage.heading.toLowerCase()}</div>
               </a>
             )}
+            {otherAges.map(p => (
+              <a key={p.slug.current} href={`/kalas/${p.slug.current}`} className="link-block w-inline-block">
+                <div className="tag-text">Även för {p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`}</div>
+              </a>
+            ))}
+            </div>
             <h1 className="heading">{product.name}</h1>
 
             <ProductBuySection product={product} />
