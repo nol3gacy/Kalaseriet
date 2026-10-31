@@ -184,3 +184,5 @@
 - 2026-10-31 11:21: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
 - 2026-10-31 12:07: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
 - 2026-10-31 12:52: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 13:31: PR #8 bekräftad live: KALAS20 syns inte på någon sida. Samlings-PR #23 fick en konflikt mot #8 i /om-kalaseriet; jag mergade in main i #23-grenen och löste konflikten (båda ändringarna behållna), och alla kontroller går igenom igen. #23 är mergebar. Backloggen säger nu hur erbjudandet slås på igen när koden finns i Stripe.
+- 2026-10-31 13:38: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
