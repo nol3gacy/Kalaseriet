@@ -51,6 +51,7 @@
 - ./scripts/check.sh runs all release checks (build, SEO sweep, order-email test, Worker typecheck, now clean). Part of PR #23.
 - Release routine: before merge `./scripts/check.sh`; after the deploy (site and, if lib/ changed, Worker) `node scripts/smoke-live.mjs` (read-only, exits 1 on any failure).
 - Blog photos are WebP with 600 px variants too (/kalasbloggen images 1.7 MB to 1.2 MB on a phone). Part of PR #23.
+- 2026-10-31: PR #8 merged by Joel, KALAS20 no longer shown live (checked). PR #23 had a conflict with it in /om-kalaseriet; main merged into the release branch, conflict resolved (fallback font + KALAS20 switch), ./scripts/check.sh passes, #23 mergeable again.
 - CSS weight measured and dropped as a task: unused CSS is below Lighthouse's threshold, FCP 1.5 s; experimental.inlineCss made each HTML page 14 to 95 KB gzip with no FCP gain.
 - 2026-10-21 21:40: Backloggen var tom: skrev 9 prioriterade punkter. Gjorde punkt 1 på grenen work/backlog-buy-feedback (ej deployad, ej mergad): Köp nu-knappen visar nu 'Öppnar kassan…', kan inte dubbelklickas och visar ett tydligt fel istället för att tyst skicka kunden till varukorgen. Bygget går igenom.
 - 2026-10-21 22:25: Punkt 1 klar på grenen work/backlog-buy-feedback (ej deployad): kassaknappen i /varukorg hade redan laddningsläge, men visade engelska/råa felmeddelanden. Nu visas alltid ett svenskt, begripligt fel om kassan inte öppnas, och koden klarar både url och checkoutUrl från Worker. Bygget går igenom.
@@ -153,3 +154,33 @@
 - 2026-10-30 08:48: Ett kommando för alla kontroller före release: ./scripts/check.sh (bygge, SEO-kontroll, orderbekräftelsens test, Workerns typkontroll). Det stoppar vid första felet, provat med en planterad trasig länk. Workerns typkontroll hade fyra gamla fel från en webbläsarfil som Workern aldrig använder; nu är den ren. Ingår i samlings-PR #23. Nästa: röktest av live-sajten efter deploy.
 - 2026-10-30 09:34: Röktest för efter varje deploy: node scripts/smoke-live.mjs. Det gör bara läsande anrop och kollar 13 nyckelsidor, 404-sidan, priset 129 kr utan överstruket pris, att inget hämtas från Webflow, sitemap, bildcachen och att Workern svarar. Mot live just nu går allt igenom. Release-rutinen står i STATUS: check.sh före merge, smoke-live efter deploy. Ingår i samlings-PR #23.
 - 2026-10-30 10:22: Bloggens foton är nu WebP med mindre mobilvarianter, som produktbilderna: bloggöversikten laddar 1,2 MB bilder i stället för 1,7 MB på mobil. Ingår i samlings-PR #23. Till Channing: nästan allt som återstår i backloggen väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridiken, märkena, spellistorna). Mina egna förbättringar blir allt mindre, så arbetspassen kan gärna glesas ut tills Joel har mergat #23.
+- 2026-10-30 15:38: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom. Rensade bort upprepade 'oförändrat'-rader ur STATUS.md.
+- 2026-10-30 16:23: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 17:08: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 17:54: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 18:39: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 19:24: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 20:10: Oförändrat: allt väntar på Joel (PR #23 och #8, mejladressen, KALAS20 i Stripe, juridik, märken, spellistor). Inget byggt. Röktestet mot live: alla kontroller går igenom.
+- 2026-10-30 20:55: Joel, påminnelse: Kalaseriet har stått still i ett dygn i väntan på dig, och sajten mår bra (röktestet går igenom). Viktigast, i ordning: (1) PR #8 eller koden KALAS20 i Stripe: varje sida ber kunder använda en rabattkod som kassan avvisar. (2) PR #23: all förbättring från de senaste dagarna i en merge, kontrollerad och utan konflikter. (3) En fungerande mejladress (hej@kalaseriet.se studsar). Resten (juridik, märken, spellistor, allergitext) står i BACKLOG.md. Tills dess bygger jag inget nytt.
+- 2026-10-30 20:56: Uppfattat: inga fler påminnelser. Pass utan nytt underlag avslutas med done --quiet tills du hör av dig.
+- 2026-10-30 21:41: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-30 22:26: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-30 23:11: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-30 23:57: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 00:43: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 01:29: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 02:16: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 03:01: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 03:47: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 04:32: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 05:17: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 06:03: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 06:48: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 07:34: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 08:19: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 09:05: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 09:50: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 10:36: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 11:21: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 12:07: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
+- 2026-10-31 12:52: Oförändrat, väntar på Joel. Röktestet mot live går igenom.
