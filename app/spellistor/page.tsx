@@ -51,10 +51,10 @@ export default function SpellistorPage() {
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
         <div style={{ backgroundColor: '#faf1ef', padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-            <h1 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: 'clamp(3rem, 7vw, 5rem)', fontWeight: 800, color: '#4e4e4e', marginBottom: '0.75rem' }}>
+            <h1 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: 'clamp(3rem, 7vw, 5rem)', fontWeight: 800, color: '#4e4e4e', marginBottom: '0.75rem' }}>
               Spellistor
             </h1>
-            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', color: '#5910b6', lineHeight: '130%' }}>
+            <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '1.4rem', color: '#5910b6', lineHeight: '130%' }}>
               Perfekt bakgrundsmusik till kalaset — sorterat efter åldersgrupp.
             </p>
           </div>
@@ -68,15 +68,15 @@ export default function SpellistorPage() {
                   {pl.emoji}
                 </div>
                 <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', fontWeight: 800, color: '#5910b6', marginBottom: '0.5rem' }}>{pl.age}</h2>
-                  <p style={{ fontFamily: 'caraque-melted, sans-serif', color: '#7c7c7c', fontSize: '0.95rem', marginBottom: '1.25rem', flex: 1 }}>{pl.desc}</p>
+                  <h2 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '1.4rem', fontWeight: 800, color: '#5910b6', marginBottom: '0.5rem' }}>{pl.age}</h2>
+                  <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', color: '#7c7c7c', fontSize: '0.95rem', marginBottom: '1.25rem', flex: 1 }}>{pl.desc}</p>
                   <a
                     href={pl.spotifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
-                      backgroundColor: '#1DB954', color: 'white', fontFamily: 'caraque-melted, sans-serif',
+                      backgroundColor: '#1DB954', color: 'white', fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                       fontWeight: 700, padding: '0.85rem', borderRadius: '1rem', textDecoration: 'none',
                     }}
                   >
