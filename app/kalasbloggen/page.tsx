@@ -34,7 +34,7 @@ export default function KalasbloggenPage() {
         }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
             <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: '0.9rem',
               fontWeight: 700,
               letterSpacing: '0.15em',
@@ -43,7 +43,7 @@ export default function KalasbloggenPage() {
               marginBottom: '1rem',
             }}>Kalasbloggen</p>
             <h1 style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(3rem, 7vw, 6rem)',
               fontWeight: 800,
               color: '#4e4e4e',
@@ -53,7 +53,7 @@ export default function KalasbloggenPage() {
               Tips & inspiration
             </h1>
             <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: '1.5rem',
               color: '#5910b6',
               lineHeight: '130%',
@@ -65,7 +65,7 @@ export default function KalasbloggenPage() {
 
         {SECTIONS.map((sec, si) => (
         <section key={sec.id} id={sec.id} style={{ maxWidth: '1100px', margin: '0 auto', padding: si === 0 ? '4rem 1.5rem 0' : '3rem 1.5rem 0' }}>
-        <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 800, color: '#5910b6', margin: '0 0 1.5rem' }}>
+        <h2 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', fontWeight: 800, color: '#5910b6', margin: '0 0 1.5rem' }}>
           {sec.title}
         </h2>
         {/* Posts grid — same card style for every post, including the first */}
@@ -117,7 +117,7 @@ export default function KalasbloggenPage() {
                   <span style={{
                     backgroundColor: '#6e42ff',
                     color: '#faf1ef',
-                    fontFamily: 'caraque-melted, sans-serif',
+                    fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                     fontSize: '0.75rem',
                     fontWeight: 700,
                     letterSpacing: '0.08em',
@@ -125,12 +125,12 @@ export default function KalasbloggenPage() {
                     padding: '0.2rem 0.75rem',
                     borderRadius: '500px',
                   }}>{post.category}</span>
-                  <span style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#4e4e4e' }}>
+                  <span style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '0.95rem', color: '#4e4e4e' }}>
                     {post.date}
                   </span>
                 </div>
                 <h3 style={{
-                  fontFamily: 'caraque-melted, sans-serif',
+                  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                   fontSize: '1.8rem',
                   fontWeight: 800,
                   color: '#5910b6',
@@ -140,7 +140,7 @@ export default function KalasbloggenPage() {
                   {post.title}
                 </h3>
                 <p style={{
-                  fontFamily: 'caraque-melted, sans-serif',
+                  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                   fontSize: '1.1rem',
                   color: '#5910b6',
                   lineHeight: '140%',
@@ -149,7 +149,7 @@ export default function KalasbloggenPage() {
                   {post.excerpt}
                 </p>
                 <span style={{
-                  fontFamily: 'caraque-melted, sans-serif',
+                  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                   fontSize: '1.2rem',
                   fontWeight: 700,
                   color: '#5910b6',

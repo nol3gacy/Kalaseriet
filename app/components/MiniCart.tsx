@@ -133,7 +133,7 @@ export default function MiniCart() {
           borderBottom: '1px solid rgba(89,16,182,0.1)',
         }}>
           <h2 style={{
-            fontFamily: 'caraque-melted, sans-serif',
+            fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
             fontSize: '1.3rem',
             fontWeight: 700,
             color: '#5910b6',
@@ -167,7 +167,7 @@ export default function MiniCart() {
           {items.length === 0 ? (
             <div style={{ textAlign: 'center' }}>
               <p style={{
-                fontFamily: 'caraque-melted, sans-serif',
+                fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                 fontSize: '1.5rem',
                 fontWeight: 700,
                 color: '#4e4e4e',
@@ -207,7 +207,7 @@ export default function MiniCart() {
                     />
                   )}
                   <h3 style={{
-                    fontFamily: 'caraque-melted, sans-serif',
+                    fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                     fontSize: '1.8rem',
                     fontWeight: 800,
                     color: '#5910b6',
@@ -215,7 +215,7 @@ export default function MiniCart() {
                     margin: 0,
                   }}>{product.name}</h3>
                   {product.ageGroup && (
-                    <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '0.95rem', color: '#4e4e4e', margin: '-0.25rem 0 0' }}>
+                    <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '0.95rem', color: '#4e4e4e', margin: '-0.25rem 0 0' }}>
                       för {product.ageGroup === '7-8' ? '7 & 8' : product.ageGroup}-åringar
                     </p>
                   )}
@@ -226,7 +226,7 @@ export default function MiniCart() {
                     gap: '1rem',
                   }}>
                     <span style={{
-                      fontFamily: 'caraque-melted, sans-serif',
+                      fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                       fontSize: '1.3rem',
                       fontWeight: 700,
                       color: '#5910b6',
@@ -239,7 +239,7 @@ export default function MiniCart() {
                         background: 'transparent',
                         border: 'none',
                         cursor: 'pointer',
-                        fontFamily: 'caraque-melted, sans-serif',
+                        fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                         fontSize: '1.1rem',
                         fontWeight: 700,
                         color: '#5910b6',
@@ -267,13 +267,13 @@ export default function MiniCart() {
               marginBottom: '1rem',
             }}>
               <span style={{
-                fontFamily: 'caraque-melted, sans-serif',
+                fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                 fontSize: '1.1rem',
                 fontWeight: 500,
                 color: '#4e4e4e',
               }}>Totalt</span>
               <span style={{
-                fontFamily: 'caraque-melted, sans-serif',
+                fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                 fontSize: '2rem',
                 fontWeight: 800,
                 color: '#5910b6',
