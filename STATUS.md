@@ -207,3 +207,4 @@
 - 2026-11-04 19:36: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
 - 2026-11-04 20:21: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
 - 2026-11-04 21:07: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 21:57: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om tangentbordskontroll per utseende (ett utseende, köpvägen redan kontrollerad med Tab). Röktestet mot live går igenom.
