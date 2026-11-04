@@ -197,3 +197,13 @@
 - 2026-11-04 12:02: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
 - 2026-11-04 12:48: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
 - 2026-11-04 13:33: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 14:18: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om tillgänglighetskontroll bakom PIN-låset (Kalaseriet har inget PIN-lås, Lighthouse-tillgänglighet redan 97-100). Röktestet mot live går igenom.
+- 2026-11-04 15:04: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 15:49: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 16:34: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 17:19: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 18:05: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 18:50: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 19:36: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 20:21: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 21:07: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
