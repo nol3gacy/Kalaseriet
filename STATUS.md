@@ -188,3 +188,4 @@
 - 2026-10-31 13:38: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
 - 2026-10-31 14:52: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om delad JSON-lagring (statisk butik utan delat tillstånd). Röktestet mot live går igenom.
 - 2026-10-31 15:48: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om skärminspelade klipp (ett klipp av sajten säljer inte utskrivbara paket). Röktestet mot live går igenom.
+- 2026-11-04 07:13: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om skärmdumpar per utseende (sajten har ett utseende och befintliga kontroller täcker det). Röktestet mot live går igenom.
