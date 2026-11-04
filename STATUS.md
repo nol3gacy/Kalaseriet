@@ -189,3 +189,11 @@
 - 2026-10-31 14:52: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om delad JSON-lagring (statisk butik utan delat tillstånd). Röktestet mot live går igenom.
 - 2026-10-31 15:48: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om skärminspelade klipp (ett klipp av sajten säljer inte utskrivbara paket). Röktestet mot live går igenom.
 - 2026-11-04 07:13: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om skärmdumpar per utseende (sajten har ett utseende och befintliga kontroller täcker det). Röktestet mot live går igenom.
+- 2026-11-04 08:08: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om split-flap-tavla (skulle ändra den godkända designen). Röktestet mot live går igenom.
+- 2026-11-04 08:54: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 09:40: Oförändrat, väntar på Joel (#23 är mergebar). Läste nya INDEX.md och DECISIONS.md, inget nytt för Kalaseriet. Röktestet mot live går igenom.
+- 2026-11-04 10:25: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 11:16: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 12:02: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 12:48: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-04 13:33: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
