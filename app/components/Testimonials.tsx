@@ -18,7 +18,7 @@ export default function Testimonials({
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3rem', maxWidth: '700px', marginInline: 'auto' }}>
           <h2 style={{
-            fontFamily: 'caraque-melted, sans-serif',
+            fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',
@@ -26,7 +26,7 @@ export default function Testimonials({
             marginBottom: '1rem',
           }}>{heading}</h2>
           <p style={{
-            fontFamily: 'caraque-melted, sans-serif',
+            fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
             fontSize: '1.3rem',
             color: '#4e4e4e',
             lineHeight: '130%',
@@ -59,7 +59,7 @@ export default function Testimonials({
 
               {/* Quote */}
               <p style={{
-                fontFamily: 'caraque-melted, sans-serif',
+                fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                 fontSize: '1.15rem',
                 color: '#4e4e4e',
                 lineHeight: '145%',
@@ -71,7 +71,7 @@ export default function Testimonials({
 
               {/* Author */}
               <p style={{
-                fontFamily: 'caraque-melted, sans-serif',
+                fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                 fontSize: '1.1rem',
                 color: '#5910b6',
                 fontWeight: 700,

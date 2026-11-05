@@ -9,7 +9,7 @@ export default function AgeCTAs() {
   return (
     <section style={{ padding: '5rem 1.5rem', textAlign: 'center' }}>
       <h2 style={{
-        fontFamily: 'caraque-melted, sans-serif',
+        fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
         fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
         fontWeight: 800,
         color: '#5910b6',

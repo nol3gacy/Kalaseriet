@@ -8,21 +8,21 @@ export const metadata = {
 }
 
 const h2Style: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '2rem',
   fontWeight: 800,
   color: '#5910b6',
   marginBottom: '1.5rem',
 }
 const h3Style: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.15rem',
   fontWeight: 700,
   color: '#272729',
   marginBottom: '0.5rem',
 }
 const pStyle: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.05rem',
   color: '#4e4e4e',
   lineHeight: '160%',
@@ -34,7 +34,7 @@ export default function VillkorPage() {
       <Navbar />
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
         <div style={{ backgroundColor: '#faf1ef', padding: '5rem 1.5rem 3rem', textAlign: 'center' }}>
-          <h1 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#4e4e4e' }}>
+          <h1 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#4e4e4e' }}>
             Villkor
           </h1>
         </div>

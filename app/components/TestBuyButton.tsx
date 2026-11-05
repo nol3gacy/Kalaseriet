@@ -38,7 +38,7 @@ export default function TestBuyButton() {
         {busy ? 'Öppnar kassan…' : 'Köp testprodukt – 3 kr ›'}
       </button>
       {error && (
-        <p style={{ fontFamily: 'caraque-melted, sans-serif', color: '#c0392b', marginTop: '1rem' }}>{error}</p>
+        <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', color: '#c0392b', marginTop: '1rem' }}>{error}</p>
       )}
     </>
   )

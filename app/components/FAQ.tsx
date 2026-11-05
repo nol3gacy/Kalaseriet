@@ -25,7 +25,7 @@ export default function FAQ({
       <div style={{ maxWidth: '820px', margin: '0 auto' }}>
         <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
           <Heading style={{
-            fontFamily: 'caraque-melted, sans-serif',
+            fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.4rem)',
             fontWeight: 800,
             color: '#5910b6',
@@ -34,7 +34,7 @@ export default function FAQ({
           }}>{heading}</Heading>
           {subheading && (
             <p style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: '1.05rem',
               color: '#4e4e4e',
               lineHeight: '140%',
@@ -68,7 +68,7 @@ export default function FAQ({
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    fontFamily: 'caraque-melted, sans-serif',
+                    fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                     fontSize: '1.2rem',
                     fontWeight: 700,
                     color: '#4e4e4e',
@@ -103,7 +103,7 @@ export default function FAQ({
                     className="faq-answer"
                     style={{
                       padding: '0 1rem 1.5rem',
-                      fontFamily: 'caraque-melted, sans-serif',
+                      fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                       fontSize: '1.05rem',
                       color: '#4e4e4e',
                       lineHeight: '160%',

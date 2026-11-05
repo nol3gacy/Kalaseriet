@@ -29,6 +29,117 @@ export function isoDate(date: string): string {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'tema-aventyrskalas',
+    title: 'Äventyrskalas: Guide till karta, lekar och meny',
+    summary: 'Så gör du ett äventyrskalas för 4- och 5-åringar, med skattkarta, upptäcktsfärd och mat för små upptäckare.',
+    body: `<h2>Äventyrskalas är för barn som vill ut och upptäcka. Temat är friare än pirater eller dinosaurier, så det passar en blandad barngrupp. Här är vår guide till en upptäcktsfärd på kalaset.</h2>
+<h3>Stämningen</h3><p>Grönt, brunt och naturmaterial. Kalaset fungerar lika bra i en park eller skogsdunge som hemma: häng upp en karta på väggen, ställ ut ryggsäckar, ficklampor och en kompass, och låt ett tält eller en koja av filtar bli basläger.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett uppdrag: "Upptäcktsresande sökes till expedition". Rita en liten karta på baksidan som visar vägen till kalaset.</p>
+<h3>Utklädnad</h3><p>Keps eller solhatt, en ryggsäck och en kikare av två toarullar räcker. Den som vill kan komma som djungelforskare, polarresenär eller skattletare.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Kartjakten</strong>: följ en enkel bildkarta från station till station. Vid varje station väntar en ledtråd till nästa, och den sista leder till en skattkista.</li>
+<li><strong>Djungelstigen</strong>: en bana med "stenar" av kuddar att kliva på och en "flod" av en blå filt som inte får nuddas.</li>
+<li><strong>Vad finns i ryggsäcken?</strong>: barnen känner på saker i en ryggsäck och gissar vad expeditionen behöver.</li>
+<li><strong>Lägerelden</strong>: en lugn stund med en ficklampa som "eld", en kort saga om en expedition och kalasets tårta.</li>
+</ul>
+<h3>Maten</h3><p>"Expeditionsproviant" i små påsar med russin, majskrokar och fruktbitar, korv i bröd vid "lägret", vatten i egna flaskor och en tårta med en skattkarta av glasyr.</p>
+<h3>Kalaspåsen</h3><p>En liten ficklampa eller kompass, en ritad karta att ta hem och ett diplom som "Modig upptäcktsresande".</p>
+<p><a href="/kalas/tema/aventyrskalas">Äventyrskalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '30 oktober 2026',
+    imageUrl: '/wf/images/covers/aventyrskalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-vetenskapskalas',
+    title: 'Vetenskapskalas: Guide till experiment, dekoration och meny',
+    summary: 'Så gör du ett vetenskapskalas för barn 6 till 8 år, med enkla experiment från köket, labbrockar och forskarmat.',
+    body: `<h2>Vetenskapskalas passar nyfikna barn som alltid frågar varför. Här är vår guide till ett kalas där gästerna blir forskare och experimenten görs med sådant som finns i köket.</h2>
+<h3>Stämningen</h3><p>Vitt, grönt och lite neon. Täck bordet med en plastduk (det blir kladdigt), ställ fram glasburkar och mätkannor som "labbutrustning" och sätt upp en skylt med "Kalaslabbet". En lista med "dagens experiment" på väggen ger barnen något att se fram emot.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en antagning till forskarskolan: "Du är utvald till kalaslabbet". Be gästerna ta med kläder som får bli fläckiga.</p>
+<h3>Utklädnad</h3><p>Gamla vita skjortor eller förkläden blir labbrockar, och skyddsglasögon från en leksaksaffär eller simglasögon gör alla till riktiga forskare. Ett namnskylt med "Dr" framför namnet uppskattas.</p>
+<h3>Experiment i prioritetsordning</h3>
+<ul>
+<li><strong>Vulkanen</strong>: bikarbonat och ättika med lite karamellfärg i en plastflaska som står i en balja. Barnen gissar först hur högt det ska skumma.</li>
+<li><strong>Ballongen som blåser upp sig själv</strong>: häll ättika i en flaska, fyll en ballong med bikarbonat, trä den över flaskhalsen och lyft.</li>
+<li><strong>Färgfyrverkeri i mjölk</strong>: droppa karamellfärg i en tallrik mjölk och nudda med en tops doppad i diskmedel.</li>
+<li><strong>Lavalampan</strong>: vatten, matolja och karamellfärg i ett glas, sedan en bit brustablett. Ett lugnt experiment att avsluta med.</li>
+</ul>
+<p>En vuxen håller i flaskorna och ättikan, och allt görs i en balja eller på en plastduk.</p>
+<h3>Maten</h3><p>"Provrörsdryck" i genomskinliga muggar, "atomer" av vindruvor och ost på pinne, pizzabitar som "forskarlunch" och en tårta med en vulkan av glass eller bär.</p>
+<h3>Kalaspåsen</h3><p>Ett förstoringsglas, ett litet experiment att göra hemma med bruksanvisning och ett diplom som "Kalaslabbets forskare".</p>
+<p><a href="/kalas/tema/vetenskapskalas">Vetenskapskalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/vetenskapskalaset-for-6-aringar.jpg',
+  },
+  {
+    slug: 'tema-sportkalas',
+    title: 'Sportkalas: Guide till grenar, lag och meny',
+    summary: 'Så gör du ett sportkalas för barn 6 till 8 år, med lag, grenar och prisutdelning där alla får vara med och vinna.',
+    body: `<h2>Sportkalas är rätt val för barn som har svårt att sitta still. Här är vår guide till ett kalas med lag, grenar och en prisutdelning där alla får diplom.</h2>
+<h3>Stämningen</h3><p>Ett sportkalas behöver mest plats. Trädgården, en park eller en gympasal fungerar bäst, men många grenar går att göra inomhus med lite möbelflytt. Koner av muggar, startlinjer av maskeringstejp och en visselpipa till "domaren" sätter stämningen direkt.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en kallelse till en tävling: "Du är uttagen till kalasets mästerskap". Skriv tydligt om det blir utomhus, så att gästerna kommer i kläder och skor som tål att springa i.</p>
+<h3>Utklädnad</h3><p>Sportkläder räcker långt. Gör gärna egna lagtröjor med nummer av tejp, eller dela ut pannband i två lagfärger när gästerna kommer.</p>
+<h3>Grenar i prioritetsordning</h3>
+<ul>
+<li><strong>Hinderbanan</strong>: hoppa över kuddar, krypa under en filt och slalom mellan koner, på tid eller som stafett.</li>
+<li><strong>Precisionsgrenen</strong>: kasta ärtpåsar eller bollar i hinkar på olika avstånd, där hinkarna längst bort ger flest poäng.</li>
+<li><strong>Lagstafett</strong>: lagen springer med en ägg-och-sked eller en ballong mellan knäna. Samarbete väger lika tungt som fart.</li>
+<li><strong>Prisutdelningen</strong>: alla får diplom och en egen kategori, som "bästa lagkamrat" eller "snabbaste fötterna", så att ingen går hem som förlorare.</li>
+</ul>
+<h3>Maten</h3><p>Mycket vatten och saft, fruktbitar i "energiboxar", pastasallad eller korv med bröd som "matchmat" och en tårta formad som en fotboll eller en medalj.</p>
+<h3>Kalaspåsen</h3><p>En medalj av papp eller choklad, ett pannband i lagfärgen och ett diplom.</p>
+<p><a href="/kalas/tema/sportkalas">Sportkalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/sportkalaset-for-6-aringar.jpg',
+  },
+  {
+    slug: 'tema-robotkalas',
+    title: 'Robotkalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett robotkalas för 4- och 5-åringar, från robotdans och kartongrobotar till robotmat och kalaspåse.',
+    body: `<h2>Robotkalas är perfekt för små teknikfantaster, och det mesta går att bygga av sådant som annars hamnar i återvinningen. Här är vår guide till ett kalas i robotfabriken.</h2>
+<h3>Stämningen</h3><p>Silver, blått och lite neonfärger. Klä några kartonger i aluminiumfolie och ställ dem som "maskiner" i rummet, häng upp ljusslingor och spela elektronisk musik med pip och surr när gästerna kommer.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som ett meddelande från robotfabriken: "Ny robot sökes för uppdrag den 12 maj". En ritad robot med kalasdetaljerna på displayen gör den rolig att läsa högt för barnet.</p>
+<h3>Utklädnad</h3><p>En kartong med armhål blir robotkropp, och en mindre kartong eller en papperspåse blir huvud. Kapsyler, knappar och folie som limmas på ger panel och lampor. Bygg gärna dräkterna tillsammans som första aktivitet.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Robotdansen</strong>: barnen dansar som robotar med stela armar och fryser i en robotpose när musiken tystnar.</li>
+<li><strong>Robotkommandon</strong>: en vuxen är robotchef och ger kommandon som "gå tre steg framåt" eller "snurra ett varv". Den som gör fel blir hjälprobot.</li>
+<li><strong>Bygg en robot</strong>: lag bygger en robotkompis av kartonger, toarullar och tejp på tio minuter.</li>
+<li><strong>Batteriladdning</strong>: en lugn stund där robotarna "laddar" med en saga eller ett pussel innan tårtan.</li>
+</ul>
+<h3>Maten</h3><p>"Muttrar och skruvar" av ostbågar och kringlor, smörgåsar utstansade som kugghjul, grönsaker med dipp som "kablar" och en tårta med en robot av godis på toppen.</p>
+<h3>Kalaspåsen</h3><p>Robotklistermärken, ett litet pyssel att bygga hemma och ett diplom som "Certifierad robotingenjör".</p>
+<p><a href="/kalas/tema/robotkalas">Robotkalaset finns för 4- och 5-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/robotkalaset-for-5-aringar.jpg',
+  },
+  {
+    slug: 'tema-cirkuskalas',
+    title: 'Cirkuskalas: Guide till dekoration, lekar och meny',
+    summary: 'Så gör du ett cirkuskalas för barn 6 till 8 år, där varje gäst blir artist, från manege och jonglering till popcorn och föreställning.',
+    body: `<h2>Cirkuskalas passar barn som gillar att visa vad de kan. Här är vår guide till ett kalas där alla gäster är artister och kvällen slutar med en föreställning.</h2>
+<h3>Stämningen</h3><p>Rött, gult och vitt i ränder. Häng upp ballonger och vimplar i taket, lägg ett rep i en cirkel på golvet som manege och ställ stolarna runt den som publikplatser. Klassisk cirkusmusik med trumvirvel gör resten.</p>
+<h3>Inbjudningar</h3><p>Skriv inbjudan som en biljett till "Den stora föreställningen", med tid, plats och en rad för gästens artistnamn. Be gärna gästerna fundera på vilket nummer de vill göra.</p>
+<h3>Utklädnad</h3><p>En randig tröja, hängslen och en röd näsa räcker för en clown. Den som hellre vill vara akrobat, trollkarl eller cirkusdirektör kan komma i hatt och kavaj. Ansiktsmålning på plats är ett bra sätt att starta kalaset.</p>
+<h3>Lekar i prioritetsordning</h3>
+<ul>
+<li><strong>Artistskolan</strong>: stationer där barnen tränar på att jonglera med sjalar, balansera en bok på huvudet och gå på ett rep som ligger på golvet.</li>
+<li><strong>Clownstafetten</strong>: lag som springer med stora skor eller en ballong mellan knäna och lämnar över en clownnäsa.</li>
+<li><strong>Trollkarlens låda</strong>: gissa vad som döljs i en låda bara genom att känna, en lugnare lek mitt i kalaset.</li>
+<li><strong>Föreställningen</strong>: avsluta med att varje barn visar sitt nummer i manegen, gärna för föräldrarna vid hämtningen.</li>
+</ul>
+<h3>Maten</h3><p>Popcorn i strutar, "clownsmörgåsar" med ansikten av grönsaker, fruktspett i cirkusfärger och en randig tårta. Saft serverad i små plastglas med sugrör som i en kiosk.</p>
+<h3>Kalaspåsen</h3><p>En röd clownnäsa, några ballonger och ett diplom som "Kvällens stjärnartist".</p>
+<p><a href="/kalas/tema/cirkuskalas">Cirkuskalaset finns för 6-åringar och för 7- och 8-åringar</a> med 20 färdiga lekar och aktiviteter, 20 recept, inbjudan, diplom, spellistor, dekorationstips och körschema.</p>`,
+    category: 'Tema-guide',
+    date: '29 oktober 2026',
+    imageUrl: '/wf/images/covers/cirkuskalaset-for-6-aringar.jpg',
+  },
+  {
     slug: 'tema-rymdkalas',
     title: 'Rymdkalas: Guide till dekoration, lekar och meny',
     summary: 'Så gör du ett rymdkalas för barn 4 till 8 år, från mörklagd raket och planetjakt till rymdmat och kalaspåse.',
@@ -128,7 +239,7 @@ export const blogPosts: BlogPost[] = [
 <h3>Tema för kalaspåsen</h3>
 <p>Om kalaset har ett tema, varför inte matcha kalaspåsen med det? För ett prinsesstema kan du lägga till små kronor eller glitterprodukter, medan ett djungeltema kan innehålla djurklistermärken eller små figurer. Våra temaprodukter gör det enkelt att skapa en genomtänkt look.</p>
 <h3>Gör det personligt</h3>
-<p>Lägg till barnens namn på påsarna för en personlig touch. Våra dekorationskit inkluderar etiketter och klistermärken som gör detta både enkelt och snyggt.</p>
+<p>Lägg till barnens namn på påsarna för en personlig touch. Fler idéer för kalaspåsar som passar ett visst tema finns i <a href="/kalasbloggen#temaguider">våra temaguider</a>.</p>
 <p>Kalaspåsar är en liten gest som gör stort intryck. För fler tips och produkter som gör det enkelt att skapa en minnesvärd kalasfinal, kolla in <a href="/kalas">kalasen</a>!</p>`,
     category: 'Tips',
     date: '25 juni 2026',
@@ -179,8 +290,8 @@ export const blogPosts: BlogPost[] = [
 <h3>Dansstopp</h3>
 <p>Sätt på musik och låt barnen dansa så vilt de vill – men när musiken stannar gäller det att frysa på stället! En lek som alltid lockar till skratt. Vill du lägga till lite extra kul? Ha några små priser redo, och dela gärna ut diplom till alla, de ingår i <a href="/kalas">våra kalaspaket</a>.</p>
 <h3>Fiskdamm</h3>
-<p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Våra praktiska och snygga kalaspåsar är perfekta för ändamålet.</p>
-<p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Bläddra bland kalasen för massor av inspiration och produkter som gör planeringen enkel och roligt!</p>`,
+<p>Fiskdammen är en riktig klassiker! Dela ut små överraskningar i färgglada påsar som barnen kan fiska upp. Påsar i olika färger gör det lätt att dela ut en till varje barn.</p>
+<p>Vill du ha fler tips på lekar och aktiviteter som passar just ert kalas? Lekar för ett visst tema hittar du i <a href="/kalasbloggen#temaguider">våra temaguider</a>, och färdiga paket bland <a href="/kalas">kalasen</a>.</p>`,
     category: 'Tips',
     date: '25 mars 2026',
     imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
@@ -203,7 +314,7 @@ export const blogPosts: BlogPost[] = [
 <h3>10. Mjölkkartong-bowling</h3><p>Töm 6 mjölkkartonger, ställ upp som kägglor, rulla en boll.</p>
 <h3>11. Memory IRL</h3><p>Vänd lock från små burkar uppochner. Barnen letar par.</p>
 <h3>12. Diplom-ceremoni</h3><p>Avsluta med att alla får ett diplom. <a href="/kalas/6-aringar">Våra kalaspaket inkluderar tryckfärdiga diplom</a>.</p>
-<p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
+<p>Populära teman för sexåringar är <a href="/kalas/tema/superhjaltekalas">superhjältekalas</a>, <a href="/kalas/tema/cirkuskalas">cirkuskalas</a> och <a href="/kalas/tema/vetenskapskalas">vetenskapskalas</a>.</p> <p>Vill du ha allt klart? Våra <a href="/kalas/6-aringar">kalaspaket för 6-åringar</a> innehåller 20 färdiga lekar med instruktioner och tips på rekvisita, plus länk till en spellista för kalaset.</p>`,
     category: 'Tips',
     date: '25 februari 2026',
     imageUrl: '/wf/images/blogg/photo-1627764940620.jpg',
@@ -218,8 +329,8 @@ export const blogPosts: BlogPost[] = [
 <h3>Mat: 200-300 kr</h3><p>Tre val: muffins (40 kr för 12 st), popcorn (15 kr), fruktspett (50 kr). Skippa cateringen — barnen vill ha snacks de känner igen.</p>
 <h3>Kalaspåsar: 250 kr för 10 barn</h3><p>Köp i bulk på Clas Ohlson eller Åhléns. Klistermärken, små klossar, lite godis. Sätter sammans till ca 25 kr per påse. Vår <a href="/kalasbloggen/diy-kalaspase">DIY-kalaspåse-guide</a> har fler tips.</p>
 <h3>Aktiviteter & lekar: 0 kr</h3><p>Här ligger värdet — välj rätt lekar och det räcker. <a href="/kalas">Våra kalaspaket</a> kostar 129 kr och innehåller 20 testade lekar.</p>
-<h3>Total: ca 700-1000 kr</h3><p>Jämför med Buster eller liknande lekland som börjar på 2 500 kr för 8 barn.</p>
-<p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen.</p>`,
+<h3>Total: ca 700-1000 kr</h3><p>Jämför med ett kalas på lekland, som för 8 barn ofta kostar betydligt mer.</p>
+<p><strong>Pro-tipset:</strong> Investera de pengar du sparar på dekorationer/cateringen i en kvalitativ huvudaktivitet — t.ex. ett tema som ger struktur till hela dagen. Idéer finns i <a href="/kalasbloggen#temaguider">våra temaguider</a>.</p>`,
     category: 'Tips',
     date: '25 januari 2026',
     imageUrl: '/wf/images/blogg/photo-1586738730873.jpg',
@@ -324,6 +435,11 @@ const POST_OFFERS: Record<string, PostOffer> = {
   'tema-superhjaltekalas': { label: 'Alla superhjältekalas', href: '/kalas/tema/superhjaltekalas' },
   'tema-dinosauriekalas': { label: 'Alla dinosauriekalas', href: '/kalas/tema/dinosauriekalas' },
   'tema-rymdkalas': { label: 'Alla rymdkalas', href: '/kalas/tema/rymdkalas' },
+  'tema-cirkuskalas': { label: 'Alla cirkuskalas', href: '/kalas/tema/cirkuskalas' },
+  'tema-robotkalas': { label: 'Alla robotkalas', href: '/kalas/tema/robotkalas' },
+  'tema-sportkalas': { label: 'Alla sportkalas', href: '/kalas/tema/sportkalas' },
+  'tema-vetenskapskalas': { label: 'Alla vetenskapskalas', href: '/kalas/tema/vetenskapskalas' },
+  'tema-aventyrskalas': { label: 'Alla äventyrskalas', href: '/kalas/tema/aventyrskalas' },
   'tema-safarikalas': { label: 'Alla safarikalas', href: '/kalas/tema/safarikalas' },
   'sa-skapar-du-en-magisk-skattjakt-till-barnkalaset': { label: 'Piratkalas med skattjakt-känsla', href: '/kalas/tema/piratkalas' },
   'lekar-for-6-aringar': { label: 'Kalas för 6-åringar', href: '/kalas/6-aringar' },

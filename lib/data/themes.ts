@@ -82,6 +82,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'cirkuskalas',
     themes: ['cirkus'],
+    guide: 'tema-cirkuskalas',
     heading: 'Cirkuskalas',
     description: 'Cirkuskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett cirkuskalas',
@@ -94,6 +95,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'robotkalas',
     themes: ['robot'],
+    guide: 'tema-robotkalas',
     heading: 'Robotkalas',
     description: 'Robotkalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett robotkalas',
@@ -106,6 +108,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'sportkalas',
     themes: ['sport'],
+    guide: 'tema-sportkalas',
     heading: 'Sportkalas',
     description: 'Sportkalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett sportkalas',
@@ -118,6 +121,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'vetenskapskalas',
     themes: ['vetenskap'],
+    guide: 'tema-vetenskapskalas',
     heading: 'Vetenskapskalas',
     description: 'Vetenskapskalas för 6, 7 och 8 år: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett vetenskapskalas',
@@ -130,6 +134,7 @@ export const themePages: ThemePage[] = [
   {
     slug: 'aventyrskalas',
     themes: ['äventyr'],
+    guide: 'tema-aventyrskalas',
     heading: 'Äventyrskalas',
     description: 'Äventyrskalas för 4- och 5-åringar: kalaspaket med lekar, recept, inbjudan och diplom. Ladda ner direkt för 129 kr och skriv ut hemma.',
     seoHeading: 'Så ordnar du ett äventyrskalas',
