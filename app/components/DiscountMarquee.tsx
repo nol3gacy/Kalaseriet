@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { DISCOUNT_CODE_LIVE } from '../../lib/discount'
 
 const TEXT = '20% rabatt på första köpet'
 
 export default function DiscountMarquee() {
   const [copied, setCopied] = useState(false)
+  if (!DISCOUNT_CODE_LIVE) return null
 
   const copy = async () => {
     try { await navigator.clipboard.writeText('KALAS20') }

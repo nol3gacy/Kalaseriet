@@ -8,21 +8,21 @@ export const metadata = {
 }
 
 const h2Style: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.6rem',
   fontWeight: 800,
   color: '#5910b6',
   marginBottom: '1rem',
 }
 const h3Style: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.15rem',
   fontWeight: 700,
   color: '#272729',
   marginBottom: '0.5rem',
 }
 const pStyle: React.CSSProperties = {
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.05rem',
   color: '#4e4e4e',
   lineHeight: '160%',
@@ -35,10 +35,10 @@ export default function CookiePolicyPage() {
       <Navbar />
       <main style={{ minHeight: '100vh', backgroundColor: 'white' }}>
         <div style={{ backgroundColor: '#faf1ef', padding: '5rem 1.5rem 3rem', textAlign: 'center' }}>
-          <h1 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#4e4e4e', marginBottom: '0.75rem' }}>
+          <h1 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 800, color: '#4e4e4e', marginBottom: '0.75rem' }}>
             Cookiepolicy
           </h1>
-          <p style={{ fontFamily: 'caraque-melted, sans-serif', color: '#7c7c7c' }}>Senast uppdaterad: maj 2026</p>
+          <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', color: '#7c7c7c' }}>Senast uppdaterad: maj 2026</p>
         </div>
 
         <div style={{ maxWidth: '780px', margin: '0 auto', padding: '3.5rem 1.5rem 5rem', display: 'flex', flexDirection: 'column', gap: '2.25rem' }}>

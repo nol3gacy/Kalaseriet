@@ -2,7 +2,7 @@
    Caraque everywhere: nothing should fall back to Arial/Manrope ("linjär"). */
 
 body {
-  font-family: 'caraque-melted', sans-serif;
+  font-family: 'caraque-melted', caraque-fallback, sans-serif;
 }
 
 /* ProductGrid age filter: the real checkbox is hidden, the Webflow chip shows the state. */
@@ -44,14 +44,14 @@ button {
 /* Webflow's base body/heading defaults use Arial — force Caraque */
 h1, h2, h3, h4, h5, h6,
 p, li, a, span, div, blockquote, label, figcaption {
-  font-family: 'caraque-melted', sans-serif;
+  font-family: 'caraque-melted', caraque-fallback, sans-serif;
 }
 
 .heading.is--bento,
 .heading.is--bento *,
 .brand,
 .footer-logo {
-  font-family: 'caraque-melted', sans-serif;
+  font-family: 'caraque-melted', caraque-fallback, sans-serif;
 }
 
 /* .navbar is position: fixed, so any page whose content starts in a plain

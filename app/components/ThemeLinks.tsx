@@ -7,7 +7,7 @@ export default function ThemeLinks({ heading = 'Kalas efter tema', exclude, only
   return (
     <section style={{ padding: '4rem 1.5rem 0', textAlign: 'center' }}>
       <h2 style={{
-        fontFamily: 'caraque-melted, sans-serif',
+        fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
         fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)',
         fontWeight: 800,
         color: '#5910b6',
