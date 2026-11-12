@@ -11,7 +11,7 @@ export interface CartItem {
 
 interface CartContextType {
   items: CartItem[]
-  addItem: (product: Product, quantity?: number) => void
+  addItem: (product: Product) => void
   removeItem: (productId: string) => void
   updateQuantity: (productId: string, quantity: number) => void
   clearCart: () => void
@@ -35,7 +35,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('cart')
     if (saved) {
       try {
-        setItems(JSON.parse(saved))
+        // Carts saved before the one-copy rule could hold quantity 2+ of the same download.
+        setItems((JSON.parse(saved) as CartItem[]).map(i => ({ ...i, quantity: 1 })))
       } catch {}
     }
     setMounted(true)
@@ -48,19 +49,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [items, mounted])
 
-  const addItem = (product: Product, quantity = 1) => {
-    trackCart('add_to_cart', [{ productId: product._id, productName: product.name, price: product.price, quantity }])
-    setItems(prev => {
-      const existing = prev.find(item => item.product._id === product._id)
-      if (existing) {
-        return prev.map(item =>
-          item.product._id === product._id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
-      }
-      return [...prev, { product, quantity }]
-    })
+  // A package is a download: one copy is all anyone needs. Clicking Köp nu again (e.g. after
+  // backing out of Stripe) must not turn the cart into two copies at 258 kr.
+  const addItem = (product: Product) => {
+    if (items.some(item => item.product._id === product._id)) return
+    trackCart('add_to_cart', [{ productId: product._id, productName: product.name, price: product.price, quantity: 1 }])
+    setItems(prev => prev.some(item => item.product._id === product._id) ? prev : [...prev, { product, quantity: 1 }])
   }
 
   const removeItem = (productId: string) => {
