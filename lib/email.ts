@@ -33,6 +33,7 @@ export function buildOrderEmail(items: OrderEmailItem[], orderPageUrl?: string):
     <tr>
       <td style="padding:12px 0;border-bottom:1px solid #f0e6ff;">
         <div style="font-family:sans-serif;font-weight:700;font-size:16px;color:#272729;">${escapeHtml(item.name)}</div>
+        <a href="${item.downloadUrl}&format=pdf" style="font-family:sans-serif;font-size:14px;color:#5910b6;">Allt i en PDF, redo att skriva ut ›</a>
       </td>
       <td style="padding:12px 0 12px 12px;border-bottom:1px solid #f0e6ff;text-align:right;white-space:nowrap;">
         <a href="${item.downloadUrl}" style="display:inline-block;background:#5910b6;color:#faf1ef;font-family:sans-serif;font-weight:700;font-size:14px;text-decoration:none;padding:10px 20px;border-radius:999px;">Ladda ner ›</a>
@@ -54,7 +55,7 @@ export function buildOrderEmail(items: OrderEmailItem[], orderPageUrl?: string):
         ${itemsHtml}
       </table>
       <h2 style="color:#5910b6;font-size:18px;margin:28px 0 8px;">Så här gör du</h2>
-      <p style="${p}">1. Ladda ner paketet. Det är en ZIP-fil; lättast är att öppna den på en dator. På mobilen öppnas den i appen Filer.</p>
+      <p style="${p}">1. Enklast: öppna allt i en PDF och skriv ut den, på datorn eller direkt från mobilen. Vill du ha varje del som en egen fil, ladda ner paketet (en ZIP-fil; på mobilen öppnas den i appen Filer).</p>
       <p style="${p}">2. Skriv ut det ni vill använda, i A4 och gärna i färg. Ingen skrivare? <a href="${BASE_URL}/faq" style="color:#5910b6;">Se våra tips</a>.</p>
       <p style="${p}">3. Välj 5–7 lekar till ett kalas på två timmar och följ körschemat.</p>
       ${guides.length ? `<p style="${p}margin-top:16px;">${guidesHtml}</p>` : ''}
@@ -69,10 +70,10 @@ export function buildOrderEmail(items: OrderEmailItem[], orderPageUrl?: string):
     'Tack för ditt köp!',
     '',
     'Här är dina nedladdningslänkar. Länkarna är giltiga i 30 dagar.',
-    ...items.map(i => `${i.name}: ${i.downloadUrl}`),
+    ...items.map(i => `${i.name}: ${i.downloadUrl}\nAllt i en PDF, redo att skriva ut: ${i.downloadUrl}&format=pdf`),
     '',
     'Så här gör du',
-    '1. Ladda ner paketet. Det är en ZIP-fil; lättast är att öppna den på en dator. På mobilen öppnas den i appen Filer.',
+    '1. Enklast: öppna allt i en PDF och skriv ut den, på datorn eller direkt från mobilen. Vill du ha varje del som en egen fil, ladda ner paketet (en ZIP-fil; på mobilen öppnas den i appen Filer).',
     `2. Skriv ut det ni vill använda, i A4 och gärna i färg. Ingen skrivare? Se våra tips: ${BASE_URL}/faq`,
     '3. Välj 5–7 lekar till ett kalas på två timmar och följ körschemat.',
     ...guides.map(([slug, heading]) => `Läs vår guide till ${heading.toLowerCase()}: ${BASE_URL}/kalasbloggen/${slug}`),

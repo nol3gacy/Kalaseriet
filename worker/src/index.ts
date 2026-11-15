@@ -231,17 +231,23 @@ async function handleDownload(url: URL, env: Env, cors: HeadersInit): Promise<Re
     return json({ error: 'Product not found' }, 404, cors)
   }
 
+  // format=pdf: the whole package as one print-ready PDF (scripts/build-print-pdfs.mjs), opened in the browser.
+  // Until that PDF is in R2, the same link gives the ZIP, so a button shipped early never breaks.
+  const pdf = url.searchParams.get('format') === 'pdf' && env.ZIPS
+    ? await env.ZIPS.get(filename.replace(/\.zip$/, '.pdf'))
+    : null
+
   // The file is streamed from the private R2 bucket, so it never has a public address. The customer gets it
   // named after the party pack. If the object is missing, fall back to the old host rather than failing.
-  const obj = env.ZIPS ? await env.ZIPS.get(filename) : null
+  const obj = pdf ?? (env.ZIPS ? await env.ZIPS.get(filename) : null)
   if (obj) {
-    const name = `${getProductName(productId) || 'Kalaseriet'}.zip`
+    const name = `${getProductName(productId) || 'Kalaseriet'}.${pdf ? 'pdf' : 'zip'}`
     const ascii = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w .&-]/g, '')
     return new Response(obj.body, {
       headers: {
-        'Content-Type': 'application/zip',
+        'Content-Type': pdf ? 'application/pdf' : 'application/zip',
         'Content-Length': String(obj.size),
-        'Content-Disposition': `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(name)}`,
+        'Content-Disposition': `${pdf ? 'inline' : 'attachment'}; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(name)}`,
         'Cache-Control': 'private, no-store',
         ETag: obj.httpEtag,
         ...cors,

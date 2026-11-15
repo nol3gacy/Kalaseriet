@@ -13,6 +13,8 @@ assert.ok(!/detektiv/i.test(html.split('Så här gör du')[1]), 'no guide link f
 assert.ok(html.includes('https://kalaseriet.se/kalasbloggen/tema-piratkalas'), 'absolute guide URL')
 assert.ok(html.includes('Öppna din ordersida') && !html.includes('orderssida'), 'typo fixed')
 assert.ok(text.includes('Piratkalaset för 4-åringar: https://example.invalid/dl1') && text.includes('https://kalaseriet.se/faq'), 'text part has links')
+assert.equal((html.match(/dl\d&format=pdf/g) || []).length, 3, 'one print-PDF link per item')
+assert.ok(text.includes('https://example.invalid/dl1&format=pdf'), 'text part has the PDF link')
 const none = buildOrderEmail([items[2]])
 assert.ok(!none.html.includes('Läs vår guide') && !none.html.includes('ordersida'), 'no guide and no order page line when absent')
 console.log('all email checks passed')
