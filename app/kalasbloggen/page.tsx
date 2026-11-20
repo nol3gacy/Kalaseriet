@@ -73,7 +73,7 @@ export default function KalasbloggenPage() {
           margin: '0 auto',
           padding: si === SECTIONS.length - 1 ? '0 0 4rem' : '0',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))',
           gap: '1.5rem',
         }}>
           {sec.posts.map((post, i) => (

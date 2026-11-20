@@ -107,16 +107,24 @@ export default function CookieConsent() {
         .cookie-ok:hover { transform: scale(1.05); }
         .cookie-ok:active { transform: scale(1); }
 
+        /* Phones: a low bar along the bottom edge. Wrapped in the pill it became a big
+           circle mid-screen, covering the price and the Köp nu / checkout buttons. */
         @media (max-width: 640px) {
           .cookie-banner {
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 1.1rem 1.25rem;
-            text-align: center;
+            left: 0.75rem;
+            right: 0.75rem;
+            bottom: 0.75rem;
+            max-width: none;
+            transform: translateY(calc(100% + 2rem));
             gap: 0.75rem;
+            padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+            border-radius: 1.5rem;
           }
-          .cookie-text { white-space: normal; }
-          .cookie-ok { width: 100%; }
+          .cookie-banner.is--in { transform: translateY(0); }
+          /* Product page: sit above the sticky buy bar while it is shown (it is inert when hidden). */
+          body:has(.buy-wrapper:not([inert])) .cookie-banner { bottom: 5.25rem; }
+          .cookie-text { white-space: normal; font-size: 0.9rem; line-height: 1.25; }
+          .cookie-ok { padding: 0.7rem 1.4rem; }
         }
       `}</style>
     </div>

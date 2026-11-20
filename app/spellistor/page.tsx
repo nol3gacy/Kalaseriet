@@ -61,7 +61,7 @@ export default function SpellistorPage() {
         </div>
 
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '4rem 1.5rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: '1.5rem' }}>
             {PLAYLISTS.map(pl => (
               <div key={pl.age} style={{ borderRadius: '2rem', overflow: 'hidden', border: '1px solid #f0ebee', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ height: '9rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4.5rem', background: pl.color }}>
