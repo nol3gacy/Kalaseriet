@@ -153,6 +153,18 @@ function TackShell({ loading, items }: { loading: boolean; items: DownloadItem[]
                   Ladda ner {item.name}
                 </a>
               ))}
+              {items.map(item => (
+                <a
+                  key={`${item.productId}-pdf`}
+                  href={`${item.downloadUrl}&format=pdf`}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center justify-center gap-2 border-2 border-[#7C3AED] font-bold py-4 px-8 rounded-2xl text-lg"
+                  style={{ color: '#7C3AED' }}
+                >
+                  🖨️ Skriv ut allt: {item.name} (en PDF)
+                </a>
+              ))}
               <p className="text-gray-500 text-sm mt-2">
                 Ingen skrivare hemma? Se våra tips i <a href="/faq" style={{ color: '#7C3AED', textDecoration: 'underline' }}>vanliga frågor</a>.
               </p>
