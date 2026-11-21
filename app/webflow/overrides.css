@@ -106,3 +106,61 @@ main {
 .icon.is--feature {
   margin-right: 10px;
 }
+
+/* ---- Mobile pass 2026-11-20 (scripts/mobile-audit.mjs, Safari/WebKit at 390, 375 and 320 px) ---- */
+
+/* Product grid: the longest names ("Superhjältekalaset", "Prinsesskalaset") made each column ~198 px, so on phones the right
+   column ran ~20 px past the screen edge and was cut off. Let columns shrink and scale the name down. */
+.kalaslekarna-list > .kalaslekarna-item {
+  min-width: 0;
+}
+.heading.is--listing {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .heading.is--listing {
+    font-size: min(2.2rem, calc(6.6vw - 2px));
+  }
+}
+@media (max-width: 479px) {
+  .heading.is--listing {
+    font-size: min(1.7rem, calc(6.6vw - 2px));
+  }
+}
+
+/* Header on small phones: the logo (fixed 14.1rem) ran under the cart icon below ~390 px. */
+@media (max-width: 479px) {
+  .mobile-logo {
+    width: min(14.1rem, calc(100vw - 170px));
+  }
+}
+
+/* iOS Safari zooms the page in when a field under 16 px gets focus, and it stays zoomed
+   (footer newsletter on every page, the contact and feedback forms). */
+@media (max-width: 767px) {
+  input:not([type=submit]):not([type=button]):not([type=checkbox]):not([type=radio]),
+  textarea,
+  select {
+    font-size: 16px;
+  }
+  /* Footer links were 24 px tall, stacked: easy to hit the neighbour. */
+  .footer-link {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+/* Theme/age tag pills were 27 px tall on phones: a bit more padding makes them ~36 px. */
+@media (max-width: 767px) {
+  .link-block {
+    padding-top: .35em;
+    padding-bottom: .35em;
+  }
+}
+
+/* The soundwave Lottie loads near the viewport; until then its box was 0 px tall and the
+   playlist bento card grew by ~60 px mid-scroll (home page layout shift). Reserve its 2:1 shape
+   on the placeholder only: on <lottie-player> itself aspect-ratio blows the box up to ~400 px. */
+div.sound-anim {
+  aspect-ratio: 2 / 1;
+}

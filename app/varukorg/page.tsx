@@ -78,7 +78,7 @@ export default function VarukorgPage() {
 
           <div className="space-y-4 mb-10">
             {items.map(item => (
-              <div key={item.product._id} className="border border-gray-200 rounded-2xl p-6 flex items-start gap-6">
+              <div key={item.product._id} className="border border-gray-200 rounded-2xl p-4 sm:p-6 flex items-start gap-3 sm:gap-6">
                 {/* Product image */}
                 {item.product.externalImageUrl && (
                   /* eslint-disable-next-line @next/next/no-img-element */
@@ -87,12 +87,12 @@ export default function VarukorgPage() {
                     srcSet={coverSrcSet(item.product.externalImageUrl)}
                     sizes="96px"
                     alt={item.product.name}
-                    className="w-24 h-24 object-cover rounded-xl flex-shrink-0"
+                    className="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-xl flex-shrink-0"
                   />
                 )}
 
                 {/* Product info */}
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <Link href={`/kalas/${item.product.slug.current}`} className="hover:opacity-70">
                     <h3 className="font-bold !text-lg text-gray-900 !mb-1">{item.product.name}</h3>
                   </Link>
