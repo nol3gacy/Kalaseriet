@@ -44,3 +44,4 @@ worker/.wrangler
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+backup/

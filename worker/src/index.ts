@@ -92,7 +92,10 @@ export default {
 
 async function handleCheckout(request: Request, stripe: Stripe, cors: HeadersInit, siteOrigin: string): Promise<Response> {
   try {
-    const { items } = await request.json() as CheckoutRequest
+    const body = await request.json() as CheckoutRequest
+    // Each package is a download: one copy per order, whatever quantity or
+    // duplicates an old browser cart sends (a cart bug once sent quantity 2).
+    const items = (body.items ?? []).filter((i, n, all) => all.findIndex(j => j.productId === i.productId) === n)
 
     if (!items || items.length === 0) {
       return json({ error: 'No items in cart' }, 400, cors)
@@ -113,13 +116,13 @@ async function handleCheckout(request: Request, stripe: Stripe, cors: HeadersIni
         product_data: { name: getProductName(item.productId) },
         unit_amount: Math.round(getProductPrice(item.productId) * 100), // öre
       },
-      quantity: Math.max(1, Math.min(20, Math.floor(item.quantity) || 1)),
+      quantity: 1,
     }))
 
     // Carry productId + quantity through to the webhook/thank-you page as
     // metadata — never trust product names from the request body for the
     // actual fulfillment (download links, email), only the id.
-    const itemsMeta = JSON.stringify(items.map(i => ({ id: i.productId, q: i.quantity })))
+    const itemsMeta = JSON.stringify(items.map(i => ({ id: i.productId, q: 1 })))
 
     const session = await stripe.checkout.sessions.create({
       // No payment_method_types: Stripe then offers whatever is activated in

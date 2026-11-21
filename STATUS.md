@@ -210,3 +210,218 @@
 - 2026-11-04 21:57: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om tangentbordskontroll per utseende (ett utseende, köpvägen redan kontrollerad med Tab). Röktestet mot live går igenom.
 - 2026-11-04 22:43: Oförändrat, väntar på Joel (#23 är mergebar). Strök två Överväg-rader: tryckannonser (inga trycksaker, annonser är Joels beslut) och kontroller bakom PIN-låset (inget PIN-lås). Röktestet mot live går igenom.
 - 2026-11-04 23:28: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 00:14: Oförändrat, väntar på Joel (#23 är mergebar). Strök två Överväg-rader om tangentbordskontroll in i iframes (sajten har inga iframes). Röktestet mot live går igenom.
+- 2026-11-05 01:00: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 01:46: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 02:33: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 03:18: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 04:04: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 04:50: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 05:35: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 06:21: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 07:06: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 07:51: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 08:37: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 09:22: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 10:08: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 10:53: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 11:39: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 12:24: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 13:10: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 13:55: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 14:40: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 15:26: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 16:11: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 16:57: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 17:42: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 18:27: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 19:12: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 19:58: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 20:43: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 21:28: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 22:13: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om .ics-nedladdning (butiken har inga datum att lägga i kalendern). Röktestet mot live går igenom.
+- 2026-11-05 22:58: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-05 23:44: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 00:31: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 01:16: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 02:02: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 02:48: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 03:34: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 04:19: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 05:05: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 05:50: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 06:36: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 07:21: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 08:07: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 08:52: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 09:38: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 10:28: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om bake-sv/check-cls (sidorna är redan förrenderade i Next.js, layoutskiftet redan ~0 med reservtypsnittet i #22). Röktestet mot live går igenom.
+- 2026-11-06 11:14: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 11:59: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 12:44: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 13:30: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 14:15: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 15:00: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 15:46: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 16:31: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 17:17: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 18:02: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 18:47: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 19:33: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 20:18: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 21:04: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 21:49: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 22:35: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-06 23:20: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 00:06: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 00:52: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 01:38: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 02:24: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 03:10: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 03:55: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 04:41: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 05:26: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 06:12: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 06:57: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 07:42: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 08:28: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 09:13: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 09:59: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 10:44: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 11:29: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 12:15: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 13:00: Oförändrat, väntar på Joel (#23 är mergebar). Röktestet mot live går igenom.
+- 2026-11-07 13:45: Oförändrat, väntar på Joel (#23 är mergebar). Strök Överväg-raden om självhostade Google Fonts (next/font/google gör det redan, live laddar inget från Google). Röktestet mot live går igenom.
+- 2026-11-07 14:31: Väntar på Joel (#23 är mergebar). Nytt i dag med Joel: punkt 13 i BACKLOG (Loopia-webbhotellet kan sägas upp: alla 33 zippar finns i R2 och lokalt i backup/, DNS-posterna ska ligga kvar). Röktestet mot live går igenom.
+- 2026-11-07 15:16: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 16:01: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 16:47: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 17:32: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 18:18: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 19:03: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 19:48: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 20:33: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 21:18: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 22:03: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 22:48: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-07 23:33: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 00:20: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 01:05: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 01:50: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 02:36: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 03:21: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 04:06: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 04:52: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 05:37: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 06:23: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 07:08: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 07:54: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 08:39: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 09:24: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 10:09: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 10:54: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 11:39: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Strök Överväg-raden om utskicksverktyg (konsumentbutik, utskick är Joels beslut). Röktestet mot live går igenom.
+- 2026-11-08 12:24: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 13:09: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 13:54: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 14:39: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 15:24: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 16:10: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 16:55: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 17:40: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 18:25: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 19:10: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 19:55: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 20:40: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 21:25: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 22:10: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 22:55: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-08 23:41: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 00:26: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 01:11: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 01:56: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 02:41: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 03:26: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 04:11: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 04:56: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 05:41: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 06:26: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 07:12: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 07:57: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 08:42: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 09:27: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 10:12: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 19:58: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 20:43: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Strök Överväg-raden om magic-link-inloggning (inga kundkonton, nedladdning via /tack). Röktestet mot live går igenom.
+- 2026-11-09 21:28: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 22:13: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 22:59: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-09 23:44: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 00:29: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 01:14: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 01:59: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 02:44: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 03:29: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 04:14: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 04:59: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 05:44: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 06:29: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 07:15: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 08:00: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 08:45: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 09:30: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 10:15: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 11:00: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 11:45: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 12:30: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 13:15: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 14:00: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 14:46: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 15:31: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 16:16: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 17:01: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 17:46: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 18:31: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 19:16: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 20:01: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 20:46: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 21:32: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 22:17: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13). Röktestet mot live går igenom.
+- 2026-11-10 23:02: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller i morgon 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-10 23:47: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 00:32: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 01:17: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 02:02: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 02:47: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 03:32: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 04:18: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 05:03: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 05:48: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 06:33: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 07:18: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 08:03: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 08:48: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 09:33: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 10:18: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 11:03: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 11:48: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 12:34: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 13:19: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 14:04: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 14:49: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 15:34: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 16:19: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 17:04: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 17:49: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 18:34: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 19:20: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 20:05: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 20:50: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 21:35: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 22:20: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 23:05: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller i dag 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-11 23:50: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller i dag 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-12 00:35: Oförändrat, väntar på Joel (#23 är mergebar, Loopia punkt 13: första fakturan förfaller i dag 2026-11-12). Röktestet mot live går igenom.
+- 2026-11-12: Branch work/buy-flow-test (stacked on #23): scripts/buy-flow.test.mjs walks home, /kalas, product, Köp nu, /varukorg, Gå till betalning and a failing checkout in headless Chrome, with the Worker /checkout call intercepted (nothing reaches Stripe). Step 5 of ./scripts/check.sh. It found a money bug: clicking Köp nu again on the same package (e.g. after backing out of Stripe) made the cart hold 2 copies, so /varukorg and later checkouts charged 258 kr for one download. The cart now keeps one copy per package and caps saved carts at 1.
+- 2026-11-12 01:25: Köptestet i webbläsaren (från biblioteket) hittade ett fel på livesajten: trycker kunden Köp nu igen på samma paket (t.ex. efter att ha backat från Stripe) hamnar 2 exemplar i varukorgen och kassan tar 258 kr för en nedladdning. Rättat på grenen i PR #24 (staplad på #23): ett exemplar per paket, plus testet som steg 5 i check.sh. Inte deployat; Joel avgör när #23 och #24 går live.
+- 2026-11-12: Worker /checkout charges one copy per package (quantity 1, duplicate ids dropped) whatever the browser sends, so carts saved before the fix cannot be charged twice either. On PR #24; needs a Worker deploy.
