@@ -115,7 +115,7 @@ export default function Navbar() {
         .menu-button.w--open .wf-burger span:nth-child(2) { opacity: 0; }
         .menu-button.w--open .wf-burger span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
         .wf-mobile-menu { position: fixed; inset: 0; z-index: 663; background: #fff; display: flex; flex-direction: column; gap: .5rem; padding: calc(3rem + 6rem) 1.5rem 2rem; overflow-y: auto; }
-        .wf-mobile-menu a { font-family: caraque-melted, sans-serif; font-size: clamp(3rem, 9vw, 4rem); font-weight: 800; color: var(--color--purple, #6e42ff); text-decoration: none; line-height: 95%; }
+        .wf-mobile-menu a { font-family: caraque-melted, caraque-fallback, sans-serif; font-size: clamp(3rem, 9vw, 4rem); font-weight: 800; color: var(--color--purple, #6e42ff); text-decoration: none; line-height: 95%; }
         /* Hide the desktop nav-menu and show the burger on small screens */
         @media (min-width: 992px) { #menu-button { display: none !important; } }
         @media (max-width: 991px) {

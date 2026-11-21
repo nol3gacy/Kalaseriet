@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import BentoBox from './components/BentoBox'
 import DiscountMarquee from './components/DiscountMarquee'
 import HeroVideo from './components/wf/HeroVideo'
+import ThemeLinks from './components/ThemeLinks'
 
 export const themeColors: Record<string, { from: string; to: string; emoji: string }> = {
   pirat:        { from: '#dde3ea', to: '#b8c4d0', emoji: '☠️' },
@@ -135,6 +136,11 @@ export default async function Home() {
 
       {/* ── Kalasen (filter + all products) ───────────────── */}
       <ProductGrid products={products} heading="Kalasen" headingLevel="h2" />
+
+      {/* ── Theme pages (an addition to the approved home page: Joel's call) ── */}
+      <div style={{ paddingBottom: '2.5rem' }}>
+        <ThemeLinks />
+      </div>
 
       {/* ── About ─────────────────────────────────────────── */}
       <section className="about">

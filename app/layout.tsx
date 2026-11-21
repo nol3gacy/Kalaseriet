@@ -77,6 +77,10 @@ export default function RootLayout({
         {/* Preload the two most-used Caraque weights for fast first paint */}
         <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldMelted.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/wf/fonts/caraque/Caraque-XBoldSolid.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Body text weights: every page uses them; preloading starts the fetch before the CSS is parsed, so text
+            reflows (layout shift) less when the fallback font is swapped out. */}
+        <link rel="preload" href="/wf/fonts/caraque/Caraque-MediumMelted.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/wf/fonts/caraque/Caraque-RegularMelted.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {/* Sitewide entity graph — Organization + WebSite, referenced by @id
             from every page-level schema so Google resolves one publisher. */}
         <script

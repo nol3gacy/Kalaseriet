@@ -81,6 +81,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const ageLabel = product.ageGroup === '7-8' ? '7 & 8-åringar' : `${product.ageGroup}-åringar`
   const tProds = randomTestimonials(slug, 3)
   const themePage = product.theme ? themePageFor(product.theme) : undefined
+  // The same package for other ages, for parents who landed on the wrong age from a search.
+  const otherAges = fallbackProducts.filter(p => p.name === product.name && p.slug.current !== slug)
   const sameAgeProducts = fallbackProducts.filter(p => p.ageGroup === product.ageGroup && p.slug.current !== slug)
 
   const path = `/kalas/${slug}`
@@ -147,6 +149,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         <div className="product-info-wrapper">
           <div className="div-block-4">
+            {/* Tags wrap onto two rows when a theme has other ages; the gap keeps the rows apart. */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem 0.3rem' }}>
             <a href={`/kalas/${product.ageGroup === '7-8' ? '7-8-aringar' : product.ageGroup + '-aringar'}`} className="link-block w-inline-block">
               <div className="tag-text">Kalas för {ageLabel}</div>
             </a>
@@ -155,6 +159,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="tag-text">Alla {themePage.heading.toLowerCase()}</div>
               </a>
             )}
+            </div>
             <h1 className="heading">{product.name}</h1>
 
             <ProductBuySection product={product} />
@@ -171,6 +176,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             <div className="text">{description}</div>
             {themePage?.guide && <GuideLink slug={themePage.guide} theme={themePage.heading} />}
+            {/* Below the description, not in the tag row above the h1: extra tags wrapped onto
+                another row with the fallback font and shifted the heading and buy button (CLS 0.22). */}
+            {otherAges.length > 0 && (
+              <p style={{ margin: '0.75rem 0 0', fontSize: '1.05rem' }}>
+                Finns även för{' '}
+                {otherAges.map((p, i) => (
+                  <span key={p.slug.current}>
+                    {i > 0 && (i === otherAges.length - 1 ? ' och ' : ', ')}
+                    <a href={`/kalas/${p.slug.current}`} style={{ color: '#5910b6', fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                      {p.ageGroup === '7-8' ? '7 & 8-åringar' : `${p.ageGroup}-åringar`}
+                    </a>
+                  </span>
+                ))}
+              </p>
+            )}
 
             <div className="contains-wrapper">
               {/* h2 keeps the heading order after the h1; line-height matches the h3 it was */}

@@ -81,7 +81,7 @@ export default function CookieConsent() {
           transform: translate(-50%, 0);
         }
         .cookie-text {
-          font-family: caraque-melted, sans-serif;
+          font-family: caraque-melted, caraque-fallback, sans-serif;
           font-size: 1rem;
           color: var(--color--indigo, #5910b6);
           white-space: nowrap;
@@ -93,7 +93,7 @@ export default function CookieConsent() {
         }
         .cookie-ok {
           flex: 0 0 auto;
-          font-family: caraque-melted, sans-serif;
+          font-family: caraque-melted, caraque-fallback, sans-serif;
           font-weight: 700;
           font-size: 1.1rem;
           color: #faf1ef;

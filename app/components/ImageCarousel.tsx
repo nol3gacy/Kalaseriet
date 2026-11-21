@@ -124,7 +124,7 @@ export default function ImageCarousel({ images, alt, badges }: Props) {
                     position: 'absolute',
                     bottom: '0.5rem',
                     right: '0.75rem',
-                    fontFamily: 'caraque-melted, sans-serif',
+                    fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                     fontSize: '0.85rem',
                     color: 'rgba(255,255,255,0.85)',
                     textShadow: '0 1px 4px rgba(0,0,0,0.5)',

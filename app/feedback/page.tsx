@@ -44,14 +44,14 @@ export default function FeedbackPage() {
         <div style={{ backgroundColor: CREAM, padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
           <div style={{ maxWidth: '700px', margin: '0 auto' }}>
             <h1 style={{
-              fontFamily: 'caraque-melted, sans-serif',
+              fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
               fontSize: 'clamp(3rem, 7vw, 5rem)',
               fontWeight: 800,
               color: '#4e4e4e',
               lineHeight: '90%',
               marginBottom: '1.5rem',
             }}>Lämna feedback</h1>
-            <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.4rem', color: INDIGO, lineHeight: '130%' }}>
+            <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '1.4rem', color: INDIGO, lineHeight: '130%' }}>
               Hur gick kalaset? Din feedback hjälper oss att bli bättre.
             </p>
           </div>
@@ -61,17 +61,17 @@ export default function FeedbackPage() {
           {sent ? (
             <div role="status" style={{ textAlign: 'center', padding: '4rem 0' }}>
               <div style={{ fontSize: '4.5rem', marginBottom: '1.5rem' }} aria-hidden="true">🌟</div>
-              <h2 style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '2.2rem', fontWeight: 800, color: INDIGO, marginBottom: '0.75rem' }}>
+              <h2 style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '2.2rem', fontWeight: 800, color: INDIGO, marginBottom: '0.75rem' }}>
                 Tack för din feedback!
               </h2>
-              <p style={{ fontFamily: 'caraque-melted, sans-serif', fontSize: '1.2rem', color: '#7c7c7c' }}>
+              <p style={{ fontFamily: 'caraque-melted, caraque-fallback, sans-serif', fontSize: '1.2rem', color: '#7c7c7c' }}>
                 {form.wantRefund
                   ? 'Vi behandlar din återbetalningsförfrågan inom 1–3 arbetsdagar, eller så snart vi kan.'
                   : 'Din feedback är ovärderlig för oss. Vi hoppas att kalaset var en succé!'}
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', fontFamily: 'caraque-melted, sans-serif' }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', fontFamily: 'caraque-melted, caraque-fallback, sans-serif' }}>
               <div>
                 <label style={{ display: 'block', fontWeight: 700, color: INDIGO, fontSize: '1.1rem', marginBottom: '0.5rem' }}>
                   Vilket kalaspaket köpte du? *
@@ -181,7 +181,7 @@ export default function FeedbackPage() {
                   backgroundColor: rating ? PURPLE : '#d9d3ea',
                   color: '#faf1ef',
                   fontWeight: 700,
-                  fontFamily: 'caraque-melted, sans-serif',
+                  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
                   padding: '1.2rem',
                   borderRadius: '500px',
                   fontSize: '1.3rem',
@@ -207,7 +207,7 @@ const inputStyle: React.CSSProperties = {
   borderRadius: '1.25rem',
   padding: '0.9rem 1.2rem',
   color: '#4e4e4e',
-  fontFamily: 'caraque-melted, sans-serif',
+  fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
   fontSize: '1.05rem',
   outline: 'none',
 }

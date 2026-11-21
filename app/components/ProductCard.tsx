@@ -95,7 +95,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '0.5rem', padding: '0 0.5rem' }}>
         {/* Title: caraque-melted BOLD (not caraque-melted) — matches .heading on kalaseriet */}
         <h3 className="card-title" style={{
-          fontFamily: 'caraque-melted, sans-serif',
+          fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
           fontSize: '2rem',
           fontWeight: 700,
           color: '#5910b6',
@@ -112,7 +112,7 @@ export default function ProductCard({ product }: { product: Product }) {
           display: 'inline-block',
           backgroundColor: '#fce8e0',
           color: '#5910b6',
-          fontFamily: 'caraque-melted, sans-serif',
+          fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
           fontSize: '1.1rem',
           fontWeight: 500,
           padding: '0.3rem 1rem',
@@ -124,7 +124,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Body text — regular weight, lighter color */}
         <p style={{
-          fontFamily: 'caraque-melted, sans-serif',
+          fontFamily: 'caraque-melted, caraque-fallback, sans-serif',
           fontSize: '1.1rem',
           fontWeight: 400,
           color: '#4e4e4e',

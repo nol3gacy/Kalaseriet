@@ -5,6 +5,8 @@ import ProductGrid from './ProductGrid'
 import DiscountMarquee from './DiscountMarquee'
 import SeoText from './SeoText'
 import AgeCTAs from './AgeCTAs'
+import ThemeLinks from './ThemeLinks'
+import { themePages } from '../../lib/data/themes'
 import { breadcrumbSchema, canonical, itemListSchema, jsonLd, ORG_ID, OG_IMAGE } from '../../lib/seo'
 
 export type AgeGroup = '4' | '5' | '6' | '7-8'
@@ -120,6 +122,10 @@ export default function AgeCategoryPage({ age }: { age: AgeGroup }) {
         <ProductGrid products={products} heading={copy.heading} showFilter={false} />
         <DiscountMarquee />
         <SeoText heading={copy.seoHeading} paragraphs={copy.paragraphs} />
+        <ThemeLinks
+          heading={`Teman för ${ageLabel}`}
+          only={themePages.filter(t => products.some(p => t.themes.includes(p.theme))).map(t => t.slug)}
+        />
         <AgeCTAs />
       </main>
       <Footer />
